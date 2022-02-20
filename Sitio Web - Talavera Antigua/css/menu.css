@@ -1,0 +1,33 @@
+nav{
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	background-color:#6662bf;
+	overflow: auto; /*adaptar un div al interior se cual sea el contenido*/
+	vertical-align: top; 
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+
+nav li {
+	float: left;
+}
+
+nav li a {
+	display: block;
+	text-align: center;
+	color: #000;
+	padding: 8px 0 8px 16px;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	background-color: #423dc6;
+	color: white;
+}

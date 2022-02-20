@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    background: url(../images/Puente_talavera_antigua.JPG);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.web a{
+    color: azure;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-decoration:none;
+    cursor: pointer;
+
+}
+
+.foto img{
+    width: 60%;
+}
+.historia .forma .cabecera .titulo {
+    font-weight: normal;
+    font-family: sans-serif;
+    color: #3831c4;
+    text-align: center;
+    padding: 14px 0;
+}
+
+.historia .forma .cabecera .titulo span {
+    color: #fff;
+}
+
+.historia .forma{
+    background: rgba(0,0,0,.6);
+    width: 90%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 5px 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 13px;
+}
+
+p {
+    text-align: justify;
+    color: antiquewhite;
+}
+ 
+p strong {
+     color: antiquewhite;
+}

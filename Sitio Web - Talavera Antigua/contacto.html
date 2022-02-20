@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario de contacto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/comun.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    <script src="js/form.js"></script>
+    <link rel="icon" href="images/escudo_talavera.ico" type="image/x-icon"><!--Icono de la pestaña de la página-->
+</head>
+<body>
+        <nav>
+            <ul>   
+                <a href="index.html"><li><button><i class="fa fa-home"></i> Inicio</button></li></a>
+                <a href="historia.html"><li><button><i class="fa fa-landmark"></i> Historia</button></li></a>
+                <a href="quienes.html"><li><button><i class="fa fa-search"></i> Quienes somos</button></li></a>
+                <a href="contacto.html"><li><button><i class="fa fa-envelope"></i> Contacto</button></li></a>  
+            </ul>
+            <p>&nbsp;</p>
+            <div class="web"><a href="index.html">www.nostalvera.com</a></div>
+        </nav>
+    <div class="contenedor">
+        <form name="fvalida" action="" class="form">
+            <div class="form-header">
+                <h1 class="form-title">C<span>ontacto</span></h1>
+            </div>
+
+            <label for="nombreapellidos" class="form-label">Nombre y apellidos:</label>
+            <input type="text" id="nombreapellidos" class="form-input" placeholder="Escriba su nombre y apellidos">
+
+            <label for="direccion" class="form-label">Dirección:</label>
+            <input type="text" id="direccion" class="form-input" placeholder="Escriba su dirección">
+
+            <label for="correo" class="form-label">Correo Electrónico:</label>
+            <input type="email" id="correo" class="form-input" placeholder="Escriba su correo">
+
+            <label for="mensaje" class="form-label">Mensaje:</label>
+            <textarea id="mensaje" class="form-textarea" placeholder="Escriba su mensaje"></textarea>
+
+            <input type="submit" class="btn-submit" value="Enviar Consulta" onclick="valida_envia()">
+            <p>&nbsp;</p>
+        </form>
+    </div>
+</body>
+</html>

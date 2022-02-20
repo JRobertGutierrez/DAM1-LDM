@@ -1,0 +1,20 @@
+/*PARTE PARA LA BARRA DE COOKIES*/
+
+.barracookies {
+	display: none;
+	z-index: 99999;
+	position:fixed;
+} 
+
+#barracookies a:nth-child(2) {/*Con esta clase hago el botón OK*/
+	padding:4px;
+	color: white;
+	background:#4682B4;
+	border-radius:8px;
+	text-decoration:none;
+}
+
+#barracookies a {
+	color: black;
+	text-decoration: none;
+}

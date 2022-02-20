@@ -1,0 +1,185 @@
+*{
+    margin: 0;
+    padding: 0;
+    /*font-family: 'PT Sans', sans-serif;*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:#221fcc;
+    text-decoration: none;
+	
+}
+body {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.6), rgba(5, 110, 215,0.4));
+}
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    font-family: 'PT Sans', sans-serif;
+    padding-bottom: 50px;
+}
+
+div.nombre{
+    text-align: center;
+}
+div.container{
+	position: relative;
+    background-color: #8888c6;
+}
+.container img { 
+	width: 85%;
+	height: auto;
+	opacity: 1;
+	font-family: 'PT Sans', sans-serif;
+    padding-bottom: 20px;
+}
+
+div.center {
+	position: absolute;
+	top: 17%;
+	width: 100%;
+	text-align: center;
+	font-size: 50px;
+	color: white;
+	font-family: verdana;
+	opacity: 0.3;
+}
+
+button {
+	background-color: #6662bf;
+  	border: none;
+  	color: white;
+  	padding: 12px 16px;
+  	font-size: 16px;
+  	cursor: pointer;
+  }
+  /* Darker background on mouse-over */
+button:hover {
+  	background-color: #423dc6;
+}
+section{
+    margin-top: 40px;
+}
+
+/* Cajas describe*/
+
+.caja-describe {
+    border:0.04em solid #DBDBDB;
+    border-radius: 3px;
+    display: inline-block;
+    box-shadow: 9px 9px 7px -9px rgba(16, 42, 233, 0.94);
+    /*box-shadow: 8px 8px 5px -6px rgba(177,177,177,0.27);*/
+    height: 70px;
+    width: 310px;
+    margin: 10px 10px 10px 0;
+    margin-left: 55px;
+}
+
+.caja-describe:hover {
+     box-shadow: -8px -8px 5px -6px rgba(177,177,177,0.27);
+}
+
+.caja-describe  img{
+    height: 100%;
+    width: 100px;
+    display:inline-block;
+}
+
+.caja-describe  h4{
+    font-weight: bold;
+    display:inline-block;
+    vertical-align: top;
+    margin:25px 0px 0px 10px;
+}
+
+/* Visor 1*/
+.visor{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    border-radius: 7px;
+    background-size: 100% 300px;
+    background-image: url(../images/talavera_desde_fuera_panor.jpg);
+}
+
+.degradado{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.6), rgba(5, 110, 215,0.4));
+   
+}
+
+.visor h4{
+    color:black;
+    width: 450px;
+    font-size:1.25em;
+    padding:80px 0 0 50px;
+    position:relative;
+    margin-top: 15px;
+}
+
+.visor button{
+    padding: 10px 40px;
+    font-size: 0.95em;
+    background: none;
+    border: 1px solid rgb(253, 253, 253);
+    border-radius: 3px;
+    margin: 20px 10px 0 50px;
+    position:relative;
+	font-weight: bold;
+	color:rgb(7, 65, 29);
+}
+
+.visor button:hover{
+	cursor: pointer;
+	color:black;
+    background: white;
+}
+
+/* Visor 2*/
+.visor2{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    border-radius: 7px;
+    background-size: 100% 300px;
+    background-image: url(../images/puente_hierro.JPG);
+}
+
+.degradado2{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.6), rgba(5, 110, 215,0.4));
+   
+}
+
+.visor2 h4{
+    color:black;
+    width: 450px;
+    font-size:1.25em;
+    padding:80px 0 0 50px;
+    position:relative;
+    margin-top: 15px;
+}
+
+.visor2 button{
+    padding: 10px 40px;
+    font-size: 0.95em;
+    background: none;
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin: 20px 10px 0 50px;
+    position:relative;
+    font-weight: bold;
+    color: rgb(109, 39, 13);
+}
+
+.visor2 button:hover{
+	cursor: pointer;
+	color:black;
+    background: white;
+}
