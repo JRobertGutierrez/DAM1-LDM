@@ -1,7 +1,7 @@
 # DAM1-LDM-TFC
-Lenguaje de marcas -> Trabajo fin de curso -> Página web
+Ejercicios LDM (Lenguaje de marcas) DAM1
 
-* En la carpeta (DAM1-LDM-TFC\Sitio Web - Talavera Antigua) encontrarás el proyecto completo y podrás ver Talavera Antigua.
+* En la carpeta (DAM1-LDM\Sitio Web - Talavera Antigua) encontrarás el proyecto completo de fin de curso y podrás ver Talavera Antigua.
 * IDE Visual Studio Code
 
 * Proyectos 2019-2020
