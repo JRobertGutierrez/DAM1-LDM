@@ -8,12 +8,10 @@ Ejercicios LDM (Lenguaje de marcas) DAM1
 
 * Proyectos 2019-2020
 *******************************************************************
-* Abreviaturas de las carpetas contenidas en los repositorios DAM2:
+* Abreviaturas de las carpetas contenidas en los repositorios DAM1:
 
-* AD - Acceso a datos
-* DI - Desarrollo de interfaces
-* PMDM - Programación Multimedia y Dispositivos Móviles
-* FCT - Formación en centros de trabajo (Prácticas en empresa)
-* PFG - Proyecto fin de grado
-* PSP - Programación de Servicios y Procesos
-* SGE - Sistemas de gestión empresarial
+* SSII - Sistemas informáticos
+* BBDD - Bases de datos
+* PROG - Programación
+* LDM - Lenguajes de marcas y sistemas de información
+* EED - Entornos de desarrollo
