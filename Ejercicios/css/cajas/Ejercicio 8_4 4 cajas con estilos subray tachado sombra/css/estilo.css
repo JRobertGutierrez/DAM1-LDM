@@ -1,0 +1,67 @@
+body{
+background-color: white;
+width: auto;
+color: white;
+border: 3px solid darkgrey; 
+padding: 20px; 
+float:left; 
+margin: 5px;
+box-shadow: 5px 6px 10px grey;
+}
+
+
+h1.uno{ 
+
+text-align: center;
+text-shadow: 3px 2px grey;
+background-color: black;
+width: 90%;
+color: white;
+border: 3px solid darkgrey; 
+padding: 20px; 
+float:left; 
+margin: 5px;
+} 
+
+h1.dos{ 
+
+text-align: center;
+text-shadow: 3px 2px grey;
+word-spacing: 10px;
+background-color: red;
+width: 90%;
+color: white;
+border: 3px solid darkgrey; 
+padding: 20px; 
+float:left; 
+margin: 5px;
+} 
+
+h1.tres{ 
+
+text-align: center;
+text-shadow: 3px 2px grey;
+text-decoration: line-through; 
+background-color: green;
+width: 90%;
+color: white;
+border: 3px solid darkgrey; 
+padding: 20px; 
+float:left; 
+margin: 5px;
+} 
+
+h1.cuatro{ 
+
+text-align: center;
+text-shadow: 3px 2px grey;
+text-transform: uppercase;
+text-decoration: underline;
+background-color: gray;
+width: 90%;
+color: white;
+border: 3px solid darkgrey; 
+padding: 20px; 
+float:left; 
+margin: 5px;
+} 

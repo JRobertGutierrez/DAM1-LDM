@@ -1,0 +1,40 @@
+div.p{ 
+	color: white;
+	margin: 15px;
+	padding: 30px;
+	text-align: justify;
+} 
+
+div.a{
+	margin: 42px;
+	padding: 0px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+
+}
+img.uno{
+	width: 32%;
+	border: 3px solid darkgrey; 
+	float:left; 
+	margin: 25px;
+}
+
+img.dos{
+	width: 32%;
+	border: 3px solid darkgrey; 
+	float:right; 
+	margin: 25px;
+}
+h1 {
+	text-align: center;
+	color: white;
+	font-family: 'Pacifico', serif;
+	font-size: 48px;
+
+}
+body {
+	background-color:#383434;
+	font-family: 'Dancing Script', serif;
+	font-size: 24px;
+
+}

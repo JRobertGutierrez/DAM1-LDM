@@ -1,0 +1,16 @@
+body {
+	background-image: url("../images/buho.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-attachment: fixed;
+	margin-left: 200px;
+}
+
+.container {
+  padding: 20px;
+  background: #ddd;
+  font-family:sans-serif;
+  color:#666;
+}
+.image {
+  width: 100%;

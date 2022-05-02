@@ -1,0 +1,24 @@
+div { 
+background-color: black;
+width: auto;
+color: white;
+border: 3px solid darkgrey; 
+padding: 20px; 
+float:left; 
+margin: 5px; 
+} 
+
+img {
+width: 32%;
+border: 3px solid darkgrey; 
+float:left; 
+margin: 5px;
+}
+
+h1 {
+text-align: center;
+
+}
+body {
+	background-color: gray;
+}

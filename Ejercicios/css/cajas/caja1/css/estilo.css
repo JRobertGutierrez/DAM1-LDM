@@ -1,0 +1,20 @@
+div { 
+background-color: lightgrey; 
+width: 80%; 
+border: 10px solid green; 
+padding: 55px; 
+float:left; 
+margin: 5px; 
+} 
+div.uno { 
+float:left; 
+} 
+
+div.dos { 
+float:right; 
+} 
+
+h1 {
+float: left;
+margin-left: -40px;
+}

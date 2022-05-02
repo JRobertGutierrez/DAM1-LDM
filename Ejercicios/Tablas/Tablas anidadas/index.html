@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es"><!--Pongo lang="es" para busquedas en español-->
+	<meta charset="utf-8"><!--Línea para añadir caracteres-->
+	<head>
+		<title>Tablas anidadas</title>
+	</head>
+		<body>
+			<table border="1">
+				<caption>Módulos</caption><!--Línea para añadir título a la tabla-->
+				<tr>
+					<td>Primero</td>
+					<td><!--Aquí empieza la tabla que está dentro de una celda de la primera-->
+						<table border="2">
+							<tr>
+								<td>LM</td>
+								<td>ISO</td>								
+								<td>SGBD</td>
+							</tr>
+							<tr>
+								<td>ING</td>
+								<td>REDES</td>								
+								<td>FOL</td>
+							</tr>
+						</table>
+					</td><!--Aquí termina la tabla que está dentro de una celda de la primera-->
+				</tr>
+				<tr>
+					<td>Segundo</td>
+					<td>El próximo curso</td>
+				</tr>
+			</table>
+		</body>
+</html>

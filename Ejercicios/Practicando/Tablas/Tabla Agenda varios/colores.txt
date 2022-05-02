@@ -1,0 +1,5 @@
+Los colores de cada una de las filas son los siguientes:
+#c8c8c8
+#bcbcbc
+#a6a6a6
+#989898

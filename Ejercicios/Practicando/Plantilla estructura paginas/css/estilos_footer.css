@@ -1,0 +1,69 @@
+footer .contenedor-cajas{
+   text-align: center;
+   width: 70%;
+   margin: 30px auto;
+}
+
+footer .caja{
+    width:15%;
+    max-width: 300px;
+    display:inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+    text-align:left;
+    font-family: 'PT Sans', sans-serif; 
+}
+
+footer h4{
+    padding-bottom: 15px;
+    color:rgb(118,118,118);
+}
+
+footer img{
+    padding-bottom: 3px;
+}
+footer .item{
+    
+    font-size: 0.90em;
+    margin-bottom: 2px;
+    letter-spacing: 0.01em;
+}
+
+.item img{
+    width: 36px;
+    height: 36px;
+}
+
+.item .mas-peque{
+    width: 28px;
+    height: 28px;
+}
+
+.contenedor-pie{
+    background: black;
+    padding: 20px;
+    text-align: right;
+}
+
+.contenedor-pie a{
+    text-decoration: none;
+    font-family: arial narrow;
+}
+
+footer a{
+    font-family: arial narrow;
+}
+footer a:hover{
+    text-decoration: underline;
+}
+footer hr{
+ margin:10px auto;
+ width: 75%;
+
+}
+
+footer .pie-footer{
+    text-align:right; 
+    width: 80%;
+}
+

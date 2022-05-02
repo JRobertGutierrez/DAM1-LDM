@@ -1,0 +1,48 @@
+.contenedor{ 
+	width: 60%;
+	margin: auto;
+	font-family: 'Verdana';
+	font-size: 2em;
+	font-weight: bold;
+	
+}
+
+.cuerpo{
+	background-color: #8080804d;
+	padding: 2%;
+}
+
+.cabecera{
+	color: white;
+	background-color: #990f0f;
+	padding: 1%;
+	text-align: center;
+	
+}
+
+span.uno{
+	color: gray;
+	font-size: 15px;
+}
+span.dos{
+	color: blue;
+	font-size: 15px;
+}
+
+input{
+	margin-left: 80px;
+}
+
+.btn{
+	color: white;
+	background: #990f0f;
+	width: 100px;
+	height: 40px;
+	font-size: 18px;
+	margin-left: 122px;
+	cursor: pointer;
+}
+.btn:hover {
+  background-color: RoyalBlue;
+  transition: 3s;
+}

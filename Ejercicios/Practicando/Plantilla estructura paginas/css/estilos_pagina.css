@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+}
+
+
+/*imagen */
+.visor-paris{
+    margin-top: 20px
+    width: 100%;
+    height: 500px;
+    position: relative;
+    background-image: url(../imagenes/visor_paris.jpg);
+    background-repeat: no-repeat;
+   
+    background-size: 150%;
+    -webkit-animation: mueve_visor 30s infinite linear alternate; 
+    -moz-animation: mueve_visor 30s infinite linear alternate; 
+    -ms-animation: mueve_visor 30s infinite linear alternate; 
+    -o-animation: mueve_visor 30s infinite linear alternate;   
+}
+
+
+/*Tarjetas*/
+
+.tarjetero{
+    width: 100%;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.parrafo{
+    width: 70%;
+    margin: 100px auto;
+    font-size: 1.2em;
+    font-weight: bold;
+    color:rgb(118,118,118);
+    font-family: arial narrow;   
+}
+
+.contenedor-tarjetas{
+    width: 100%;
+    margin-top: 50px;
+    position: relative;
+}
+
+.una-tarjeta{
+    width: 275px;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px 5px rgba(177,177,177,0.27);
+    display: inline-block;
+}
+
+.imagen-perfil{
+    margin: auto;
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    border-radius: 50%;
+    position: relative;
+    top: -75px;
+    box-shadow: 0px 0px 30px -6px gray;
+}
+
+.imagen-perfil:hover{ 
+     box-shadow: 0px 0px 30px -6px gray;
+}
+
+.imagen-perfil1{
+    background-image: url(../imagenes/anfitrion1.png);
+}
+
+.imagen-perfil2{
+    background-image: url(../imagenes/anfitrion2.png);
+}
+
+.imagen-perfil3{
+   background-image: url(../imagenes/anfitrion3.png);
+}
+
+.una-tarjeta h2{
+    margin-top: -40px;
+    font-variant: small-caps;
+}
+
+.una-tarjeta h4{
+    margin-top: 10px;
+    color: #333333;
+    font-weight: 400;
+    font-family: arial narrow; 
+}
+
+.una-tarjeta p{
+    margin-top: 10px;
+    margin-bottom:75px;
+    color: #7e7e7e;
+    font-family: arial narrow; 
+}
+
+.redes-sociales{
+    margin-top: 20px;
+
+}
+
+.redes-sociales a{
+    text-decoration: none;
+    margin-left:5px;
+    display: inline-block;
+}
+
+
+@-webkit-keyframes mueve_visor{
+    from{
+        background-position: top left;
+    }
+    to{
+        background-position: top right;
+    }
+}
+
+@-moz-keyframes mueve_visor{
+    from{
+        background-position: top left;
+    }
+    to{
+        background-position: top right;
+    }
+}
+
+@-ms-keyframes mueve_visor{
+    from{
+        background-position: top left;
+    }
+    to{
+        background-position: top right;
+    }   
+}
+
+@-o-keyframes mueve_visor{
+    from{
+        background-position: top left;
+    }
+    to{
+        background-position: top right;
+    }
+}

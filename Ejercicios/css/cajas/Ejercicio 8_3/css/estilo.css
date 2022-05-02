@@ -1,0 +1,31 @@
+body{
+	text-align: center;
+width: 70%;
+border-left: double;
+    border-left-color: currentColor;
+    border-left-style: double;
+    border-left-width: 10px;
+border-right: double;
+    border-right-width: 10px;
+border-top: double;
+    border-top-width: 10px;
+border-bottom: double;
+    border-bottom-width: 10px;
+color: black;
+padding: 5px;
+box-shadow: 5px 6px 10px grey; 
+}
+
+
+h1{ 
+color: green;
+text-align: center;
+text-transform: uppercase;
+} 
+
+p{ 
+color: black;
+text-align:justify;
+letter-spacing: 4px;
+text-indent: 50px;
+} 

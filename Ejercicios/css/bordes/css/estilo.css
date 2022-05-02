@@ -1,0 +1,66 @@
+body{
+	background-color: #ffffff;
+	color:#444444;
+	font-family: 'Montserrat';
+	font-weight: 400;
+	font-size: 20px;
+}
+
+.borders {
+width: 95%;
+height: 40px;
+margin: 20px;
+display: flex;
+align-items: center;
+padding-left: 10px;
+}
+
+.azul {
+	border: solid 1px;
+text-align:center;
+font-size:2.2rem;
+line-height:3.4rem;
+font-style:italic;
+color: #0e2d5f;
+background-color: #d1e3ff;
+padding:10px;
+margin: 20px;
+}
+
+h1{
+	text-align: center;
+}
+
+p.one {
+	border: 2px solid;
+	
+}
+
+p.two {
+	border-bottom: 3px solid purple;
+}
+
+p.three {
+	border: 2px solid;
+	border-radius: 30px;
+}
+
+p.four {
+	background-color: #ffeef1;
+	border-left-color: red; 
+	border-left-style: solid;
+	border-left-width: 2px;
+}
+
+p.five {
+	border: 2px dotted;
+}
+
+p.six {
+	border-style: dotted dashed solid double;
+}
+
+p.seven {
+	
+
+}

@@ -1,0 +1,23 @@
+body {
+	font-family: Arial;
+	text-align: center;
+	/*background-image: url(https://i.pinimg.com/originals/70/88/cb/7088cb5eb79cc620ba896ba38b7b4bc1.jpg);*/
+	background-image: url(http://www.gifde.com/gif/otros/decoracion/fondos-web-y-texturas/madera-corteza-arboles/fondo-corteza-arboles-014.jpg);
+	/*background-repeat: no-repeat;
+	background-size: cover;*/
+}
+
+h1 {
+	background-color:#8ca7cf4d;
+	font-size: 57px;
+	color:#291fd599;
+}
+
+p {
+	background-color:#8ca7cf4d;
+	text-align: justify;
+	margin-left: 240px;
+	margin-right: 240px;
+	color: white;
+	padding: 57px
+}

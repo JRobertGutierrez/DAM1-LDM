@@ -1,0 +1,21 @@
+body {
+	font-family: Arial;
+	font-size: 18px;
+	text-align: center;
+}
+
+p {
+	text-align: left;
+}
+
+.roberto {
+	font-family: comic sans ms;
+	color: red;
+	text-align: right;
+}
+
+#roberto {
+	font-weight: 800px;
+	color: blue;
+	
+}

@@ -1,0 +1,49 @@
+.contenedor{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-family: arial;
+}
+
+.contenedor img {
+	width: 100%;
+}
+
+.textoCabecera{
+	position: absolute;
+	top: 15%;
+	width: 100%;
+  	color: white;
+  
+ }
+
+.textoCabecera h1 {
+	width: 100%;
+	
+	font-size: 80px;
+}
+
+.textoCabecera p{
+	width: 30%;
+	
+	margin: 15px;
+	padding: 30px;
+	text-align: justify;
+}
+
+button{
+ 	background-color: #1e90ff00;
+	border: 1px solid;
+  	color: white;
+  	padding: 12px 16px;
+  	font-size: 16px;
+  	cursor: pointer;
+  	float: left;
+  	margin-left: 40px;
+  	
+}
+
+button:hover {
+	background-color: white;
+	color:#96512a;/*Aqui pongo el color de las dunas que hay debajo del botón*/
+}

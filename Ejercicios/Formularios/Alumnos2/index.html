@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<meta charset="utf-8">
+	<head>
+		<title>Alumnos</title>
+		<style type="text/css">
+			
+			input{
+				display: block;
+			}
+			textarea{
+				display: block;
+			}
+		</style>
+	</head>
+		<body>
+			<form action="http://ponerpagina.es" method="post">
+					<fieldset>
+						<legend>Datos personales</legend>
+							<tr>
+								<td>Nombre</td>
+								<td><input type="text" name="Nombre" placeholder="Introduce tu nombre" maxlength="20" required></td></br>
+							</tr>
+							<tr>
+								<td>Apellidos</td>
+								<td><input type="text" name="Apellidos" placeholder="Introduce tus apellidos" maxlength="50" required></td>
+							</tr>
+							<tr>
+								<td>Edad</td>
+								<td><input type="number" name="Edad"value="numero" min="18" max="99" required></td>
+							</tr>
+							<tr>
+								<td>F. Nacimiento</td>
+								<td><input type="date" name="Fecha de nacimiento" max="2099-12-31" min="1899-01-01" required></td>
+							</tr>
+							<tr>
+								<td>eMail</td>
+								<td><input type="eMail" name="eMail usuario" placeholder="Escribe tu eMail" required></td>
+							</tr>
+							<tr>
+								<td>Descripción</td>
+								<td><textarea rows="4" cols="50" name="Mensaje" placeholder="Escribe aquí tu mensaje" required></textarea></td>
+							</tr>
+							<tr>
+								<td>Género</td>
+								<td><input type="radio" name="Genero" value="hombre" checked> Hombre
+									<input type="radio" name="Genero" value="mujer"> Mujer
+								</td>
+							</tr>
+
+					</fieldset>
+					<fieldset>
+						<legend>Datos académicos</legend>
+					<tr>
+						<td>Grado</td>
+						<td>
+							<select name="Grado">
+								<option value="">Selecciona ...</option>
+								<option value="1ºDAM">1ºDAM</option>
+								<option value="1ºDAW">1ºDAW</option>
+								<option value="2ºDAM">2ºDAM</option>
+								<option value="2ºDAW">2ºDAW</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Módulos</td>
+						<td><input type="checkbox" name="Modulo1" value="SSII">SSII
+							<input type="checkbox" name="Modulo2" value="BBDD">BBDD
+							<input type="checkbox" name="Modulo3" value="PROG" checked>PROG
+							<input type="checkbox" name="Modulo4" value="LDM">LDM
+							<input type="checkbox" name="Modulo5" value="EED">EED
+							<input type="checkbox" name="Modulo6" value="ING">ING
+							<input type="checkbox" name="Modulo7" value="FOL">FOL</td>
+					</tr>
+					</fieldset>
+			<td colspan="3" align="center">
+			<input type="submit" value="Enviar Formulario">
+			<input type="reset" value="Limpiar">
+			</td>
+				
+			</form>
+		</body>
+</html>
