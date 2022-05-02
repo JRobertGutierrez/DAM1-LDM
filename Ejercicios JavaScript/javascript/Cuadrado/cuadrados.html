@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cuadrados</title>
+        <link rel="stylesheet" href="css/estilos.css">
+        <script src="js/funcion.js"></script>
+</head>
+<body>
+
+        <script>
+        function cuadrado(cantidad){
+
+   
+          
+        document.write("<div class='cuadrado' style=\"background-color: "+arrayColor[cantidad]+"\">"+arrayColor[cantidad]);
+        document.write("</div>");    
+        document.write("<h3>"+arrayTitulo[cantidad]+"</h3>");
+
+        }
+         </script>
+
+       
+
+
+        <script>//rgb(0, 116, 217)
+           
+          
+            var arrayColor=["Black","Red","Blue","green","yellow","purple"];
+
+            var arrayTitulo=["#111111","#FFFFFF","#0074D9"];
+       
+            for(a=0; a<arrayColor.length;a++)   {
+            cuadrado(a,arrayColor,arrayTitulo);
+        
+        } 
+        </script>
+
+  
+
+
+
+
+
+</body>
+</html>

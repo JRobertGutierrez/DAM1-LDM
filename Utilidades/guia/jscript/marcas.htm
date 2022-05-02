@@ -1,0 +1,101 @@
+
+<HTML>
+<HEAD>
+<TITLE>Ejemplo de marcas</TITLE>
+</HEAD>
+<BODY>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+function putOn()
+  {
+  for (i = 0; i < document.forms[0].elements.length; i++)
+    {
+    document.forms[0].elements[i].checked = true;
+    }
+  }
+function putOff()
+  {
+  for (i = 0; i < document.forms[0].elements.length; i++)
+    {
+    document.forms[0].elements[i].checked = false;
+    }
+  }
+
+// -->
+</SCRIPT>
+
+
+<BODY bgcolor="#00FFFF" >
+<CENTER>
+<h2>Marcar todas las opciones de un formulario</h2>
+A veces en un formulario puede interesar marcar todas las opciones posibles. Este c&oacute;digo 
+permite hacerlo r&aacute;pidamente. 
+
+<center>
+<TABLE BORDER="0">
+<FORM NAME="marcas" ACTION="" METHOD="GET">
+
+<TR>
+<TD>Marcar todos 
+<INPUT TYPE="CHECKBOX" NAME="jscheckall" onClick="if (this.checked) {putOn()} else {putOff()}" VALUE="">
+</TD>
+
+<TR><TD>Op. 1
+<INPUT TYPE="CHECKBOX" NAME="opcion" VALUE="1">
+</TD></TR>
+
+<TR><TD>Op. 1
+<INPUT TYPE="CHECKBOX" NAME="opcion" VALUE="2">
+</TD></TR>
+
+<TR><TD>Op. 3
+<INPUT TYPE="CHECKBOX" NAME="opcion" VALUE="3">
+</TD></TR>
+
+<TR><TD>Op. 4
+<INPUT TYPE="CHECKBOX" NAME="opcionr" VALUE="4">
+</TD></TR>
+
+<TR><TD>Op. 5
+<INPUT TYPE="CHECKBOX" NAME="opcion" VALUE="5">
+</TD></TR>
+
+<TR><TD>Op. 6
+<INPUT TYPE="CHECKBOX" NAME="opcion" VALUE="6">
+</TD></TR>
+
+<TR><TD>Op. 7
+<INPUT TYPE="CHECKBOX" NAME="opcion" VALUE="7">
+</TD></TR>
+
+<TR><TD>Op. 8
+<INPUT TYPE="CHECKBOX" NAME="opcion" VALUE="8">
+</TD></TR>
+
+<TR><TD>Op. 9
+<INPUT TYPE="CHECKBOX" NAME="opcion" VALUE="9">
+</TD></TR>
+
+</TABLE>
+
+
+<INPUT TYPE=SUBMIT NAME="enviar" VALUE="Enviar">
+</FONT></TD>
+</TR>
+</FORM>
+
+</TABLE>
+
+</center>
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+</BODY>
+</HTML>

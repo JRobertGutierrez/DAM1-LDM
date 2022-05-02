@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>VBScript 1 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Visual Basic Script</H2>
+
+Bajo esta denominaci&oacute;n Microsoft presenta una versi&oacute;n del lenguaje de programaci&oacute;n Visual Basic, especialmente preparada para conectar con ASP. El conjunto de los objetos de ASP y <b>VBScript</B> permite programar aplicaciones internet para el IIS (Information Internet Server) tambi&eacute;n de Microsoft.
+<p>
+VBScript no tiene todas las funcionalidades de Visual Basic, por ejemplo, carece de funciones intr&iacute;nsecas de acceso a ficheros o a bases de datos, de ah&iacute; la necesidad de recurrir a los objetos propios de ASP para determinadas tareas;  algunos comandos est&aacute;n modificados respecto a su original en Visual Basic para lograr una mejor conexi&oacute;n con ellos.
+<p>
+Todo lo dicho respecto a <a href="../asp/asp2.htm">c&oacute;mo se escribe el ASP</a> es v&aacute;lido para VBScript, y  como ya has visto en los temas sobre los objetos de ASP, se pueden mezclar ambas cosas como mejor convenga.
+<p>
+VBScript no est&aacute; reservado exclusivamente para ser utilizado en p&aacute;ginas ASP que se ejecutan en el servidor, tambi&eacute;n puede utilizarse en p&aacute;ginas HTML para que sean ejecutadas en el navegador. El &uacute;nico problema es que solamente los navegadores de Microsoft (Internet Explorer) son capaces de interpretarlo. Esta es sin duda la gran virtud de ASP: no importa qu&eacute; navegador tiene el cliente, ya que s&oacute;lo se le env&iacute;a HTML est&aacute;ndard. Por ahora, el &uacute;nico lenguaje de comandos compatible con todos los navegadores modernos es Java Script, aunque existen algunas incompatibilidades entre versiones. 
+<p>
+Por tipos de comandos, en <b>VBScript</b> tenemos:
+<Ul>
+<li><b>Constantes</B>
+<li><b>Variables</B>
+<li><b>Operadores</B>
+<li><b>Instrucciones</B>
+<li><b>Funciones</B>
+</ul>
+
+En VBScript existen dos niveles de ejecuci&oacute;n de comandos: el <font color="blue"><b>nivel de procedimiento</b></font>, que contiene instrucciones dentro de procedimientos <font color="red"><b>Function</b></font> (funciones) o <font color="red"><b>Sub</b></font> (sub rutinas), y el <font color="blue"><b>nivel de secuencia de comandos</b></font> que consiste en cualquier c&oacute;digo escrito fuera de un procedimiento.  Es decir, que el nivel de secuencia de comandos contiene al nivel de procedimientos, y un procedimiento no puede estar dentro de otro procedimiento. Un procedimiento si puede llamar a otro procedimiento, y por supuesto, pueden ser llamados desde el nivel de secuencia de comandos. En el siguiente ejemplo, que contiene los dos niveles,  puede verse como desde el nivel de secuencia de comandos se llama a un procedimiento Sub, que a su vez invoca una funci&oacute;n:
+<p>
+&LT;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+Public <font color="red">Sub </font><font color="blue"><b>Rutina_hora<br></font></b>
+ &nbsp;&nbsp;Response.Write( <font color="red">Time()</font> )<br>
+<font color="red">End Sub</font><br>
+&LT;/SCRIPT&gt;<br>
+<p>
+&LT;HTML&GT;<br>
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de ASP&lt;/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+Bienvenidos al ASP. Son las &lt;% Call(<font color="blue"><b>Rutina_hora</b></font>) %&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+<p>
+VBScript no aporta procedimientos Sub propios, que deber&aacute;n ser creados por el usuario, pero si posee gran cantidad de procedimientos Function intr&iacute;nsecos que se ver&aacute;n en el apartado "Funciones".
+
+<h2>Procedimientos <font color="red">Sub</font></h2>
+Un procedimiento Sub es una serie de comandos VBScript, escritos entre una instrucci&oacute;n <font color="red">Sub</font> y otra <font color="red">End Sub</font>, que ejecutan acciones pero no devuelven ning&uacute;n valor, cosa que si hacen las funciones, que en cambio, no ejecutan acciones. Como puedes ver en el ejemplo anterior, el procedimiento <font color="blue">Rutina_hora</font> no devuelve valor alguno; se limita a llamar al objeto Response de ASP para presentar en pantalla un valor que no produce &eacute;l mismo, sino la funci&oacute;n <font color="red">Time()</font>.
+<p>
+Un procedimiento Sub puede tener argumentos, es decir, unos valores o par&aacute;metros iniciales necesarios para ejecutar sus instrucciones. Estos valores pueden proceder de constantes, variables o expresiones que a su vez podr&iacute;an obtener  los datos por una llamada a otro procedimiento. Por ejemplo, imagina un procedimiento que busca un registro en una base de datos; l&oacute;gicamente necesitar&iacute;a, por lo menos, un argumento con el identificador del registro a buscar.
+<p>
+Los procedimientos Sub, de forma predeterminada, son p&uacute;blicos si no se indica lo contrario. Para cambiar eso se escribe la instruccion <b>Public</b> o <b>Private</b> delante del nombre del procedimiento. Un procedimiento p&uacute;blico es visible a todos los otros procedimientos en la secuencia de comandos. El valor de las variables locales en un procedimiento Sub no se mantiene entre llamadas al procedimiento.
+<p>
+No se puede definir un procedimiento Sub dentro de otro procedimiento Sub o Function. Si es necesario programar una salida del procedimiento sin ejecutar todas sus instrucciones, como por ejemplo, cuando se produce un error, se utiliza la instrucción <font color="red"><b>Exit Sub</b></font>. Se pueden escribir cuantas instrucciones <font color="red">Exit Sub</font> sean necesarias. 
+<p>
+Despu&eacute;s de ejecutar un procedimiento Sub (o despu&eacute;s de abandonarlo sin ejecutar por la raz&oacute;n que sea) la ejecuci&oacute;n del  programa continua con la instrucci&oacute;n que sigue a la que llam&oacute; el procedimiento.
+<p>
+Se puede llamar a un procedimiento Sub de dos maneras: simplemente escribiendo su nombre seguido de los argumentos, si los hay,  o utilizando la instrucci&oacute;n <b>Call()</b>. No est&aacute; muy claro para qu&eacute; sirve esta instrucci&oacute;n en el caso de los procedimientos Sub, ya que funcionan igual. La &uacute;nica diferencia consiste en que si no se utiliza Call(), los argumentos van al lado del nombre del procedimiento sin m&aacute;s, y si se utiliza hay que escribirlos dentro de un par de par&eacute;ntesis. Yo la utilizo por costumbre, ya que en otros lenguajes de programaci&oacute;n si es necesaria.
+<p>
+Un procedimiento Sub puede llamarse a s&iacute; mismo cuantas veces sea necesario. Utilizar esto con precauci&oacute;n, ya que si falla algo, o no est&aacute; adecuadamente programado, entrar&iacute;a en un bucle infinito y se puede colapsar el servidor.
+
+
+
+<h2>Procedimientos <font color="red">Function</font></h2>
+Un procedimiento Function, o simplemente funci&oacute;n, es una serie de comandos VBScript, escritos entre una instrucci&oacute;n <font color="red">Function</font> y otra <font color="red">End Function</font>, que devuelven un valor.
+<p>
+Los procedimientos Function, igual que los Sub, de forma predeterminada, son p&uacute;blicos si no se indica lo contrario. Para cambiar su alcance se escribe la instruccion <b>Public</b> o <b>Private</b> delante del nombre del procedimiento. Un procedimiento p&uacute;blico es visible a todos los otros procedimientos en la secuencia de comandos. El valor de las variables locales en un procedimiento Function no se mantiene entre llamadas al procedimiento.
+<p>
+No se puede definir un procedimiento Function dentro de otro procedimiento Function. Si es necesario programar una salida del procedimiento sin ejecutar todas sus instrucciones, como por ejemplo, cuando se produce un error, se utiliza la instrucción <font color="red"><b>Exit Function</b></font>. Se pueden escribir cuantas instrucciones <font color="red">Exit  Function</font> sean necesarias. 
+<p>
+Despu&eacute;s de ejecutar un procedimiento Function (o despu&eacute;s de abandonarlo sin ejecutar por la raz&oacute;n que sea) la ejecuci&oacute;n del  programa continua con la instrucci&oacute;n que sigue a la que llam&oacute; el procedimiento. Dado que las funciones devuelven valores, si por cualquier causa la funci&oacute;n ha fallado, se debe tener previsto, ya que no aportar&aacute; el valor esperado. Una funci&oacute;n num&eacute;rica, en caso de fallo devolver&aacute; cero (0), una de cadena un string de longitud cero (""), y una funci&oacute;n que devuelve una referencia a un objeto, devuelve <b>Nothing</b>.
+<p>
+Un procedimiento Function puede tener argumentos, al igual que los procedimientos Sub. Si no tiene argumentos, se deber&aacute; incluir un par de par&eacute;ntesis vacios junto al nombre, como puedes ver en el ejemplo de arriba, donde se invoca a la funci&oacute;n <font color="red">Time()</font>.  Las funciones devuelven un valor asign&aacute;ndolo a su propio nombre en el c&oacute;digo del procedimiento.  El tipo de datos devuelto por un procedimiento Function siempre es Variant, lo que permite utilizar la funci&oacute;n en cualquier expresi&oacute;n o entorno adecuados. El tipo de datos de los argumentos puede ser distinto del  tipo devuelto por la funci&oacute;n. 
+<p>
+Se puede llamar a una funci&oacute;n de dos maneras: simplemente escribiendo su nombre seguido de los argumentos, si los hay,  o utilizando la instrucci&oacute;n <b>Call()</b>. Tampoco est&aacute; muy claro para qu&eacute; sirve esta instrucci&oacute;n, como en el caso de los procedimientos Sub, ya que funcionan igual. La &uacute;nica diferencia consiste en que si no se utiliza Call(), los argumentos van al lado del nombre del procedimiento sin m&aacute;s, y si se utiliza, hay que escribirlos dentro de un par de par&eacute;ntesis. 
+<p>
+Al igual que los procedimientos Sub, una funci&oacute;n  puede llamarse a s&iacute; misma, y a otras funciones, pero no puede llamar a un procedimiento Sub.
+
+<p>
+Veamos un ejemplo de escritura de una funci&oacute;n definida por el usuario:
+<p>
+<font color="blue" size=2 face="courier">
+&LT;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+Public Function<font color="red"> Letra_NIF(DNI)<br></font>
+<p>
+&nbsp;&nbsp;&nbsp; Const Letras = "TRWAGMYFPDXBNJZSQVHLCKE"<br>
+&nbsp;&nbsp;&nbsp; <font color="red">Letra_NIF</font> = Mid(Letras, 1 + (DNI Mod 23), 1)<br>
+<p>
+End Function<br>
+&LT;/SCRIPT&gt;<br>
+<p>
+&LT;HTML&GT;<br>
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de ASP y VBScript&lt;/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;% Response.Write "La letra del DNI 11111111 es: " & <font color="red">Letra_NIF(</font>11111111<font color="red">)</font> %&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" size=2 face="courier">
+La letra del DNI 11111111 es: H
+</font>
+<p>
+Como puedes ver, es muy simple: se comienza definiendo el nombre de la funci&oacute;n: <font color="red"> Letra_NIF()</font> y su argumento: <font color="red"> DNI</font>. Eso significa que es necesario darle un valor al argumento <font color="red">DNI</font> para que pueda trabajar la funci&oacute;n. El procedimiento que realiza nuestra funci&oacute;n para obtener el valor buscado consiste en dividir el argumento DNI entre 23 y obtener el resto (Mod). Ese resto, se utiliza como segundo argumento de otra funci&oacute;n que proporciona VBScript: <font color="red">Mid()</font>, que sirve para extraer un sub string de una cadena de texto. La funci&oacute;n <font color="red"> Mid()</font> utiliza tres argumentos: en primer lugar el nombre de la cadena sobre la que hay que buscar, en este caso <font color="blue"> Letras</font>; despu&eacute;s hay que darle el n&uacute;mero de posici&oacute;n donde comenzar&aacute; el sub string, en este caso la letra <b>H</b>, que est&aacute; en la posici&oacute;n 19 de la cadena; y por &uacute;ltimo, el tercer argumento indica cuantos caracteres hay que extraer de la cadena comenzando en la posici&oacute;n que indica el segundo argumento, y que en este caso es 1.
+<p>
+Ya tenemos la letra buscada. Ahora s&oacute;lo hay que asignarla a algo para que se pueda obtener desde donde sea necesario, y para ello la asignaremos al nombre de la propia funci&oacute;n, que actuar&aacute; como si fuese una variable cualquiera: 
+<p>
+&nbsp;&nbsp;&nbsp; <font color="red">Letra_NIF</font> = <font color="blue">Mid(Letras, 1 + (DNI Mod 23), 1)</font>
+<p>
+Seguramente te preguntar&aacute;s porqu&eacute; hay que sumarle 1 al resultado de la divisi&oacute;n (DNI Mod 23). Ello se debe a que <font color="blue">Mid()</font> comienza a contar por el cero, lo que nos dar&iacute;a la letra V en lugar de la H, que es la correcta, si utilizamos el valor tal como se obtiene.
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

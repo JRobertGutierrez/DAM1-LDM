@@ -1,0 +1,475 @@
+
+<html>
+
+<head>
+<title> Como se escriben los formularios </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h1>¿Cómo se escriben los formularios ?</h1>
+
+La base del formulario es el elemento lleno<b> &lt;FORM&gt;</b>, es el que define una zona de la página como formulario. En una página puede haber varias zonas definidas como formulario. Dentro de este elemento a su vez se utilizan otros elementos, que son los que realmente dibujan en pantalla los componentes del formulario, son:
+<p>
+<ul type="square">
+<li><b>&lt;INPUT&gt;</b>
+   <ul type="disk">
+      <li> Campos de entrada por teclado.
+      <li> Botones de selección.
+      <li> Casillas de marca.
+      <li> Botones de  proceso.
+      <li> Botones de  inicialización (reset).
+      <li> Imágenes sensibles al ratón.
+   </ul>
+<li><b>&lt;SELECT&gt;</b>
+   <ul type="disk">
+       <li>Listas desplegables de valores.
+       <li>Listas fijas de valores.
+   </ul>
+<li><b>&lt;TEXTAREA&gt;</b>
+   <ul type="disk">
+       <li>Ventanas de escritura libre.
+   </ul>
+</ul>
+
+<p>
+<a name="punto1"></a>
+
+Este sería el más elemental de los formularios, con sólo un campo y un botón de envío:
+<p>
+<img src="form10.jpg" WIDTH="279" HEIGHT="55">
+<p>
+Analicemos cómo se escribe:
+
+<pre>
+&lt;<b>FORM METHOD</b>=&quot;POST&quot; <b>ACTION</b>=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT NAME=&quot;campo1&quot;&gt;
+ &lt;INPUT TYPE=&quot;submit&quot; VALUE=&quot;Procesar&quot;&gt;&lt;/FORM&gt;
+</pre>
+
+En la primera línea vemos el elemento de definición de formulario: <b>&lt;FORM&gt;. </b> Va acompañado de dos atributos: <b>METHOD</b> y <b>ACTION</b>. 
+<p>
+<b>METHOD </b>se refiere al método que emplearemos para enviar los datos al servidor, y pueden ser dos: <b>POST</b> y <b>GET</b>. El optar por uno u otro obedece a complejas cuestiones de programación basadas en la máxima longitud de registro que puede enviarse; cada uno usa un canal de salida distinto.  El que soporta más longitud es POST, y será el que utilicemos en casi todos los ejemplos.
+<p>
+Echale un vistazo a la respuesta del programa <a href="form1.htm#punto1"><b>test2-cgi</b></a> de la página anterior. Fíjate en las variables <b>QUERY_STRING</b> e <b>INPUT</b>. Por la primera llegarán los datos cuando se utilice <b>METHOD=GET</b> y por la segunda cuando es <b>POST</b> el método elegido. 
+
+<p>
+<b>ACTION</b> se refiere a la acción que queremos que ejecute el formulario en un servidor http o en local. Con el valor del ejemplo <b>ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;</b> se le está indicando que ejecute un programa llamado <b>test2-cgi</b> que está en el directorio <b>/cgi-bin</b> del servidor http <b>mecaniza.sestud.uv.es</b> cuya respuesta será similar a la que hemos visto en la página de <a href="form1.htm#punto1">introducción
+ a los formularios</a>.
+<p>
+Además de enviar datos a un servidor, <b>ACTION</b> también puede realizar una acción en local, por ejemplo traer una página:
+<p>
+Se escribe:
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; <b>ACTION</b>=&quot;indice.htm&quot;&gt;
+  ......
+&lt;/FORM&gt;
+</pre>
+En este caso funcionaría igual que un link. 
+
+<p>
+Otra cosa que puede hacer <b>ACTION</b>, y que además tiene la ventaja de que no sería preciso diseñar un CGI, es enviar un e-mail (correo electrónico) a un usuario o a una lista de usuarios. Los datos enviados por el formulario, tendrán la forma que ya conocemos, pero una vez recibidos por esta vía, pueden ser tratados con programas de edición de texto, y convertidos al formato que se quiera. Por ejemplo con Word y las  macros de conversión para <a href="macro.txt">Word 6.0</a> y <a href="macro7.txt">Word 97 </a>que hay en esta guía.
+<p>
+Se escribe:
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; <b>ACTION</b>=&quot;mailto:mi-usuario@miservidor-e-mail&quot;&gt;
+  ......
+&lt;/FORM&gt;
+</pre>
+
+
+Si no quieres complicarte la vida con descodificaciones (depende de lo que se vaya a hacer con los datos recibidos), el navegador puede remitirlos con un formato más sencillo y ya descodificado. Para ello sólo hay que añadir el parámetro <b>ENCTYPE</b>  con el valor <b>TEXT/PLAIN</b>. Se escribe así:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; <b>ACTION</b>=&quot;mailto:mi-usuario@miservidor-e-mail&quot;
+ ENCTYPE=&quot;TEXT/PLAIN&quot;&gt;
+  ......
+&lt;/FORM&gt;
+</pre>
+
+Resumiendo: sin poner ningun parámetro al elemento <b>ACTION</b> los datos te llegarán así:
+<p>
+CAMPO1=Esto+es+una&amp;CAMPO2=demostracion+de+formularios
+<p>
+y poniendo <b>ENCTYPE=&amp;quotTEXT/PLAIN&quot;</b> así:
+<p>
+CAMPO1=Esto es una<br>
+CAMPO2=demostracion de formularios
+<p>
+Al igual que con el elemento &lt;A&gt; es posible hacer que el asunto (subject) del e-mail se reciba con el texto que quieras, pero omitiendo la parte correspondiente al cuerpo (body) del mismo, ya que en este caso el contenido del e-mail son los campos del formulario:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; <b>ACTION</b>=
+&quot;mailto:mi-usuario@miservidor-e-mail?&subject=asunto de prueba&quot;
+ ENCTYPE=&quot;TEXT/PLAIN&quot;&gt;
+  ......
+&lt;/FORM&gt;
+</pre>
+
+<hr noshade>
+
+<h2>El elemento INPUT</h2>
+
+<p>
+
+<b>INPUT</b> sin ningún atributo define por defecto una ventana de escritura de 20 caracteres de longitud por una línea de ancho:
+<p>
+<img src="form11.jpg" WIDTH="185" HEIGHT="51">
+<p>
+Se escribe:
+<pre>
+&lt;FORM&gt; <b>&lt;INPUT&gt;</b> &lt;/FORM&gt;
+</pre>
+
+&lt;INPUT&gt; admite varios atributos:
+<p>
+<b>SIZE</b> define la longitud de la ventana de texto.
+<hr noshade>
+<b>MAXLENGTH</b> define la máxima longitud de la cadena que se puede escribir dentro de la ventana.
+
+<hr noshade>
+
+<b>NAME</b> define el nombre de la ventana (que en realidad es un campo dentro del registro, que en conjunto, es el formulario). Si escribes:
+<pre>
+&lt;FORM&gt; &lt;INPUT <b>SIZE</b>=10 <b>MAXLENGTH</b>=10 <b>NAME</b>=&quot;campo1&quot;&gt;&lt;/FORM&gt;
+</pre>
+
+<img src="form12.jpg" WIDTH="107" HEIGHT="50">
+<p>
+Como puedes comprobar, sólo se pueden escribir 10 caracteres dentro de la ventana, que también es de longitud 10. No es obligatorio que concidan ambos valores, puedes definir la ventana al valor que quieras y la longitud de la cadena puede ser mayor o menor.
+<hr noshade>
+
+<b>VALUE</b> sirve para que la  ventana aparezca con un valor predeterminado, y no vacía como hace por defecto: 
+<p>
+<img src="form13.jpg" WIDTH="179" HEIGHT="48">
+<p>
+Se escribe:
+<pre>
+&lt;FORM&gt; &lt;INPUT <b>VALUE</b>=&quot;HOLA&quot;&gt; &lt;/FORM&gt;
+</pre>
+<hr noshade>
+<b>TYPE=TEXT</b> Es el valor por defecto de TYPE. Puede omitirse.
+
+<hr noshade>
+<b>TYPE=PASSWORD</b> para que el valor predeterminado de la ventana esté  en formato oculto:
+<p>
+<img src="form14.jpg" WIDTH="179" HEIGHT="45">
+<p>
+Se escribe:
+<pre>
+&lt;FORM&gt; &lt;INPUT <b>TYPE=&quot;PASSWORD&quot;</b> VALUE=&quot;HOLA&quot;&gt; &lt;/FORM&gt;
+</pre>
+
+<hr noshade>
+
+<b>TYPE=HIDDEN</b> define que el valor predeterminado de la ventana y la  ventana misma estén  en formato oculto:
+
+<form> <input TYPE="HIDDEN" VALUE="HOLA"> </form>
+
+Se escribe:
+<pre>
+&lt;FORM&gt; &lt;INPUT <b>TYPE=&quot;HIDDEN&quot;</b> VALUE=&quot;HOLA&quot;&gt; &lt;/FORM&gt;
+</pre>
+Esta opción se utiliza cuando es necesario enviar un valor fijo al servidor, pero no se desea que el usuario intervenga o que lo vea. CUIDADO, esto no es un formato encriptado, viendo el documento fuente se puede saber el valor de la ventana.
+
+<hr noshade>
+
+<b>TYPE=SUBMIT</b> para generar un botón que al ser pulsado cierra la captura de datos del formulario y procede a ejecutar lo definido en el atributo ACTION que ya conocemos.
+<p>
+<img src="form15.jpg" WIDTH="274" HEIGHT="50">
+<p>
+Se escribe:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT NAME=&quot;campo1&quot;&gt;
+ &lt;INPUT <b>TYPE=&quot;SUBMIT</b>&quot; <b>VALUE</b>=&quot;Procesar&quot;&gt;&lt;/FORM&gt;
+</pre>
+
+<b>VALUE</b> puede acompañar  a SUBMIT , y en este caso sirve para definir el texto que queremos que tenga el botón en su interior. Si se omite, por defecto el visualizador le da el valor &quot;Submit Query&quot;.
+
+<hr noshade>
+
+
+<b>TYPE=RESET</b> para generar un botón que al ser pulsado inicializa todos los componentes del formulario.
+<p>
+<img src="form16.jpg" WIDTH="280" HEIGHT="49">
+<p>
+
+Se escribe:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT NAME=&quot;campo1&quot;&gt;
+ &lt;INPUT <b>TYPE=&quot;RESET</b>&quot; <b>VALUE</b>=&quot;Inicializar&quot;&gt;&lt;/FORM&gt;
+</pre>
+
+<b>VALUE</b> puede acompañar  a RESET , y en este caso sirve para definir el texto que queremos que tenga el botón en su interior. Si se omite, por defecto el visualizador le da el valor &quot;Reset&quot;.
+
+
+<hr noshade>
+<b>TYPE=FILE</b><br>
+<img SRC="nuevo.gif" WIDTH="30" HEIGHT="10">Este es un nuevo tipo que sólo funciona con Netscape 3.0 o superior, y sirve para enviar un fichero a una máquina remota (hacer FTP), pero no funciona solo, necesita de ciertos acompañantes que hacen su uso un poco más complicado:<br>
+
+ Aquí hay que echar mano de un atributo parametrizado de &lt;FORM&gt;:  <b>ENCTYPE=&quot;multipart/form-data&quot;</b> para generar un botón que permitirá buscar un fichero en nuestra máquina, ponerlo en una ventanita de entrada como las ya conocidas (por tanto tanbién se puede escribir directamente el nombre del fichero en lugar de buscarlo) y junto con un botón tipo submit enviar el fichero.<p>
+
+<img src="ftp.gif" WIDTH="491" HEIGHT="38">
+<p>
+
+Se escribe:
+<pre>
+  &lt;FORM <b>enctype=&quot;multipart/form-data&quot;</b>
+  ACTION=&quot;ftp://miservidor/&quot; METHOD=&quot;POST&quot;&gt;
+Enviar el fichero: 
+&lt;INPUT NAME=&quot;mifichero&quot; <b>TYPE=&quot;FILE&quot;&gt;</b>
+&lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Enviar fichero&quot;&gt;&lt;/FORM&gt;
+</pre>
+
+el botón generado aparece con el texto &quot;Browse..&quot; y no sirve de nada añadirle el parámetro VALUE para darle otro nombre, como se puede hacer con el botón de tipo submit.
+<p>
+En este ejemplo se haría una conexión al servicio FTP general de la máquina remota, pero se puede hacer a un directorio en particular de un usuario concreto. Sólo habría que cambiar la línea  
+<pre>
+    ACTION=&quot;ftp://<b>miservidor</b>/&quot; METHOD=&quot;POST&quot;&gt;
+</pre>
+y escribir:
+<pre>
+    ACTION=&quot;ftp://<b>miusuario@miservidor</b>/&quot; METHOD=&quot;POST&quot;&gt;
+</pre>
+
+Otra forma más directa de hacer un FTP en las dos direcciones, es desde la ventana &quot;Location&quot; del visualizador. La sintaxis de los parámetros de ACTION son válidos en esa ventana.
+<p>
+Por supuesto, todo esto si no tienes cuenta y permiso de escritura en la máquina remota, no sirve para nada...
+
+<p>
+
+Como ya se ha dicho antes, el atributo <b>ACTION</b> es capaz de enviar el contenido del formulario por correo electrónico, pero no sólo es capaz de enviar el formulario: tambien puede adjuntar al e-mail un fichero cualquiera. Lo Único que hay que hacer es añadirle un instruccion como la que acabamos de ver para el FTP. Así:
+<p>
+ 
+<pre>
+  &lt;FORM <b>enctype=&quot;multipart/form-data&quot;</b>
+  ACTION=&quot;mailto:mi-usuario@miservidor-e-mail/&quot; METHOD=&quot;POST&quot;&gt;
+Adjuntar el fichero: 
+&lt;INPUT NAME=&quot;mifichero&quot; <b>TYPE=&quot;FILE&quot;&gt;</b>
+&lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Adjuntar fichero&quot;&gt;&lt;/FORM&gt;
+</pre>
+
+
+
+<a name="punto2"></a>
+<hr noshade>
+<b>TYPE=IMAGE</b> hace que el visualizador presente una imagen  que es sensible al ratón. Lo que el formulario envía al servidor es un registro cuyos campos son el nombre definido para la imagen seguido de los parámetros <b>.x=n .y=n</b> donde <b>n</b> son los números de las coordenas <b>x y</b> del punto en el que estaba el ratón en el momento del envío. Para presentar la imagen se utiliza el atributo <b>SRC</b> del elemento IMG. Este sería un ejemplo de respuesta:
+<pre>
+       imagen.x=99&amp;imagen.y=15
+</pre>
+
+Prueba a pulsar en cualquier parte de esta imagen:
+<p>
+<form method="POST" action="http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi">
+<input type="image" name="imagen" src="sugeren.gif" WIDTH="133" HEIGHT="41">
+</form>
+<p>
+Se escribe:
+<p>
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+&lt;INPUT <b>TYPE=IMAGE</b> NAME=&quot;imagen&quot; <b>SRC</b>=&quot;sugeren.gif&quot;&gt;
+&lt;/FORM&gt;
+</pre>
+
+Los formularios que utilicen este tipo de recursos pueden prescindir del tipo SUBMIT, ya que el formulario se cierra con la imagen.
+
+<hr noshade>
+
+
+<b>TYPE=RADIO</b> genera botones circulares que permiten seleccionar un valor predeterminado o activar una opción
+<p>
+<img src="form17.jpg" WIDTH="350" HEIGHT="53">
+<p>
+Se escribe:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+Clase A
+ &lt;INPUT <b>TYPE=&quot;RADIO</b>&quot; NAME=&quot;clase&quot; VALUE=&quot;A&quot;&gt;
+Clase B
+ &lt;INPUT <b>TYPE=&quot;RADIO</b>&quot; NAME=&quot;clase&quot; VALUE=&quot;B&quot;&gt;&lt;/form&gt;
+</pre>
+
+En este ejemplo, los botones permiten seleccionar la clase A, la clase B o ninguna de las dos. Si se desea que por defecto un valor esté seleccionado, por ejemplo clase B, hay que añadir el parámetro <b>CHECKED</b> después del valor: 
+<pre>
+         ... VALUE=&quot;B&quot; <b>CHECKED</b>&gt;&lt;/form&gt;
+</pre>
+
+<hr noshade>
+
+
+
+<b>TYPE=CHECKBOX</b> genera casillas de marca que permiten seleccionar un valor predeterminado o activar una opción
+<p>
+<img src="form18.jpg" WIDTH="353" HEIGHT="55">
+<p>
+
+Se escribe:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+Clase A
+ &lt;INPUT <b>TYPE=&quot;CHECKBOX</b>&quot; NAME=&quot;clase&quot; VALUE=&quot;A&quot;&gt;
+Clase B
+ &lt;INPUT <b>TYPE=&quot;CHECKBOX</b>&quot; NAME=&quot;clase&quot; VALUE=&quot;B&quot;&gt;&lt;/form&gt;
+</pre>
+
+En este ejemplo, las casillas de marca permiten seleccionar la clase A, la clase B, ninguna, o las dos. Si se desea que por defecto un valor esté seleccionado, por ejemplo clase B, hay que añadir el parámetro <b>CHECKED</b> después del valor: 
+<pre>
+         ... VALUE=&quot;B&quot; <b>CHECKED</b>&gt;&lt;/form&gt;
+</pre>
+
+<hr>
+
+<h2>El elemento SELECT</h2>
+
+<b>SELECT</b> sin ningún atributo define por defecto una lista desplegable de toda la pantalla de alto y una columna de ancho:
+<p>
+
+<img src="form19.jpg" WIDTH="55" HEIGHT="42">
+<p>
+
+Se escribe:
+<pre>
+&lt;FORM&gt; <b>&lt;SELECT&gt; &lt;/SELECT&gt; </b> &lt;/FORM&gt;
+</pre>
+
+Como evidentemente esto no es muy práctico, hay que parametrizar el elemento. En primer lugar se le da nombre, ya que éste  es un campo más del formulario, la diferencia es que no hay que escribir en él sino escoger un valor de los que nos muestre al desplegarlo, se usará el atributo <b>NAME</b>, y para entrar valores en la lista se usa el atributo <b>OPTION</b>. 
+<p>
+<img src="form20.jpg" WIDTH="282" HEIGHT="52">
+<p>
+
+Se escribe:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+
+ &lt;SELECT <b>NAME</b>=&quot;lista1&quot;&gt;
+  &lt;<b>OPTION</b>&gt;Valor 1
+  &lt;OPTION&gt;Valor 2
+  &lt;OPTION&gt;Valor 3
+&lt;/SELECT&gt;
+&lt;/FORM&gt;
+</pre>
+
+Se deben tener en cuenta varias cosas respecto a SELECT:
+<p>
+La longitud de la ventana de selección se autoajusta al valor más largo de la lista.<br>
+La ventana de selección, por defecto, muestra una línea, si se quieren mostrar más se  utilizará el atributo <b>SIZE</b>.
+<p>
+Se debe procurar que los contenidos de los campos sean lo más cortos posibles; una excesiva longitud implica mayor tráfico por la red, pero se deben construir las listas de forma clara, y que resulten  de fácil lectura al usuario, lo que puede aumentar la longitud de los valores. Para enviar un valor diferente del que aparece en la lista, se utiliza el parámetro <b>VALUE</b> asociado al atributo <b>OPTION</b>. Prueba con el valor 5 de la siguiente lista:
+ <p>
+<img src="form21.jpg" WIDTH="346" HEIGHT="81">
+<p>
+
+Se escribe:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+
+ &lt;SELECT NAME=&quot;lista1&quot;<b> SIZE=3</b>&gt;
+  &lt;OPTION&gt;Valor 1
+  &lt;OPTION&gt;Valor 2
+  &lt;OPTION&gt;Valor 3
+  &lt;OPTION&gt;Valor 4
+  &lt;OPTION <b>VALUE=&quot;Valor 5</b>&quot;&gt;Este es el Valor 5
+  &lt;OPTION&gt;Valor 6
+  &lt;OPTION&gt;Valor 7
+&lt;/SELECT&gt;
+&lt;/FORM&gt;
+</pre>
+
+Esto siginifica que cuando selecciones &quot;Este es el valor 5&quot; en realidad lo que se envía al servidor es &quot;Valor 5&quot;.
+<p>
+Con las listas desplegables, es obligatorio seleccionar siempre un valor, y si no hay ninguno seleccionado, por defecto el visualizador enviará el primer valor de la lista.
+<p>
+Se puede hacer que haya un valor preseleccionado añadiendo el parámetro <b>SELECTED</b> al atributo OPTION, y si se quiere permitir más de una selección, se pondrá el atributo <b>MULTIPLE</b> al elemento SELECT. Para seleccionar y deseleccionar hay que atenerse a las normas de Windows.
+<p>
+<img src="form22.jpg" WIDTH="288" HEIGHT="81">
+<p>
+
+Se escribe:
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+
+ &lt;SELECT NAME=&quot;lista1&quot; <b>MULTIPLE</b> SIZE=3&gt;
+  &lt;OPTION&gt;Valor 1
+  &lt;OPTION <b>SELECTED</b>&gt;Valor 2
+  &lt;OPTION&gt;Valor 3
+  &lt;OPTION&gt;Valor 4
+  &lt;OPTION&gt;Valor 5
+  &lt;OPTION&gt;Valor 6
+  &lt;OPTION&gt;Valor 7
+&lt;/SELECT&gt;
+&lt;/FORM&gt;
+</pre>
+
+<hr>
+
+<h2>El elemento TEXTAREA</h2>
+Este elemento, como su nombre indica, permite definir un área de texto en la pantalla en la que podemos escribir cualquier cosa. Se debe escribir ya parametrizada en cuanto a dimensiones, con los atributos <b>ROWS</b> (líneas) y <b>COLS</b> (COLUMNAS). No tiene otros atributos o posibles variantes. Por supuesto, para que sea operativo,  deberá ir acompañado de los componentes necesarios para enviar e inicializar.
+<p>
+<img src="form23.jpg" WIDTH="553" HEIGHT="137">
+<p>
+
+Se escribe:
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://mecaniza.sestud.uv.es/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+
+ &lt;<b>TEXTAREA</b> NAME=&quot;texto1&quot; <b>ROWS=5 COLS=40</b> &gt;&lt;/TEXTAREA&gt;
+&lt;/FORM&gt;
+</pre>
+
+<p>
+Aunque no es habitual, dentro de un área de texto  puede haber un contenido por defecto (que puede ser borrado o modificado por el usuario). Para ello simplemente se escribirá el texto entre <b>&lt;TEXTAREA&gt;</b> y <b>&lt;/TEXTAREA&gt;</b>. Así:
+<p>
+<pre>
+&lt;&gt;TEXTAREA NAME=&quot;texto1&quot; ROWS=5 COLS=40&gt;
+  <b>Contenido del area de texto</b>
+&lt;/TEXTAREA&gt;
+
+</pre>
+
+<hr noshade>
+El tratamiento de los datos recibidos en el servidor desde los formularios requiere conocer la tabla de conversión hexadecimal que utilizan la mayoría de  visualizadores. Recuerda que las palabras en destino aparecen separadas por el signo +, y las letras acentuadas y otros caracteres, por valores hexadecimales precedidos del símbolo % 
+<p>
+Se puede proceder a la descodificación en el programa CGI que recibe los datos, o bien definir macros en programas auxiliares que serán ejecutados después. 
+<p>
+En el índice encontrarás la <a href="hexawin.htm">tabla de conversiones</a> utilizada con el visualizador Netscape desde Windows y una <a href="macro.txt">macro para Word 6 de Windows</a> que convierte los caracteres más habituales.
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+

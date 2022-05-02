@@ -1,0 +1,421 @@
+
+<HTML>
+<HEAD><TITLE>Ejemplos de listas </TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>Ejemplos de listas y men&uacute;s</H2>
+<H2>Desordenadas</H2>
+<B> Desordenada simple con marcas</B>
+<UL>
+    <LI>Linea de texto 1
+    <LI>Linea de texto 2
+    <LI>Linea de texto 3
+</UL>
+Se escribe:
+<PRE>
+&lt;UL&gt;
+    &lt;LI&gt;Linea de texto 1
+    &lt;LI&gt;Linea de texto 2
+    &lt;LI&gt;Linea de texto 3
+&lt;/UL&gt;
+</PRE>
+
+<hr>
+<B> Desordenada simple sin marcas. Comienzo en margen izquierdo</B>
+<DL>
+    <DT>Linea de texto 1
+    <DT>Linea de texto 2
+    <DT>Linea de texto 3
+</DL>
+Se escribe:
+<pre>
+&lt;DL&gt;
+    &lt;DT&gt;Linea de texto 1
+    &lt;DT&gt;Linea de texto 2
+    &lt;DT&gt;Linea de texto 3
+&lt;/DL&gt;
+</pre>
+<hr>
+
+
+<B> Desordenada simple sin marcas. Comienzo una posici&oacute;n a la derecha</B>
+<UL>
+    <DT>Linea de texto 1
+    <DT>Linea de texto 2
+    <DT>Linea de texto 3
+</UL>
+Se escribe:
+<pre>
+&lt;UL&gt;
+    &lt;DT&gt;Linea de texto 1
+    &lt;DT&gt;Linea de texto 2
+    &lt;DT&gt;Linea de texto 3
+&lt;/UL&gt;
+</pre>
+<hr>
+<B> Desordenada simple con marcas. Comienzo una posici&oacute;n a la derecha</B>
+<UL>
+    <LI>Linea de texto 1
+    <LI>Linea de texto 2
+    <LI>Linea de texto 3
+</UL>
+Se escribe:
+<pre>
+&lt;UL&gt;
+    &lt;LI&gt;Linea de texto 1
+    &lt;LI&gt;Linea de texto 2
+    &lt;LI&gt;Linea de texto 3
+&lt;/UL&gt;
+</pre>
+<hr>
+
+<B> Desordenada simple sin marcas. Comienzo dos posiciones a la derecha</B>
+<UL>
+    <DD>Linea de texto 1
+    <DD>Linea de texto 2
+    <DD>Linea de texto 3
+</UL>
+Se escribe:
+<pre>
+&lt;UL&gt;
+    &lt;DD&gt;Linea de texto 1
+    &lt;DD&gt;Linea de texto 2
+    &lt;DD&gt;Linea de texto 3
+&lt;/UL&gt;
+</pre>
+<hr>
+
+<B> Desordenada simple sin marcas. Comienzo tres posiciones a la derecha</B>
+<UL>
+    <UL>
+       <DD>Linea de texto 1
+       <DD>Linea de texto 2
+       <DD>Linea de texto 3
+    </UL>
+</UL>
+Se escribe:
+<pre>
+&lt;UL&gt;
+   &lt;UL&gt;
+      &lt;DD&gt;Linea de texto 1
+      &lt;DD&gt;Linea de texto 2
+      &lt;DD&gt;Linea de texto 3
+   &lt;/UL&gt;
+&lt;/UL&gt;
+</pre>
+<hr>
+
+
+<B> Desordenada simple con marcas. Comienzo dos posiciones a la derecha</B>
+<UL>
+    <UL TYPE=DISC>
+        <LI>Linea de texto 1
+        <LI>Linea de texto 2
+        <LI>Linea de texto 3
+    </UL>
+</UL>
+Se escribe:
+<pre>
+&lt;UL&gt;
+    &lt;UL TYPE=DISC&gt;
+        &lt;LI&gt;Linea de texto 1
+        &lt;LI&gt;Linea de texto 2
+        &lt;LI&gt;Linea de texto 3
+    &lt;/UL&gt;
+&lt;/UL&gt;
+</pre>
+<hr>
+
+<B> Desordenada con 4 niveles sin marcas</B>
+<DL>
+    <DT>Linea de texto 1
+    <DT>Linea de texto 2
+    <DT>Linea de texto 3
+        <DL>
+            <DT>Linea de texto 3.1
+            <DT>Linea de texto 3.2
+                <DL>
+                    <DT>Linea de texto 3.2.1
+                    <DT>Linea de texto 3.2.2
+                       <DL>
+                           <DT>Linea de texto 3.2.2.1
+                           <DT>Linea de texto 3.2.2.2
+                       </DL>
+                </DL>
+         </DL>
+     <DT>Linea 4 de texto       
+</DL>
+Se escribe:
+<pre>
+&lt;DL&gt;
+    &lt;DT&gt;Linea de texto 1
+    &lt;DT&gt;Linea de texto 2
+    &lt;DT&gt;Linea de texto 3
+        &lt;DL&gt;
+            &lt;DT&gt;Linea de texto 3.1
+            &lt;DT&gt;Linea de texto 3.2
+                &lt;DL&gt;
+                    &lt;DT&gt;Linea de texto 3.2.1
+                    &lt;DT&gt;Linea de texto 3.2.2
+                       &lt;DL&gt;
+                           &lt;DT&gt;Linea de texto 3.2.2.1
+                           &lt;DT&gt;Linea de texto 3.2.2.2
+                       &lt;/DL&gt;
+                &lt;/DL&gt;
+         &lt;/DL&gt;
+     &lt;DT&gt;Linea 4 de texto       
+&lt;/DL&gt;
+</pre>
+<hr>
+
+<B> Desordenada con 4 niveles con marcas</B>
+<UL>
+    <LI>Linea de texto 1
+    <LI>Linea de texto 2
+    <LI>Linea de texto 3
+        <UL>
+            <LI>Linea de texto 3.1
+            <LI>Linea de texto 3.2
+                <UL>
+                    <LI>Linea de texto 3.2.1
+                    <LI>Linea de texto 3.2.2
+                       <UL>
+                           <LI>Linea de texto 3.2.2.1
+                           <LI>Linea de texto 3.2.2.2
+                       </UL>
+                </UL>
+
+         </UL>
+     <LI>Linea 4 de texto       
+</UL>
+Se escribe:
+<pre>
+&lt;UL&gt;
+    &lt;LI&gt;Linea de texto 1
+    &lt;LI&gt;Linea de texto 2
+    &lt;LI&gt;Linea de texto 3
+        &lt;UL&gt;
+            &lt;LI&gt;Linea de texto 3.1
+            &lt;LI&gt;Linea de texto 3.2
+                &lt;UL&gt;
+                    &lt;LI&gt;Linea de texto 3.2.1
+                    &lt;LI&gt;Linea de texto 3.2.2
+                       &lt;UL&gt;
+                           &lt;LI&gt;Linea de texto 3.2.2.1
+                           &lt;LI&gt;Linea de texto 3.2.2.2
+                       &lt;/UL&gt;
+                &lt;/UL&gt;
+
+         &lt;/UL&gt;
+     &lt;LI&gt;Linea 4 de texto       
+&lt;/UL&gt;
+</pre>
+<hr>
+<H2>Ordenadas </H2>
+
+<B> Ordenada simple</B>
+<OL>
+    <LI>Linea de texto 1
+    <LI>Linea de texto 2
+    <LI>Linea de texto 3
+</OL>
+Se escribe:
+<pre>
+&lt;OL&gt;
+    &lt;LI&gt;Linea de texto 1
+    &lt;LI&gt;Linea de texto 2
+    &lt;LI&gt;Linea de texto 3
+&lt;/OL&gt;
+</pre>
+<hr>
+
+<B> Ordenada con 4 niveles, todos ordenados</B>
+<OL>
+    <LI>Linea de texto 1
+    <LI>Linea de texto 2
+    <LI>Linea de texto 3
+       <OL>
+           <LI>Linea de texto 3.1
+           <LI>Linea de texto 3.2
+               <OL>
+                   <LI>Linea de texto 3.2.1
+                   <LI>Linea de texto 3.2.2
+                       <OL>
+                           <LI>Linea de texto 3.2.2.1
+                           <LI>Linea de texto 3.2.2.2
+                       </OL>
+               </OL>
+       </OL>
+
+    <LI>Linea de texto 4
+</OL>
+Se escribe:
+<pre>
+&lt;OL&gt;
+    &lt;LI&gt;Linea de texto 1
+    &lt;LI&gt;Linea de texto 2
+    &lt;LI&gt;Linea de texto 3
+       &lt;OL&gt;
+           &lt;LI&gt;Linea de texto 3.1
+           &lt;LI&gt;Linea de texto 3.2
+               &lt;OL&gt;
+                   &lt;LI&gt;Linea de texto 3.2.1
+                   &lt;LI&gt;Linea de texto 3.2.2
+                       &lt;OL&gt;
+                           &lt;LI&gt;Linea de texto 3.2.2.1
+                           &lt;LI&gt;Linea de texto 3.2.2.2
+                       &lt;/OL&gt;
+               &lt;/OL&gt;
+       &lt;/OL&gt;
+
+    &lt;LI&gt;Linea de texto 4
+&lt;/OL&gt;
+</pre>
+<hr>
+
+<B> Ordenada con 4 niveles, todos ordenados. Numeraci&oacute;n romana en may&uacute;sculas y min&uacute;sculas</B>
+<OL TYPE=I>
+    <LI>Linea de texto 1
+    <LI>Linea de texto 2
+    <LI>Linea de texto 3
+       <OL type=i>
+           <LI>Linea de texto 3.1
+           <LI>Linea de texto 3.2
+               <OL type=i>
+                   <LI>Linea de texto 3.2.1
+                   <LI>Linea de texto 3.2.2
+                       <OL type=i>
+                           <LI>Linea de texto 3.2.2.1
+                           <LI>Linea de texto 3.2.2.2
+                       </OL>
+               </OL>
+       </OL>
+
+    <LI>Linea de texto 4
+</OL>
+Se escribe:
+<pre>
+&lt;OL TYPE=I&gt;
+    &lt;LI&gt;Linea de texto 1
+    &lt;LI&gt;Linea de texto 2
+    &lt;LI&gt;Linea de texto 3
+       &lt;OL TYPE=i&gt;
+           &lt;LI&gt;Linea de texto 3.1
+           &lt;LI&gt;Linea de texto 3.2
+               &lt;OL TYPE=i&gt;
+                   &lt;LI&gt;Linea de texto 3.2.1
+                   &lt;LI&gt;Linea de texto 3.2.2
+                       &lt;OL TYPE=i&gt;
+                           &lt;LI&gt;Linea de texto 3.2.2.1
+                           &lt;LI&gt;Linea de texto 3.2.2.2
+                       &lt;/OL&gt;
+               &lt;/OL&gt;
+       &lt;/OL&gt;
+
+    &lt;LI&gt;Linea de texto 4
+&lt;/OL&gt;
+</pre>
+<hr>
+
+
+
+
+<B> Ordenada con 4 niveles, 2 desordenados con marcas</B>
+<OL>
+    <LI>Linea de texto 1
+    <LI>Linea de texto 2
+    <LI>Linea de texto 3
+       <OL>
+           <LI>Linea de texto 3.1
+           <LI>Linea de texto 3.2
+               <UL TYPE=SQUARE>
+                   <LI>Linea de texto 3.2.1
+                   <LI>Linea de texto 3.2.2
+                       <UL TYPE=CIRCLE>
+                           <LI>Linea de texto 3.2.2.1
+                           <LI>Linea de texto 3.2.2.2
+                       </UL>
+               </UL>
+       </OL>
+    <LI>Linea de texto 4
+</OL>
+Se escribe:
+<pre>
+&lt;OL&gt;
+    &lt;LI&gt;Linea de texto 1
+    &lt;LI&gt;Linea de texto 2
+    &lt;LI&gt;Linea de texto 3
+       &lt;OL&gt;
+           &lt;LI&gt;Linea de texto 3.1
+           &lt;LI&gt;Linea de texto 3.2
+               &lt;UL TYPE=SQUARE&gt;
+                   &lt;LI&gt;Linea de texto 3.2.1
+                   &lt;LI&gt;Linea de texto 3.2.2
+                       &lt;UL TYPE=CIRCLE&gt;
+                           &lt;LI&gt;Linea de texto 3.2.2.1
+                           &lt;LI&gt;Linea de texto 3.2.2.2
+                       &lt;/UL&gt;
+               &lt;/UL&gt;
+       &lt;/OL&gt;
+    &lt;LI&gt;Linea de texto 4
+&lt;/OL&gt;
+</pre>
+<hr>
+
+<B> Ordenada con 4 niveles, 2 desordenados sin marcas</B>
+<OL>
+    <LI>Linea de texto 1
+    <LI>Linea de texto 2
+    <LI>Linea de texto 3
+       <OL>
+           <LI>Linea de texto 3.1
+           <LI>Linea de texto 3.2
+               <DL>
+                   <DD>Linea de texto 3.2.1
+                   <DD>Linea de texto 3.2.2
+                       <DL>
+                           <DD>Linea de texto 3.2.2.1
+                           <DD>Linea de texto 3.2.2.2
+                       </DL>
+               </DL>
+       </OL>
+    <LI>Linea de texto 4
+</OL>
+Se escribe:
+<pre>
+&lt;OL&gt;
+    &lt;LI&gt;Linea de texto 1
+    &lt;LI&gt;Linea de texto 2
+    &lt;LI&gt;Linea de texto 3
+       &lt;OL&gt;
+           &lt;LI&gt;Linea de texto 3.1
+           &lt;LI&gt;Linea de texto 3.2
+               &lt;DL&gt;
+                   &lt;DD&gt;Linea de texto 3.2.1
+                   &lt;DD&gt;Linea de texto 3.2.2
+                       &lt;DL&gt;
+                           &lt;DD&gt;Linea de texto 3.2.2.1
+                           &lt;DD&gt;Linea de texto 3.2.2.2
+                       &lt;/DL&gt;
+               &lt;/DL&gt;
+       &lt;/OL&gt;
+    &lt;LI&gt;Linea de texto 4
+&lt;/OL&gt;
+</pre>
+<hr>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+</body>
+</html>

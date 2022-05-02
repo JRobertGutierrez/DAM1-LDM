@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cuadrados</title>
+        <link rel="stylesheet" href="css/estilos.css">
+        <script src="js/funcion.js"></script>
+</head>
+<body>
+     
+        <div><img src="images/imagenp.jpg" alt=""></div>
+    
+    <div class="cuadrado"><img onclick="cambiarImagen" src="images/imagen1.jpg" alt=""></div>
+    <div class="cuadrado"><img src="images/imagen2.jpg" alt=""></div>
+    <div class="cuadrado"><img src="images/imagen3.jpg" alt=""></div>
+        <script>
+         
+            var arrayImagenes=["imagen1.jpg","imagen2.jpg","#0074D9","#000000","#2ECC40","#FFDC00","#FF4136","#AAAAAA","#DDDDDD","#7FDBFF","#001F3F","#39CCCC","#3D9970","#01FF70","#FF851B"];
+
+                for(a=0; a<arrayImagenes.length;a++)   {
+            cuadrado(a);
+        } 
+
+        function cambiarImagen(){
+                    //cogemos el elemento imagen
+                var elementImagen = document.getElementById("imagen1");
+                //ruta + nombre archivo
+           var rutaImagen = elementImagen.getAttribute("src");
+                
+                if(rutaImagen == 'images/abejaruco1.jpg'){
+                        elementImagen.src = "images/abejaruco2.jpg";
+                }else{
+                        elementImagen.src = "images/abejaruco1.jpg";
+                }
+
+            }
+
+
+
+
+
+        function cambiarFondo(col){
+            
+            
+        }
+
+        function cuadrado(i){
+                document.write("<div onclick=\"cambiarFondo('"+arrayColor[i]+"')\"class='cuadrado' style=\"background-color: "+arrayColor[i]+"\">"+arrayColor[i]);
+            document.write("</div>");    
+            //document.write("<h3>"+arrayTitulo[cantidad]+"</h3>");
+}        </script>
+
+
+</body>
+</html>

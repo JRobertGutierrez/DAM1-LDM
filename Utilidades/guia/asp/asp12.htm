@@ -1,0 +1,208 @@
+<HTML>
+<HEAD><TITLE>ASP 12</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>el objeto ObjectContext </H2>
+<p>
+Este objeto se utiliza para controlar las transacciones de datos que se realizan en ASP a trav&eacute;s del <b>MTS</b>... Aunque puede que no sepas lo que es el MTS ni una transacci&oacute;n. 
+<p>
+ Como <b>transacci&oacute;n</b> entenderemos cualquier movimiento de datos que se produzca entre el servidor web y el cliente que solicita los datos, entendiendo este movimiento como un conjunto. Si &eacute;ste movimiento se realiza por completo, sin producirse ningun error, entonces se dice que la transacci&oacute;n ha concluido en <b>commit</b>, y si no termina bien, por producirse alg&uacute;n problema en la DB, en el c&oacute;digo SQL de la consulta, en el c&oacute;digo ASP o por no cumplirse alguna condici&oacute;n de las programadas en la aplicaci&oacute;n, se dice que la transacci&oacute;n ha concluido en <b>abort</b>.
+<p>
+Por ejemplo, imaginemos una t&iacute;pica aplicaci&oacute;n de comercio electr&oacute;nico. En primer lugar el usuario se da de alta como cliente, y a continuación hace un pedido cualquiera. Por cualquier razón se produce un fallo cuando la aplicaci&oacute;n va a guardar el pedido en la base de datos. En ese momento, MTS entrar&iacute;a en acci&oacute;n y anular&iacute;a toda la transacci&oacute;n, incluida el alta del cliente que s&iacute; termin&oacute; bien.
+<p>
+Har&iacute;a falta todo un libro para explicar como funciona el MTS (<b>M</b>icrosoft <b>T</b>ransaction <b>S</b>erver), as&iacute; que nos conformaremos con saber que es una especie de "intermediario" entre el IIS y el sistema. Se instala autom&aacute;ticamente durante el proceso de instalaci&oacute;n del <b>Option Pak</b> (no confundir con los Service Pak, que son actualizaciones del sistema operativo) para Windows NT Server, que es el paquete que instala el IIS con las extensiones ASP en el servidor. El <b>MTS</b> controla los recursos f&iacute;sicos y l&oacute;gicos necesarios para que las transacciones con el cliente funcionen lo mejor posible, sin interferirse unas con otras, y liberando los recursos cuando &eacute;stas terminan. La raz&oacute;n de su existencia es, adem&aacute;s de la optimizaci&oacute;n de recursos, la de poder controlar si una transacci&oacute;n ha concluido correctamente o no en tiempo real, cosa que, sin el MTS, s&oacute;lo es posible saber cuando se produce un error por tiempo excedido, es decir, mucho tiempo despu&eacute;s de haberse producido el error.
+<p>
+Para poder utilizar este objeto, hay que invocar primero una directiva de ASP llamada <font color="blue"><b>@Transaction</B></font>, y que debe escribirse antes que cualquier otra l&iacute;nea de c&oacute;digo de las necesarias para producir la transacci&oacute;n.
+<p>
+El objeto <b>ObjectContext</b> tiene 2 <b>m&eacute;todos</b> y 2 <b>eventos</b>: 
+
+
+<hr>
+<center><font size=4>METODOS</font></center><p>
+<h3>ObjectContext.SetComplete - ObjectContext.SetAbort</h3>
+
+Estos m&eacute;todos declaran expl&iacute;citamente que una transacci&oacute;n ha sido <b>completada</b> o <b>no</b>, y dejan preparados sus recursos para que puedan ser actualizados. En ese momento, y si est&aacute;n definidos en el programa, los eventos <b>OnTransactionCommit</b> o <b>OnTransactionAbort</b>,  pertenecientes al mismo objeto  <b>ObjectContext</b>, son procesados.
+<p>
+
+<hr>
+<center><font size=4>EVENTOS</font></center><p>
+<h3>ObjectContext.OnTransactionAbort()</h3> 
+Este evento se produce cuando una transacci&oacute;n aborta debido a un error de programa (como una instrucci&oacute;n incongruente) o de proceso (por ejemplo, la DB no encuentra los datos pedidos, por lo que no puede enviarlos al cliente, es decir, la <b>transacci&oacute;n</b> no puede realizarse). <b>ObjectContext.OnTransactionAbort</b> no es m&aacute;s que una simple subrutina, con un nombre reservado, del estilo de las existentes en el fichero global.asa, pero que puede ser invocada <b>solamente</b> desde el c&oacute;digo de la p&aacute;gina que se est&aacute; procesando. Es decir, cada p&aacute;gina ASP escrita deber&aacute; tener su propia subrutina para llamar al evento; no es una variable de sesi&oacute;n ni de aplicaci&oacute;n al alcance de otras p&aacute;ginas de la aplicaci&oacute;n.
+<p>
+El siguiente ejemplo contiene una incongruencia de programa. Tiene limitado el tiempo de ejecuci&oacute;n  a 5 segundos. Como su proceso normal necesita m&aacute;s tiempo, se produce un evento <b>OnTransactionAbort</b>:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br> @Transaction=Required Language="VBScript" <br>
+Response.Buffer = TRUE<br>
+Server.ScriptTimeout = 5<br>
+%&gt;<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;%<br>
+        Do<br>
+&nbsp;&nbsp;&nbsp;      x=x+1<br>
+&nbsp;&nbsp;&nbsp;      Response.Write x &amp; "&lt;BR&gt;"<br>
+        Loop While  x &lt; 10000<br>
+%&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;
+<p>
+
+Sub <FONT color="red">OnTransactionAborted()</font><br>
+        Response.Write "La transacci&oacute;n ha abortado por exceso de tiempo en su ejecuci&oacute;n."<br>
+End Sub<br></font>
+<p>Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+La transacci&oacute;n ha abortado por exceso de tiempo en su ejecuci&oacute;n.
+</font>
+
+
+
+
+<hr WIDTH=50%>
+<h3>ObjectContext.OnTransactionCommit()</h3> 
+Este evento se produce cuando una transacci&oacute;n termina correctamente. <b>ObjectContext.OnTransactionCommit </b> no es m&aacute;s que una simple subrutina, con un nombre reservado, del estilo de las existentes en el fichero global.asa, pero que puede ser invocada <b>solamente</b> desde el c&oacute;digo de la p&aacute;gina que se est&aacute; procesando. Es decir, cada p&aacute;gina ASP escrita deber&aacute; tener su propia subrutina para llamar al evento; no es una variable de sesi&oacute;n ni de aplicaci&oacute;n al alcance de otras p&aacute;ginas de la aplicaci&oacute;n.
+<p>
+El siguiente ejemplo no contiene ning&uacute;n error de programa.  Como su proceso terminar&aacute; normalmente, se produce un evento <b>OnTransactionCommit </b>:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% @Transaction=Required Language="VBScript" %&gt;<br>
+
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;%<br>
+        Do<br>
+&nbsp;&nbsp;&nbsp;      x=x+1<br>
+&nbsp;&nbsp;&nbsp;      Response.Write x &amp; "&lt;BR&gt;"<br>
+        Loop While  x &lt; 5<br>
+%&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;
+<p>
+
+Sub <FONT color="red">OnTransactionCommit()</font><br>
+        Response.Write "La transacci&oacute;n ha terminado correctamente"<br>
+End Sub<br>
+<p>
+Sub <FONT color="red">OnTransactionAborted()</font><br>
+        Response.Write "La transacci&oacute;n ha abortado por exceso de tiempo en su ejecuci&oacute;n."<br>
+End Sub<br></font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+La transacci&oacute;n ha terminado correctamente.
+</font>
+
+
+<hr WIDTH=80%>
+<h3>Un ejemplo completo</h3> 
+
+He aqu&iacute; un ejemplo ya conocido, implementando estos m&eacute;todos y eventos:
+<p>
+
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% @Transaction=Required Language="VBScript" %&gt;<br>
+
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+
+&lt;% <br>
+Set DB = Server.CreateObject("ADODB.Connection") <br>
+Set RS = Server.CreateObject("ADODB.RecordSet") <br>
+
+<pre>
+SQL ="SELECT convert(char(8), nom_dni) + nom_nif AS 'NIF', " & _
+     "nom_apellidos AS 'Apellidos', "  & _
+     "nom_nombre AS 'Nombre', " & _
+     "nom_postal AS 'Postal' " & _
+     "nom_postal + ' ' + nom_localidad AS 'Localidad', " & _
+     "nom_provincia AS 'Provincia' " & _
+     "FROM nombres WHERE nom_dni = 12345678 "
+
+DB.Open "DB_nombre", "DB_user", "DB_password"
+RS.Open SQL, DB
+
+If RS.EOF AND RS.BOF Then
+   <font color="red">ObjectContext.SetAbort</font>
+ Else
+   Response.Write("&lt;TABLE BORDER=1&gt;")
+
+   For i = 0 to RS.Fields.Count - 1
+       Response.Write("&lt;TR&gt;&lt;TH&gt;") 
+       Response.Write(RS(i).Name)
+       Response.Write("&lt;/TH&gt;&lt;TD&gt;")
+       Response.Write(RS(i))
+       Response.Write("&lt;/TD&gt;&lt;/TR&gt;")
+   Next
+   Response.Write("&lt;/TABLE&gt; &lt;P&gt;")
+   <font color="red">ObjectContext.SetComplete</font>
+End if
+</pre>
+RS.Close<br>
+Set RS = Nothing<br>
+DB.Close<br>
+Set DB = Nothing<br>
+
+%&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;
+<p>
+Sub <font color="red">OnTransactionAborted()</font><br>
+&nbsp;&nbsp;Response.Write "Transacci&oacute;n abortada. No se encontraron registros"<br>
+End Sub
+<p>
+Sub <font color="red">OnTransactionCommit()</font><br>
+&nbsp;&nbsp;Response.Write "Transacci&oacute;n realizada."<br>
+End Sub
+</font>
+<p>
+Si todo termina bien,  &eacute;ste ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+  <TABLE BORDER=1>
+     <TR><TH>NIF</TH><TD>12345678Z</TD></TR>
+     <TR><TH>Apellidos</TH><TD>Garcia</TD></TR>
+     <TR><TH>Nombre</TH><TD>Juan</TD></TR>
+     <TR><TH>Postal</TH><TD>12345</TD></TR>
+     <TR><TH>Localidad</TH><TD>12345 Villa Desconocida</TD></TR>
+     <TR><TH>Provincia</TH><TD>Guadalajara</TD></TR>
+</TABLE>
+<p>
+Transacci&oacute;n realizada.
+</font>
+<p>
+Y si el registro buscado no se encuentra, al no concluir la transacci&oacute;n, solamente obtendremos esto:
+<p>
+<font color="green" face="courier" size=2>
+Transacci&oacute;n abortada. No se encontraron registros
+</font>
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

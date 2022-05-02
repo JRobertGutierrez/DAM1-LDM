@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>Como escribir idc </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> &iquest;C&oacute;mo se escriben ficheros para el IDC?</H2>
+Los ficheros <b>.idc</b> se escriben con cualquier editor de texto, igual que los ficheros .htm o .html, pero teniendo especial cuidado  de que no quede ningun caracter "perdido" por ah&iacute;. En los ficheros .idc s&oacute;lo tiene que escribirse lo necesario y ni un caracter m&aacute;s, ya que es un fichero de instrucciones para el IDC. El Bloc de notas de Windows es una buena herramienta para ellos, ya que no deja caracteres ocultos.
+<p>
+Supongamos que queremos crear una p&aacute;gina web llamada <b>articulos.htm</b> que contiene un bot&oacute;n de formulario que al ser pulsado nos va a mostrar, en otra pantalla, una lista de art&iacute;culos de ferreter&iacute;a procedente de una tabla. Por ejemplo:
+<p>
+<pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Ferreteria &lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;CENTER&gt;
+&lt;H3&gt;La ferreteria virtual&lt;/H3&gt;
+
+&lt;FORM ACTION=&quot;/aplicaciones/<b>articulos.idc</b>&quot; METHOD=&quot;POST&quot;&gt;
+&lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Pulse aqui para ver nuestros articulos&quot;&gt;
+&lt;/FORM&gt;
+
+&lt;/CENTER&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+<p>
+<font size=4 color ="blue">Paso 1.- </font>Comenzaremos creando un origen de datos llamado <b>pruebas</b> que accede a una base de datos cualquiera (pero de Access o SQL Server), que contenga una tabla llamada <b>articulos</b>. Esta tabla tiene cuatro campos: <b>codigo</b> de tipo num&eacute;rico, <b>tipo</b> de tipo texto, <b>nombre</b> de tipo texto, y <b>precio</b> de tipo num&eacute;rico. Algo as&iacute;:
+<p>
+<pre>
+codigo   tipo           nombre     precio
+--------------------------------------------------
+1        HERRAMIENTAS   Martillo   120
+2        HERRAMIENTAS   Alicates   140
+3        MATERIAL       Clavos     2 
+4        MATERIAL       Tornillos  3
+</pre>
+<p>
+<font size=4 color ="blue">Paso 2.- </font> A continuaci&oacute;n hay que escribir el fichero <b>articulos.idc</b> que ser&iacute;a as&iacute;:
+<pre>
+
+<b>Datasource</b>: pruebas
+<b>Username</b>: web
+<b>Password</b>:
+<b>Translationfile</b>: C:\aplicaciones\translator.txt
+<b>Template</b>: articulos.htx 
+<b>SQLStatement</b>: 
+
++SELECT tipo, nombre 
++ FROM articulos
+
+</pre>
+
+Analicemos cada l&iacute;nea:
+<p>
+La primera de ellas es <b>Datasource</b>: Es decir, origen de datos, recuerda que el <a href="gestion3.htm">origen de datos</a> es creado por el administrador de ODBC, y el valor de este par&aacute;metro tiene que ser un origen de datos ODBC, no un nombre de base de datos.
+<p>
+A continuaci&oacute;n vienen <b>Username</b>: y <b>Password</b>: en los que tendremos que escribir el usuario y palabra de paso que se hayan definido durante la creaci&oacute;n del <b>origen de datos</b>.
+<p>
+El siguiente es <b>Translationfile</b>: y su valor en nuestro ejemplo es:  C:\aplicaciones\translator.txt<br>
+Este valor no es m&aacute;s que la direcci&oacute;n f&iacute;sica en un disco del servidor de un simple fichero de texto llamado <b>translator.txt</b> (o como quieras llamarle) cuyo contenido sirve para convertir caracteres que no se ven bien en pantalla, como e&ntilde;es o acentuaciones a su valor correcto. Es parecido a lo que se puede definir en la creaci&oacute;n del origen de datos, pero como en el ODBC s&oacute;lo esta prevista la conversi&oacute;n OEM a ANSI o ANSI a OEM, que son las m&aacute;s habituales, si en las tablas hay algun caracter que no es de ninguno de estos dos juegos, desde el <b>Translationfile</b>: podemos hacer que se vea correctamente. Es recomendable mantener este par&aacute;metro, incluso aunque no se utilice. Si se mantiene, el fichero <b>translator.txt</b> debe existir, aunque puede estar vac&iacute;o. He aqu&iacute; una muestra:
+<p>
+<center>
+Ý=&amp;iacute;<br>
+±=&amp;ntilde;<br>
+¾=&amp;oacute;<br>
+ß=&amp;aacute;<br>
+</center>
+<p>
+Despu&eacute;s tenemos <b>Template</b>: Aqu&iacute; es donde se indica el nombre del fichero plantilla que presentar&aacute; los datos finales, y que habitualmente tiene el mismo nombre que el fichero .idc que le invoca, aunque puede tener cualquier otro, siempre que se mantenga su extensi&oacute;n: <b>.htx</b> &nbsp; &nbsp; En nuestro ejemplo es el llamado <b>articulos.htx</b>
+<p>
+Y por fin tenemos la estrella de todo este invento: <b>SQLStatement</b>: Esta es la instrucci&oacute;n o instrucciones escritas en SQL para la base de datos. Todo lo hecho hasta ahora es para conseguir extraer o guardar un dato en la DB, y es en este punto donde muchas aplicaciones naufragan lamentablemente. 
+<p>
+SQL no es un lenguaje trivial. Adem&aacute;s de su sintaxis, que puede variar sensiblemente de una DB a otra, se deben tener nociones del funcionamiento interno de la DB, conocer sus prestaciones m&aacute;ximas y m&iacute;nimas, y sobre todo se debe tener clara la estructura de las tablas tanto a la hora de crear la DB como a la hora de explotarla. Es buena idea dedicar algun tiempo a estudiar el SQL en general y el de nuestra DB en particular. Si tienes que utilizar una DB que no has creado t&uacute;, nunca dejes de hablar con su creador. Inf&oacute;rmate de su estructura, lo que se pretend&iacute;a de ella cuando fue creada, qu&eacute; campos estan indexados, cual es su juego de caracteres por defecto, si existen relaciones definidas entre tablas, si hay integridad referencial, y en fin, cualquier detalle que te pueda ayudar a la hora de dise&ntilde;ar la aplicaci&oacute;n y optimizar las consultas SQL.
+<p>
+Recuerda que si una determinada consulta hecha directamente a la DB es lenta en su respuesta, via internet lo ser&aacute; mucho m&aacute;s. Cualquier defecto de estructura o de programaci&oacute;n que en local no tendr&iacute;an demasiadas consecuencias, en internet pueden ser desastrosos, llegando incluso a "colgar" la base de datos. Tener siempre presente esta jocosa ecuaci&oacute;n:
+<p>
+<center><font size="4">
+(problemilla x Num. de usuarios) + velocidad de la red + velocidad del cliente + Murphy = desastre 
+</font></center>
+<p>
+
+Donde, si problemilla tiende a cero, la cosa mejora. Los tres siguientes factores de la ecuaci&oacute;n son irresolubles y s&oacute;lo cabe aceptarlos con resignaci&oacute;n.
+<p>
+Y continuando con nuestro idc, concretamente con la <b>SQLStatement</b>, en este caso se trata de una simpl&iacute;sima instrucci&oacute;n: &nbsp; <b>SELECT tipo, nombre FROM articulos</b> &nbsp; &nbsp;en la que se solicita a la DB que nos devuelva solamente los campos <b>tipo</b> y <b>nombre</b> de la tabla articulos, sin ninguna limitaci&oacute;n ni condici&oacute;n. El signo + que hay delante de las cl&aacute;usulas <b>SELECT</B> y <b>FROM</b> es la forma que tiene el IDC de concatenar cadenas de texto, por lo que no hay que olvidar poner un espacio en blanco delante de la primera cosa que se escriba en la segunda y siguientes l&iacute;neas de la sentencia SQL y despu&eacute;s del correspondiente signo +.
+<p>
+<font size=4 color ="blue">Paso 3.- </font>El tercer y &uacute;ltimo paso consistir&aacute; en escribir el fichero <b>articulos.htx</b> donde daremos formato a los datos que nos devuelva la consulta SQL. Podr&iacute;a ser algo as&iacute;:
+<p>
+<pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Lista de articulos &lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;CENTER&gt;
+&lt;H3&gt;La ferreteria virtual&lt;/H3&gt;
+&lt;TABLE BORDER=1&gt;
+&lt;TR&gt;&lt;TH&gt;Tipo articulo&lt;/TH&gt;&lt;TH&gt;Nombre articulo&lt;/TH&gt;&lt;/TR&gt;
+
+<b>&lt;%begindetail%&gt;</b>
+     &lt;TR&gt;
+        &lt;TD&gt;<b>&lt;%tipo%&gt;</b>&lt;/TD&gt;
+        &lt;TD&gt;<b>&lt;%nombre%&gt;</b>&lt;/TD&gt;
+     &lt;/TR&gt;
+<b>&lt;%enddetail%&gt;</b>
+
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+
+<p>
+Y este ser&iacute;a el resultado obtenido, si todo funciona como debe (y en la tabla hemos escrito esto, claro...):
+<p>
+<center>
+<h3>La ferreteria virtual</h3>
+<table border=1>
+<tr><th>Tipo articulo</th><th>Nombre articulo</th></tr>
+<tr><td>HERRAMIENTAS</td><td>Martillo</td></tr>
+<tr><td>HERRAMIENTAS</td><td>Alicates</td></tr>
+<tr><td>MATERIAL</td><td>Clavos</td></tr>
+<tr><td>MATERIAL</td><td>Tornillos</td></tr>
+</table></center>
+<p>
+
+<font size=4 color ="blue">Paso 3 bis.- </font> Aqu&iacute; haremos una segunda versi&oacute;n del fichero .htx para que puedas ver como se utiliza el comando de decisi&oacute;n del IDC: <b>if</b>. Como ejemplo haremos que los art&iacute;culos del tipo "MATERIAL" se escriban en rojo y el resto en azul:
+<p>
+<pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Lista de articulos coloreada&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;CENTER&gt;
+&lt;H3&gt;La ferreteria virtual&lt;/H3&gt;
+&lt;TABLE BORDER=1&gt;
+&lt;TR&gt;&lt;TH&gt;Tipo articulo&lt;/TH&gt;&lt;TH&gt;Nombre articulo&lt;/TH&gt;&lt;/TR&gt;
+
+<b>&lt;%begindetail%&gt;</b>
+   &lt;TR&gt;
+        &lt;TD&gt;<b>&lt;%tipo%&gt;</b>&lt;/TD&gt;
+	&lt;TD&gt;<b>&lt;%if tipo EQ "MATERIAL"%&gt;</B>
+                &lt;FONT COLOR="red"&gt;&lt;<B>%nombre%&gt;</b>&lt;/FONT&gt;
+            &lt;<B>%else%</b>&gt;
+                &lt;FONT COLOR="blue"&gt;&lt;<B>%nombre%&gt;</b>&lt;/FONT&gt;
+            &lt;<b>%endif%</b>&gt;
+	&lt;/TD&gt;
+   &lt;/TR&gt;
+<b>&lt;%enddetail%&gt;</b>
+
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+
+<p>
+Y este debe ser el resultado obtenido:
+<p>
+<center>
+<h3>La ferreteria virtual</h3>
+<table border=1>
+<tr><th>Tipo articulo</th><th>Nombre articulo</th></tr>
+<tr><td>HERRAMIENTAS</td><td><font color="blue">Martillo</font></td></tr>
+<tr><td>HERRAMIENTAS</td><td><font color="blue">Alicates</font></td></tr>
+<tr><td>MATERIAL</td><td><font color="red">Clavos</font></td></tr>
+<tr><td>MATERIAL</td><td><font color="red">Tornillos</font></td></tr>
+</table></center>
+<p>
+Ver&aacute;s que en la condici&oacute;n <b>&lt;%if tipo EQ "MATERIAL"%&gt;</B> el valor de <b>tipo</b>, "MATERIAL" va entre comillas dobles. Esto es as&iacute; porque el campo <b>tipo</b> es alfanum&eacute;rico, y se hace la comparaci&oacute;n como cadena de caracteres. Si fuera num&eacute;rico no deber&iacute;a llevar comillas y la comparaci&oacute;n ser&iacute;a num&eacute;rica. En los ficheros .htx los campos de texto van entre comillas dobles como ya has visto, pero en los ficheros .idc tienen que ir entre comillas simples ( <b>'</b> ) OJO: no es un acento, es un ap&oacute;strofe.
+<p>
+En el ejemplo hemos utilizado la condici&oacute;n <b>if</b> para cambiar el color de un texto, pero puede utilizarse para cualquier cosa que se te ocurra. En combinaci&oacute;n con el HTML sabiamente utilizado, se pueden conseguir aplicaciones muy potentes, aunque no debes forzar demasiado los .htx, la verdadera potencia del IDC est&aacute; en el SQL. Y hablando de SQL, no olvidar que en los .idc se puede escribir m&aacute;s de una sentencia SQL siempre que la DB sea de SQL Server, si es de Access s&oacute;lo se puede escribir una sentencia cada vez, como en este ejemplo.
+<P>
+Si tienes un SQL Server puedes escribir varias sentencias SQL en el IDC, y el HTX se escribe igual, solo que poniendo una pareja de instrucciones <b>&lt;%begindetail%&gt;</b>  <b>&lt;%enddetail%&gt;</b> en el momento de utilizar el resultado devuelto por cada sentencia SQL, y teniendo en cuenta que han de ser secuenciales, es decir, que hay que utilizarlas en el mismo orden en que fueron escritas en el IDC. No es posible anidarlas, ya que no tienen nombre.
+<p>
+Otra cosa que se puede hacer si tienes un SQL Server, es arrastrar o crear valores durante varios  ficheros .idc incluso aunque lo que se quiera arrastrar no exista realmente en ninguna tabla de la DB. Por ejemplo si en el primer .idc escribimos una consulta como esta:
+<p>
+<b>+SELECT 'Hola que tal' AS saludo</b>
+<p>
+El valor del campo "saludo" estar&aacute; disponible en un segundo .idc de esta forma:
+<p>
+<b>+SELECT '%saludo%' AS saludo2</b>
+<p>
+En este ejemplo se ha creado un string (cadena de texto) que no existe en ninguna tabla de la DB. Tambi&eacute;n pueden arrastrarse valores obtenidos de una consulta real a una o varias tablas de la DB, sin necesidad de ejecutar la misma consulta dos .idc m&aacute;s all&aacute;. Y por supuesto, pueden generarse valores num&eacute;ricos, c&aacute;lculos, etc., utilizando las funciones de todo tipo que posee SQL Server. No olvidar que para acceder a los datos de cada sentencia SELECT, en los .htx siempre se necesitan  parejas de instrucciones <b>&lt;%begindetail%&gt;</b>  <b>&lt;%enddetail%&gt;</b>, una por cada SELECT escrita en los .idc
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+

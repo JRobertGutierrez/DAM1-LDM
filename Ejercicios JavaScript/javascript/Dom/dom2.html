@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom2</title>
+</head>
+<body>
+        <h2 id="titulo">(h2 con id titulo): Aprendiendo a usar getElementById</h2>
+        <p id="texto">(p con id texto): Este es un ejemplo de uso de <b>getElementById</b>.</p>
+        <p id="demo"></p>
+        
+        <script>
+            //Obtenemos el elemento con id titulo
+            var titulo = document.getElementById("titulo");
+            //Obtenemos el elemento con id texto
+            var texto = document.getElementById("texto");
+            //asignamos el contenido de los otros dos elementos en el elemento que tiene id demo
+            document.getElementById("demo").innerHTML = titulo.innerHTML + ". " + texto.innerHTML;
+        </script>
+</body>
+</html>

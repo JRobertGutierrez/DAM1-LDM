@@ -1,0 +1,245 @@
+
+<HTML>
+<HEAD><TITLE>Listas y menus</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>Listas y men&uacute;s</H2>
+
+Hay elementos que permiten crear texto con varios formatos de listado:  Estos pueden ser <b>ordenados</b> &lt;OL&gt; (se refiere a numerados, no ordenados por algun criterio), <b>desordenados</b> &lt;UL> (no numerados), <b>directorios</b> &lt;DIR>, <b>menu</B> &lt;MENU&gt; y <b>listados de definici&oacute;n</b> &lt;DL&gt;. Veamos c&oacute;mo es la sintaxis b&aacute;sica y apariencia de estos elementos, a partir de los cuales, pueden hacerse combinaciones muy complejas mediante anidamientos de unos con otros, hasta conseguir pr&aacute;cticamente cualquier presentaci&oacute;n deseada:
+<P>
+
+Esto es una <b>lista ordenada</b> (numerada):
+<ol>
+<li>Primera linea
+<li>Segunda linea
+</ol>
+
+Se escribe:
+
+<PRE>
+&lt;OL&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;/OL&gt;
+</pre>
+
+
+F&iacute;jate en que los elementos &lt;LI&gt; no necesitan cierre. Terminan cuando aparece otro igual o se cierra la lista. Puede ser conveniente poner el cierre &lt;/LI&gt; si se van a aplicar instrucciones de estilo.
+<HR>
+Esto es una <B>lista desordenada</B> ( no numerada):
+<ul>
+<li>Primera linea
+<li>segunda linea
+</ul>
+
+Se escribe:
+
+<PRE>
+&lt;UL&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;/UL&gt;
+</pre>
+
+En este caso los n&uacute;meros han sido sustituidos por unos puntos gruesos. Esa es la apariencia por defecto; se puede cambiar usando el atributo <b>TYPE</b> con tres valores (el valor por defecto es <b>DISC</b>). Con el valor <b>CIRCLE</b> se ver&aacute:
+<ul type=circle>
+<li>Primera linea
+<li>segunda linea
+</ul>
+Se escribe:
+<pre>
+&lt;UL <b>TYPE=CIRCLE</b>&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;/UL&gt;
+</pre>
+
+<P>
+
+Tambi&eacute;n puede usarse el valor <b>SQUARE</b>. As&iacute;:
+<ul type=square>
+<li>Primera linea
+<li>segunda linea
+</ul>
+Se escribe:
+<pre>
+&lt;UL TYPE=<B>SQUARE</B>&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;/UL&gt;
+</pre>
+<hr>
+Las listas ordenadas no s&oacute;lo se pueden ordenar con n&uacute;meros. Tambi&eacute;n se pueden utilizar letras y numeraci&oacute;n romana tanto en may&uacute;sculas como  min&uacute;sculas. Para esto se utiliza el atributo TYPE del elemento &lt;OL&gt; con los siguientes valores: <b>TYPE=1</b> (por defecto) para n&uacute;meros, <b>TYPE=A </b> para letras may&uacute;sculas, <b>TYPE=a</b> para letras min&uacute;sculas, <b>TYPE=I</b> para numeraci&oacute;n romana en may&uacute;sculas y <b>TYPE=i</b> para numeraci&oacute;n romana en min&uacute;sculas.
+<P>
+
+Esto es una <b>lista ordenada con letras may&uacute;sculas</b>:
+<ol TYPE=A>
+<li>Primera linea
+<li>Segunda linea
+<li>Tercera linea
+<li>Cuarta linea
+</ol>
+
+Se escribe:
+
+<PRE>
+&lt;OL TYPE=<B>A</B>&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;LI&gt;Tercera linea
+&lt;LI&gt;Cuarta linea
+&lt;/OL&gt;
+</pre>
+
+Esto es una <b>lista ordenada con letras min&uacute;sculas</b>:
+<ol TYPE=a>
+<li>Primera linea
+<li>Segunda linea
+<li>Tercera linea
+<li>Cuarta linea
+</ol>
+
+Se escribe:
+
+<PRE>
+&lt;OL TYPE=<B>a</B>&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;LI&gt;Tercera linea
+&lt;LI&gt;Cuarta linea
+&lt;/OL&gt;
+</pre>
+
+Esto es una <b>lista ordenada con numeraci&oacute;n romana en may&uacute;sculas</b>:
+<ol TYPE=I>
+<li>Primera linea
+<li>Segunda linea
+<li>Tercera linea
+<li>Cuarta linea
+</ol>
+
+Se escribe:
+
+<PRE>
+&lt;OL TYPE=<B>I</B>&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;LI&gt;Tercera linea
+&lt;LI&gt;Cuarta linea
+&lt;/OL&gt;
+</pre>
+
+Esto es una <b>lista ordenada con numeraci&oacute;n romana en min&uacute;sculas</b>:
+<ol TYPE=i>
+<li>Primera linea
+<li>Segunda linea
+<li>Tercera linea
+<li>Cuarta linea
+</ol>
+
+Se escribe:
+
+<PRE>
+&lt;OL TYPE=<B>i</B>&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;LI&gt;Tercera linea
+&lt;LI&gt;Cuarta linea
+&lt;/OL&gt;
+</pre>
+
+En algunos casos puede interesarnos que la lista no comience por el n&uacute;mero 1  (por ejemplo si es una lista que continua en otra p&aacute;gina). Se puede conseguir con el atributo <B>START </b>combinado con <B>TYPE</b>.
+<P>
+Esto es una <b>lista ordenada con letras may&uacute;sculas y que comienza por la E</b>:
+<ol TYPE=A START=5>
+<li>Primera linea
+<li>Segunda linea
+<li>Tercera linea
+<li>Cuarta linea
+</ol>
+
+Se escribe:
+
+<PRE>
+&lt;OL TYPE=A <B>START</B>=5&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;LI&gt;Tercera linea
+&lt;LI&gt;Cuarta linea
+&lt;/OL&gt;
+</pre>
+
+El n&uacute;mero que pones en el atributo START indica en que n&uacute;mero o letra comenzar&aacute; la lista. la E es la quinta letra.
+
+
+
+<HR>
+Esto es un <b>men&uacute;</b>:
+<MENU>
+<li>Primera linea
+<li>Segunda linea
+</MENU>
+Se escribe:
+<PRE>
+&lt;<B>MENU</B>&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;/MENU&gt;
+</pre>
+
+La diferencia entre un men&uacute; y una lista desordenada, es que las l&iacute;neas en  la lista desordenada comienzan en el margen izquierdo y las del men&uacute; unas posiciones m&aacute;s a la derecha (aunque eso depende del visualizador, con Netscape se ven igual).
+<hr>
+Esto es un <b>directorio</b>:
+<DIR>
+<li>Primera linea
+<li>Segunda linea
+</DIR>
+
+Se escribe:
+
+<PRE>
+&lt;<B>DIR</B>&gt;
+&lt;LI&gt;Primera linea
+&lt;LI&gt;Segunda linea
+&lt;/DIR&gt;
+</pre>
+
+Ocurre lo mismo que con el men&uacute;, con Netscape no se aprecia diferencia.
+<hr>
+Esto es una <b>lista de definicion</b>:
+<DL>
+<DT>Primera linea
+<DD>Segunda linea
+</DL>
+Se escribe:
+
+<PRE>
+&lt;<B>DL</B>&gt;
+&lt;<B>DT</B>&gt;Primera linea
+&lt;DD&gt;Segunda linea
+&lt;/DL&gt;
+</pre>
+
+F&iacute;jate que ahora en lugar del elemento &lt;LI&gt; se utiliza &lt;<B>DT</B>&gt; y &lt;<B>DD</B>&gt;, y como tipo <b>&lt;DL&gt;</b>. Estos tres nuevos elementos tambi&eacute;n se pueden usar con cualquiera de los anteriores tipos de lista, alterando por completo su apariencia. Para hacerse una idea de la variedad de aspectos que se pueden conseguir, lo mejor es ver la p&aacute;gina de <a href="listaeje.htm"> ejemplos de listados</a>.
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>
+
+
+

@@ -1,0 +1,424 @@
+<html>
+<head>
+<title>VBScript 12 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h3>El objeto Window</h3>
+Es el objeto b&aacute;sico, y representa en s&iacute; mismo al propio IE. Al ser el elemento principal del modelo de objetos, para referirse a sus propiedades, m&eacute;todos o eventos, no es necesario referenciarlo espec&iacute;ficamente.
+<p>
+El objeto <b>Window</b> tiene 11 propiedades, 8 m&eacute;todos y 2 eventos.
+<hr noshade>
+<center><FONT SIZE=4>PROPIEDADES</FONT></CENTER>
+
+<P>
+<FONT SIZE=3 color="red"><B>Name</B></FONT> &nbsp;Devuelve un string cuyo contenido es el nombre de la ventana actual, siempre que la ventana haya sido abierta asign&aacute;ndole espec&iacute;ficamente un nombre. Por defecto las ventanas no tienen nombre, y por tanto <b>Name</b> no tiene contenido (Empty). Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+        Document.Write "El nombre de esta ventana es: " & <font color="red">Name</font>
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Y despu&eacute;s de pulsar el bot&oacute;n "Prueba" del formulario solamente obtendremos:
+<p>
+<font color="green"><b>El nombre de esta ventana es:</b></font>
+<p>
+Como ya se ha dicho, para que <font color="red">Name</font> devuelva un valor es necesario abrir la ventana asign&aacute;ndole un nombre. Para ello puedes utilizar el m&eacute;todo <b>Open</b> de este mismo objeto (Window) que se describe m&aacute;s abajo.
+<p>
+
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>Parent</B></FONT>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>Self</B></FONT>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>Top</B></FONT>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>Location</B></FONT>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>Status</B></FONT> &nbsp; Devuelve o establece el contenido de la l&iacute;nea de status del navegador, situada en la esquina inferior izquierda de la ventana. Su valor por defecto es <b>"Listo"</b>. Para cambiar su contenido, por ejemplo, con la frase "Esto es una prueba", se escribe:
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+     <font color="red">Status</font> = "Esto es una prueba"
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Y despu&eacute;s de pulsar el bot&oacute;n "<b>Prueba</b>" del formulario, obtendremos en la l&iacute;nea de estatus del navegador:
+<p>
+<img src="status.jpg">
+<p>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>DefaultStatus</B></FONT>  &nbsp; Hace lo mismo que <b>Status</b>, y aunque por su nombre lo parezca, no sirve para cambiar el valor por defecto de la l&iacute;nea de status, que es "Listo".
+<hr noshade WIDTH=50%>
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Frames</B></FONT>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>History</B></FONT>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>Navigator</B></FONT>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>Document</B></FONT>
+
+
+<hr noshade>
+<center><FONT SIZE=4>M&Eacute;TODOS</FONT></CENTER>
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Alert</B></FONT> &nbsp; Muestra un mensaje de alerta. Es parecido a la funci&oacute;n MsgBox(), pero a diferencia de &eacute;sta, no se puede parametrizar ni devuelve valores. Por ejemplo:
+
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+     <font color="red">Alert</font> "Esto es una prueba"
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Y despu&eacute;s de pulsar el bot&oacute;n "<b>Prueba</b>" del formulario, obtendremos el mensaje:
+<p>
+<img src="alert.jpg">
+<p>
+<hr noshade WIDTH=50%>
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Confirm</B></FONT> &nbsp; Muestra un cuadro de di&aacute;logo con dos botones. Es parecido a la funci&oacute;n MsgBox(), pero a diferencia de &eacute;sta, no se puede parametrizar, aunque s&iacute; devuelve dos valores booleanos (True o False) dependiendo del bot&oacute;n pulsado por el usuario. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de mensaje&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+    &lt;INPUT TYPE="Text" NAME="Campo1"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+        Formulario1.Campo1.value = <font color="red">Confirm</font>("¿Quieres continuar?")
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Despu&eacute;s de pulsar el bot&oacute;n <b>"Prueba"</b> del formulario tendremos esto:
+<p>
+<img src="confirm1.jpg">
+<p>
+
+Y despu&eacute;s de pulsar el bot&oacute;n <b>"Aceptar"</b> del cuadro de di&aacute;logo tendremos esto:
+<p>
+<img src="confirm2.jpg">
+<p>
+F&iacute;jate en que el valor devuelto es "Verdadero" en lugar de "True". Para capturar los valores booleanos no se deben utilizar las frases que aparecen aqu&iacute;, que han sido convertidas,  sino que se debe evaluar directamente el valor booleano devuelto por el objeto, sin conversiones que dependan de la lengua utilizada por el navegador. As&iacute;:
+<pre>
+<font size=3 color="blue" face="courier">
+       If Confirm ("Quieres continuar?") Then
+           Formulario1.campo1.value= "Ha pulsado Aceptar"
+          Else
+           Formulario1.campo1.value= "Ha pulsado Cancelar"
+       End If
+</font>
+</pre>
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>Prompt</B></FONT> &nbsp; Muestra un cuadro de di&aacute;logo con dos botones y un campo de texto. Su funcionamiento es muy parecido a la funci&oacute;n InputBox(), pero a diferencia de &eacute;sta, no se puede parametrizar. Sea por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de mensaje&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+    &lt;INPUT TYPE="Text" NAME="Campo1"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+        Formulario1.Campo1.value = <font color="red">Prompt</font>("Escribir un valor", "")
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Despu&eacute;s de pulsar el bot&oacute;n <b>"Prueba"</b> del formulario tendremos esto:
+<p>
+<img src="prompt.jpg">
+<p>
+En el ejemplo, despu&eacute;s de escribir un texto cualquiera y pulsar el bot&oacute;n <b>"Aceptar"</b>, lo escrito ser&aacute; recibido por <b>Campo1</b>, pero si se pulsa <b>Cancelar</b>, a diferencia de la funci&oacute;n InputBox() que devolver&iacute;a <b>Empty</b>, lo que se recibe es <b>Null</b>
+<hr noshade WIDTH=50%>
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Open</B></FONT><FONT SIZE=4 color="blue">[url, name, features] </font>&nbsp;Permite abrir una nueva ventana en la que se est&aacute; ejecutando una nueva instancia del IE. Opcionalmente, tambi&eacute;n permite definir las caracter&iacute;sticas que tendr&aacute; el nuevo navegador, como son qu&eacute; p&aacute;gina mostrar&aacute;, el nombre de la ventana (utilizado por el objeto <b>Name</b>) y el aspecto que ofrecer&aacute; el navegador. Sea por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+     <font color="red">open</font> <b>"http://sestud.uv.es/manual.esp/", "Prueba", _
+    "width=300, height=300, location=no, status=yes, toolbar=no, " & _
+    "menubar=no, scrollbars=no, resizable=no, left=100, top=100"</b>
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Y despu&eacute;s de pulsar el bot&oacute;n "<b>Prueba</b>" del formulario, obtendremos una nueva ventana con esta apariencia:
+<p>
+<img src="open.jpg">
+<p>
+<hr noshade WIDTH=50%>
+<FONT SIZE=3 color="red"><B>Close</B></FONT> Cierra la ventana actual. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+        <font color="red">close</font>
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>SetTimeout <font color="blue">instrucciones, espera</font></B></FONT> &nbsp;  &nbsp; Ejecuta el c&oacute;digo VBScript contenido en  <font color="blue"><b>instrucciones</b></font> despu&eacute;s de transcurrido el tiempo, en milisegundos, indicado por <font color="blue"><b>espera</b></font>. Sea por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+    &lt;INPUT TYPE="Text" NAME="Campo1"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+     <font color="red">SetTimeout</font> "Formulario1.Campo1.value = Time()", 2000"
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Despu&eacute;s de pulsar el bot&oacute;n "<b>Prueba</b>" del formulario, y transcurridos dos segundos, obtendremos:
+<p>
+<img src="timeout.jpg">
+<p>
+<hr noshade WIDTH=50%>
+
+<P>
+<P>
+<FONT SIZE=3 color="red"><B>ClearTimeout(<font color="blue">identificador</font>)</B></FONT> Despu&eacute;s de haber utilizado el m&eacute;todo <b>SetTimeout()</b> anterior, VBScript mantiene memorizada la evaluaci&oacute;n que realiz&oacute; del par&aacute;metro <b>instrucciones</b>. Si en algun punto del programa es necesario repetir esa evaluaci&oacute;n en lugar de utilizar la ya realizada, es preciso inicializarla previamente. Para ello se utiliza <FONT color="red">ClearTimeout(<font color="blue">identificador</font>)</FONT>. Para poder hacerlo, es necesario que el m&eacute;todo <b>SetTimeout()</b> haya sido invocado mediante un identificador. As&iacute;:
+<p>
+<font size=3 color="blue" face="courier">
+         identificador=<font color="red">setTimeout(</font>'<b>mensaje()</b>', 2000<font color="red">)</font>"&gt;
+</font>
+<p>
+Y para inicializar la evaluaci&oacute;n y poder realizarla de nuevo:
+<p>
+<font size=3 color="blue" face="courier">
+  <font color="red">clearTimeout(</font>identificador<font color="red">)</font></font>
+<p>
+Evidentemente en este ejemplo no tiene sentido inicializar nada, ya que se trata de un mensaje fijo, pero este m&eacute;todo es imprescindible si las instrucciones ejecutadas por setTimeout() son expresiones num&eacute;ricas variables o contadores de tiempo, como en el ejemplo anterior.
+<p>
+<hr noshade WIDTH=50%>
+<P>
+<FONT SIZE=3 color="red"><B>Navigate</B></FONT> &nbsp; Navega hasta una nueva p&aacute;gina en la misma ventana. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+     <font color="red">Navigate</font> "http://sestud.uv.es/manual.esp"
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+
+
+
+<hr noshade>
+<center><FONT SIZE=4>EVENTOS</FONT></CENTER>
+
+<P>
+<FONT SIZE=3 color="red"><B>OnLoad</B></FONT> &nbsp; Como su nombre indica, se produce cuando el IE carga una p&aacute;gina. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub Prueba
+         Document.Write "Prueba de evento OnLoad"
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY <font color="red">OnLoad</font>="Prueba"&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green">Prueba de evento OnLoad</font>
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>OnUnload</B></FONT> &nbsp; Funciona justo al contrario que el anterior: se activa cuando el navegador descarga la p&aacute;gina actual, por ejemplo al intentar ir a otra. En ese momento, se dispara el evento. El siguiente ejemplo lleva a una p&aacute;gina predeterminada siempre que se intenta abandonar la activa:
+
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub Prueba
+         Navigate "http://sestud.uv.es/manual.esp"
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY <font color="red">OnUnload</font>="Prueba"&gt;
+
+     De esta p&aacute;gina no es f&aacute;cil salir.
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+
+
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

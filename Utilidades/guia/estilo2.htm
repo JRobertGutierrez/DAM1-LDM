@@ -1,0 +1,1254 @@
+<HTML>
+<HEAD><TITLE>Estilos con CSS</TITLE>
+
+<script  language="JavaScript">
+
+function change2New(bozo)
+ {document.getElementById(bozo).className = "ParentDiv02";
+}
+
+function change2Orig(bozo) 
+{document.getElementById(bozo).className = "ParentDiv01";
+}
+
+function Alternar(Seccion){ 
+    if (Seccion.style.display=="none"){Seccion.style.display=""}
+    else{Seccion.style.display="none"} 
+}
+
+</script>
+
+<style type="text/css">
+ParentDiv01 .ChildDivOrig {display: block;} 
+.ParentDiv01 .ChildDivNew {display: none;}
+.ParentDiv02 .ChildDivOrig {display: none;}
+.ParentDiv02 .ChildDivNew {display: block;}
+</style>
+
+</head>
+
+<body>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2>Escribiendo hojas de estilo</h2>
+
+<h3>Elementos modificables con CSS</h3>
+
+O mejor dicho, atributos de elementos que pueden modificarse con CSS. Son muchos (casi todos) los aspectos que pueden modificarse con CSS. Dado el car&aacute;cter general de esta gu&iacute;a, aqu&iacute; veremos solamente los m&aacute;s utilizados.
+<p>
+Generalmente se act&uacute;a sobre los siguientes:
+
+<ul>
+  <li><b><A HREF="#punto1" style="text-decoration:none";>Texto o contenido</b></a>
+  <li><b><A HREF="#punto2" style="text-decoration:none";>Tama&ntilde;o del bloque</b></a>
+  <li><b><A HREF="#punto3" style="text-decoration:none";>Color del fondo del bloque</b></a>
+  <li><b><A HREF="#punto4" style="text-decoration:none";>Bordes de bloque</b></a>
+  <li><b><A HREF="#punto4" style="text-decoration:none";>Estilo de los bordes</b></a>
+  <li><b><A HREF="#punto4" style="text-decoration:none";>Color de los bordes</b></a>
+  <li><b><A HREF="#punto5" style="text-decoration:none";>M&aacute;rgenes de bloque</b></a>
+  <li><b><A HREF="#punto5" style="text-decoration:none";>Espaciado interno del bloque</b></a>
+  <li><b><A HREF="#punto9" style="text-decoration:none";>Posicionamiento del bloque</b></a>
+  <li><b><A HREF="#punto10" style="text-decoration:none";>Gr&aacute;ficos y bloques flotantes</b></a>
+  <li><b><A HREF="#punto9" style="text-decoration:none";>Visibilidad del bloque</b></a>
+  <li><b><A HREF="#punto6" style="text-decoration:none";>Listas</b></a>
+  <li><b><A HREF="#punto7" style="text-decoration:none";>Enlaces</b></a>
+  <li><b><A HREF="#punto11" style="text-decoration:none";>CSS + JavaScript</b></a>
+  <li><b><A HREF="#punto12" style="text-decoration:none";>Efectos especiales</b></a>
+  <li><b><A HREF="#punto13" style="text-decoration:none";>Tablas</b></a>  
+</ul>
+
+Y puede que te preguntes qu&eacute; es un bloque. Como <b>bloque</b> puede entenderse todo lo comprendido dentro de elementos con cierre, como  &lt;body&gt; &lt;/body&gt;, &lt;p&gt; &lt;/p&gt;,  &lt;form&gt; &nbsp; &lt;/form&gt;, &lt;table&gt; &lt;/table&gt;, &lt;td&gt; &lt;/td&gt;, &lt;div&gt; &lt;/div&gt;, etc.,  y al aplicar estilos con CSS no es buena idea escribir nada fuera de estos  elementos. En lugar de ser un nombre de elemento HTML, un bloque tambi&eacute;n puede tener un nombre definido por el programador, por ejemplo "menu", y generalmente son &eacute;stos los que contienen en su interior a los anteriores o a otros bloques definidos por el usuario. El n&uacute;mero de bloques en una p&aacute;gina puede ser muy elevado (m&aacute;s de mil), y depender&aacute; de la capacidad del navegador utilizado.
+<p>
+Veamos c&oacute;mo funciona cada cosa:
+<p>
+Los <b>M&aacute;rgenes de bloque</b> son el espacio comprendido entre el bloque y el borde de la ventana activa del navegador.  Se controla con el atributo <font color="blue"><b>margin</b></font>.
+<p>
+Los <b>Bordes de bloque</b>, sin aplicar estilos, no son visibles, y es como un cuadro imaginario que envuelve todo el contenido del bloque.  Su atributo de control es <font color="blue"><b>border</b></font>.
+<p>
+<b>Espaciado interno del bloque</b> es la distancia entre el borde del bloque y su contenido. Es el atributo <font color="blue"><b>padding</b></font> (en ingl&eacute;s significa algo as&iacute; como "acolchado")
+<p>
+El <b>Estilo y color de los bordes</b>, son evidentes: son las l&iacute;neas que delimitan el bloque, que pueden dibujarse de varias formas en cuanto a tipo de trazo, grosor y color. Estos dos atributos tambi&eacute;n pueden actuar sobre los bordes de otros elementos contenidos dentro de un bloque, como formularios, tablas, gr&aacute;ficos, etc.
+<p>
+El <b>Color del fondo</b> se controla con las mismas instrucciones que las de la p&aacute;gina HTML: <font color="blue"><b>background</b></font>. <a href="colorind.htm">Los par&aacute;metros de color</a>, al igual que en HTML, se pueden escribir con su nombre (en ingl&eacute;s) o con la notaci&oacute;n RGB en hexadecimal.
+<p>
+El <b>Tama&ntilde;o</b>  son las dimensiones del bloque. Si no se indican dimensiones, por defecto, el bloque ocupar&aacute; todo el ancho de la ventana, y de alto lo que su contenido precise. Se utilizan dos atributos para controlarlo: <font color="blue"><b>width</b></font> para el ancho y <font color="blue"><b>height</b></font> para el alto.
+<hr>
+
+<A NAME="punto1"> <h3>Estilo del texto</h3></a>
+
+Veamos los par&aacute;metros disponibles para dar estilo al texto. Como ya sabes, las unidades de medida aplicables a todos ellos son varias, pero para mayor claridad, en todos los ejemplos utilizaremos solamente el p&iacute;xel: <b>px</b>.  Sea por ejemplo la siguiente p&aacute;gina:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Estilos&lt;/TITLE&gt;
+&lt;LINK REL="stylesheet" TYPE="text/css" HREF="<b>estilo.css</b>"&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+Texto fuera de párrafo.&lt;BR&gt;
+Segunda línea fuera de párrafo.
+
+&lt;P&gt;texto de párrafo. &lt;BR&gt; segunda línea de párrafo.&lt;/P&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</PRE>
+
+Y si escribimos la siguiente hoja de estilo <font color="blue"><b>estilo.css</b></font>:
+<p>
+<font face="courier" color="blue">
+<pre>
+BODY {color:green }
+
+P {color:red; 
+   font-size:20px;
+   font-family:Courier;
+   font-weight:bold;
+   font-style:italic;
+   line-height:30px;
+   letter-spacing:5px;
+   text-decoration:underline;
+   text-transform:capitalize;
+   text-align:left;
+   text-indent:30px;
+  }</font>
+</pre>
+Se obtiene:
+<p>
+<font color="green">
+Texto fuera de párrafo.<br>
+Segunda línea fuera de párrafo.</font>
+
+<p style="color:red; 
+   font-size:20px;
+   font-family:Courier;
+   font-weight:bold;
+   font-style:italic;
+   line-height:30px;
+   letter-spacing:5px;
+   text-decoration:underline;
+   text-transform:capitalize;
+   text-align:left;
+   text-indent:30px;">texto de párrafo. <BR> segunda línea de párrafo</p>
+
+F&iacute;jate en la gran diferencia de estilo que hay entre las dos primeras l&iacute;neas y las dos siguientes. Analicemos c&oacute;mo funciona: Las dos primeras l&iacute;neas de texto, en color verde, tienen todos sus valores por defecto, excepto el color que lo reciben de la etiqueta <font color="blue"><b>BODY</b></font> definida en la css. Las dos siguientes, en rojo, reciben todas sus caracter&iacute;sticas de la etiqueta <font color="blue"><b>P</b></font>, tambi&eacute;n definida en la css. Como puedes ver, hay una gran cantidad de atributos que act&uacute;an sobre el estilo de ese texto.
+<p>
+<font color="red"><b>color:</b></font><font color="blue">red;</font> &nbsp;&nbsp; Este ya lo conocemos. Define el color del texto. El color deseado puede escribirse directamente, en ingl&eacute;s, o puede utilizarse el sistema RGB en hexadecimal. Por ejemplo, este mismo color rojo en RGB ser&iacute;a:  #FF0000; &nbsp;&nbsp;&nbsp; Ciertos valores, como el rojo,  pueden escribirse de forma abreviada: #F00; &nbsp;&nbsp;&nbsp;  Otra forma de declarar el color es mediante la funci&oacute;n <font color="red">rgb()</font> que puede parametrizarse en decimal o en tantos por ciento. He aqu&iacute; un ejemplo con las cuatro formas del color rojo:
+<font color="red">
+<pre>
+color: #ff0000 
+color: #f00 
+color: rgb(255,0,0) 
+color: rgb(100%, 0%, 0%) 
+</pre></font>
+ <p>
+Recuerda que en el &iacute;ndice tienes unas tablas con los <a href="texcolej.htm">nombres</a> y <a href="colorind.htm">c&oacute;digos</a> de los colores.
+<p>
+<font color="red"><b>font-size:</b></font><font color="blue">20px;</font> &nbsp;&nbsp; Tambi&eacute;n muy conocido: define el tama&ntilde;o de los caracteres. Adem&aacute;s del tama&ntilde;o definido por el usuario, expresado en cualquiera de las unidades de medida conocidas,  puede tener alguno de los siguientes valores absolutos: <font color="blue"> <b>xx-large &nbsp; x-large &nbsp; large &nbsp; medium &nbsp; small &nbsp; x-small &nbsp; xx-small</b></font>.
+<p>
+<font color="red"><b>font-family:</b></font><font color="blue">Courier;</font> &nbsp;&nbsp; Indica el nombre (o nombres) del  tipo de letra que se va a emplear. En el ejemplo se ha utilizado el tipo "Courier", pero pueden escribirse varios separados por comas, lo que indica al navegador que si no existe en la m&aacute;quina el primer tipo, utilice el segundo, y si tampoco, el tercero, etc. Por ejemplo: <b>font-family:</b>Courier,Verdana,Arial; &nbsp;&nbsp; <br>
+Cuando definas tipos de letra, recuerda que muchos programas y algunos drivers de impresora instalan sus propias fuentes en el sistema sin avisarte, y puede que en tu m&aacute;quina haya tipos que no son est&aacute;ndar en Windows. No se deben utilizar tipos extra&ntilde;os que dif&iacute;cilmente se encontrar&aacute;n en las m&aacute;quinas de los clientes, es decir, el tipo de fuente indicado en la hoja simplemente le indica al navegador qu&eacute; fuente debe usar, NO se la sirve.  En la versi&oacute;n 3 de CSS parece que se podr&aacute; indicar al cliente d&oacute;nde obtener una fuente que no tenga instalada.
+<p>
+<font color="red"><b>font-weight:</b></font><font color="blue">bold;</font> &nbsp;&nbsp; Aqu&iacute; se especifica el peso o grosor de la fuente. Pueden emplearse literales como <font color="blue"><b>lighter</b></font>, <font color="blue"><b>normal</b></font> (por defecto) o <font color="blue"><b>bold</b></font>. Tambi&eacute;n se pueden utilizar n&uacute;meros entre <font color="blue"><b>100</b></font> y <font color="blue"><b>900</b></font>, escritos de 100 en 100 (no sirve 190, pero s&iacute; 200). Los pesos no tienen los mismos resultados en todas las m&aacute;quinas, ya que depende mucho de la calidad de su pantalla, de su resoluci&oacute;n, del navegador que emplea... En cualquier caso, no deben hacerse combinaciones extra&ntilde;as, como definir un size muy peque&ntilde;o y darle peso 900, ya que lo &uacute;nico que conseguir&aacute;s es un borr&oacute;n perfectamente ilegible.
+<p>
+<font color="red"><b>font-style:</b></font><font color="blue">italic;</font> &nbsp;&nbsp; Solamente tiene dos posibilidades: <font color="blue"><b>normal</b></font> (por defecto) o <font color="blue"><b>italic</b></font> que es el empleado en el ejemplo que estamos analizando, y que hace que el texto tenga cierta inclinaci&oacute;n.
+<p>
+<font color="red"><b>line-height:</b></font><font color="blue">30px;</font> &nbsp;&nbsp; Sirve para establecer la distancia entre l&iacute;neas consecutivas de un mismo p&aacute;rrafo. Adem&aacute;s de en p&iacute;xels o alguna de las unidades de medida que ya conocemos, puede indicarse con un simple n&uacute;mero que viene a indicar, aproximadamente, cuantas anchuras de l&iacute;nea se tomar&aacute;n como unidad de medida para separar una l&iacute;nea de otra. As&iacute;, por ejemplo, si pones <b>0</b> la segunda l&iacute;nea se suporpone a la primera.
+<p>
+<font color="red"><b>letter-spacing:</b></font><font color="blue">5px;</font> &nbsp;&nbsp; Establece la separaci&oacute;n entre los caracteres de la l&iacute;nea.
+<p>
+<font color="red"><b>word-spacing:</b></font><font color="blue">5px;</font> &nbsp;&nbsp; Establece la separaci&oacute;n entre las palabras de la l&iacute;nea.
+<p>
+
+<font color="red"><b>text-decoration:</b></font><font color="blue">underline;</font> &nbsp;&nbsp; Con este par&aacute;metro, que no influye en el tama&ntilde;o, puedes acompa&ntilde;ar al texto de una delgada l&iacute;nea decorativa que puede estar en tres posiciones distintas, como <font color="blue"><b>underline</b></font> (el t&iacute;pico subrayado debajo de la l&iacute;nea),  <font color="blue"><b>through</b></font> (en el centro de la l&iacute;nea -tachado-) o <font color="blue"><b>overline</b></font> (encima del texto). Para que no aparezca se utiliza <font color="blue"><b>none</b></font> (por defecto). El valor none se puede utilizar para eliminar el efecto de subrayado que ponen otros elementos, como ocurre en los links.
+<p>
+<font color="red"><b>text-transform:</b></font><font color="blue">capitalize;</font> &nbsp;&nbsp; Curioso efecto que provee de cuatro posibilidades: <font color="blue"><b>capitalize</b></font> que convierte en may&uacute;scula la primera letra de cada palabra del texto, como puedes ver en el ejemplo, donde el texto original no es as&iacute;. <font color="blue"><b>uppercase</b></font> para convertir todas las letras a may&uacute;sculas y <font color="blue"><b>lowercase</b></font> para lo contrario, es decir, convertir todas las letras a min&uacute;sculas. El valor por defecto es <font color="blue"><b>none</b></font>, que como ya habrás supuesto, deja el texto tal como est&aacute; escrito.
+<p>
+<font color="red"><b>text-align:</b></font><font color="blue">left;</font> &nbsp;&nbsp; Alinea el texto seg&uacute;n convenga. Con <font color="blue"><b>left</b></font> a la izquierda (por defecto), <font color="blue"><B>right</b></font> a la derecha, <font color="blue"><b>center</b></font> centrado, y <font color="blue"><b>justify</b></font> justificado, es decir, igualando todas las l&iacute;neas en longitud a izquierda o derecha.
+<p>
+<font color="red"><b>text-indent:</b></font><font color="blue">30px</font> &nbsp;&nbsp; Produce que la primera l&iacute;nea del p&aacute;rrafo se escriba adentrada (indentada) un cierto espacio hacia la derecha o hacia la izquierda, dependiendo de la alineaci&oacute;n activa.
+<p>
+Este ser&iacute;a un resumen sobre la declaraci&oacute;n <b>font</b>:
+<center>
+<TABLE BORDER=1 CELLSPACING=2 CELLPADDING=2>
+ <TR>
+  <TH>Declaraci&oacute;n</TH>
+  <td>font-size</td>
+  <TD>font-family</TD>
+  <TD>font-weight</TD>
+  <TD>font-style</TD>
+ </TR>
+ <TR>
+  <TH>Valor por defecto</TH>
+  <TD>medium</TD>
+  <TD>Definido por el usuario</TD>
+  <TD>normal</TD>
+  <TD>normal</TD>
+ </TR>
+ <TR>
+  <TH>Valores posibles</TH>
+  <TD>Absoluto, relativo, porcentaje,<br> unidad de tama&ntilde;o</TD>
+  <TD>Familia de fuente Windows</TD>
+  <TD>normal, lighter, bolder, <br> un valor entre 100 y 900</TD>
+  <TD>normal, bold, italic</TD>
+ </TR>
+<TR>
+  <TH>Valor porcentual</TH>
+  <TD>Se calcula respecto al padre</TD>
+  <TD>No aplicable</TD>
+  <TD>No aplicable</TD>
+  <TD>No aplicable</TD>
+ </TR>
+ <TR>
+  <TH>Se aplica a</TH>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+ </TR>
+ <TR>
+  <TH>Se hereda?</TH>
+  <TD>S&iacute;</TD>
+  <TD>S&iacute;</TD>
+  <TD>S&iacute;</TD>
+  <TD>S&iacute;</TD>
+ </TR>
+</TABLE>
+</center>
+<p>
+Y este sobre el resto:
+<center>
+<TABLE BORDER='1' CELLSPACING=2 CELLPADDING='2'>
+ <TR>
+  <TH>Declaraci&oacute;n</TH>
+  <td>line-height</td>
+  <TD>text-decoration</TD>
+  <TD>text-transform</TD>
+  <TD>text-align</TD>
+  <TD>text-indent</TD>
+  <TD>word-spacing</TD>
+  <TD>letter-spacing</TD>
+  <TD>white-space</TD>
+ </TR>
+ <TR>
+  <TH>Valor por defecto</TH>
+  <TD>normal</TD>
+  <TD>none</TD>
+  <TD>none</TD>
+  <TD>left</TD>
+  <TD>0</TD>
+  <TD>normal</TD>
+  <TD>normal</TD>
+  <TD>normal</TD>
+ </TR>
+ <TR>
+  <TH>Valores posibles</TH>
+  <TD>número, longitud, porcentaje, normal</TD>
+  <TD>none, underline, line-through, blink</TD>
+  <TD>capitalize, uppercase, lowercase, none, inherit</TD>
+  <TD>left, right, center, justify, none</TD>
+  <TD>longitud, porcentaje</TD>
+  <TD>normal, inherit, medida</TD>
+  <TD>normal, inherit, medida</TD>
+  <TD>normal, pre, nowrap, pre-wrap, pre-line, inherit</TD>
+ </TR>
+  <TR>
+  <TH>Valor porcentual</TH>
+  <TD>Se calcula respecto al tama&ntilde;o de la fuente</TD>
+  <TD>No aplicable</TD>
+  <TD>No aplicable</TD>
+  <TD>No aplicable</TD>
+  <TD>Se calcula respecto al ancho del elemento padre</TD>
+  <TD>No aplicable</TD>
+  <TD>No aplicable</TD>
+  <TD>No aplicable</TD>
+ </TR>
+ <TR>
+  <TH>Se aplica a</TH>
+  <TD>Elementos a nivel de bloque</TD>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+  <TD>Elementos a nivel de bloque</TD>
+  <TD>Elementos a nivel de bloque</TD>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+ </TR>
+ <TR>
+  <TH>Se hereda?</TH>
+  <TD>S&iacute;</TD>
+  <TD>No</TD>
+  <TD>S&iacute;</TD>
+  <TD>S&iacute;</TD>
+  <TD>S&iacute;</TD>
+  <TD>S&iacute;</TD>
+  <TD>S&iacute;</TD>
+  <TD>S&iacute;</TD>
+ </TR>
+</TABLE>
+</center>
+
+
+
+<p>
+Tenemos tambi&eacute;n otras instrucciones que pueden modificar el aspecto de determinadas zonas en lugar de actuar sobre todo el bloque. <br>
+Son los pseudo-elementos. Por ejemplo:</p>
+
+<p>
+<font color="red">
+<pre>
+p :first-letter{ 
+  color:red;
+}
+p :first-line{ 
+  color:green;
+}
+p :after{ 
+  content:"Hola";
+}
+p :before{ 
+  content:"Por ejemplo:";
+}
+</pre></font>
+
+Como puedes ver, es f&aacute;cilmente deducible lo que hace cada uno: <br> <font color="red"><b>:first-letter</b></font> actuar&aacute; sobre la primera letra del p&aacute;rrafo.  <br>
+<font color="red"><b>:first-line</b></font> lo har&aacute; sobre la primera l&iacute;nea.  <br>
+<font color="red"><b>:after content:"Hola";</b></font> actuar&aacute; sobre el texto que haya despu&eacute;s de la palabra "Hola" y<br>
+<font color="red"><b>:before  content:"Por ejemplo:";</b></font>  antes de la frase "Por ejemplo:"
+<p>
+
+<hr>
+<A NAME="punto4"></A><h3>Bordes de un bloque</h3>
+
+ Con css se pueden definir los bordes de un bloque, que por defecto son invisibles. Por tanto, lo primero que hay que definir es el estilo del borde. Adem&aacute;s del estilo, se puede definir su color y grosor, y todo ello puede hacerse globalmente, sobre los cuatro lados del bloque, o cada uno por separado. Las unidades de medida y los nombres o c&oacute;digos de colores que pueden utilizarse, son los mismos que ya se han visto anteriormente para los textos. Para definir el grosor de los bordes tenemos:
+
+<ul>
+  <li><b><font color="red">border-left-width:</font></b><font color="blue">unidad</font> &nbsp; borde izquierdo
+  <li><b><font color="red">border-right-width:</font></b><font color="blue">unidad</font> &nbsp; borde derecho
+  <li><b><font color="red">border-top-width:</font></b><font color="blue">unidad</font> &nbsp; borde superior
+  <li><b><font color="red">border-bottom-width:</font></b><font color="blue">unidad</font> &nbsp; borde inferior
+  <li><b><font color="red">border-width:</font></b><font color="blue">unidad</font> &nbsp; los cuatros bordes
+</ul>
+
+Donde <font color="blue">unidad</font> es una de las ya conocidas, por ejemplo <font color="blue">1px</font>. Tambi&eacute;n pueden utilizarse constantes tales como <font color="blue"><b>thin</b></font> para fino (2px), <font color="blue"><b>medium</b></font> para medio (4px), y <font color="blue"><b>thick</b></font> para grueso (6px).
+<p>
+Ningun estilo de bordes (excepto <b>solid</b>) se lleva bien con el par&aacute;metro de grosor, que impl&iacute;citamente establece su dimensionado m&aacute;s conveniente. Tenemos:
+
+<ul>
+  <li><b><font color="red">border-left-style:</font></b><font color="blue">estilo</font> &nbsp; borde izquierdo
+  <li><b><font color="red">border-right-style:</font></b><font color="blue">estilo</font> &nbsp; borde derecho
+  <li><b><font color="red">border-top-style:</font></b><font color="blue">estilo</font> &nbsp; borde superior
+  <li><b><font color="red">border-bottom-style:</font></b><font color="blue">estilo</font> &nbsp; borde inferior
+  <li><b><font color="red">border-style:</font></b><font color="blue">estilo</font> &nbsp; los cuatros bordes
+</ul>
+
+Donde <font color="blue">estilo</font> puede ser: 
+<ul>
+  <li><font color="blue"><b>none</b></font> (por defecto)
+  <li><font color="blue"><b>solid</b></font> 
+  <li><font color="blue"><b>double</b></font> 
+  <li><font color="blue"><b>ridge</b></font> 
+  <li><font color="blue"><b>groove</b></font> 
+  <li><font color="blue"><b>inset</b></font> 
+  <li><font color="blue"><b>outset</b></font> 
+  <li><font color="blue"><b>dotted</b></font> 
+  <li><font color="blue"><b>dashed</b></font> 
+</ul>
+
+Por &uacute;ltimo, los par&aacute;metros de color de los bordes:
+<ul>
+  <li><b><font color="red">border-left-color:</font></b><font color="blue">color</font> &nbsp; borde izquierdo
+  <li><b><font color="red">border-right-color:</font></b><font color="blue">color</font> &nbsp; borde derecho
+  <li><b><font color="red">border-top-color:</font></b><font color="blue">color</font> &nbsp; borde superior
+  <li><b><font color="red">border-bottom-color:</font></b><font color="blue">color</font> &nbsp; borde inferior
+  <li><b><font color="red">border-color:</font></b><font color="blue">color</font> &nbsp; los cuatros bordes
+</ul>
+
+Donde <font color="blue">color</font> puede ser un nombre de color, en ingl&eacute;s, o su c&oacute;digo RGB en hexadecimal, como ya sabes.
+<p>
+Las combinaciones de todos estos par&aacute;metros son infinitas, y lo mejor es ir haciendo pruebas. Recuerda que cada nevegador interpreta todo esto a su manera, y algunos no lo interpretan en absoluto. He aqu&iacute; aplicado al ejemplo anterior sobre texto:
+<p>
+Si escribimos la siguiente hoja de estilo <font color="blue"><b>estilo.css</b></font>:
+<p>
+<font face="courier" color="blue">
+<pre>
+BODY {color:green }
+
+P {color:red; 
+   font-size:20px;
+   font-family:Courier;
+   font-weight:bold;
+   font-style:italic;
+   line-height:30px;
+   letter-spacing:5px;
+   text-decoration:underline;
+   text-transform:capitalize;
+   text-align:left;
+   text-indent:30px;
+   <font color="red">
+   border-width:2px;
+   border-color:blue;
+   border-style:solid;</font>
+  }</font>
+</pre>
+Se obtiene:
+<p>
+<font color="green">
+Texto fuera de párrafo.<br>
+Segunda línea fuera de párrafo.</font>
+
+<p style="color:red; 
+   font-size:20px;
+   font-family:Courier;
+   font-weight:bold;
+   font-style:italic;
+   line-height:30px;
+   letter-spacing:5px;
+   text-decoration:underline;
+   text-transform:capitalize;
+   text-align:left;
+   text-indent:30px;
+   border-width:2px;
+   border-color:blue;
+   border-style:solid;">texto de párrafo. <BR> segunda línea de párrafo
+</p>
+
+Y este ser&iacute;a un resumen de su utilizaci&oacute;n:
+
+<CENTER>
+<TABLE BORDER=1 CELLSPACING=2 CELLPADDING=2>
+ <TR>
+  <TH>Declaraci&oacute;n</TH>
+  <TD>border-left-width<br> border-right-width <br> border-top-width<br>
+      border-bottom-width<br> border-width</TD>
+  <TD>border-style</TD>
+   <TD>border-color <br> border-left-color <br> border-right-color<br> border-top-color<br> border-bottom-color</TD>
+ </TR>
+ <TR>
+  <TH>Valor por defecto</TH>
+  <TD>0</TD>
+  <TD>none</TD>
+  <TD>none</TD>
+ </TR>
+ <TR>
+  <TH>Valores posibles</TH>
+  <TD>Unidad de longitud, <br>thin, medium, thick</TD>
+  <TD>none, solid, double, inset, <br>outset, groove, ridge</TD>
+  <TD>none, color</TD>
+ </TR>
+  <TR>
+  <TH>Valor porcentual</TH>
+  <TD>No aplicable</TD>
+  <TD>No aplicable</TD>
+  <TD>No aplicable</TD>
+ </TR>
+ <TR>
+  <TH>Se aplica a</TH>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+ </TR>
+ <TR>
+  <TH>Se hereda?</TH>
+  <TD>No</TD>
+  <TD>No</TD>
+  <TD>No</TD>
+ </TR>
+</TABLE>
+</CENTER>
+ <P>
+
+
+
+<hr>
+<A NAME="punto5"></A><h3>M&aacute;rgenes de los bloques</h3>
+Los bloques, por defecto, se escriben en la ventana activa comenzando en el &aacute;ngulo superior izquierdo de la misma, y su contenido, en el interior del bloque, comienza en el mismo sitio. Esto es posible modificarlo:
+<p>
+Para los m&aacute;rgenes del bloque respecto a la ventana activa:
+
+<ul>
+  <li><b><font color="red">margin-left:</font></b><font color="blue">unidad</font> &nbsp; margen izquierdo
+  <li><b><font color="red">margin-right:</font></b><font color="blue">unidad</font> &nbsp; margen derecho
+  <li><b><font color="red">margin-top:</font></b><font color="blue">unidad</font> &nbsp; margen superior
+  <li><b><font color="red">margin-bottom:</font></b><font color="blue">unidad</font> &nbsp; margen inferior
+  <li><b><font color="red">margin:</font></b><font color="blue">unidad</font> &nbsp; los cuatros m&aacute;rgenes
+</ul>
+
+Donde <font color="blue">unidad</font> es una de las ya conocidas.
+<p>
+Para los m&aacute;rgenes <b>dentro</b> del bloque, es decir, respecto al borde del bloque:
+
+<ul>
+  <li><b><font color="red">padding-left:</font></b><font color="blue">unidad</font> &nbsp; margen interno izquierdo
+  <li><b><font color="red">padding-right:</font></b><font color="blue">unidad</font> &nbsp; margen interno derecho
+  <li><b><font color="red">padding-top:</font></b><font color="blue">unidad</font> &nbsp; margen interno superior
+  <li><b><font color="red">padding-bottom:</font></b><font color="blue">unidad</font> &nbsp; margen interno inferior
+  <li><b><font color="red">padding:</font></b><font color="blue">unidad</font> &nbsp; los cuatros m&aacute;rgenes internos
+</ul>
+
+En resumen:
+
+<CENTER>
+<TABLE BORDER=1 CELLSPACING=2 CELLPADDING=2>
+ <TR>
+  <TH>Declaraci&oacute;n</TH>
+  <td>margin<br>margin-left<br> margin-right<br> margin-top<br> margin-bottom</td>
+  <TD>padding<br> padding-left<br> padding-right<br> padding-top<br> padding-bottom</TD>
+ </TR>
+ <TR>
+  <TH>Valor por defecto</TH>
+  <TD>0</TD>
+  <TD>0</TD>
+ </TR>
+ <TR>
+  <TH>Valores posibles</TH>
+  <TD>Longitud, porcentaje, auto</TD>
+  <TD>Longitud, porcentaje</TD>
+ </TR>
+ <TR>
+  <TH>Valor porcentual</TH>
+  <TD>Se calcula respecto al ancho del padre</TD>
+  <TD>Se calcula respecto al ancho del padre</TD>
+ </TR>
+ <TR>
+  <TH>Se aplica a</TH>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+ </TR>
+ <TR>
+  <TH>Se hereda?</TH>
+  <TD>No</TD>
+  <TD>No</TD>
+ </TR>
+</TABLE>
+</CENTER> 
+<p>
+Existe otra propiedad que consigue efectos muy parecidos a los vistos en los bordes: <b>outline</b> que sirve para crear contornos alrededor de los objetos, tales como botones, campos activos de los formularios, etc., a fin de resaltarlos, pero no se trata de bordes, sino de contornos, es decir, est&aacute;n ligeramente m&aacute;s hacia adentro, y por tanto no ocupan lugar extra en la p&aacute;gina. La mala noticia es que no funciona en todos los navegadores.
+
+<hr>
+<A NAME="punto2"></A><h3>Dimensiones de los bloques</h3>
+Como ya se ha dicho m&aacute;s arriba, por defecto, y en funci&oacute;n de su contenido, el bloque ocupar&aacute; todo el ancho de la ventana y el alto que precise. Al componer la p&aacute;gina puede que esto no interese y se quiera limitar el espacio ocupado por el bloque. Para ello disponemos de dos declaraciones b&aacute;sicas para indicar el ancho y el alto exactos que se desea, así como otras para definir el  m&iacute;nimo y m&aacute;ximo tama&ntilde;o que deben alcanzar:
+<p>
+<CENTER>
+<TABLE BORDER=1 CELLSPACING=2 CELLPADDING=2>
+ <TR>
+  <TH>Declaraci&oacute;n</TH>
+  <td>width</TD>
+  <td>min-width</TD>
+  <td>max-width</TD>
+
+  <td>height</TD>
+  <td>min-height</TD>
+  <td>max-height</TD>
+ </TR>
+ <TR>
+  <TH>Valor por defecto</TH>
+  <TD>auto</TD>
+  <TD>Incierto</TD>
+  <TD>none</TD>
+
+  <TD>auto</TD>
+  <TD>0</TD>
+  <TD>none</TD>
+ </TR>
+ <TR>
+  <TH>Valores posibles</TH>
+  <TD>Longitud, porcentaje, auto, inherit</TD>
+  <TD>Longitud, porcentaje, inherit</TD>
+  <TD>Longitud, porcentaje, none, inherit</TD>
+
+  <TD>Longitud, porcentaje, auto, inherit</TD>
+  <TD>Longitud, porcentaje, inherit</TD>
+  <TD>Longitud, porcentaje, none, inherit</TD>
+ </TR>
+ <TR>
+  <TH>Valor porcentual</TH>
+  <TD>Se calcula respecto al ancho del padre</TD>
+  <TD>Se calcula respecto al ancho del padre</TD>
+  <TD>Se calcula respecto al ancho del padre</TD>
+
+  <TD>Se calcula respecto al alto del padre o auto</TD>
+  <TD>Se calcula respecto al alto del padre</TD>
+  <TD>Se calcula respecto al alto del padre</TD>
+ </TR>
+ <TR>
+  <TH>Se aplica a</TH>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+  <TD>Todos</TD>
+ </TR>
+ <TR>
+  <TH>Se hereda?</TH>
+  <TD>No</TD>
+  <TD>No</TD>
+  <TD>No</TD>
+
+  <TD>No</TD>
+  <TD>No</TD>
+  <TD>No</TD>
+ </TR>
+</TABLE>
+</CENTER> 
+
+<p>
+Desafortunadamente, cada navegador interpreta las cosas de una forma, y es necesario probar con cuantos se posible. Sea, por ejemplo, la siguiente hoja de estilo <font color="blue"><b>estilo.css</b></font>:
+<p>
+<font face="courier" color="blue">
+<pre>
+P {color:red; 
+   font-size:20px;
+   font-family:Courier;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   <font color="red">
+   width:100px; 
+   height:100px;</font>
+  }</font>
+</pre>
+Y este texto:
+<p>
+&lt;P&gt;Esto es un ejemplo de bloque de reducidas dimensiones que ocupa solamente 100 x 100 pixels&lt;/P&gt;
+<p>
+Dependiendo del navegador utilizado, esta sintaxis provocar&aacute; varios resultados: 
+<p>
+<center><table border=0><tr>
+<th>Internet Explorer</th><th>Opera</th><th>Netscape/Mocilla</th></tr>
+<tr><td><img src="blo_IE.gif"></td><td> <img src="blo_Opera.gif"> </td><td><img src="blo_Netscape.gif"></td></tr>
+</table></center>
+<p>
+Como puedes ver, los tres navegadores dan preferencia al texto, y luego... hacen lo que pueden. Es evidente que la instrucci&oacute;n que se les ha dado no es muy coherente, y para intentar solucionar el fiasco, se puede recurrir a un nuevo atributo: <b>overflow</b> que tiene cuatro par&aacute;metros:
+<ul>
+<li><b><font color="blue">visible</font></b> Indica que el contenido no ser&aacute; recortado a los l&iacute;mites del bloque, es decir, que puede ser presentado fuera de la caja de bloque ignorando sus l&iacute;mites. Este valor  provoca el mismo comportamiento del navegador que si no se utiliza el atributo <b>overflow</b>
+<li><b><font color="blue">hidden</font></b> Lo contrario del anterior. El contenido que no quepa dentro de los l&iacute;mites del bloque ser&aacute; recortado y no ser&aacute; visible ni accesible.
+<li><b><font color="blue">scroll</font></b> Mantiene las dimensiones definidas para el bloque, y provee de barras de escroll horizontal y vertical para todo el contenido que exceda los l&iacute;mites del bloque.
+<li><b><font color="blue">auto</font></b> Parecido al anterior. En lugar de crear barras de scroll tanto vertical como horizontal, incluso aunque alguna de ellas no sea necesaria, decide autom&aacute;ticamente cuales son precisas.
+</ul>
+Veamos un ejemplo utilizando <b>scroll</b>:
+<p>
+<font face="courier" color="blue">
+<pre>
+P {color:red; 
+   font-size:20px;
+   font-family:Courier;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   
+   width:100px; 
+   height:100px;
+   <font color="red">
+   overflow: scroll</font>
+  }</font>
+</pre>
+
+<p>
+Se obtiene:
+<p>
+<p style="color:red; 
+   font-size:20px;
+   font-family:Courier;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   width:100px; 
+   height:100px;
+   overflow: scroll">
+Esto es un ejemplo de bloque de reducidas dimensiones que ocupa solamente 100 x 100 pixels
+</p>
+Si se utiliza el par&aacute;metro <b>hidden</b> puede ocurrir que interese recortar una parte del bloque en lugar de utilizar toda el &aacute;rea resultante. No necesariamente el &aacute;rea a recortar debe provenir de <b>hidden</b>, puede ser un bloque cualquiera, con <b>overflow</b> o no. Para hacer un recorte de un bloque se utiliza la propiedad <font color="red"><b>clip:</b></font>  &nbsp; Por ejemplo:
+<p>
+<tt><font color="red">clip: rect(0,100px,100px,0);</font></tt>
+</p>
+El par&aacute;metro <b>rect</b> indica la forma geom&eacute;trica que se va a recortar. Actualmente s&oacute;lo est&aacute; disponible el <b>rect</b>&aacute;ngulo. El resto del par&aacute;metro son dos ejes de coordenadas: 0,100px,100px,0 que corresponden con los v&eacute;rtices  <b>superior derecho</b> e <b>inferior izquierdo</b> respectivamente.
+
+
+
+
+<hr>
+<A NAME="punto3"></A><h3>Color o gr&aacute;ficos de fondo del bloque</h3>
+Veamos por &uacute;ltimo c&oacute;mo cambiar el color de fondo de los bloques. 
+Sea, por ejemplo:
+ <font color="blue"><b>estilo.css</b></font>:
+<p>
+<font face="courier" color="blue">
+<pre>
+P {color:red; 
+   font-size:10px;
+   font-family:Courier;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   width:200px; 
+   height:100px;
+   <font color="red">
+   background: yellow;   </font>
+  }</font>
+</pre>
+
+<p style="color:red; 
+   font-size:10px;
+   font-family:Courier;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   width:200px; 
+   height:100px;
+   background: yellow; ">
+Esto es un ejemplo de bloque de reducidas dimensiones que ocupa solamente 200 x 100 pixels con fondo de color.
+</p>
+Como es habitual en HTML, los <a href="colorind.htm">colores</a> pueden definirse con su nombre en ingl&eacute;s o con la notaci&oacute;n RGB en hexadecimal. En este caso, el color amarillo del ejemplo puede obtenerse tambi&eacute;n con <b>background: #FFFF00;</b>  &nbsp; el color del fondo de cualquier elemento tambi&eacute;n puede ser <b>transparent</b> (por defecto). La propiedad color no se hereda, pero puede forzarse de la forma habitual: <b>inherit</b>
+<p>
+
+Si en lugar de un color le  quieres poner un gr&aacute;fico la sintaxis ser&aacute;:
+<p> 
+<b>background-image: url(../imgenes/fondo.gif);</b>
+<p>
+Esta opci&oacute;n tiene tres par&aacute;metros: 
+
+<ul>
+<li><b><font color="blue">repeat &nbsp; no-repeat &nbsp; repeat-y &nbsp; repeat-x</font></b> &nbsp;&nbsp; 
+   &nbsp; <b>repeat</b> (por defecto) hace que la imagen se repita tanto en horizontal como en vertical por todo el bloque. Dependiendo del tama&ntilde;o del gr&aacute;fico se puede conseguir un efecto mosaico o una sola imagen est&aacute;tica.  Para que solamente se repita en horizontal se utiliza <b>repeat-x</b>, y para que lo haga en vertical <b>repeat-y</b>.
+
+<li><b><font color="blue">attachment: fixed  &nbsp;  attachment: scroll</font></b> &nbsp; &nbsp, el valor <b>fixed</b> sirve para que la imagen se quede fija al hacer scroll con el texto, con lo que parece que el texto "flota" sobre la imagen. Para que la imagen acompañe al texto en su desplazamiento se utilizar&aacute; <b>scroll</b> (por defecto).
+
+
+<li><b><font color="blue">position</font></b> &nbsp; Indica la posici&oacute;n del gr&aacute;fico dentro del bloque. Si no se indica otra cosa, por defecto &eacute;ste ser&aacute; colocado en el &aacute;ngulo superior izquierdo del bloque. Para variar su posici&oacute;n se pueden escribir  las coordenadas deseadas de la esquina superior izquierda del gr&aacute;fico en p&iacute;xels o en tantos por ciento respecto al total del bloque.
+</ul>
+
+Estos tres par&aacute;metros adicionales (si se utilizan) hay que escribirlos <b>despu&eacute;s</b> de haber indicado la imagen a emplear como fondo. Por ejemplo:
+<p>
+
+<font face="courier" color="blue">
+<pre>
+P {color:red; 
+   font-size:10px;
+   font-family:Courier;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   width:200px; 
+   height:100px;
+   <font color="red">
+   background-image: url(fondo.jpg);  
+   background-attachment: fixed;
+   background-repeat: repeat;</font>
+  }</font>
+</pre>
+
+<p style="color:red; 
+   font-size:10px;
+   font-family:Courier;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   width:200px; 
+   height:100px;
+   background-image: url(fondo.jpg); 
+   background-attachment: fixed;
+   background-repeat: repeat; 
+   background-attachment: fixed;">
+Esto es un ejemplo de bloque de reducidas dimensiones que ocupa solamente 200 x 100 pixels con fondo gr&aacute;fico.
+</p>
+<hr>
+
+<A NAME="punto10"><h3>Gr&aacute;ficos y bloques flotantes</h3></a>
+
+Dentro de un bloque, adem&aacute;s de texto,  pueden ir gr&aacute;ficos u otros bloques. Para conseguir que estos objetos se alineen respecto al texto que ya exista en el bloque, o para que se alineen varios bloques entre s&iacute;, se utiliza la instrucci&oacute;n <font color="red"><b>float</b></font> que puede tener tres par&aacute;metros: <font color="blue"><b>left &nbsp; right &nbsp; none</b></font> (por defecto). Por ejemplo:
+
+<pre><font face="courier" color="blue">
+p {color:red; 
+   font-size:10px;
+   font-family:Verdana;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   width:200px; 
+   height:100px;
+  }
+
+img {<font color="red">float: right;</font>}
+</font></pre>
+
+Se obtiene:
+
+<p style="color:red; 
+   font-size:10px;
+   font-family:Verdana;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   width:200px; 
+   height:100px; ">
+
+
+<img src="cuadrado.gif" style="float: right; ">
+texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto </p>
+</p>
+
+Y por supuesto, adem&aacute;s de posicionarlos en el bloque, los gr&aacute;ficos se pueden  redimensionar y darles los atributos que sean necesarios para la mejor composici&oacute;n. Por ejemplo:
+
+<pre><font face="courier" color="blue">
+img {<font color="red">float: right;
+     width:60px;  
+     height:60px;
+     padding: 2px;</font>}
+</font></pre>
+
+
+<p style="color:red; 
+   font-size:10px;
+   font-family:Verdana;
+   border:2px;
+   border-color:blue;
+   border-style:solid;
+   width:200px; 
+   height:100px; ">
+
+
+<img src="cuadrado.gif" style="float: right;  width:60px;  height:60px; padding:2px;">
+texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto </p>
+</p>
+
+
+Despu&eacute;s de haber utilizado una instrucci&oacute;n <font color="red"><b>float</b></font> en un bloque, para cerrar su efecto sobre la alineaci&oacute;n de los objetos hay que escribir otra en el siguiente bloque: <b><font color="red">clear</font></b> que tambi&eacute;n tiene un par&aacute;metro con tres posibles valores: 
+<font color="blue"><b>left &nbsp; right &nbsp; both</b></font> Evidentemente, habr&aacute; que utilizar left o right según se haya definido el float anterior, y si se han incluido los dos, se utilizar&aacute; <b>both</b> (ambos).
+<p>
+Recuerda que las instrucciones de posicionamiento y dimensionado cada navegador las interpreta a su manera, y como siempre, se deber&aacute;n probar con los navegadores m&aacute;s habituales hasta dar con los par&aacute;metros que mejor funcionen en todos ellos (y esto puede llevar su tiempo...).
+<hr>
+
+<A NAME="punto9"></A><h3>Posici&oacute;n y visibilidad de los bloques</h3>
+
+Cuando un navegador carga una p&aacute;gina, generalmente, interpretar&aacute; el c&oacute;digo  HTML siguiendo el mismo orden en que fue escrito. A este orden natural de aparici&oacute;n de los elementos se le llama <b>flujo</b>.  Viene a ser como ir apilando un elemento encima de otro al tiempo que se asigna un n&uacute;mero de &iacute;ndice a cada uno, de forma que el que tenga el n&uacute;mero m&aacute;s alto aparecer&aacute; m&aacute;s cerca del espectador. Es posible alterar el flujo de una p&aacute;gina, es decir, que un elemento aparezca delante de otro que fue escrito <b>despu&eacute;s</b>. Para ello simplemente hay que cambiarle el n&uacute;mero que tiene en la pila con la propiedad &nbsp; <b><font color="red">z-index</font><font color="blue"> = n</font></b>, &nbsp; donde <font color="blue"><b>n</b></font> es un n&uacute;mero entero positivo o negativo.
+
+<p>
+ Cuando se altera el orden de la pila, los elementos hijos del elemento reasignado heredar&aacute;n el mismo nuevo n&uacute;mero de &iacute;ndice de su padre en la pila. Por ejemplo:
+<p>
+Sea una p&aacute;gina que contiene dos elementos <b>A</b> y <b>B</b>. A con <font color="red">z-index</font><font color="blue"> = 4</font> y B con <font color="red">z-index</font><font color="blue"> = 3</font>, A ser&aacute; procesado por encima de B. Supongamos que A tiene un descendiente <b>C</b> con <font color="red">z-index</font><font color="blue"> = 1</font>. El elemento C  tambi&eacute;n ser&aacute; procesado por encima de B aunque B tenga z-index = 3. Todos los elementos descendientes de A se situar&aacute;n por encima de B y por encima de todos los descendientes de B.
+<p>
+La propiedad z-index solamente funciona si los elementos han sido previamente colocados utilizando una instrucci&oacute;n de tipo de posicionamiento: <font color="red"><b>position: </font> <font color="blue">valor;</font></b>
+<p>
+<CENTER>
+<table border="1">
+  <tr> <th> Declaraci&oacute;n</th> <td>position </td> </tr>
+  <tr> <th>Valor por defecto</th>  <td>static </td>  </tr>
+  <tr> <th >Valores posibles</th>
+      <td >static <br> relative <br> absolute <br> fixed <br> inherit </td>  </tr>
+  <tr> <th>Valor porcentual</th> <td>No aplicable</td> </tr>
+  <tr><th>Se aplica a</th>    <td>Todos</td>  </tr>
+  <tr> <th>Se hereda?:</th> <td>No</td>  </tr>
+</table>
+</CENTER>
+<p>
+Si se utiliza <font color="blue"><b>static</b></font>, como su nombre indica,  no se puede modificar la posici&oacute;n natural de los elementos. Si se quiere mover un elemento de su posici&oacute;n natural hay que utilizar los valores <font color="blue"><b>relative</b></font> o <font color="blue"><b>absolute</b></font>.
+
+<p>
+En este ejemplo de posicionamiento relativo, al segundo elemento se le aplica un desplazamiento de 5 px por arriba y por la izquierda, lo que da por resultado que invada parte del espacio del elemento 3 y se salga del contenedor por la derecha, es decir, que los posicionamientos relativos de un elemento solamente afectan a ese elemento, mientras que el resto continua manteniendo sus posiciones normales en el flujo.
+
+<p>
+   <div style="border: 2px solid red; position: relative; width: 200px;">
+      <div style="background: #0000ff;  color: white;">BLOQUE 1</div>
+      <div style="background: #00a0a0;  position: relative; 
+         top: 5px; left: 5px; color: white;">BLOQUE 2</div>
+      <div style="background: #ffc0c0;  color: white;">BLOQUE 3</div>
+   </div>
+<p>
+Este es el c&oacute;digo necesario:
+<font face="courier">
+<pre>
+&lt;div style="position: relative; border: 2px solid red; width: 200px;"&gt;
+   &lt;div style="background:  #0000ff; color: white;"&gt; BLOQUE 1&lt;/div&gt;
+   &lt;div style="<font color="red"><b>position:</font> <font color="blue">relative;</font> top: 5px; left: 5px;</b> 
+         background: #00a0a0; color: white;"&gt;BLOQUE 2&lt;/div&gt;
+   &lt;div style="background: #ffc0c0; color: white;"&gt;BLOQUE 3&lt;/div&gt;
+&lt;/div&gt;
+</pre></font>
+
+Y puede que te preguntes de d&oacute;nde han salido las instrucciones <font color="blue"><b>top</b></font> y <font color="blue"><b>left</b></font>. &nbsp;  Pues son dos de las cuatro direcciones en que se pueden mover los bloques, y junto con <font color="blue"><b>bottom</b></font> y <font color="blue"><b>rigth</b></font> nos permitir&aacute;n indicar la direcci&oacute;n de los movimientos tanto absolutos como relativos. F&iacute;jate  en que estas cuatro instrucciones no indican en qu&eacute; direcci&oacute;n se mover&aacute; el elemento, sino el espacio que se dejar&aacute; libre antes de procesar el elemento.
+<p>
+Veamos ahora qu&eacute; ocurre si el desplazamiento indicado es <b>absolute</b>:
+<p>
+   <div style="border: 2px solid red; position: relative; width: 200px;">
+      <div style="background: #0000ff;  color: white;">BLOQUE 1</div>
+      <div style="background: #00a0a0;  position: absolute; 
+         top: 10px; left: 85px; color: white; width: inherit;">BLOQUE 2</div>
+      <div style="background: #ffc0c0;  color: white;">BLOQUE 3</div>
+   </div>
+<p>
+Como puedes ver, en este caso el espacio abandonado por el elemento 2 no queda libre, y ha sido optimizado por el bloque contenedor, superponi&eacute;ndose el bloque 2 sobre el 1 y el 3. El bloque 2, adem&aacute;s, ha perdido la longitud que heredaba del bloque contenedor, y que si se quiere mantener, ser&aacute; necesario forzar la herencia con <b>width: inherit;</b>
+<p>
+Este es el c&oacute;digo:
+<font face="courier">
+<pre>
+&lt;div style="position: relative; border: 2px solid red; width: 200px;"&gt;
+   &lt;div style="background:  #0000ff; color: white;"&gt; BLOQUE 1&lt;/div&gt;
+   &lt;div style="<font color="red"><b>position:</font> <font color="blue">absolute;</font> top: 10px; left: 85px; width: inherit;</b> 
+         background: #00a0a0; color: white;"&gt;BLOQUE 2 &lt;/div&gt;
+   &lt;div style="background: #ffc0c0; color: white;"&gt;BLOQUE 3&lt;/div&gt;
+&lt;/div&gt;
+</pre></font>
+<p>
+Se dice que un bloque est&aacute; posicionado si su propiedad <b>position</b> es distinta de <b>static</b>, como en los dos ejemplos anteriores. Las direcciones de desplazamiento pueden ser: <font color="red"><b>top, right, bottom, left</b></font>
+
+<p><center>
+<table border="1">
+  <tr> <th> Declaraciones</th> <td>top<br> right<br> bottom<br> left<br> </td> </tr>
+  <tr> <th>Valor por defecto</th>  <td>auto </td>  </tr>
+  <tr> <th >Valores posibles</th>
+      <td >auto <br> inherit <br> valor porcentual <br>medida  </td>  </tr>
+  <tr> <th>Valor porcentual</th> <td>Referido a la altura del bloque contenedor</td> </tr>
+  <tr><th>Se aplica a</th>    <td>Bloques posicionados</td>  </tr>
+  <tr> <th>Se hereda?:</th> <td>No</td>  </tr>
+</table></center>
+
+
+<p>
+Veamos ahora otra propiedad muy interesante de los bloques que permite que sean visibles o no: se trata de &nbsp; <font color="red"><b>display: </font><font color="blue">valor;</b></font> &nbsp; donde <font color="blue"><b>valor</b></font> puede ser, entre otros:
+<p><center>
+<table border="1">
+  <tr> <th> Declaraci&oacute;n</th> <td>display </td> </tr>
+  <tr> <th>Valor por defecto</th>  <td>inline </td>  </tr>
+  <tr> <th >Valores posibles</th>
+      <td >inline <br>
+       none <br>
+       inherit <br>
+       block <br>
+       list-item<br>
+       table<br>
+       inline-table<br>
+       table-row-group<br>
+       table-header-group<br>
+       table-footer-group<br>
+       table-row<br>
+       table-column-group<br>
+       table-column<br>
+       table-cell<br>
+       table-caption<br>
+       
+      
+      
+      </td>  </tr>
+  <tr> <th>Valor porcentual</th> <td>No aplicable</td> </tr>
+  <tr><th>Se aplica a</th>    <td>Todos</td>  </tr>
+  <tr> <th>Se hereda?:</th> <td>No</td>  </tr>
+</table></center>
+<p>
+Cualquiera de los valores posibles (excepto <b>none</b>) generar&aacute; uno o varios bloques. Al aplicar el valor <font color="blue"><b>none</b></font> se consigue la desaparici&oacute;n del bloque, incluido su espacio en la p&aacute;gina. Los elementos descendientes tampoco ser&aacute;n visibles ni ocupar&aacute;n espacio, es decir, no se trata de bloques invisibles, sino inexistentes a todos los efectos. Esa es la diferencia con las propiedades sobre visibilidad, que se describen a continuaci&oacute;n,  que provocan que un elemento pueda ser invisible pero siga ocupando un espacio en la página.
+<p>
+La siguiente propiedad, <font color="red"><b>visibility: <font color="blue">valor</font></b> </font>como su nombre indica, permite controlar la visibilidad de un bloque, pero siempre conservando en la p&aacute;gina su espacio f&iacute;sico inicial. En realidad se hace transparente, lo que permite utilizarlo para ocultar o destapar otros bloques.
+<p><center>
+<table border="1">
+  <tr> <th> Declaraci&oacute;n</th> <td>visibility </td> </tr>
+  <tr> <th>Valor por defecto</th>  <td>visible </td>  </tr>
+  <tr> <th >Valores posibles</th>
+      <td >visible <br> hidden <br> inherit <br>collapse  </td>  </tr>
+  <tr> <th>Valor porcentual</th> <td>No aplicable</td> </tr>
+  <tr><th>Se aplica a</th>    <td>Bloques</td>  </tr>
+  <tr> <th>Se hereda?:</th> <td>No</td>  </tr>
+</table></center>
+<p>
+
+<p>
+<hr>
+<A NAME="punto11"><h3>CSS + JavaScript</h3></a>
+La combinaci&oacute;n de CSS y JavaScript es una poderosa herramienta para que las p&aacute;ginas resulten mucho m&aacute;s din&aacute;micas.
+<p>
+En este ejemplo se consigue que un bloque sea sustituido por otro al pulsar el bot&oacute;n de un formulario. Pude hacerse con un link, o con cualquier otro elemento. Solamente hay que capturar el evento correspondiente.
+<p>
+<div id="Changer1" class="ParentDiv01">
+   <div class="ChildDivOrig" style="height: 100px;">
+      <div style="border: 2px solid red;  width: 200px;">
+         <div style="background: #0000ff;  color: white;">BLOQUE 1</div>
+         <div style="background: #00a0a0;  color: white;">BLOQUE 2</div>
+         <div style="background: #ffc0c0;  color: white;">BLOQUE 3</div>
+      </div>
+   </div>
+
+   <div class="ChildDivNew" style="height: 100px;">
+      <div style="font-size: 12px;"><BR>
+        <tt>&lt;div style="border: 5px solid red; width: 200px;"&gt;</tt><BR>
+        <tt>&lt;div style="background: #0000ff; color: white;"&gt;BLOQUE 1&lt;/div&gt;</tt><BR>
+        <tt>&lt;div style="background: #00a0a0; color: white;"&gt;BLOQUE 2&lt;/div&gt;</tt><BR>
+        <tt>&lt;div style="background: #ffc0c0; color: white;"&gt;BLOQUE 3&lt;/div&gt;</tt><BR>
+         <tt>&lt;/div&gt;</tt>
+      </div>
+   </div>
+
+</div>
+
+<form action="" >
+  <input type="button" onclick="change2New('Changer1');" value="Ver c&oacute;digo" >
+  <input type="button" onclick="change2Orig('Changer1');" value="Ver bloque">
+</form>
+<p>
+
+En este otro ejemplo se elimina un bloque de la p&aacute;gina al pulsar sobre un p&aacute;rrafo, aunque podr&iacute;a ser cualquier otro elemento. Aunque lo parezca, no es igual que el anterior, ya que aqu&iacute; el espacio del bloque desaparecido es recuperado.
+<p>
+
+<p style="cursor:s-resize" onClick="Alternar(seccion1)">
+   Pulsar aqu&iacute; para ocultar o mostrar el p&aacute;rrafo siguiente.
+</p>
+
+<div id="seccion1" style="background: #ffc0c0; color: white; display: block">
+   Este bloque aparece y desaparece de la p&aacute;gina.
+</div> 
+<p>
+Este es un ejemplo de la capacidad de CSS + JavaScript para ocultar bloques.
+<p>
+Veamos el c&oacute;digo JavaScript necesario:
+<font face="courier" color="blue">
+<pre>
+function Alternar(Seccion){ 
+    if (Seccion.style.display=="none"){Seccion.style.display=""}
+    else{Seccion.style.display="none"} 
+}
+</pre></font>
+
+Aqu&iacute; est&aacute; el c&oacute;digo HTML:
+<font face="courier" color="blue">
+<pre>
+&lt;p style="cursor:s-resize" onClick="Alternar(seccion1)"&gt;
+   Pulsar aqu&iacute; para ocultar o mostrar el p&aacute;rrafo siguiente.
+&lt;/p&gt;
+
+&lt;div id="seccion1" style="background: #ffc0c0; color: white; display: block"&gt;
+   Este bloque aparece y desaparece de la p&aacute;gina.
+&lt;/div&gt;
+</pre></font>
+
+Y aqu&iacute; la hoja de estilo.
+<font face="courier" color="blue">
+<pre>
+ParentDiv01 .ChildDivOrig {display: block;} 
+.ParentDiv01 .ChildDivNew {display: none;}
+.ParentDiv02 .ChildDivOrig {display: none;}
+.ParentDiv02 .ChildDivNew {display: block;}
+</pre></font>
+
+<hr>
+<A NAME="punto6"></A><h3>Estilo de las listas</h3>
+Es posible definir el tipo  de las listas con CSS.  Por ejemplo:
+
+<pre>
+ul {<font color="red">list-style-type:square;</font>}
+ol {<font color="red">list-style-type:upper-roman;</font>}
+</pre>
+
+El par&aacute;metro <b>list-style-type</b> puede tener, entre otros,  los siguientes valores:
+
+<ul>
+  <li><font color="blue"><b>disc</b></font> (por defecto)
+  <li><font color="blue"><b>none</b></font>
+  <li><font color="blue"><b>circle</b></font>
+  <li><font color="blue"><b>square</b></font>
+  <li><font color="blue"><b>decimal</b></font>
+  <li><font color="blue"><b>upper-roman</b></font>
+  <li><font color="blue"><b>lower-roman</b></font>
+  <li><font color="blue"><b>upper-alpha</b></font>
+  <li><font color="blue"><b>lower-alpha</b></font>
+</ul>
+
+Como puedes ver, aunque denominados de otra forma, coinciden con los definidos en la secci&oacute;n de las <a href="listas.htm">listas</a> vistas en HTML.
+<hr>
+
+<A NAME="punto7"></A><h3>Estilos en los links</h3>
+Hay un elemento HTML que genera un estilo propio por defecto:  <b>&lt;A></b>. Como ya sabes, los enlaces aparecen por defecto de otro color y subrayados, y cambian de color seg&uacute;n hayan sido visitados o no. Estos efectos de estilo no definidos por el usuario se llaman <b>pseudoclases</b>. Hay dos posibles modificaciones de estilo para este elemento; el color del enlace en sus distintos estados y si aparece subrayado o no. Te&oacute;ricamente no debiera influir el orden en que se escriban los distintos estados en la CSS, pero es mejor escribir las declaraciones en el siguiente orden (por supuesto, los colores son libres):
+
+<pre><font color="red">
+a {text-decoration: none;}
+
+a:link {color: #FF0000;}
+a:visited {color: #00FF00;}
+a:hover {color: #FF00FF;}
+a:active {color: #0000FF;}
+</font></pre>
+
+Donde <b>link</b> indica que el enlace no ha sido visitado, <b>visited</b> 	que el enlace ha sido visitado, <b>active</b> que el enlace est&aacute; siendo pulsado, y <b>hover</b> que el rat&oacute;n est&aacute; pasando sobre &eacute;l (sin pulsar).
+
+
+<hr>
+<A NAME="punto8"></A><h3>Estilos en los formularios</h3>
+Todo lo visto sobre los estilos, tambi&eacute;n es aplicable a los elementos de un formulario, bien desde las hojas CSS o en el c&oacute;digo HTML del propio formulario. Por ejemplo el formulario:
+<p>
+
+<FORM METHOD="GET" ACTION="">
+
+<INPUT type="text" style="background:yellow;color:red" name="campo1" VALUE="Borde simple">
+
+<INPUT type="text" style="border:double;background:yellow;color:blue" 
+name="campo2" VALUE="Borde doble">
+
+<INPUT type="text" style="border:1;background:yellow;color:blue" readonly
+name="campo2" VALUE="Solo lectura sin borde">
+
+ <INPUT TYPE="button" style="background:transparent;color:red" VALUE="Botón transparente">
+
+</FORM>
+<p>
+Se escribe as&iacute;:
+
+<pre>
+&lt;FORM METHOD=&quot;GET&quot; ACTION=&quot;&quot;&gt;
+
+   &lt;INPUT TYPE=&quot;text&quot; <B>STYLE=&quot;background:yellow;color:red&quot; </B>NAME=&quot;campo1&quot; 
+       VALUE=&quot;Borde simple&quot;&gt;
+
+   &lt;INPUT TYPE=&quot;text&quot; <B>STYLE=&quot;border:double;background:yellow;color:blue&quot; </B>NAME=&quot;campo2&quot; 
+       VALUE=&quot;Borde doble&quot;&gt;
+
+   &lt;INPUT TYPE=&quot;text&quot; <B>STYLE=&quot;border:0;background:yellow;color:blue&quot; </B>readonly NAME=&quot;campo3&quot; 
+       VALUE=&quot;Solo lectura sin borde&quot;&gt;
+
+   &lt;INPUT TYPE="button" <B>STYLE=&quot;background:transparent;color:red&quot; </B>
+       VALUE="Botón transparente"&gt;
+
+&lt;/FORM&gt;
+</pre>
+
+Este formulario tiene las instrucciones de estilo embebidas en el c&oacute;digo html. Su equivalente utilizando hoja css ser&iacute;a:
+
+<pre>
+&lt;FORM METHOD=&quot;GET&quot; ACTION=&quot;&quot;&gt;
+
+   &lt;INPUT <B>CLASS="controles1" </B> TYPE=&quot;text&quot; NAME=&quot;campo1&quot;  VALUE=&quot;Borde simple&quot; &gt;
+
+   &lt;INPUT <B>CLASS="controles2" </B> TYPE=&quot;text&quot; NAME=&quot;campo2&quotVALUE=&quot;Borde doble&quot;&gt;
+
+   &lt;INPUT <B>CLASS="controles3"</B> TYPE=&quot;text&quot; readonly NAME=&quot;campo3&quot; VALUE=&quot;Solo lectura sin borde&quot;&gt;
+
+   &lt;INPUT <B>CLASS="botones" </B> TYPE="button" VALUE="Botón transparente"&gt;
+
+&lt;/FORM&gt;
+</pre>
+
+Y esta ser&iacute;a la hoja de estilo correspondiente:
+
+<font face="courier" color="blue">
+<pre>
+/* Hoja de estilo del formulario */
+.controles1 {background:yellow;color:red;}
+.controles2 {border:double;background:yellow;color:blue}
+.controles3 {border:0;background:yellow;color:blue}
+.botones {background:transparent;color:red}
+</pre>
+</font>
+
+
+En los formularios se puede cambiar el estilo de los bordes de los controles, pero no el grosor como se hace en los bloques de texto. Un formulario se puede considerar un bloque, por lo que tambi&eacute;n es posible cambiar el color del fondo, definir bordes, etc. Por supuesto, todo esto tambi&eacute;n es aplicable a las tablas, im&aacute;genes y al resto de elementos html.
+
+<hr>
+<A NAME="punto12"><h3>Efectos especiales con el texto</h3></a>
+Algunas veces habr&aacute;s visto p&aacute;ginas con textos que parecen gr&aacute;ficos. Algunos tipos, en efecto, solamente se pueden conseguir con editores gr&aacute;ficos, pero algunas veces son simples efectos de estilo. Veamos un ejemplo:
+
+<font face="courier" color="blue">
+<pre>
+all.texto {
+  margin-top:-24px;
+  color:yellow;
+  font-size:20px;
+  font-family:Verdana;
+}
+all.sombra {
+  margin-top:2px;
+  margin-left:2px;
+  color:black;
+  font-size:20px;
+  font-family:Verdana;
+}
+
+&lt;DIV ALIGN="CENTER" CLASS="sombra"&gt;Prueba de texto sombreado&lt;/DIV&gt;
+&lt;DIV ALIGN="CENTER" CLASS="texto"&gt;Prueba de texto sombreado&lt;/DIV&gt;
+</pre></font>
+
+Se obtiene:
+
+<DIV ALIGN="CENTER" STYLE="margin-top: 2px; margin-left: 2px; color: black; font-size: 20px; font-family:Verdana;">Prueba de texto sombreado</DIV>
+<DIV ALIGN="CENTER" STYLE="margin-top: -24px; color: yellow; font-size: 20px; font-family:Verdana;">Prueba de texto sombreado</DIV>
+
+<p>
+Y si en lugar de escribir una hoja css prefieres hacerlo con estilo embebido en el HTML, este es el c&oacute;digo:
+<p>
+<font face="courier" color="blue" size=2>
+&lt;DIV ALIGN="CENTER" STYLE="margin-top:2px; margin-left:2px; color:black; <br>
+font-size:20px; font-family:Verdana;"&gt;Prueba de texto sombreado&lt;/DIV&gt;
+<p>
+&lt;DIV ALIGN="CENTER" STYLE="margin-top:-24px; color:yellow; font-size:20px;<br>
+font-family:Verdana;"&gt;Prueba de texto sombreado&lt;/DIV&gt;
+</font>
+
+
+<hr>
+<A NAME="punto13"><h3>Tablas</h3></a> Las tablas generadas con HTML tienen un serio problema de est&eacute;tica. En efecto, si los bordes son visibles, su estilo es bastante tosco y pueden arruinar cualquier dise&ntilde;o. Existen instrucciones en CSS para conseguir que las tablas tengan bastante mejor aspecto. Se puede modificar cualquiera de sus componentes: bordes de la tabla, bordes de las celdas, fondo, t&iacute;tulo, alineaci&oacute;n, etc.
+
+<p><center>
+<table border="1">
+  <tr> <th> Declaraci&oacute;n</th> 
+          <td>caption </td> 
+          <td>empty-cells </td> 
+          <td>border-collapse</td>
+          <td>border-spacing</td> 
+          <td>table-layout</td>
+          <td>white-space</td></tr>
+  <tr> <th>Valor por defecto</th>
+          <td>top </td> 
+          <td> show </td> 
+          <td>separate</td>
+          <td>0 0</Td> 
+          <td>auto</td>
+          <td>normal</td></tr>
+  <tr> <th >Valores posibles</th>
+          <td>top<br>bottom</td> 
+          <td >show <br> hide <br>inherit </td>
+          <td>separate<br>collapse</td>  
+          <td>cualquier unidad <br>de medida</td> 
+          <td>auto<br>fixed</td>
+          <td>normal<br>pre<br>nowrap</td></tr>
+  <tr> <th>Valor porcentual</th> 
+          <td>No aplicable</td> 
+          <td>No aplicable</td>
+          <td>No aplicable</td> 
+          <td>No aplicable</td>
+          <td>No aplicable</td>  
+          <td>No aplicable</td></tr>
+  <tr><th>Se aplica a</th>
+          <td>table</td> 
+          <td> td th</td>
+          <td>Todos</td> 
+          <td>Todos</td>
+          <td>table</td>
+          <td>Todos</td></tr>
+  <tr> <th>Se hereda?:</th> 
+          <td>No</td> 
+          <td>Si</td> 
+          <td>Si</td> 
+          <td>Si</td>
+          <td>No</Td>
+          <td>No</td></tr>
+</table></center>
+<p>
+
+Adem&aacute;s de estas declaraciones espec&iacute;ficas est&aacute;n disponibles todas las que afectan a los bordes, tanto de la tabla como de las celdas. Las combinaciones posibles de todas ellas son tantas, que lo mejor es verlas sobre la marcha con el magnífico asistente dis&ntilde;ado por <a href="t1.htm">SONACON</a>. El c&oacute;digo obtenido, como siempre, es conveniente probarlo en los navegadores más comunes, ya que suele haber notables diferencias de interpretaci&oacute;n entre ellos.
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

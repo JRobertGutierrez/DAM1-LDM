@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>VBScript 3 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Visual Basic Script</H2>
+<h3>Operadores</h3>
+
+Sin tener en cuenta los operadores de concatenaci&oacute;n (<b>&</b> y <b>+</b>) de los que ya se ha hablado en la secci&oacute;n <a href="../asp/asp2.htm">c&oacute;mo se escribe el ASP</a>, en VBScript hay tres clases de operadores:
+<ul>
+<li>Operadores aritm&eacute;ticos.
+<li>Operadores de comparaci&oacute;n.
+<li>Operadores l&oacute;gicos.
+</ul>
+
+<h3>Prioridad de los operadores</h3>
+
+Los operadores tienen unas prioridades preestablecidas, es decir, que si en una expresi&oacute;n hay que resolver varias operaciones, cada parte se evaluar&aacute; y resolver&aacute; en un cierto orden. Si es necesario alterar ese orden, se puede recurrir a escribir las distintas partes de la expresi&oacute;n entre par&eacute;ntesis, lo que provoca que se ejecuten antes que las partes que no esten entre par&eacute;ntesis. No obstante, las operaciones escritas dentro de los par&eacute;ntesis continuar&aacute;n ejecut&aacute;ndose en el orden de prioridad de los distintos operadores.
+<p>
+Si se escriben expresiones que contienen operadores de distintas clases, se evaluar&aacute;n  en el orden expuesto m&aacute;s arriba. Todos los operadores de comparaci&oacute;n tienen la misma prioridad, por lo que se ejecutar&aacute;n, de izquierda a derecha en el orden en el que se hayan escrito. Los aritm&eacute;ticos y l&oacute;gicos lo hacen en el siguiente orden:
+
+<h3>Aritm&eacute;ticos</h3>
+
+<font color="red" size=3>Exponenciaci&oacute;n <b>(^)</b></font>. Elevar un n&uacute;mero a la potencia del exponente: <font color="blue" face="Courier">3<font color="red">^</font>2 = 9 </font>. Si el n&uacute;mero o el exponente es una expresi&oacute;n de valor <b>Null</b>, el resultado tambi&eacute;n da <b>Null</b>. El n&uacute;mero puede ser negativo si el exponente es un entero.
+<p>
+<font color="red" size=3>Negativo <b>(-)</b></font>. Indica el valor negativo de un n&uacute;mero o una expresi&oacute;n: <font color="blue" face="Courier"><font color="red">-</font>3</font>. 
+<p>
+<font color="red" size=3>Multiplicaci&oacute;n <b>(*)</b></font>. Multiplica dos  n&uacute;meros: <font color="blue" face="Courier">3<font color="red">*</font>2 = 6 </font>.  
+<p>
+<font color="red" size=3>Divisi&oacute;n <b>(/)</b></font>. Divide dos  n&uacute;meros, obteniendo un cociente de coma flotante: <font color="blue" face="Courier">5<font color="red">/</font>2 = 2,5 </font>.  
+<p>
+<font color="red" size=3>Divisi&oacute;n entera <b>(\)</b></font>. Divide dos  n&uacute;meros, obteniendo un <b>cociente</b> entero: <font color="blue" face="Courier">5<font color="red">\</font>2 = 2 </font>.  Para obtener el cociente entero, VBScript lo que hace es redondear primero los factores de la divisi&oacute;n aplic&aacute;ndoles un tipo de dato que no soporta decimales, como <b>Integer, Long o Byte</b>, y procediendo despu&eacute;s a realizar la divisi&oacute;n. 
+<p>
+<font color="red" size=3>M&oacute;dulo aritm&eacute;tico <b>(Mod)</b></font>. Divide dos  n&uacute;meros, obteniendo un <b>resto</b> entero: <font color="blue" face="Courier">11111111<font color="red"> Mod </font>23 = 18 </font>.  Para obtener el resto  entero, VBScript lo que hace es redondear primero los factores de la divisi&oacute;n y una vez convertidos en enteros procede a realizarla. 
+<p>
+<font color="red" size=3>Suma <b>(+)</b></font>. Suma dos n&uacute;meros: <font color="blue" face="Courier">3<font color="red">+</font>2 = 5 </font>.  Si en lugar de n&uacute;meros se suman cadenas, como por ejemplo <font color="blue" face="Courier">"A"<font color="red">+</font>"B" = "AB" </font> se produce una concatenaci&oacute;n. No debe utilizarse para este fin. El operador correcto para concatenar cadenas es <font color="red">&</font>.
+<p>
+<font color="red" size=3>Resta <b>(-)</b></font>. Halla la diferencia entre dos  n&uacute;meros. Ejemplo A: <font color="blue" face="Courier">3<font color="red">-</font>2 = 1 </font>. Ejemplo B: <font color="blue" face="Courier">(-1)<font color="red">-</font>(-2) = 1 </font>. 
+<p>
+<font color="red" size=3>Concatenaci&oacute;n de cadenas <b>(&)</b></font>.  <font color="blue" face="Courier">"A"<font color="red">&</font>"B" = AB </font>. Si alguno de los elementos a concatenar no es una cadena de texto, queda convertido a cadena: <font color="blue" face="Courier">"AB"<font color="red">&</font>123 = "AB123" </font>
+<p>
+Aunque aparece aqu&iacute;, el operador de concatenaci&oacute;n  (<b>&</b>) no es un operador aritm&eacute;tico, pero su prioridad hace que se ejecute despu&eacute;s de todos los aritm&eacute;ticos y antes de todos los de comparaci&oacute;n.
+La multiplicaci&oacute;n y la divisi&oacute;n, tienen entre s&iacute; la misma prioridad, por lo que se ejecutan en el orden en que se hayan escrito en la expresi&oacute;n. Lo mismo sucede con la suma y la resta. F&iacute;jate en que el signo negativo aparece en segunda posici&oacute;n del orden de prioridad, no confundir con la resta, que est&aacute; en las &uacute;ltimas posiciones.
+<p>
+
+
+<h3>L&oacute;gicos</h3>
+
+Estos operadores tienen unas aplicaciones un tanto especiales, ya que no funcionan como los aritm&eacute;ticos,  conocidos por todos. Para comprender el funcionamiento de los operadores l&oacute;gicos, primero hay que saber qu&eacute; son los <b>estados l&oacute;gicos</b> de una expresi&oacute;n. Y te preguntar&aacute;s que es eso de "estados l&oacute;gicos"... Esta es una cuesti&oacute;n un tanto filos&oacute;fica, ya que el estado l&oacute;gico de algo depende de respecto a qu&eacute; establecemos ese estado, y por tanto no siempre ser&aacute; el mismo. Depender&aacute; del entorno o contexto en el que se define y utiliza la expresi&oacute;n. En BVScript hay tres posibles estados l&oacute;gicos: <font color="green">True</font> (verdadero),  <font color="green">False</font> (falso) y <font color="green">Null</font> (nulo, es decir que no se ha establecido estado alguno por la raz&oacute;n que sea)
+<p>
+Por ejemplo, supongamos que hay que establecer el estado l&oacute;gico de un material:  <font color="blue">El hierro</font>. Evidentemente, para establecer un <b>estado l&oacute;gico</b> primero tenemos que decidir respecto a qu&eacute; se establece ese estado, ya que no podemos decir simplemente que el hierro es verdad o mentira. Nos tendremos que referir a alguna cualidad del material y compararla con algo para establecer si el estado es verdadero o falso.
+<p>
+Sea la expresi&oacute;n <font color="blue" face="Courier">El hierro es un metal </font>. Si tenemos que establecer el estado l&oacute;gico de esta expresi&oacute;n, la respuesta inmediata es <font color="green">Verdadero</font> (True) y si la expresi&oacute;n fuese <font color="blue" face="Courier">El hierro no es un metal </font>, inmediatamente pensar&iacute;mos que el estado adecuado es <font color="green">Falso</font> (False)
+<p>
+Una vez establecido el <b>estado l&oacute;gico</b> de la expresi&oacute;n, los <b>operadores l&oacute;gicos</b> nos permiti&aacute;n tomar decisiones mediante la verificaci&oacute;n de ese estado, bien tomando uno solo, o agrupando varios de ellos. Al igual que los operadores aritm&eacute;ticos, los operadores l&oacute;gicos tienen un orden preestablecido de evaluaci&oacute;n:
+
+
+<p>
+<font color="red" size=3>Negaci&oacute;n l&oacute;gica <b>(Not)</b></font>.  Establece una negaci&oacute;n l&oacute;gica en una expresi&oacute;n, es decir, que ante una expresi&oacute;n, cuyo estado l&oacute;gico es <font color="green"><b>True</b></font> (verdadero), el operador har&aacute; que devuelva <font color="green"><b>False</b> </font>(falso).
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="red">Not</font><font color="blue" face="Courier"> El hierro es un metal = <font color="green">False</font>.</font>
+<p>
+Hay tres posibles resultados aplicando este operador a una expresi&oacute;n:
+<p>
+<font color="blue" face="Courier">Si la expresi&oacute;n = <font color="green">True</font> el operador devuelve <font color="green">False</font>. </font><br>
+<font color="blue" face="Courier">Si la expresi&oacute;n = <font color="green">False</font> el operador devuelve <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">Si la expresi&oacute;n = <font color="green">Null</font> el operador devuelve <font color="green">Null</font>. </font>
+<p>
+
+<font color="red" size=3>Conjunci&oacute;n l&oacute;gica <b>(And)</b></font>.  Establece una conjunci&oacute;n l&oacute;gica de dos expresiones, es decir, que han de resultar <font color="green"><b>True</b></font> (verdadero) las dos expresiones para que el resultado final tambi&eacute;n lo sea.
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">El hierro es duro = <font color="green">True</font>.</font><br>
+<font color="blue" face="Courier">El hierro es un metal <font color="red">And</font> El hierro es duro = <font color="green">True</font>.</font>
+<p>
+Hay 9 posibles resultados aplicando este operador a <b>dos</b> expresiones, aunque es posible incluir cuantas sean necesarias:
+<p>
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">And</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+<p>
+Como puedes ver, si, y s&oacute;lo si, ambas expresiones se eval&uacute;an como True, el resultado es True. Si cualquiera de las expresiones es False, el resultado es False.
+<p>
+
+
+
+<font color="red" size=3>Disyunci&oacute;n l&oacute;gica <b>(Or)</b></font>.  Establece una disyunci&oacute;n l&oacute;gica de dos expresiones, es decir, que el resultado se dar&aacute; evaluando una expresi&oacute;n u otra.
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">El hierro es duro = <font color="green">True</font>.</font><br>
+<font color="blue" face="Courier">El hierro es un metal <font color="red">Or</font> El hierro es duro = <font color="green">True</font>.</font>
+<p>
+Hay 9 posibles resultados aplicando este operador a <b>dos</b> expresiones, aunque es posible incluir cuantas sean necesarias:
+<p>
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">Or</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+<p>
+Como puedes ver, si cualquiera de las expresiones, o ambas,  son True, el resultado es True. 
+<p>
+
+<font color="red" size=3>Exclusi&oacute;n l&oacute;gica <b>(Xor)</b></font>.  Establece una exclusi&oacute;n l&oacute;gica de dos expresiones, es decir, que el resultado se dar&aacute; evaluando una expresi&oacute;n u otra, y dar&aacute; True si <b>solamente</b> una de ellas es True, lo que implica la exclusi&oacute;n de la otra.
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">El hierro es duro = <font color="green">True</font>.</font><br>
+<font color="blue" face="Courier">El hierro es un metal <font color="red">Xor</font> El hierro es duro = <font color="green">False</font>.</font>
+<p>
+Hay 4 posibles resultados aplicando este operador a <b>dos</b> expresiones:
+<p>
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">Xor</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">Xor</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">Xor</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">Xor</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+<p>
+Como puedes ver, si una y s&oacute;lo una de las expresiones es True, el resultado es True. Si cualquiera de las expresiones es Null, el resultado tambi&eacute;n ser&aacute; Null. 
+<p>
+
+
+<font color="red" size=3>Equivalencia l&oacute;gica <b>(Eqv)</b></font>.  Establece una equivalencia l&oacute;gica de dos expresiones, es decir, que el resultado se dar&aacute; cuando <b>las dos expresiones</b> sean equivalentes.
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">El hierro es duro = <font color="green">True</font>.</font><br>
+<font color="blue" face="Courier">El hierro es un metal <font color="red">Eqv</font> El hierro es duro = <font color="green">True</font>.</font>
+<p>
+Hay 4 posibles resultados aplicando este operador a <b>dos</b> expresiones:
+<p>
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">Eqv</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">Eqv</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">Eqv</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">Eqv</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">True</font>. </font><br>
+<p>
+En resumen,  solamente si las dos expresiones son equivalentes (iguales), el resultado es True. Si cualquiera de las expresiones es Null, el resultado tambi&eacute;n ser&aacute; Null. 
+<p>
+Como puedes ver, hay una gran variedad de operadores, y por supuesto, se pueden combinar entre ellos. Cuando se escriben expresiones l&oacute;gicas complejas es recomendable usar los par&eacute;ntesis para cada sub expresi&oacute;n participante, y no olvides tener siempre en cuenta el orden de evaluaci&oacute;n de los operadores. Es relativamente f&aacute;cil equivocarse al escribir expresiones complicadas, y es buena idea probar siempre lo escrito con cuantas variaciones sea posible para asegurarse de que no se producen resultados inesperados.
+<p>
+Adem&aacute;s de en el c&oacute;digo de programas, los operadores l&oacute;gicos se utilizan mucho en las consultas a bases de datos. El lenguaje SQL permite escribir consultas sumamente complejas utilizando estos operadores. Por ejemplo, las siguiente consulta muestra los registros de una DB de noticias sobre un tema concreto. Se requiere que las noticias se muestren como m&aacute;ximo durante un mes y un dia despu&eacute;s de haberse incluido en la DB. Durante el mes de agosto, por vacaciones del personal, el tiempo no debe contar, por lo que las noticias incluidas el 31 de julio deben expirar el 1 de octubre en lugar del 31 de agosto.
+<p>
+<font color="blue" face="courier">
+<pre>
+    SELECT 
+       ...
+       ...
+    FROM 
+       ...
+       ...
+    WHERE ( 
+               (DatePart(Month, Date()) <font color="red">NOT</font> IN(8,9)  ) 
+           <font color="red">AND</font> (DateAdd(Day, 2, DateAdd(Month, 1, Fecha_alta)) > Date() ) 
+           <font color="red">AND</font> (tema = 'Deportes') 
+          ) 
+         <font color="red">OR</font>
+          ( 
+               (DatePart(Month, Date()) IN(8,9) ) 
+           <font color="red">AND</font> (DateAdd(Day, 2, DateAdd(Month, 2, Fecha_alta)) > Date() )
+           <font color="red">AND</font> (tema = 'Deportes') 
+          ) 
+</pre>
+</font>
+
+
+<h3>De comparaci&oacute;n</h3>
+
+Y por &uacute;ltimo, y aunque solo sea para ver los que hay y sus s&iacute;mbolos, he aqu&iacute; los de comparaci&oacute;n, ya que todos tienen el mismo orden de prioridad, por lo que se eval&uacute;an en el orden en que hayan sido escritos, de izquierda a derecha:
+
+<ul>
+<li>Igualdad (<b><font color="blue">=</b></font>)
+<li>Desigualdad (<b><font color="blue"><></b></font>)
+<li>Menor que (<b><font color="blue">&lt;</b></font>)
+<li>Mayor que (<b><font color="blue">&gt;</b></font>)
+<li>Menor o igual que (<b><font color="blue">&lt;=</b></font>)
+<li>Mayor o igual que (<b><font color="blue">&gt;=</b></font>)
+<li>Equivalencia de objeto (<b><font color="blue">Is</b></font>)
+</ul>
+
+Todos ellos sobradamente conocidos. Solamente <b>Is</b> requiere alguna explicaci&oacute;n:
+es &eacute;ste un operador de comparaci&oacute;n de  referencia de <b>objeto</b>. No compara objetos o sus valores; s&oacute;lo  comprueba si dos referencias a objetos se refieren al mismo objeto. 
+
+Trabaja de forma similar a los operadores l&oacute;gicos, aunque no lo es, devolviendo un estado  <font color="green">True</font> o  <font color="green">False</font>. Por ejemplo:
+<p>
+
+<p>
+<font color="blue" face="Courier">Objeto_A = Un_Objeto </font><br>
+<font color="blue" face="Courier">Objeto_B = Un_objeto </font><br>
+<font color="blue" face="Courier">Objeto_C = Otro_objeto </font><br>
+<p>
+<font color="blue" face="Courier">Objeto_A</font><font color="red"> Is </font> 
+<font color="blue" face="Courier">Objeto_B = </font><font color="green"> True </font> 
+<p>
+<font color="blue" face="Courier">Objeto_A</font><font color="red"> Is </font> 
+<font color="blue" face="Courier">Objeto_C = </font><font color="green"> False </font> 
+<p>
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

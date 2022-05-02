@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>JavaScript 5 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2>El modelo de objetos de los navegadores</h2>
+
+Los programas navegadores, como el Internet Explorer, Opera,  o Netscape entre otros,  proporcionan una serie de objetos a los que se puede acceder mediante los scripts escritos tanto en <b>VBScript</b> como <b>JavaScript</b>. Este modelo de objetos, ya de por s&iacute; bastante complejo,  se termina de complicar debido a que sus componentes se anidan unos sobre otros, es decir, que un objeto, a su vez, est&aacute; compuesto de otros objetos. A menudo, para llegar a una determinada propiedad de un objeto, hay que referenciar una larga ruta hasta llegar al objeto padre, que es <b>window</b>. 
+En el siguiente gr&aacute;fico tenemos la representaci&oacute;n de la mayor&iacute;a de estos objetos:
+
+<p>
+<center><img src="mod_obj.gif"></center>
+<p>
+
+Se ve claramente que, en realidad, todos son sub-objetos del objeto <b>window</b>. En efecto, al tratarse este objeto del propio navegador, o mejor dicho, de la ventana donde se ejecuta el navegador, evidentemente, cualquier otro objeto debe estar integrado en &eacute;l. Desafortunadamente, puede haber diferencias entre el modelo de objetos de un navegador a otro, propiedades adicionales no compartidas, sintaxis de referencia distinta, diferente versión del int&eacute;rprete JavaScript, etc. Como siempre, se debe probar el c&oacute;digo escrito con varios navegadores, y a ser posible, con varias versiones de los mismos. No hay que confundir los objetos del navegador con los <a  href="javascr07.htm">objetos del propio JavaScript</a> que son completamente diferentes.
+<p>
+Se ha dicho que estos son objetos del navegador, pero en realidad, de forma directa,  solamente los dos primeros niveles de ellos lo son, excepto document. El resto son creados con las instrucciones HTML de la p&aacute;gina cargada, es decir, que los objetos contenidos en el objeto <b>document</b> depender&aacute;n del c&oacute;digo HTML que se escriba.
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

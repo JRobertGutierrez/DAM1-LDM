@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cambiar imagenes</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+        
+        <img onclick="this.src='images/abejaruco2.jpg'" id="imagen1" src="images/abejaruco1.jpg">
+      
+        <!--<button type="button"onclick="document.getElementById('id1').style.color = 'red'">-->
+            <button onclick="cambiarImagen();">Cambiame</button>
+         
+            
+    <script>
+
+            function cambiarImagen(){
+                    //cogemos el elemento imagen
+                var elementImagen = document.getElementById("imagen1");
+                //ruta + nombre archivo
+           var rutaImagen = elementImagen.getAttribute("src");
+                
+                if(rutaImagen == 'images/abejaruco1.jpg'){
+                        elementImagen.src = "images/abejaruco2.jpg";
+                }else{
+                        elementImagen.src = "images/abejaruco1.jpg";
+                }
+
+            }
+           
+            
+
+    </script>
+  
+
+
+
+</body>
+</html>

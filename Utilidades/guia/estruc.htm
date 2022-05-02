@@ -1,0 +1,194 @@
+<HTML>
+<HEAD><TITLE>Estructura de un documento</TITLE>
+</HEAD>
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Estructura de una p&aacute;gina HTML </H2>
+Las p&aacute;ginas HTML est&aacute;n estructuradas en dos partes diferenciadas: la <b>HEAD </b>(cabecera) y el <b>BODY</b> (cuerpo).
+<p>
+
+<H3> Ejemplo de p&aacute;gina</H3>
+Si escribes:
+<P>
+<PRE>
+<b>&lt;!Tipo de documento&gt;</b>
+&lt;HTML&gt;
+<b>&lt;HEAD&gt;</b>
+&lt;TITLE&gt; Documento de prueba &lt;/TITLE&gt;
+&lt;/HEAD&gt;
+
+&lt;!-- Esto es un comentario--&gt;
+
+<b>&lt;BODY&gt;</b>
+
+&lt;H1&gt; Esto es una &quot;demo&quot; de documento HTML &lt;/H1&gt;
+
+Esto es el m&aacute;s sencillo de los documentos HTML.
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</PRE>
+El <b>tipo de documento</b>  no es obligatorio a efectos pr&aacute;cticos, es decir que la p&aacute;gina se ver&aacute; igual tanto si lo escribes como si no. S&oacute;lo sirve como identificaci&oacute;n del tipo de contenido del fichero a los efectos de cumplir las especificaciones de est&aacute;ndar recomendadas por el consorcio W3C, que es el organismo que regula el lenguaje. Por ejemplo:
+<Pre>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://w3.org/TR/REC-html40/loose.dtd">
+
+Indica que cumple el est&aacute;ndar HTML 4.0
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+        "http://w3.org/TR/REC-html40/strict.dtd">
+
+Significa que cumple el est&aacute;ndar HTML 4.0 y, adem&aacute;s, no contiene elementos desaconsejables.
+
+Y esta es una definici&oacute;n de marcos que cumple el est&aacute;ndar HTML 4.0:
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN"
+        "http://w3.org/TR/REC-html40/frameset.dtd">
+</pre>
+
+En el HTML 4.0 se consideran desaconsejables aquellos elementos que, a&uacute;n siendo soportados, han sido sustituidos por otros y, por ello, es posible que sean eliminados en el futuro. En cualquier caso, el que un elemento escrito en tus p&aacute;ginas se vea o no, depender&aacute; siempre del navegador utilizado y/o de su versi&oacute;n, no de lo que diga el est&aacute;ndar.
+<p>
+
+Puedes ver el aspecto real del ejemplo de p&aacute;gina pulsando <a href="prueba.htm">aqu&iacute;</a>.
+<p>
+Para escribir comentarios en la p&aacute;gina (que s&oacute;lo se ven en el texto fuente, pero no en el visualizador) se utilizar&aacute; el elemento <br><b>&lt;!-- &nbsp;&nbsp;  --&gt;</b> &nbsp;&nbsp; <b>cuidado</b>: el que no se vea de forma normal en el navegador, no significa que no pueda verse el c&oacute;digo fuente. Nunca escribas comentarios con claves de acceso o datos confidenciales.
+
+<hr>
+
+<H2> Esquema de tipos de un documento HTML </H2>
+
+Cuando un visualizador recibe un fichero, antes de mostrarlo necesita saber el tipo de contenido que &eacute;ste tiene, a fin de procesarlo adecuadamente. No es lo mismo recibir un documento de texto que una fotograf&iacute;a en formato GIF, o un v&iacute;deo en formato MPG, o si lo que estamos intentando es transferir un fichero. <BR>
+En cada caso, el visualizador pondr&aacute; en juego distintas habilidades, de las muchas que posee.
+<BR>
+Si el fichero procede de un servidor <b>http</b> remoto, (es decir un servidor web; <i>http</i> es el nombre del protocolo que utilizar&aacute; el servicio invocado), &eacute;ste se encargar&aacute; de decirle al visualizador cuanto necesite saber, pero si lo que hay que procesar es un fichero local, la &uacute;nica forma de saberlo es por la <b>extensi&oacute;n</b> del fichero.
+<P>
+La extensi&oacute;n de un fichero son las tres o cuatro letras (depende del sistema operativo con el que se trabaje) que hay despu&eacute;s del nombre del fichero y que est&aacute;n separadas del mismo por un punto.
+<P>
+ Por ejemplo, esta p&aacute;gina se llama estruc.<b>htm</b>. Las tres letras que hay despu&eacute;s del punto (htm) son la <b>extensi&oacute;n </b> del fichero. Las otras, las que est&aacute;n delante del punto, son el <b>nombre</b> del fichero.
+<P>
+Las extensiones de 4 o m&aacute;s letras son t&iacute;picas de sistemas operativos como UNIX o LINUX y las de 3 o menos de Windows, que ha mantenido esta costumbre por herencia de los tiempos del DOS, ya que puede trabajar perfectamente con extensiones de m&aacute;s de 3 letras. Por ejemplo, la extensi&oacute;n <b>.html</b> funciona en Windows igual que la <b>.htm</b> <BR>
+Estas son algunas de las extensiones st&aacute;ndard m&aacute;s comunes y sus contenidos. La primera de ellas suele utilizarse en sistemas UNIX-LINUX y la segunda en Windows:
+
+<dl> 
+<dt> <b><code>.html</code> o <code>.htm</code></b>
+    <dd> Documento HTML. Contine texto e instrucciones HTML que ser&aacute;n interpretadas.
+<dt> <b><code>.text</code> o <code>.txt</code></b>
+    <dd> Contiene texto plano. El visualizador presentar&aacute; todo el fichero como si fuera un &uacute;nico bloque de texto y no interpretar&aacute; ninguna instrucci&oacute;n HTML que pudiera llevar. Esto lo har&aacute; con cualquier fichero que lleve una extensi&oacute;n desconocida o simplemente no lleve ninguna.
+<dt><b> <code>.gif</code></b>
+    <dd>  Contiene un fichero de imagen en formato GIF.
+
+<dt><b> <code>.npg</code></b>
+    <dd>  Contiene un fichero de imagen en formato NPG.
+
+<dt><b> <code>.xbm</code></b>
+    <dd>Contiene un fichero de imagen en formato X-Bitmap (blanco y negro).
+<dt><B> <code>.xpm</code></b>
+    <dd>Contiene un fichero de imagen en formato X-Pixmap (color).
+<dt> <b><code>.jpeg</code> o <code>.jpg</code></b>
+    <dd>Contiene un fichero de imagen en formato codificado jpeg.
+<dt> <b><code>.mpeg</code> o <code>.mpg</code></b>
+    <dd>Contiene un fichero de imagen de video o cine (en movimiento).
+<dt> <b><code>.au</code></b>
+    <dd>Contiene un fichero de audio (sonido) codificado en aiff-encoded.
+
+<dt> <b><code>.mid</code></b>
+    <dd>Contiene un fichero de audio (sonido) generado con secuenciadores midi t&iacute;picos de Windows.
+
+<dt> <b><code>.avi</code></b>
+    <dd>Contiene un fichero con  video y sonido t&iacute;pico de Windows. 
+
+<dt> <b><code>.mp3</code></b>
+    <dd>Contiene un fichero con sonido t&iacute;pico de Windows y otros sistemas. 
+
+<dt> <b><code>.exe</code></b>
+    <dd>Contiene un fichero binario ejecutable en DOS o Windows.
+<dt> <b><code>.hqx</code></b>
+    <dd>Contiene un fichero binario ejecutable en Macintosh.
+<dt><b> <code>.Z</code> o <code>.zip</code></b>
+    <dd> Contiene un (o varios) fichero/s comprimido/s de cualquier clase. Para poder utilizarlo hay que indicarle al visualizador una herramienta de compresi&oacute;n-descompresi&oacute;n.
+
+<dt> <b><code>.pdf</code></b>
+    <dd>Contiene un fichero de imagen de cualquier documento generado con Acrobat Writer.
+<dt> <b><code>.doc</code></b>
+    <dd>Contiene un fichero de documento generado por Microsoft Word
+
+</dl>  
+<A NAME="mime"></A>
+En el entorno web se utilizan los  <b>MIME </b>types (<b>M</b>ultipurpose <b>I</b>nternet <b>M</b>ail <b>E</b>xtension) para definir el tipo de un fichero transferido. El visualizador determina desde el MIME type c&oacute;mo hay que tratar cada fichero. 
+<P>
+Estos son los mime types más habituales junto con las extensiones de fichero a las que suele relacionarse:
+<p>
+<pre>
+application/rtf                      .rtf
+application/pdf                      .pdf
+application/postscript 	             .ps
+application/msword                   .doc
+application/x-msexcel 	             .xls
+application/x-mspowerpoint           .ppt
+application/asx                      .asx               
+application/x-mplayer2               .asx .avi .mp3 .mpg
+application/x-shockwave-flash        .swf
+application/x-java-applet            .class .clas
+application/java                     .clas .class
+application/octet-stream             .exe .com
+application/x-compressed             .zip
+
+audio/mpeg                           .mp3 .mpg
+audio/x-wav                          .wav
+audio/x-ms-wma                       .wma
+audio/x-midi                         .mid .midi
+audio/x-ms-mp3                       .mp3
+audio/x-mp3                          .mp3
+audio/mpeg3                          .mp3
+audio/x-mpeg-3                       .mp3 .mpeg
+audio/x-pn-realaudio                 .rm
+
+image/jpeg                           .jpg .jpeg
+image/gif                            .gif
+image/png                            .png
+
+text/html                            .htm .html
+text/plain                           .txt .text .htm .html
+text/css                             .css
+text/x-javascript                    .js         
+text/richtext 	                     .rtf
+text/rtf                             .rtf
+
+video/mpeg                           .mpg .mpeg
+video/avi                            .avi
+video/x-ms-wmv 	                     .wmv
+video/x-msvideo                      .wmv
+video/quicktime                      .mov
+video/x-ms-asf                       .asf
+</pre>
+<p>
+Los visualizadores tienen una configuraci&oacute;n de los mapas de tipos aceptables, e instrucciones de c&oacute;mo proceder en cada caso. Algunos tipos son tratados directamente por el propio visualizador (p.ej.: htm, gif, txt) mientras que para otros necesitan de una herramienta auxiliar adecuada, que hay que indicar al visualizador, para que sea llamada en el momento preciso (p.ej.: zip, mpg, avi, pdf).
+<hr>
+Ahora que ya sabes qu&eacute; son las extensiones de fichero, es el momento de aclarar una cuesti&oacute;n importante:
+<P>
+ Los documentos HTML los puedes escribir con lo que quieras... Siempre que los salves en modo <B>Solo Texto</b>. Es decir, que si utilizas, por ejemplo, Word de Windows o de MAC, por defecto estos programas salvan en formato Word. Y aunque luego los renombres como documentos <b>.htm</b> o <b>.html</b>, el formato interno sigue siendo Word.
+
+<P>
+Tampoco vale dejarlos con la extensi&oacute;n <b>.txt</b> que les dejan la mayor&iacute;a de editores al salvarlos en modo Solo Texto. No ser&iacute;an interpretados correctamente. Por lo tanto si tienen extensi&oacute;n <b>.txt</b> (y por supuesto <b>son</b> .txt), entonces puedes renombrarlos a .htm, o bien en el momento de guardarlos en formato <b>Solo Texto</b> no dejar la extensi&oacute;n por defecto .txt y darle ya directamente la extensi&oacute;n <b>.htm</b>.
+<p>
+Algunos procesadores de texto ya incluyen entre sus tipos el <b>.htm</b>. Si es as&iacute;, lo que hacen es eliminar la codificaci&oacute;n propia, y convertirla a elementos de HTML. Por ejemplo, si tienes un texto en it&aacute;lica, autom&aacute;ticamente es convertido al elemento &lt;I&gt;, etc..  El problema de los editores avanzados de texto y de la mayor&iacute;a de programas asistentes para escribir HTML es que generan un c&oacute;digo bastante "sucio", dif&iacute;cil de corregir o modificar despu&eacute;s. No es que no funcione, pero como el programa no sabe cual es la finalidad del texto escrito, por defecto le pone todo lo que sabe por si acaso, aplicando el dicho de "mejor que sobre..."
+<P>
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

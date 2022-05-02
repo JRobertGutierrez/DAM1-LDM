@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tablas colores salteados</title>
+
+        <script>
+            var num_filas;
+            num_filas = parseInt(prompt("Introduce numero de filas",10));
+            //num_filas = prompt("Introduce numero de filas"); si no ponemos parseInt multiplica por 10
+        </script>
+
+</head>
+<body>
+        <h1>Tabla dinámica</h1>
+        <table border="1">
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            
+            <script>
+                for (i = 1; i < num_filas + 1; i++) {
+                    if ( i%2 == 0) {
+                            document.write("<tr bgcolor='gray';>");
+                    }else {
+                            document.write("<tr>");
+                    }
+                    document.write("    <td>"+ i +"</td>");
+                    document.write("    <td>Robert</td>");
+                    document.write("    <td>Gutiérrez</td>");
+                    document.write("</td>");
+                }
+            </script>
+       </table>   
+</body>
+</html>

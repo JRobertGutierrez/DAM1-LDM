@@ -1,0 +1,135 @@
+<HTML>
+<HEAD><TITLE>ASP 13</TITLE></HEAD>
+<BODY>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>Un ejemplo de paginaci&oacute;n ASP</H2>
+En este ejemplo se supone que tenemos una DB que, entre otras, contiene una tabla llamada "cursos".
+Esta tabla, entre otros, contiene un campo llamado "cur_codigo" que contiene un c&oacute;digo 
+alfanum&eacute;rico de tipo char(17), y otro llamado "cur_nombre" que contiene el nombre de 
+un curso de tipo char(150). La aplicaci&oacute;n muestra una l&iacute;nea de n&uacute;meros, tantos 
+como p&aacute;ginas existan, cada uno de los cuales es un link a una p&aacute;gina que contiene 
+10 registros. Se llama a si misma en cada link, mostrando el n&uacute;mero de p&aacute;gina
+correspondiente al n&uacute;mero elegido, y comenzando por la 1 la primera vez que se ejecuta. 
+Aqu&iacute; se le ha llamado <b>paginacion.asp</b> y puede cambiarse si se quiere, aunque 
+sin olvidar hacerlo tambi&eacute;n en el c&oacute;digo, ya que el programa se llama a s&iacute; mismo cada vez que se consulta una p&aacute;gina distinta.
+<p>
+<font color="blue" face="courier" size=2>
+---Fichero paginacion.asp
+<p>
+<pre>
+&lt;%@ LANGUAGE="VBScript" %&gt;
+&lt;% Response.Expires = 0 %&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Ejemplo de paginacion&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;%
+Const adOpenkeyset = 1
+
+SQL="SELECT cur_codigo, cur_nombre FROM cursos "
+
+Set DB = Server.CreateObject("ADODB.Connection")
+DB.Open "DB_nombre", "DB_user", "DB_password"
+
+Set RS = Server.CreateObject("ADODB.Recordset") 
+RS.PageSize = 10
+RS.Open SQL, DB, adOpenKeyset
+
+If RS.EOF AND RS.BOF then 
+%&gt;
+     &lt;CENTER&gt;&lt;h3&gt; No hay cursos disponibles&lt;/h3&gt;&lt;/center&gt;
+&lt;% 
+      RS.Close
+      DB.Close
+      Set RS = Nothing
+      Set DB = Nothing
+ Else 
+      If Request.QueryString("pagina") = "" Then
+         RS.AbsolutePage = 1
+        Else
+         RS.AbsolutePage = Request.QueryString("pagina")
+      End If
+%&gt;
+&lt;CENTER&gt;
+P&aacute;gina 
+&lt;%   If Request.QueryString("pagina") = "" Then
+          Response.Write(RS.AbsolutePage)
+        Else
+          Response.Write(Request.QueryString("pagina")) 
+      End If
+%&gt; 
+de 
+&lt;% = RS.PageCount %&gt;
+&lt;/CENTER&gt;
+
+&lt;CENTER&gt;
+&lt;TABLE BORDER=0&gt;
+&lt;TR&gt;
+&lt;% For p = 1 To RS.PageCount %&gt;
+  &lt;TD ALIGN=CENTER&gt;
+    &lt;FONT SIZE=5 COLOR="red"&gt;
+    &lt;A HREF="paginacion.asp?pagina=&lt;% = p %&gt;"&gt;&lt;% = p %&gt;&lt;/A&gt;
+    &lt;/FONT&gt;
+  &lt;/TD&gt;
+&lt;% Next %&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+
+&lt;P&gt;
+&lt;CENTER&gt;
+&lt;TABLE BORDER=1&gt;
+&lt;TR&gt;
+    &lt;TH&gt;C&oacute;digo&lt;/TH&gt;
+    &lt;TH&gt;Curso&lt;/TH&gt;
+&lt;/TR&gt;
+&lt;%
+  For i = 1 To RS.PageSize 
+
+  If RS.EOF Then
+    Exit For
+  End If
+
+%&gt;
+&lt;TR&gt;
+   &lt;TD&gt;&lt;% = RS("cur_codigo") %&gt;&lt;/TD&gt;
+   &lt;TD&gt;&lt;% = RS("cur_nombre") %&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;%
+	RS.MoveNext
+  Next
+%&gt;
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+
+&lt;%
+   RS.Close
+   DB.Close
+   Set RS = Nothing
+   Set DB = Nothing
+End if
+%&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+</font>
+
+<p>
+En la l&iacute;nea <font color="blue">DB.Open "DB_nombre", "DB_user", "DB_password"</font>, evidentemente, hay que sustituir  "DB_nombre", "DB_user" y "DB_password" por los valores reales que procedan. Y por supuesto, en la DB tiene que haber una tabla llamada "cursos".
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

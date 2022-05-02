@@ -1,0 +1,128 @@
+<HTML>
+<HEAD><TITLE>Consola dinamica</TITLE>
+
+<style type="text/css">
+/*specify height of broken up content */
+.multiparts{
+height: 50px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+/***********************************************
+* Multi-Part Content script- © Dynamic Drive (www.dynamicdrive.com)
+* This notice must stay intact for use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+if (document.getElementById){
+document.write('<style type="text/css">')
+document.write('.multiparts, #formnavigation{display:none;}')
+document.write('</style>')
+}
+
+var curpart=0
+
+function getElementbyClass(classname){
+partscollect=new Array()
+
+var inc=0
+var alltags=document.all? document.all : document.getElementsByTagName("*")
+for (i=0; i<alltags.length; i++){
+if (alltags[i].className==classname)
+partscollect[inc++]=alltags[i]
+}
+}
+
+function cycleforward(){
+partscollect[curpart].style.display="none"
+curpart=(curpart<partscollect.length-1)? curpart+1 : 0
+partscollect[curpart].style.display="block"
+updatenav()
+}
+
+function cycleback(){
+partscollect[curpart].style.display="none"
+curpart=(curpart>0)? curpart-1 : partscollect.length-1
+partscollect[curpart].style.display="block"
+updatenav()
+}
+
+
+function updatenav(){
+document.getElementById("backbutton").style.visibility=(curpart==0)? "hidden" : "visible"
+document.getElementById("forwardbutton").style.visibility=(curpart==partscollect.length-1)? "hidden" : "visible"
+}
+
+function onloadfunct(){
+getElementbyClass("multiparts")
+partscollect[0].style.display="block"
+document.getElementById("formnavigation").style.display="block"
+updatenav()
+}
+
+if (window.addEventListener)
+window.addEventListener("load", onloadfunct, false)
+else if (window.attachEvent)
+window.attachEvent("onload", onloadfunct)
+else if (document.getElementById)
+window.onload=onloadfunct
+
+</script>
+</head>
+
+<BODY bgcolor="#00FFFF" >
+<CENTER>
+<h2>Una consola din&aacute;mica</h2></center>
+
+<div class="multiparts">
+<p><EMBED TYPE="application/x-mplayer2" 
+           SRC="mozart.mid" 
+           WIDTH=287 
+           HEIGHT=65
+           AUTOSTART=0><br>
+Mozart
+</p>
+</div>
+
+<div class="multiparts">
+<p><EMBED TYPE="application/x-mplayer2" 
+           SRC="minueto.mid" 
+           WIDTH=287 
+           HEIGHT=65
+           AUTOSTART=0><br>
+Minueto
+</p>
+</div>
+
+<div class="multiparts">
+<p><EMBED TYPE="application/x-mplayer2" 
+           SRC="adagio.mid" 
+           WIDTH=287 
+           HEIGHT=65
+           AUTOSTART=0><br>
+Adagio
+</p>
+</div>
+
+<!-- Para añadir más, solamente hay que escribir los bloques <div> que sean necesarios. No es preciso tocar nada en el código JavaScript -->
+
+
+<div id="formnavigation" style="width:200px; display:none">
+<p>&nbsp;
+<a id="backbutton" href="javascript:cycleback()" style="float:left">Atras</a>
+<a id="forwardbutton" href="javascript:cycleforward()" style="float:right">Siguiente</a>
+</div><br>
+
+
+<p>&nbsp;
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+</BODY>
+</HTML>

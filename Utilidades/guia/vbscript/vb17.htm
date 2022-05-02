@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>VBScript 17 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h3>Controles HTML intr&iacute;nsecos</h3>
+
+Bajo esta denominaci&oacute;n se encuentran los elementos t&iacute;picos de los <a href="../form2.htm">formularios</a>, que ya conocemos. Precisamente por ser elementos intr&iacute;nsecos de HTML carecen de propiedades o m&eacute;todos, es decir, no son objetos, son elementos contenidos dentro del objeto <a href="vb16.htm"><b>Form</b></a>, y ya hemos visto c&oacute;mo se puede controlar sus atributos <b>NAME</B> y <b>VALUE</B> desde las propiedades de este objeto. S&iacute; disponen de algunos eventos:
+<p>
+
+<center>
+<table border=1>
+<tr>
+    <th>Elemento</th>
+    <td><font color="Blue">Button</font></td>
+    <td><font color="Blue">CheckBox</font></td>
+    <td><font color="Blue">Hidden</font></td>
+    <td><font color="Blue">Password</font></td>
+    <td><font color="Blue">Radio</font></td>
+    <td><font color="Blue">Reset</font></td>
+    <td><font color="Blue">Select</font></td>
+    <td><font color="Blue">Submit</font></td>
+    <td><font color="Blue">Text</font></td>
+    <td><font color="Blue">TextArea</font></td>
+<tr>
+
+
+<tr>
+    <th>Eventos</th>
+    <td><font color="Red">OnClick<br>OnFocus</font></td>
+    <td><font color="Red">OnClick<br>OnFocus</font></td>
+    <td><font color="Red">--</font></td>
+    <td><font color="Red">OnFocus<br>OnBlur</font></td>
+    <td><font color="Red">OnClick<br>OnFocus</font></td>
+    <td><font color="Red">OnClick<br>OnFocus</font></td>
+    <td><font color="Red">OnFocus<br>OnBlur<br>OnChange</font></td>
+    <td><font color="Red">OnClick<br>OnFocus</font></td>
+    <td><font color="Red">OnFocus<br>OnBlur<br>OnSelect<br>OnChange</font></td>
+    <td><font color="Red">OnFocus<br>OnBlur<br>OnSelect<br>OnChange</font></td>
+<tr>
+</table>
+</center>
+<p>
+Este es el significado de los eventos:
+
+<ul>
+   <li><font color="Red">OnClick</font> Se produce cuando se pulsa con el bot&oacute;n izquierdo del rat&oacute;n sobre el elemento.
+   <li><font color="Red">OnFocus</font> Se produce cuando el elemento recibe el enfoque, es decir, cuando el cursor est&aacute; situado sobre &eacute;l, pero <b>no</b> cuando el rat&oacute;n est&aacute; sobre &eacute;l. Por tanto, solamente se produce despu&eacute;s de haber pulsado el rat&oacute;n.
+   <li><font color="Red">OnBlur</font> Es lo contrario del anterior, es decir, cuando el elemento deja de tener el enfoque, por ejemplo, despu&eacute;s de pulsar la tecla de tabulaci&oacute;n.
+   <li><font color="Red">OnChange</font> Se produce cuando el valor actual del control cambia de cualquier forma: de vac&iacute;o a valor o de valor a otro valor diferente o a vac&iacute;o
+   <li><font color="Red">OnSelect</font> Cuando el contenido del elemento es seleccionado, es decir cuando cambia el color del fondo. No es lo mismo que recibir el enfoque, aunque necesariamente <b>OnFocus</b> se producirá antes.
+</ul>
+
+La sintaxis de todos estos eventos es la misma que ya se ha visto en p&aacute;ginas y ejemplos anteriores.
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

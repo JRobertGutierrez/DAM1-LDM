@@ -1,0 +1,262 @@
+<html>
+<head>
+<title>JavaScript 6 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2>Instrucciones de JavaScript</H2>
+
+<font face="courier" color="red"><b>if( <font color="blue">condicion</font> [else] <font color="blue">[instrucciones]</font>)</b></font> &nbsp; Esta es sin duda la instrucci&oacute;n m&aacute;s utilizada en programaci&oacute;n. En efecto, raro es el programa, por peque&ntilde;o que sea, que no la contenga al menos una vez. Su funcionamiento es muy simple: es como un interruptor. Evalua un expresi&oacute;n y si el resultado es <b>true</b> realiza las acciones que tenga programadas, y si es <b>false</b>  realiza otras acciones alternativas, o no hace nada, seg&uacute;n convenga. Por ejemplo:
+
+<font face="courier" color="blue">
+<pre>
+var x = 2
+
+   <font color="red">if</font> (x == 3) {
+      document.write("x vale 3") 
+      }
+</pre>
+</font>
+
+En este caso, al no devolver <b>true</b> la condici&oacute;n, no se obtiene ning&uacute;n resultado. Si queremos una alternativa en el caso de <b>false</b>, se escribe:
+
+<font face="courier" color="blue">
+<pre>
+var x = 2
+
+   <font color="red">if</font> (x == 3) {
+      document.write("x vale 3") 
+      }
+   <font color="red">else</font> {
+      document.write("x no vale 3")
+      }
+</pre>
+</font>
+
+Y se obtiene:
+<p>
+<font face="courier" color="green"><b>x no vale 3</b></font>
+<p>
+Si la acci&oacute;n a realizar es breve, tambi&eacute;n puede escribirse en una sola l&iacute;nea:
+<font face="courier" color="blue">
+<pre>
+var x = 2
+
+   <font color="red">if</font> (x == 3) document.write("x vale 3")
+</pre>
+</font>
+
+Pueden anidarse cuantas instrucciones <b>if</b> sea preciso. Por ejemplo, si se escribe:
+<font face="courier" color="blue">
+<pre>
+var x = 4
+
+   <font color="red">if</font> (x < 3) 
+      <font color="red">if</font> (x == 2) document.write("x vale 2") 
+      <font color="red">if</font> (x == 1) document.write("x vale 1") 
+   <font color="red">else</font>
+      <font color="red">if</font> (x == 3) document.write("x vale 3") 
+      <font color="red">if</font> (x == 4) document.write("x vale 4") 
+      <font color="red">if</font> (x == 5) document.write("x vale 5") 
+
+</pre>
+</font>
+
+Y se obtiene:
+<p>
+<font face="courier" color="green"><b>x vale 4</b></font>
+<p>
+Cuando escribas anidamientos, recuerda que si las instrucciones a realizar tienen m&aacute;s de una l&iacute;nea, hay que escribir las correspondientes llaves <B>{ }</b> para cada grupo de instrucciones en cada <b>if</b>, tal como se ve en el primer y segundo ejemplos.
+
+
+<hr>
+<font face="courier" color="red"> <b>for()</b></font> &nbsp; Esta instrucci&oacute;n crea un bucle, controlado por tres expresiones separadas por &nbsp; <b>;</b> &nbsp;, y seguidas de un bloque de otras instrucciones escritas dentro de un par de llaves <b>{ }</b> que se ejecutar&aacute;n con cada ciclo del bucle. La sintaxis es:
+<p>
+<font face="courier" color="red">
+for(<font color="blue">[contador;] [condicion;] [incremento]</font>) <font color="blue">{<br>
+ &nbsp; &nbsp;.....<br>
+ &nbsp; &nbsp;instrucciones<br>
+ &nbsp; &nbsp;....<br>
+}</font></font>
+<p>
+La primera expresi&oacute;n de los argumentos, <b>contador</b>, define el contador del bucle y lo inicializa. La segunda, <b>condicion</b>, es donde se declara la condici&oacute;n o condiciones que se tienen que cumplir para que el bucle termine. El bucle seguir&aacute; ejecut&aacute;ndose hasta que la expresi&oacute;n devuelva <b>true</b>. Y por &uacute;ltimo, <b>incremento</b> indica el incremento que se aplicar&aacute; al contador en cada paso. Por ejemplo:
+<p>
+<font face="courier" color="blue">
+<font color="red">for</font>(var x = 0; x < 5; x++) {<br>
+  document.write(x)<br>
+}</font>
+<p>
+Se obtiene: <font face="courier" color="green">01234</font> &nbsp; Analicemos el ejemplo. La primera expresi&oacute;n de los argumentos, crea e inicializa a cero el contador <b>x</b>: <font face="courier" color="blue">var x = 0;</font>. La segunda establece que el bucle rodar&aacute; mientras x sea menor de 5: <font face="courier" color="blue">x < 5;</font>. Y la tercera incrementa en 1 el contador con cada ciclo del bucle: <font face="courier" color="blue">x++</font>. Como ya se ha dicho en el apartado de los operadores de JavaScript, <b>x++</b> es equivalente a <b>x = x+1</b>
+
+<hr>
+<font face="courier" color="red"><b> for( in ) </b></font> &nbsp; Al igual que la anterior, crea un bucle, pero esta vez solamente sirve para listar las <b>propiedades</b> de un objeto. Por ejemplo:
+<p>
+<font face="courier" color="blue">
+Mi_array = new Array(2)<br>
+Mi_array[0] = "A";   Mi_array[1] = "B";  Mi_array[2] = "C"<br>
+<p>
+<font color="red">for(</font>var x <font color="red">in</font> Mi_array<font color="red">)</font> {<br>
+document.write("Mi_array" + x + " = " + Mi_array[x] + "&lt;br&gt;" )<br>
+}</font> 
+<p>
+Se obtiene:
+<p>
+<font face="courier" color="green">
+Mi_array0 = A<br>
+Mi_array1 = B<br>
+Mi_array2 = C
+</font>
+<p>
+F&iacute;jate en que, a diferencia de la anterior, no es necesario inicializar el contador con ningun valor (solamente crearlo) ni tampoco indicar el incremento ni el n&uacute;mero de repeticiones del bucle, que se repetir&aacute; las veces que indique el &iacute;ndice del objeto.
+<p>
+<hr>
+<font face="courier" color="red"><b>while(<font color="blue"> condicion</font>)</b></font> &nbsp; Es parecida a <b>for()</b>, pero en lugar de ejecutar el bucle <b>hasta</b> que se cumple la condici&oacute;n, lo hace <b>mientras</b> (while) se mantenga el resultado inicial de la condici&oacute;n, es decir, lo mismo pero al rev&eacute;s. Por ejemplo:
+<p><pre>
+<font face="courier" color="blue">
+var x = 0
+
+<font color="red">while(</font> x < 3 <font color="red">)</font> {
+   x++
+   document.write("x = " + x + "&lt;br&gt;")
+}
+</font></pre>
+<p>
+Se obtiene:
+<p>
+<font face="courier" color="green">
+x = 1  <br>
+x = 2  <br>
+x = 3  </font>
+<p>
+Como puedes ver, el bucle se ejecuta <b>mientras</b> x es menor que 3, no siendo necesario definir en la propia instrucci&oacute;n el incremento del contador, que est&aacute; dentro de las instrucciones ejecutadas por el bucle.
+<p>
+Tanto <font color="red">while()</font> como <font color="red">for()</font> pueden utilizar una instrucci&oacute;n que permite salir del bucle, si conviene,  antes de que se cumplan todas las repeticiones programadas en el contador. Se trata de <b><font color="red">break</b></font>. Tambi&eacute;n pueden emplear la instrucci&oacute;n <b><font color="red">continue</b></font> para alterar el contador sin detenerlo ni salir del bucle. Veamos un ejemplo de uso de <b>continue</b>:
+<pre><font face="courier" color="blue">
+var x = 0
+var y = 0
+
+while (i < 5) {
+   x++
+   if (x == 3)
+      <font color="red">continue</font>
+   y += x
+   document.write("x = " + x + "  y = " + y + "&lt;br>")
+}
+</font></pre>
+Se obtiene:
+<p>
+<font face="courier" color="green">
+x = 1 &nbsp;  y = 1<br>
+x = 2 &nbsp;  y = 3<br>
+x = 4 &nbsp;  y = 7<br>
+x = 5 &nbsp;  y = 12<br>
+</font>
+<p>
+Recuerda que <b>x++</b> es equivalente a &nbsp; <b>x = x + 1</b>, &nbsp;lo mismo que  &nbsp; <b>y += x</b> &nbsp; equivale a &nbsp; <b>y = y + x</b>. &nbsp; Sabiendo esto, puedes ver claramente lo que hace el bucle en los dos primeros ciclos. Al llegar a la tercera l&iacute;nea, en la que <b>x = 3</b> vemos que hay un salto. En efecto: <b>continue</b> ha entrado en acci&oacute;n y el control del bucle ha saltado desde la instrucci&oacute;n comenzando un nuevo ciclo sin ejecutar las dos instrucciones que restaban, y que habr&iacute;an aportado <font face="courier" color="green">x = 3 &nbsp;  y = 6</font>. Luego el bucle termina normalmente hasta que <b>x = 5</b>, pero los valores de <b>y</b> se han alterado respecto a los que ser&iacute;an sin actuar <b>continue</b>.
+<p>
+De forma  parecida trabaja <b>break</b>, pero en este caso en lugar de provocar un salto en el bucle y continuar hasta el final previsto, el salto se hace <b>fuera</b> del bucle, quedando &eacute;ste interrumpido:
+
+<pre><font face="courier" color="blue">
+var x = 0
+
+while (i < 5) {
+   x++
+   if (x == 3)
+      <font color="red">break</font>
+   document.write("x = " + x +  "&lt;br>")
+}
+</font></pre>
+Se obtiene:
+<p>
+<font face="courier" color="green">
+x = 1 &nbsp;<br>
+x = 2 &nbsp;
+</font>
+<p>
+Como puedes ver, solamente se han completado dos ciclos del bucle de los cinco previstos. Estas dos instrucciones pueden emplearse de la misma forma con la instrucci&oacute;n <b>for()</b>.
+<p>
+<hr>
+
+<font face="courier" color="red"><b> this</b></font> &nbsp; Es una palabra reservada que se utiliza para referirse al objeto actual en el que se est&aacute; ejecutando el c&oacute;digo. Sea por ejemplo un formulario en el que el cliente debe escribir un valor, y para comprobar que el valor es el correcto escribimos una funci&oacute;n de verificaci&oacute;n:
+
+<pre><font face="courier" color="blue">
+&lt;HTML>
+&lt;HEAD> &lt;TITLE>Pruebas JavaScript&lt;/TITLE>
+
+  &lt;SCRIPT LANGUAGE="JavaScript">
+    function <b>validar</b>(numero) {
+       if (numero.indexOf("2") != -1)
+          return true;
+       else {
+          alert('No has escrito un 2');
+          return false;
+       }
+    }
+  &lt;/SCRIPT>
+&lt;/HEAD>
+
+&lt;BODY>
+&lt;FORM NAME="Formulario"
+     METHOD="GET" ACTION " "
+     onSubmit="return <b>validar</b>(<font color="red">this</font>.campo1.value)">
+Escribe un 2: &lt;INPUT NAME="campo1" TYPE="text">&lt;BR>
+&lt;INPUT TYPE="submit" VALUE="Validar">
+&lt;/FORM>
+
+&lt;/BODY>
+&lt;/HTML>
+</pre></font>
+
+F&iacute;jate en la instrucci&oacute;n &nbsp; <b><font color="red">this</font>.campo1.value</b>  &nbsp; En realidad lo que hace <b>this</b> es sustituir a la referencia real que ser&iacute;a: <b>document.Formulario.campo1.value</b>
+<hr>
+
+<font face="courier" color="red"><b> with</b></font> &nbsp; Esta instrucci&oacute;n sirve como referencia a un objeto, previamente declarado como objeto por defecto, para evitar tener que referenciarlo en un conjunto repetitivo de instrucciones. Por ejemplo, para obtener unos valores matem&aacute;ticos:
+<pre><font face="courier" color="blue">
+    var a, b, c
+    var r=10
+
+    a = Math.PI * r * r
+    b = r * Math.cos(Math.PI)
+    c = r * Math.sin(Math.PI/2)
+</pre></font>
+
+Como puedes ver, hay que hacer referencia del objeto <b>Math</b> en todas las instrucciones. En cambio, si se emplea <b>with</b>, simplemente se escribe:
+<pre><font face="courier" color="blue">
+    var a, b, c
+    var r=10
+
+    <font color="red">with</font> (Math) {
+    a = PI * r * r
+    b = r * cos(PI)
+    c = r * sin(PI/2)
+    }
+</pre></font>
+
+
+<hr>
+
+<font face="courier" color="red"><b> var</b></font> &nbsp; ver el apartado <A HREF="javascr02.htm#variables">variables</A> 
+<hr>
+
+<font face="courier" color="red"> <b>function &nbsp; return</b></font> &nbsp; ver el apartado <a href="javascr03.htm">funciones</a>
+<hr>
+
+<font face="courier" color="red"> <b>comment</b></font> &nbsp; ver el apartado <a href="javascr02.htm">&iquest;C&oacute;mo se escribe el JavaScript?</a>
+<p>
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

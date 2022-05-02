@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>VBScript 16 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h3>El objeto Form</h3>
+
+
+Este objeto, que a su vez es una propiedad del objeto <b>Document</b>,  representa un formulario creado con el elemento de HTML &lt;FORM&gt;&lt;/FORM&gt; en la p&aacute;gina cargada. Al objeto <b>Form</b> se puede acceder mediante cualquiera de sus 5 propiedades. Tiene adem&aacute;s 1 m&eacute;todo y 1 evento.
+<p>
+
+<hr noshade>
+
+<center><FONT SIZE=4>PROPIEDADES</FONT></CENTER>
+
+<P>
+Las 4 primeras propiedades <FONT SIZE=3 color="red"><B>Action Method Target Encoding </B></FONT> son del tipo string, y devuelven o establecen el valor correspondiente a esos par&aacute;metros de la definici&oacute;n de un formulario. Por ejemplo, si se escribe:
+<p>
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub Propiedades
+         Document.Write Formulario1.<FONT color="red">Action</font>   & "&lt;br&gt;" & _
+                        Formulario1.<FONT color="red">Method</font>   & "&lt;br&gt;" & _
+                        Formulario1.<FONT color="red">Target</font>   & "&lt;br&gt;" & _
+                        Formulario1.<FONT color="red">Encoding</font> 
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+
+&lt;FORM NAME="Formulario1" 
+           <b>ACTION</b>="http://sestud.uv.es/manual.esp/" 
+           <b>METHOD</b>="POST" 
+           <b>TARGET</b>="MiVentana"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="Propiedades"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+
+Y despu&eacute;s de pulsar el bot&oacute;n <b>Prueba</b>, este ser&iacute;a el resultado:
+<p>
+<font color="green"><b>
+http://sestud.uv.es/manual.esp/<br>
+post<br>
+MiVentana<br>
+application/x-www-form-urlencoded</b>
+</font>
+<p>
+
+Nos queda una: <FONT SIZE=3 color="red"><B>Elements</B></FONT> &nbsp; Esta propiedad  hace referencia a los controles de un formulario. Como <B>Controles</b> se consideran los elementos t&iacute;picos presentes en los formularios, tales como  los botones, cuadros de texto, casillas de verificaci&oacute;n, etc. Estos controles son tambi&eacute;n llamados <b>elementos intr&iacute;nsecos del HTML</b>, y a su vez, disponen de propiedades, m&eacute;todos y eventos, que se ver&aacute;n en la p&aacute;gina correspondiente.
+<p>
+<b>Elements</b> contiene una matriz con todos los elementos del formulario, y por tanto es posible listarlos o referenciarlos por su nombre o n&uacute;mero de &iacute;ndice. En el siguiente ejemplo, vemos como hacer que el valor de los elementos (su par&aacute;metro <b>VALUE</b>) reciba el nombre del propio elemento (su par&aacute;metro <b>NAME</b>):
+<p>
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+   Sub Elementos
+     For i=0 To 2
+       Document.Formulario1.<font color="red">Elements</font>(i).Value = Document.Formulario1.<font color="red">Elements</font>(i).Name
+     Next
+   End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+
+&lt;FORM NAME="Formulario1" &gt;
+    &lt;INPUT TYPE="Text" NAME="Campo1"&gt;
+    &lt;INPUT TYPE="Text" NAME="Campo2"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="Elementos"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+
+
+
+
+
+<hr noshade>
+<center><FONT SIZE=4>M&Eacute;TODO</FONT></CENTER>
+
+<P>
+<FONT SIZE=3 color="red"><B>Submit </b>&nbsp; </font>
+<p>
+Este conocido m&eacute;todo  sirve para enviar el formulario y sus contenidos al servidor. Es equivalente a los botones de formulario del tipo <b>Submit</b> en lugar del tipo <b>Button</b>. En el ejemplo siguiente, los dos botones hacen lo mismo de forma diferente:
+
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+   Sub <b>Enviar</b>
+       Document.Formulario1.<font color="red">Submit</font>
+   End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+
+&lt;FORM NAME="Formulario1" ACTION="http://sestud.uv.es/manual.esp/" METHOD="GET" &gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Envio 1" onClick="<b>Enviar</b>"&gt;
+    &lt;INPUT TYPE="<font color="red">Submit</font>" NAME="Boton2" VALUE="Envio 2"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+
+
+<hr noshade>
+<center><FONT SIZE=4>EVENTO</FONT></CENTER>
+<P>
+
+<FONT SIZE=3 color="red"><B>OnSubmit</b> &nbsp; </font>
+<p>
+Y este es el evento que se produce cuando se pulsa el bot&oacute;n de tipo <B>Submit</b> del ejemplo anterior. Para capturarlo simplemente se escribe:
+<p>
+
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+   Sub <b>Captura</b>
+       Msgbox "Se ha enviado el formulario !"
+   End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+
+&lt;FORM NAME="Formulario1" ACTION="http://sestud.uv.es/manual.esp/" 
+         METHOD="GET" <font color="red">OnSubmit</font>="<b>Captura</b>"&gt;
+    &lt;INPUT TYPE="Submit" NAME="Boton2" VALUE="Envio 2"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

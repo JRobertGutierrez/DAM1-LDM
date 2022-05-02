@@ -1,0 +1,214 @@
+<html>
+<head><title>Calculadora</title>
+
+<script language="JavaScript">
+
+<!-- Aqui se oculta el script a los visualizadores que no soportan JavaScript
+
+// keep track of whether we just computed display.value
+var computed = false
+
+function pushStack(form)
+{
+    form.stack.value = form.display.value
+    form.display.value = 0
+}
+
+//
+// Define a function to add a new character to the display
+//
+function addChar(input, character)
+{
+    // auto-push the stack if the last value was computed
+    if(computed) {
+	pushStack(input.form)
+	computed = false
+    }
+
+    // make sure input.value is a string
+    if(input.value == null || input.value == "0")
+        input.value = character
+    else
+        input.value += character
+}
+
+function deleteChar(input)
+{
+    input.value = input.value.substring(0, input.value.length - 1)
+}
+
+function add(form)
+{
+    form.display.value = parseFloat(form.stack.value)
+                       + parseFloat(form.display.value)
+    computed = true
+}
+
+function subtract(form)
+{
+    form.display.value = form.stack.value - form.display.value
+    computed = true
+}
+
+function multiply(form)
+{
+    form.display.value = form.stack.value * form.display.value
+    computed = true
+}
+
+function divide(form)
+{
+    var divisor = parseFloat(form.display.value)
+    if(divisor == 0) {
+	alert("Don't divide by zero, pal...");
+	return
+    }
+    form.display.value = form.stack.value / divisor
+    computed = true
+}
+
+function changeSign(input)
+{
+    // could use input.value = 0 - input.value, but let's show off substring
+    if(input.value.substring(0, 1) == "-")
+	input.value = input.value.substring(1, input.value.length)
+    else
+	input.value = "-" + input.value
+}
+
+<!-- done hiding from old browsers -->
+
+</script>
+</head>
+
+<body bgcolor="00FFFF">
+
+<h1>Calculadora. Ejemplo de Javascript</h1>
+Esta calculadora trabaja de una forma un tanto diferente a como es habitual. Supongamos que quieres sumar dos n&uacute;meros. para ello entra el primer n&uacute;mero, pulsa ENTER, despu&eacute;s el segundo n&uacute;mero, y por fin el signo de la operaci&oacute;n que quieres hacer, en este caso +.
+
+<center>
+<form method="post">
+
+<table border="1" align=center>
+<tr align="center">
+<td colspan = 4>
+
+<table border="0">
+<tr>
+<td align=right>Stack:</td><td><input name="stack" value="0"></td>
+</tr>
+<tr>
+<td align=right>Acc:</td><td><input name="display" value="0"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr align=center>
+<td>
+<input type="button" value=" 7 "
+  onClick="addChar(this.form.display, '7')">
+</td>
+<td>
+<input type="button" value=" 8 "
+  onClick="addChar(this.form.display, '8')">
+</td>
+<td>
+<input type="button" value=" 9 "
+  onClick="addChar(this.form.display, '9')">
+</td>
+<td>
+<input type="button" value=" / "
+  onClick="divide(this.form)">
+</td>
+</tr>
+
+<tr align=center>
+<td>
+<input type="button" value=" 4 "
+  onClick="addChar(this.form.display, '4')">
+</td>
+<td>
+<input type="button" value=" 5 "
+  onClick="addChar(this.form.display, '5')">
+</td>
+<td>
+<input type="button" value=" 6 "
+  onClick="addChar(this.form.display, '6')">
+</td>
+<td>
+<input type="button" value=" * "
+  onClick="multiply(this.form)">
+</td>
+</tr>
+
+<tr align=center>
+<td>
+<input type="button" value=" 1 "
+  onClick="addChar(this.form.display, '1')">
+</td>
+<td>
+<input type="button" value=" 2 "
+  onClick="addChar(this.form.display, '2')">
+</td>
+<td>
+<input type="button" value=" 3 "
+  onClick="addChar(this.form.display, '3')">
+</td>
+<td>
+<input type="button" value=" - "
+  onClick="subtract(this.form)">
+</td>
+</tr>
+
+<tr align=center>
+<td>
+<input type="button" value=" 0 "
+  onClick="addChar(this.form.display, '0')"> 
+</td>
+<td>
+<input type="button" value=" . "
+  onClick="addChar(this.form.display, '.')"> 
+</td>
+<td>
+<input type="button" value="+/-"
+  onClick="changeSign(this.form.display)">
+</td>
+<td>
+<input type="button" value=" + "
+  onClick="add(this.form)">
+</td>
+</tr>
+
+<tr align=center>
+<td colspan="2">
+<input type="button" value=" Enter " name="enter"
+  onClick="pushStack(this.form)">
+</td>
+<td>
+<input type="button" value=" C "
+  onClick="this.form.display.value = 0 ">
+</td>
+<td>
+<input type="button" value=" <- "
+  onClick="deleteChar(this.form.display)">
+</td>
+</tr>
+
+</table>
+</form>
+</center>
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+
+
+</body>
+</html>

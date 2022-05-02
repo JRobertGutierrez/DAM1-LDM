@@ -1,0 +1,415 @@
+<html>
+<head>
+<title>Java Script </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2>Operadores de JavaScript</H2>
+
+<h3>Tipos de operadores</h3>
+En JavaScript encontramos cinco tipos de operadores:
+
+<ul>
+<li>Aritm&eacute;ticos
+<li>L&oacute;gicos
+<li>De comparaci&oacute;n
+<li>Binarios
+<li>De asignaci&oacute;n
+<li>Otros
+</ul>
+
+<h3>Operadores aritm&eacute;ticos</h3>
+
+<font color="red">Suma (+)</font>. Suma dos números: <font color="blue">3<font color="red"> + </font>2 = 5</font> . Si en lugar de n&uacute;meros se suman cadenas, como por ejemplo <font color="blue">"A" <font color="red">+</font> "B" = "AB" </font> se produce una concatenaci&oacute;n. Si alguno de los elementos a concatenar no es una cadena de texto, queda convertido a cadena: <font color="blue">"AB" + 123 = "AB123" </font>.
+<p>
+
+<font color="red">Resta <b>(-)</b></font>. Halla la diferencia entre dos  n&uacute;meros. Ejemplo A: <font color="blue" face="Courier">3<font color="red">-</font>2 = 1 </font>. Ejemplo B: <font color="blue" face="Courier">(-1)<font color="red">-</font>(-2) = 1 </font>. 
+<p>
+<font color="red" >Negativo <b>(-)</b></font>. Indica el signo negativo de un n&uacute;mero o una expresi&oacute;n: <font color="blue" face="Courier"><font color="red">-</font>3</font>. 
+<p>
+<font color="red" >Divisi&oacute;n <b>(/)</b></font>. Divide dos  n&uacute;meros, obteniendo un cociente de coma flotante: <font color="blue" face="Courier">5<font color="red"> / </font>2 = 2.5 </font>. F&iacute;jate en que el separador decimal es el punto. 
+<p>
+<font color="red" >M&oacute;dulo aritm&eacute;tico <b>%</b></font>. Divide dos  n&uacute;meros, obteniendo un <b>resto</b> entero: <font color="blue" face="Courier">5<font color="red"> % </font>2 = 1 </font>.  
+<p>
+<font color="red" >Multiplicaci&oacute;n <b>(*)</b></font>. Multiplica dos  n&uacute;meros: <font color="blue" face="Courier">3<font color="red"> * </font>2 = 6 </font>.  
+<p>
+<font color="red">Incrementos y decrementos <b>(++ &nbsp; --)</b></font>. Incrementa o decrementa el valor de <b>una variable num&eacute;rica</b> en una unidad. No puede aplicarse a un literal. Pueden darse dos casos: 
+<pre>
+<font color="blue" face="courier">var A, B; B = 2; 
+
+    A = <font color="red"> ++B </font> 
+    A = <font color="red"> B++ </font> 
+</font>
+</pre>
+
+En el primer caso, <font color="green" face="courier">&nbsp;A = 3</font> &nbsp; Es decir, que el incremento de B ha sido el correcto, pero no as&iacute; el segundo, en el que &nbsp;<font color="green" face="courier">A = 2</font>. Esto se debe a que, en el primer caso, el incremento se efect&uacute;a <b>antes</b> de que la expresi&oacute;n sea evaluada, y en el segundo, se incrementa <b>despu&eacute;s</b> de la evaluaci&oacute;n seg&uacute;n indica el orden de precedencia de los operadores (ver tabla al final de esta p&aacute;gina). De igual forma, para decrementos:
+
+<pre>
+<font color="blue" face="courier">var A, B; B = 2; 
+
+    A = <font color="red"> --B </font> 
+    A = <font color="red"> B-- </font> 
+</font>
+</pre>
+
+En el primer caso resulta: &nbsp; <font color="green" face="courier">A = 1</font> &nbsp; y en el segundo: &nbsp; <font color="green" face="courier">A = 2</font>
+<p>
+
+
+<h3>Operadores l&oacute;gicos</h3>
+
+Estos operadores tienen unas aplicaciones un tanto especiales, ya que no funcionan como los aritm&eacute;ticos,  conocidos por todos. Para comprender el funcionamiento de los operadores l&oacute;gicos, primero hay que saber qu&eacute; son los <b>estados l&oacute;gicos</b> de una expresi&oacute;n. Y te preguntar&aacute;s que es eso de "estados l&oacute;gicos"... Esta es una cuesti&oacute;n un tanto filos&oacute;fica, ya que el estado l&oacute;gico de algo depende de respecto a qu&eacute; establecemos ese estado, y por tanto no siempre ser&aacute; el mismo. Depender&aacute; del entorno o contexto en el que se define y utiliza la expresi&oacute;n. En JavaScript hay tres posibles estados l&oacute;gicos: <font color="green">True</font> (verdadero),  <font color="green">False</font> (falso) y <font color="green">Null</font> (nulo, es decir que no se ha establecido estado alguno por la raz&oacute;n que sea)
+<p>
+Por ejemplo, supongamos que hay que establecer el estado l&oacute;gico de un material:  <font color="blue">El hierro</font>. Evidentemente, para establecer un <b>estado l&oacute;gico</b> primero tenemos que decidir respecto a qu&eacute; se establece ese estado, ya que no podemos decir simplemente que el hierro es verdadero  o falso. Nos tendremos que referir a alguna cualidad del material y compararla con algo para establecer si el estado es verdadero o falso.
+<p>
+Sea la expresi&oacute;n <font color="blue" face="Courier">El hierro es un metal </font>. Si tenemos que establecer el estado l&oacute;gico de esta expresi&oacute;n, la respuesta inmediata es <font color="green">Verdadero</font> (True) y si la expresi&oacute;n fuese <font color="blue" face="Courier">El hierro no es un metal </font>, inmediatamente pensar&iacute;mos que el estado adecuado es <font color="green">Falso</font> (False)
+<p>
+Una vez establecido el <b>estado l&oacute;gico</b> de la expresi&oacute;n, los <b>operadores l&oacute;gicos</b> nos permitir&aacute;n tomar decisiones mediante la verificaci&oacute;n de ese estado, bien tomando uno solo, o agrupando varios de ellos. Al igual que los operadores aritm&eacute;ticos, los operadores l&oacute;gicos tienen un orden preestablecido de evaluaci&oacute;n que debe ser tenido en cuenta. Los estados l&oacute;gicos, o mejor dicho, el resultado que dan los operadores l&oacute;gicos, pueden tratarse tambi&eacute;n como n&uacute;meros booleanos, siendo <font color="green">True</font> equivalente a <b>1</b> y <font color="green">False</font> equivalente a <b>0</b>.
+
+
+<p>
+<font color="red" size=3>Negaci&oacute;n l&oacute;gica <b>!</b> (Not)</font>.  Establece una negaci&oacute;n l&oacute;gica en una expresi&oacute;n, es decir, que ante una expresi&oacute;n, cuyo estado l&oacute;gico es <font color="green"><b>True</b></font> (verdadero), el operador har&aacute; que devuelva <font color="green"><b>False</b> </font>(falso).
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="red"><b>!</b></font><font color="blue" face="Courier"> El hierro es un metal = <font color="green">False</font>.</font>
+<p>
+Hay tres posibles resultados aplicando este operador a una expresi&oacute;n:
+<p>
+<font color="blue" face="Courier">Si la expresi&oacute;n = <font color="green">True</font> el operador devuelve <font color="green">False</font>. </font><br>
+<font color="blue" face="Courier">Si la expresi&oacute;n = <font color="green">False</font> el operador devuelve <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">Si la expresi&oacute;n = <font color="green">Null</font> el operador devuelve <font color="green">Null</font>. </font>
+<p>
+
+<font color="red" size=3>Conjunci&oacute;n l&oacute;gica <b>&&</b> (And)</font>.  Establece una conjunci&oacute;n l&oacute;gica de dos expresiones, es decir, que han de resultar <font color="green"><b>True</b></font> (verdadero) las dos expresiones para que el resultado final tambi&eacute;n lo sea.
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">El hierro es duro = <font color="green">True</font>.</font><br>
+<font color="blue" face="Courier">El hierro es un metal <font color="red">&&</font> El hierro es duro = <font color="green">True</font>.</font>
+<p>
+Hay 9 posibles resultados aplicando este operador a <b>dos</b> expresiones, aunque es posible incluir cuantas sean necesarias:
+<p>
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">&&</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+<p>
+Como puedes ver, si, y s&oacute;lo si, ambas expresiones se eval&uacute;an como True, el resultado es True. Si cualquiera de las expresiones es False, el resultado es False.
+<p>
+
+
+
+<font color="red" size=3>Disyunci&oacute;n l&oacute;gica <b>||</b> (Or)</font>.  Establece una disyunci&oacute;n l&oacute;gica de dos expresiones, es decir, que el resultado se dar&aacute; evaluando una expresi&oacute;n u otra.
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">El hierro es duro = <font color="green">True</font>.</font><br>
+<font color="blue" face="Courier">El hierro es un metal <font color="red">||</font> El hierro es duro = <font color="green">True</font>.</font>
+<p>
+Hay 9 posibles resultados aplicando este operador a <b>dos</b> expresiones, aunque es posible incluir cuantas sean necesarias:
+<p>
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">Null</font> </font> <font color="red">||</font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">Null</font> </font> el resultado es <font color="green">Null</font>. </font><br>
+<p>
+Como puedes ver, si cualquiera de las expresiones, o ambas,  son True, el resultado es True. 
+<p>
+
+<font color="red" size=3>Exclusi&oacute;n l&oacute;gica <b>^</b> (Xor)</font>.  Establece una exclusi&oacute;n l&oacute;gica de dos expresiones, es decir, que el resultado se dar&aacute; evaluando una expresi&oacute;n u otra, y dar&aacute; True si <b>solamente</b> una de ellas es True, lo que implica la exclusi&oacute;n de la otra.
+<p>
+<font color="blue" face="Courier">El hierro es un metal = <font color="green">True</font>. </font><br>
+<font color="blue" face="Courier">El hierro es duro = <font color="green">True</font>.</font><br>
+<font color="blue" face="Courier">El hierro es un metal <font color="red">^</font> El hierro es duro = <font color="green">False</font>.</font>
+<p>
+Hay 4 posibles resultados aplicando este operador a <b>dos</b> expresiones:
+<p>
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">^ </font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">False</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">True</font> </font> <font color="red">^ </font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">^ </font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">True</font> </font> el resultado es <font color="green">True</font>. </font><br>
+
+Si la <font color="blue" face="Courier">Expresi&oacute;n 1 = <font color="green">False</font> </font> <font color="red">^ </font> <font color="blue" face="Courier"> Expresi&oacute;n 2 = <font color="green">False</font> </font> el resultado es <font color="green">False</font>. </font><br>
+<p>
+Como puedes ver, si una y s&oacute;lo una de las expresiones es True, el resultado es True. Si cualquiera de las expresiones es Null, el resultado tambi&eacute;n ser&aacute; Null. 
+<p>
+
+
+
+<h3>Operadores de comparaci&oacute;n</h3>
+
+
+Igualdad (<b><font color="red" face="courier">==</b></font>) Verifica la igualdad de dos expresiones sin tener en cuenta el tipo de dato.<br>
+ Por ejemplo: <font color="blue" face="courier">2</font> <font color="red" face="courier">==</font> <font color="blue" face="courier">"2"</font> devuelve <font color="green" face="courier">True</font>
+<p>
+
+Igualdad estricta (<b><font color="red" face="courier">===</b></font>) Hace lo mismo que el anterior, pero verificando tambi&eacute;n que coincidan los tipos de datos.<br>
+Por ejemplo: <font color="blue" face="courier">2</font> <font color="red" face="courier">===</font> <font color="blue" face="courier">"2"</font> devuelve <font color="green" face="courier">False</font>
+<p>
+Desigualdad (<b><font color="red" face="Courier">!=</b></font>) Funciona de la misma forma que la igualdad, pero neg&aacute;ndola.<br>
+Por ejemplo: <font color="blue" face="courier">2</font> <font color="red" face="courier">!=</font> <font color="blue" face="courier">"2"</font> devuelve <font color="green" face="courier">False</font>
+<p>
+Desigualdad estricta (<b><font color="red" face="Courier">!==</b></font>) Lo mismo que la igualdad estricta, pero neg&aacute;ndola. <br>
+Por ejemplo: <font color="blue" face="courier">2</font> <font color="red" face="courier">!==</font> <font color="blue" face="courier">"2"</font> devuelve <font color="green" face="courier">True</font>
+<p>
+Y estos cuatro, seguro que ya sabes c&oacute;mo funcionan:
+<p>
+Mayor que (<b><font color="red" face="courier">&gt;</b></font>)
+<p>
+Mayor o igual que (<b><font color="red" face="courier">&gt;=</b></font>)
+<p>
+Menor que (<b><font color="red" face="courier">&lt;</b></font>)
+<p>
+Menor o igual que (<b><font color="red" face="courier">&lt;=</b></font>)
+
+
+<h3>Operadores que trabajan con bits </h3>
+Existen algunos operadores que funcionan bit a bit, convirtiendo previamente los valores a binario. <br>
+Son los siguientes: <font color="red" face="courier"><b>&lt;&lt; &nbsp;  &gt;&gt;  &nbsp; &gt;&gt;&gt;  &nbsp;  &  &nbsp; |  &nbsp; ^</b></font>
+<p>
+Para comprender como trabajan estos  complicados operadores lo mejor son los ejemplos:
+<p>
+<font color="blue"><b>Bitwise shift operators</b></font>
+<p>
+<font color="red" face="courier">
+   <font color="blue" face="courier"> 9 </font>&lt;&lt;
+   <font color="blue" face="courier">2 = 36</font>
+</font> 
+ con valor negativo:
+
+<font color="red" face="courier">
+   <font color="blue" face="courier"> -9 </font>&lt;&lt;
+   <font color="blue" face="courier">2 = -36</font>
+</font> 
+
+
+<dir> Primero convierte a binario el primer operando 9 = <b>1001</b> &nbsp; A continuaci&oacute;n  añade a su derecha  el n&uacute;mero de bits <b>cero</b> que indique el segundo operando (2). Resulta: <b>1001 00</b> = 36 </dir>
+<p>
+
+<font color="red" face="courier">
+   <font color="blue" face="courier"> 9 </font>&gt;&gt;
+   <font color="blue" face="courier">2 = 2</font>
+</font> 
+ con valor negativo: 
+
+<font color="red" face="courier">
+   <font color="blue" face="courier"> -9 </font>&gt;&gt;
+   <font color="blue" face="courier">2 = -3</font>
+</font> 
+
+<dir> Primero convierte a binario el primer operando 9 = <b>1001</b> &nbsp; A continuaci&oacute;n, y comenzando de derecha a izquierda, elimina el n&uacute;mero de bits  que indique el segundo operando (2). Resulta: <b>10</b> = 2 </dir>
+
+<p>
+
+<font color="red" face="courier">
+   <font color="blue" face="courier"> 9 </font>&gt;&gt;&gt;
+   <font color="blue" face="courier">2 = 2</font>
+</font> 
+
+con valor negativo: 
+<font color="red" face="courier">
+   <font color="blue" face="courier"> -9 </font>&gt;&gt;&gt;
+   <font color="blue" face="courier">2 = 1073741821</font>
+</font> 
+
+<dir> Funciona igual que el anterior con <b>n&uacute;meros positivos</b>. Con n&uacute;meros negativos no est&aacute; muy claro lo que hace.</dir>
+<p>
+
+
+<font color="blue"><b>Bitwise logical operators</b></font>
+<p>
+Al igual que los anteriores, estos operadores trabajan convirtiendo previamente a binario los operandos, en la base de enteros de 32 bits. Para operar emparejan cada bit del primer operando con su correspondiente del segundo operando, aplicando el operador uno a uno hasta obtener el resultado final. Por ejemplo, el n&uacute;mero 15 en binario es <b>1111</b> y el 9 <b>1001</b>. Si aplicamos los tres operadores l&oacute;gicos a esta pareja de valores, se obtiene:
+<p>
+
+<font color="blue" face="courier">
+<pre>
+   15 <font color="red">&</font> 9 = 9   (1111 AND 1001 = 1001)<br>
+   15 <font color="red">|</font> 9 = 15  (1111 OR  1001 = 1111)<br>
+   15 <font color="red">^</font> 9 = 6   (1111 XOR 1001 = 0110) 
+</pre>
+</font>
+<p>
+Y seguramente te estar&aacute;s diciendo que no entiendes nada... Analicemos uno. <br>
+Sea, por ejemplo, el &uacute;ltimo de ellos: <b>15 ^ 9 = 6</b>. M&aacute;s arriba se ha descrito este mismo operador, que es <b>Xor</b>. Recordemos que establece una exclusión l&oacute;gica de dos expresiones, es decir, que el resultado se dar&aacute; evaluando ambos valores, y dará True si <b>solamente</b> una de ellas es True. Recordemos tambi&eacute;n que en binario 1 = True y 0 = False. Por tanto
+<pre><font face="courier" color="blue">
+      15 =   1     1     1     1
+       9 =   1     0     0     1  
+     ------------------------------
+           False  True True  False    o lo que es igual, <b> 0110</b></font>
+
+</pre>
+
+<p>
+No hay que confundir estos tres operadores con sus hom&oacute;logos l&oacute;gicos vistos m&aacute;s arriba, que se representan con el mismo s&iacute;mbolo pero doble (excepto este).
+<p>
+
+<h3>Operadores de asignaci&oacute;n</h3>
+
+Asignaci&oacute;n simple (<b><font color="red" face="courier">=</b></font>) Asigna un contenido a una variable o a un objeto.<br>
+Por ejemplo: <font color="blue" face="courier">mivariable</font> <font color="red" face="courier">=</font> <font color="blue" face="courier">"Saludos"</font>
+<p>
+En JavaScript el operador de asignaci&oacute;n tiene la particularidad de que puede combinarse con algunos de los operadores aritm&eacute;ticos, dando lugar a toda una familia de nuevos operadores:
+<p>
+<font color="blue" face="courier">A </font><font color="red" face="courier"><b>+=</b></font> 
+<font color="blue" face="courier"> B</font> &nbsp; 
+Ejemplo equivalente: <font color="blue" face="courier">A = A + B</font> 
+
+<p>
+<font color="blue" face="courier">A </font><font color="red" face="courier"><b>-=</b></font> 
+<font color="blue" face="courier"> B</font> &nbsp; 
+Ejemplo equivalente: <font color="blue" face="courier">A = A - B</font> 
+
+<p>
+<font color="blue" face="courier">A </font><font color="red" face="courier"><b>/=</b></font> 
+<font color="blue" face="courier"> B</font> &nbsp; 
+Ejemplo equivalente: <font color="blue" face="courier">A = A / B</font> 
+
+<p>
+<font color="blue" face="courier">A </font><font color="red" face="courier"><b>*=</b></font> 
+<font color="blue" face="courier"> B</font> &nbsp; 
+Ejemplo equivalente: <font color="blue" face="courier">A = A * B</font> 
+
+<p>
+<font color="blue" face="courier">A </font><font color="red" face="courier"><b>%=</b></font> 
+<font color="blue" face="courier"> B</font> &nbsp; 
+Ejemplo equivalente: <font color="blue" face="courier">A = A % B</font> 
+
+<p>
+<font color="blue" face="courier">A </font><font color="red" face="courier"><b>&=</b></font> 
+<font color="blue" face="courier"> B</font> &nbsp; 
+Ejemplo equivalente: <font color="blue" face="courier">A = A & B</font> 
+
+<p>
+<font color="blue" face="courier">A </font><font color="red" face="courier"><b>^=</b></font> 
+<font color="blue" face="courier"> B</font> &nbsp; 
+Ejemplo equivalente: <font color="blue" face="courier">A = A ^ B</font> 
+ 
+<p>
+<font color="blue" face="courier">A </font><font color="red" face="courier"><b>|=</b></font> 
+<font color="blue" face="courier"> B</font> &nbsp; 
+Ejemplo equivalente: <font color="blue" face="courier">A = A | B</font> 
+
+
+<h3>Unos operadores at&iacute;picos</h3>
+
+
+<font color="red" face="courier">typeof</font>  &nbsp; Este operador nos indica el tipo de dato contenido en un variable, un literal o el resultado de una expresi&oacute;n. Puede devolver seis  valores diferentes: <font color="blue" face="courier">number, string, object, function, boolean  o undefined </font>. Por ejemplo: 
+<p>
+<font color="blue" face="courier">typeof 2</font> &nbsp; devuelve &nbsp; <font color="green" face="courier">number</font> 
+<p>
+<font color="red" face="courier">void</font>  &nbsp; Este es un curioso operador que se limita a impedir que todo funcione normalmente, es decir, que una vez evaluadas la instrucciones, sus efectos o presentación de resultados ser&aacute;n anulados. En principio podemos dudar de su utilidad, pero puede resultar muy &uacute;til en las ocasiones en que, dependiendo de una evaluaci&oacute;n previa, haya que deshabilitar algun objeto o impedir alguna acci&oacute;n. Por ejemplo, bloqueando un formulario donde no se han cumplimentado algunos campos obligatorios, o si algun valor es err&oacute;neo. El siguiente ejemplo genera un link que no funciona: &nbsp;
+<font color="blue" face="courier"><A HREF="javascript:void(0)">Este link no funciona</A></font>
+<p>
+Y se escribe: <font color="blue" face="courier">
+&lt;A HREF="javascript:<font color="red" face="courier">void(0)</font>"&gt;Este link no funciona&lt;/A&gt;</font>
+<p>
+<font color="red" face="courier">new</font>  &nbsp; Sirve para crear una instancia de un objeto definido por el usuario, o tambi&eacute;n,  para crear alguno de los objetos intr&iacute;nsecos de javaScript:, como son: <font color="blue" face="courier">Array, Boolean, Date, Function, Math, Number o String</font>. Lo veremos con m&aacute;s detalle en la p&aacute;gina dedicada a los <a href="javascr05.htm">objetos</a>.
+
+
+
+<p>
+Como puedes ver, JavaScript dispone de una gran variedad de operadores. Cuando se escriben expresiones l&oacute;gicas complejas es recomendable usar los par&eacute;ntesis para cada sub expresi&oacute;n participante, y no olvides tener siempre en cuenta el orden de evaluaci&oacute;n de los operadores. Es relativamente f&aacute;cil equivocarse al escribir expresiones complicadas, y es buena idea probar siempre lo escrito con cuantas variaciones sea posible para asegurarse de que no se producen resultados inesperados.
+<p>
+
+
+
+
+<h3>Orden de precedencia de los operadores</h3>
+
+Los operadores de JavaScript tienen un orden establecido de evaluaci&oacute;n. Este orden se denomina orden de precedencia. En la tabla siguiente puedes ver este orden, teniendo presente que los operadores que aparecen juntos en una misma fila de la tabla, no tienen prioridad entre ellos, sino que se evaluar&aacute;n en el orden en que hayan sido escritos en la expresi&oacute;n a evaluar:
+<p>
+<center>
+<table border=1 width=87% CELLPADDING=5 CELLSPACING=0>
+<tr bgcolor="#b1f3b6"><td align=left><Font Size=2><b>Operador</b></Font></td><td align=left><Font Size=2><b>Descripci&oacute;n</b></Font></td>
+
+<tr><td><Font color="red" Size=2><b>. &nbsp; [ ] &nbsp; ( )</b></Font></td><td><Font Size=2>Acceso a campos, &iacute;ndice de matrices y llamada a funciones.</Font></td></tr>
+
+<tr><td><Font color="red" Size=2><b>++ &nbsp; -- &nbsp; - &nbsp; ~ &nbsp; ! &nbsp; <br>
+delete &nbsp; new &nbsp; typeof &nbsp; void</b></Font></td><td><Font Size=2>Incremento +1, decremento -1, negativo, NOT, NOT l&oacute;gico <br>
+borrado, crear objeto, mostrar tipo, indefinido</Font></td></tr>
+
+<tr><td><Font color="red" Size=2><b>* &nbsp; / &nbsp; %</b></Font></td><td><Font Size=2>Multiplicaci&oacute;n, divisi&oacute;n, m&oacute;dulo de divisi&oacute;n (resto)</Font></td></tr>
+
+<tr><td><Font color="red" Size=2><b>+ &nbsp; - &nbsp; +</b></Font></td><td><Font Size=2>Suma, resta, concatenaci&oacute;n de cadenas</Font></td></tr>
+
+<tr><td><Font color="red" Size=2><b>&lt;&lt; &nbsp; &nbsp; &gt;&gt; &nbsp; &nbsp;&gt;&gt;&gt;</b></Font></td><td><Font Size=2>Bit shifting</Font></td></tr>
+
+<tr><td><Font color="red" Size=2><b>&lt; &nbsp; &lt;= &nbsp; &nbsp; &gt;  &nbsp; &gt;=</b></font></td><td><Font Size=2>menor que, menor que o igual, mayor que, mayor que o igual</Font></td></tr>
+
+<tr><td><Font color="red" Size=2><b>== &nbsp; != &nbsp; === &nbsp; !==&nbsp; </b></Font></td><td><Font Size=2>Igualdad, desigualdad, identidad, no identidad</Font></td></tr>
+
+<tr><td><Font color="red" Size=2><b>&</b></Font></td><td><Font Size=2>AND</Font></td></tr>
+<tr><td><Font color="red" Size=2><b>^</b></Font></td><td><Font Size=2>XOR</Font></td></tr>
+<tr><td><Font color="red" Size=2><b>|</b></Font></td><td><Font Size=2>OR</Font></td></tr>
+<tr><td><Font color="red" Size=2><b>&&</b></Font></td><td><Font Size=2>AND logico</Font></td></tr>
+<tr><td><Font color="red" Size=2><b>||</b></Font></td><td><Font Size=2>OR logico</Font></td></tr>
+<tr><td><Font color="red" Size=2><b>?:</b></Font></td><td><Font Size=2>Condicional</Font></td></tr>
+<tr><td><Font color="red" Size=2><b>= </b></Font></td><td><Font Size=2>Asignaci&oacute;n</Font></td></tr>
+<tr><td><Font color="red" Size=2><b>,</b></Font></td><td><Font Size=2>Evaluaci&oacute;n m&uacute;ltiple</Font></td></tr>
+</table>
+</center>
+
+<p>
+Los par&eacute;ntesis se utilizan para alterar el orden natural de evaluaci&oacute;n de los operadores. 
+Una expresi&oacute;n con par&eacute;ntesis ser&aacute; evaluada completa <b>antes</b> de que su valor resultante sea utilizado por el resto de instrucciones. 
+<p>
+Para hacerse una idea m&aacute;s clara, veamos un ejemplo. Sea la siguiente expresi&oacute;n:
+<p>
+<FONT color="blue" FACE="Courier"> &nbsp; &nbsp; X = 78 * (96 + 3 + 45)</FONT>
+<p>
+<p>Como puedes ver, hay cinco operadores en este orden: &nbsp; <FONT color="red" FACE="Courier"><b> = &nbsp; * &nbsp; () &nbsp; + &nbsp; + &nbsp;</b></font> 
+<p>
+De acuerdo con su orden de precedencia, se evaluar&aacute;n en este orden: &nbsp; 
+<FONT color="red" FACE="Courier"><b> () &nbsp; * &nbsp; + &nbsp; + &nbsp; = &nbsp;</b></font> 
+<p>
+Y esta ser&iacute;a la forma de operar paso a paso:
+<p>
+En primer lugar, se resuelve el par&eacute;ntesis: &nbsp; <FONT color="blue" FACE="Courier">96 + 3 = 99</font> &nbsp; y a continuaci&oacute;n <FONT color="blue" FACE="Courier">99 + 45 = 144</font>
+<p>
+Ahora se multiplica: &nbsp;  <FONT color="blue" FACE="Courier">78 * 144 = 11232</font>
+<p>
+Por &uacute;ltimo se asigna el resultado: &nbsp;<FONT color="blue" FACE="Courier">X = 11232</font>
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

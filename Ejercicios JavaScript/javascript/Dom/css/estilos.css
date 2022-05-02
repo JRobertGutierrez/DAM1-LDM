@@ -1,0 +1,11 @@
+body{
+    text-align: center
+}
+img{
+    border:5px solid rgb(104, 97, 97);
+    border-radius: 5px;
+    display: block;
+    margin: auto;
+    display: auto;
+    padding: 10px;
+}

@@ -1,0 +1,60 @@
+<HTML>
+<HEAD><TITLE>JavaScript Index</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+<!-- Begin
+function showLines(max, text) {
+max--;
+text = "" + text;
+var temp = "";
+var chcount = 0; 
+for (var i = 0; i < text.length; i++) // for each character ... 
+{   
+var ch = text.substring(i, i+1); // first character
+var ch2 = text.substring(i+1, i+2); // next character
+if (ch == '\n') // if character is a hard return
+{  
+temp += ch;
+chcount = 1;
+}
+else
+{
+if (chcount == max) // line has max chacters on this line
+{
+temp += '\n' + ch; // go to next line
+chcount = 1; // reset chcount
+}
+else  // Not a newline or max characters ...
+{
+temp += ch;
+chcount++; // so add 1 to chcount
+      }
+   }
+}
+return (temp); // sends value of temp back
+}
+//  End -->
+
+</script>
+</HEAD>
+
+<BODY bgcolor="#00FFFF" >
+<CENTER>
+<h2>Limitar la longitud de la l&iacute;nea en cuadros de texto</h2>
+
+<FORM NAME=form1>
+
+<TEXTAREA NAME=text2 ROWS=5 COLS=20 WRAP=virtual>
+</TEXTAREA><br>
+</FORM>
+</CENTER>
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+</BODY>
+</HTML>

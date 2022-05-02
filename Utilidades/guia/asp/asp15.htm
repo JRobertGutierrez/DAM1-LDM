@@ -1,0 +1,153 @@
+<HTML>
+<HEAD><TITLE>ASP 15</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El m&eacute;todo Server.CreateObject</H2>
+
+<h3>Server.CreateObject(<font color="blue">"Scripting.FileSystemObject"</font>)  </h3> 
+
+Otros objetos muy interesantes que pueden crearse con <b>Server.CreateObject()</b> son los de acceso a archivos de texto. En el siguiente ejemplo se crean dos objetos:
+<ul>
+<li><font color="green"><b>FS</b></font> que es un objeto FileSystem que permite acceder al sistema de ficheros del servidor.
+
+<li><font color="green"><b>Fichero</b></font> que es un objeto TextStream que permite acceder a un fichero de texto llamado <b>texto.txt</b> en modo lectura o escritura.
+</ul>
+La segunda instrucci&oacute;n crear&aacute;, en modo escritura,  el fichero <b>texto.txt</b> en la ruta especificada, y <b>lo borrar&aacute</b> cre&aacute;ndolo de nuevo, si ya existe.
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Set <font color="green"><b>FS</b></font> = <FONT color="red">Server.CreateObject("Scripting.FileSystemObject") </font><br>
+Set <font color="green"><b>Fichero</b></font> = <FONT color="red"> FS.CreateTextFile("C:\ASP\texto.txt", True) </font><br>
+%&gt;
+</font>
+<p>
+El par&aacute;metro <font color="red">True</font> es opcional. Indica si un archivo existente se quiere sobrescribir. El valor debe ser <font color="red">True</font> si el  archivo se quiere crear nuevo; <font color="red">False</font> si, existiendo, no se quiere sobrescribir. Si se omite y el fichero existe, no se borra, ya que el valor por defecto es <font color="red">False</font>, pero ASP dar&aacute; un mensaje de error, ya que el objeto es de <b>creaci&oacute;n</b> de un nuevo fichero, cosa que no puede hacer.
+<p>
+ Ahora, para escribir una l&iacute;nea en <b>texto.txt</b> simplemente escribiremos:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+<FONT color="red">Fichero.WriteLine</font>("Esto es una prueba de escritura")<br>
+%&gt;
+</font>
+
+<p>
+Si lo que se desea es abrir el fichero, en modo lectura, ya existente y previamente cerrado,  se escribir&aacute;:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Set <font color="green"><b>FS</b></font> = <FONT color="red">Server.CreateObject("Scripting.FileSystemObject") </font><br>
+Set <font color="green"><b>Fichero</b></font> = <FONT color="red"> FS.OpenTextFile("C:\ASP\texto.txt", False) </font><br>
+%&gt;
+</font>
+<p>
+Y para leer la primera l&iacute;nea:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Response.Write(<FONT color="red">Fichero.ReadLine</font>)<br>
+%&gt;
+</font>
+<p>
+Hasta aqu&iacute; ver&aacute;s que podemos crear un fichero nuevo o leer uno ya existente, pero, &iquest;qu&eacute; hacer si tenemos que anexar nuevas l&iacute;neas a un fichero que ya tiene contenidos? La soluci&oacute;n la tenemos en el m&eacute;todo <b>OpenAsTextStream</b>, que  proporciona las mismas funcionalidades que <b>OpenTextFile</b>, pero adem&aacute;s permite anexar (append) nuevas l&iacute;neas sin borrar el fichero ya existente ni su contenido. Previamente habr&aacute; que definir algunas constantes para poder realizar las tres operaciones b&aacute;sicas con el fichero:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Const ForReading = 1, ForWriting = 2, ForAppending = 8<br>
+Const TristateUseDefault = -2, TristateTrue = -1, TristateFalse = 0<br>
+<p>
+Set <font color="green"><b>FS</b></font> = <FONT color="red">Server.CreateObject("Scripting.FileSystemObject") </font><br>
+Set <font color="green"><b>Fichero</b></font> = <FONT color="red"> FS.GetFile("C:\ASP\texto.txt") </font><br>
+
+Set <font color="green"><b>TS</b></font> = <FONT color="green">Fichero</font><FONT color="red">.OpenAsTextStream(ForAppending, TristateUseDefault)
+</font><br>
+%&gt;
+</font>
+<p>
+Y para escribir una l&iacute;nea en <b>texto.txt</b> a&ntilde;adi&eacute;ndola a las que ya contenga:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+<FONT color="red">TS.Write</font>("Esto es un segundo registro sin borrar el primero" & vbCrLf)<br>
+%&gt;
+</font>
+<p>
+La constante <b>vbCrLf</b> se encarga de escribir un retorno de carro al final de la l&iacute;nea.
+<p>
+El primer par&aacute;metros del m&eacute;todo <b>OpenAsTextStream</b> es el modo de apertura, y puede ser:
+<ul>
+<li><b>ForReading</b> Abre el fichero para lectura.
+<li><b>ForWriting</b> Abre el fichero para escritura. Si ya existe con el mismo nombre, su contenido anterior se sobrescribe.
+<li><b>ForAppending</b> Abre el fichero y escribe al final del mismo. El contenido anterior no es alterado.
+</ul>
+
+El segundo par&aacute;metro  se refiere al formato del fichero. Si se omite, el archivo se abre como ASCII. Puede ser:
+<ul>
+<li><b>TristateUseDefault</b> Abre el fichero utilizando la forma predeterminada para el sistema.
+<li><b>TristateTrue</b> Abre el archivo como Unicode.
+<li><b>TristateFalse</b> Abre el fichero como ASCII (por defecto).
+</ul>
+
+
+<p>
+Tanto si se ha abierto el fichero en modo lectura como en escritura, al concluir su procesado se cerrar&aacute;n el objeto TS:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+TS.Close<br>
+Set TS = Nothing<br>
+%&gt;
+</font>
+<p>
+<b>Close</b> es en realidad un m&eacute;todo, y se encarga de vaciar el buffer y de cerrar el fichero. Despu&eacute;s la instrucci&oacute;n <b>Nothing</b> indica al sistema que el objeto ya no est&aacute; vinculado a ninguna variable, por lo que sus recursos pueden ser recuperados.
+<p>
+Al igual que los objetos RecordSet, los objetos TextStream (en nuestro ejemplo <font color="green"><b>Fichero</b></font>) tambi&eacute;n tienen varias propiedades y m&eacute;todos para moverse por el fichero <b>texto.txt</b>, pero a diferencia de los RecordSet, no es posible moverse hacia atr&aacute;s. Los ficheros de texto creados con el objeto TextStream son, por tanto, de acceso <b>secuencial</b>. Veamos las <font color="blue">propiedades</font>, que son todas de s&oacute;lo <b>lectura</b>, es decir que s&oacute;lo pueden utilizarse si el fichero ha sido abierto en modo lectura<br> (<FONT color="red"> FS.OpenTextFile("C:\ASP\texto.txt", False </font>):
+<ul>
+<li><b><font color="green">Fichero</font><font color="blue">.AtEndOfLine</font></b> devuelve <font color="red">True</font> si el puntero de archivo est&aacute; situado inmediatamente a continuaci&oacute;n del marcador de fin de l&iacute;nea del archivo; en caso contrario devuelve <font color="red">False</font>. 
+
+<li><b><font color="green">Fichero</font><font color="blue">.AtEndOfStream</font></b> devuelve <font color="red">True</font> si el puntero de archivo se encuentra al final del mismo; en caso contrario devuelve <font color="red">False</font>. 
+
+<li><b><font color="green">Fichero</font><font color="blue">.Column</font></b> devuelve el n&uacute;mero de columna de la posici&oacute;n del car&aacute;cter actual en un archivo. Despu&eacute;s de que se haya escrito un car&aacute;cter de nueva l&iacute;nea mediante <b>VbLf</b> o <b>VbCrLf</b> o utilizado el m&eacute;todo <b>Fichero.WriteLine()</b>, pero antes de que se escriba cualquier otro car&aacute;cter, el valor de <b>Column</b> es 1.
+
+<li><b><font color="green">Fichero</font><font color="blue">.Line</font></b> devuelve el n&uacute;mero de l&iacute;nea actual en el archivo. Despu&eacute;s de que se abre por primera vez un archivo y antes de que se escriba nada en &eacute;l, el valor de <b>Line</b> es 1.
+</ul>
+Y a continuaci&oacute;n veamos los <font color="red">m&eacute;todos</font>:
+<ul>
+<li><b><font color="green">Fichero</font><font color="red">.Read(N)</font></b> M&eacute;todo utilizado para <b>leer</b> un n&uacute;mero (<b>N</b>) especificado de caracteres de un archivo, devolviendo la cadena resultante. Dependiendo del valor de <b>N</b> pueden leerse de una a varias l&iacute;neas.
+
+<li><b><font color="green">Fichero</font><font color="red">.ReadAll</font></b> <b>Lee</b> un archivo completo y devuelve la cadena resultante. No es aconsejable utilizarlo con ficheros grandes, ya que podr&iacute;a dejar al servidor sin recursos de memoria. En este caso es preferible leer los ficheros l&iacute;nea a l&iacute;nea.
+
+<li><b><font color="green">Fichero</font><font color="red">.ReadLine</font></b> <b>Lee</b> una l&iacute;nea completa hasta encontrar, pero sin incluir, el car&aacute;cter de nueva línea (<b>VbCrLf</b>) de un archivo     devolviendo la cadena resultante.
+
+<li><b><font color="green">Fichero</font><font color="red">.Skip(N)</font></b> Omite un n&uacute;mero (<b>N</b>) especificado de caracteres al <b>leer</b> un archivo. 
+
+<li><b><font color="green">Fichero</font><font color="red">.Skip(N)</font></b> Salta a la siguiente línea cuando se <b>lee</b> un archivo.
+
+<li><b><font color="green">Fichero</font><font color="red">.Write(string)</font></b> <b>Escribe</b> un string especificado en un archivo. Las cadenas especificadas se escriben en el archivo sin caracteres de separaci&oacute;n, delimitadores, ni espacios en blanco entre cada cadena. Y por supuesto, sin el car&aacute;cter de fin de l&iacute;nea. Hay que utilizar el m&eacute;todo <b>WriteLine</b> para escribir un car&aacute;cter de nueva l&iacute;nea o una cadena que finalice con un car&aacute;cter de nueva l&iacute;nea.
+
+<li><b><font color="green">Fichero</font><font color="red">.WriteLines([string])</font></b> <b>Escribe</b> un string especificado y un car&aacute;cter de nueva l&iacute;nea a continuaci&oacute;n. Si se omite el string de contenido, simplemente se escribe el car&aacute;cter de nueva l&iacute;nea.
+
+<li><b><font color="green">Fichero</font><font color="red">.WriteBlankLines(N)</font></b> <b>Escribe</b> un n&uacute;mero (<b>N</b>) de caracteres de nueva línea <b>VbCrLf</b>.
+</ul>
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

@@ -1,0 +1,241 @@
+
+<html>
+
+<head>
+<title> Creando links </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<a name="punto1"></a>
+<H2> Creaci&oacute;n de  enlaces (links) </H2>
+
+El siguiente es sin duda el elemento m&aacute;s importante del HTML, ya que permite realmente &quot;navegar&quot; por uno o varios documentos, que pueden residir en cualquier parte, pareci&eacute;ndonos que siempre estamos en el mismo;  a esto se le llama <b>hipertexto</B> ya que con esta posibilidad, en realidad, nuestro documento puede ser infinito... En efecto, para la persona que est&aacute; leyendo sobre un determinado tema, no hay diferencias ostensibles que le hagan notar d&oacute;nde est&aacute; el documento que lee. Para el lector, todo parece un mismo documento, cuando en realidad, probablemente el conjunto de lo que lee est&aacute; repartido por medio mundo, o en un plano m&aacute;s modesto, el documento le&iacute;do puede estar compuesto en realidad por varios cientos de p&aacute;ginas que &quot;saltan&quot; de unas a otras sin notarlo.
+<P>
+Todo esto lo consigue el elemento &lt;<b>A</b>&gt; (por <b>A</b>nchor, 
+en ingl&eacute;s = ancla o punto de anclaje). En lo sucesivo le 
+llamaremos enlace o sinplemente <b>link</b> 
+(en ingl&eacute;s link=eslab&oacute;n o enlace).
+<P>
+Pero seguramente te preguntar&aacute;s qu&eacute; es eso de un 
+&quot;link&quot;. Pues un link es un &aacute;rea de la pantalla, 
+que puede contener una o varias palabras o una imagen, que es 
+&quot;sensible&quot; al puntero del rat&oacute;n, y al ponerlo 
+sobre ella y pulsar el bot&oacute;n izquierdo el visualizador 
+llamar&aacute; a la p&aacute;gina que tiene asignada el link. 
+Habitualmente por defecto los visualizadores se&ntilde;alan un 
+&aacute;rea linkada subray&aacute;ndola, si es texto, o 
+poni&eacute;ndole un borde si es una imagen, ambas cosas en color azul. 
+Por supuesto, eso se puede cambiar en las configuraciones de visualizador.
+Si no se desea que aparezca el subrayado para mejorar la est&eacute;tica, se puede parametrizar con una instrucci&oacute;n de estilo. Si decides eliminar el subrayado por defecto de los links, puede ser buena idea cambiarlo por otro tipo de efecto o indicación que facilite al lector el saber qu&eacute; texto contiene un link, de lo contrario, posiblemente, no llegue a utilizarlos nunca. Generalmente, el visitante no se dedicar&aacute; a "pasear" el rat&oacute;n por toda la p&aacute;gina buscando enlaces ocultos.
+
+<P>
+Se escribir&aacute;:
+<pre>
+&lt;<b>A</b> HREF="http://www.miservidor.es/mifichero.htm"> Link de prueba  &lt;/A>.
+</pre>
+<p>
+Y se ver&iacute;a as&iacute;: <font color="blue"><u>Link de prueba</u></font>
+<p>
+Si lo que se desea es que aparezca sin subrayado o de otro color, o ambas cosas, 
+se puede recurrir a una instrucci&oacute;n de estilo. As&iacute;:
+
+<pre>
+&lt;<b>A</b> HREF="http://www.miservidor.es/mifichero.htm"
+             style="color:red; text-decoration:none";> Link de prueba  &lt;/A>.
+</pre>
+Y se ver&iacute;a as&iacute;: &nbsp;&nbsp;<font color="red">Link de prueba</font> 
+&nbsp;&nbsp;&nbsp;(Esto puede que no funcione en algunos navegadores antiguos)<br>
+<p>
+El elemento <b>&lt;A&gt;</b> tiene dos atributos: <b>HREF</b> y <b>NAME</b>.
+<P>
+
+En el ejemplo de arriba al atributo HREF se le asigna el valor que aparece 
+entre comillas: <b>&quot;http://www.miservidor.es/mifichero.htm&quot;</b>. 
+El texto sobre el que se monta el enlace es <b>Link de prueba</b> y 
+realiza un link con el fichero <b>mifichero.htm</b> que est&aacute; en 
+el servidor <b>www.miservidor.es</b>.
+<p>
+Esta forma de escribir la ruta del link de forma completa, se utiliza cuando hay que saltar de 
+una m&aacute;quina a otra, si el enlace es para otra p&aacute;gina de nuestro  
+propio servidor es suficiente escribir la ruta virtual corta: <b>/mifichero.htm</b> o bien: 
+<b>/otro_directorio/mifichero.htm</b> seg&uacute;n proceda.
+<p>
+Como has visto, el punto de enlace se realiza en el texto escrito antes del cierre del elemento
+ <b>&lt;/A&gt;</b>, pero tambi&eacute;n puede hacerse con una imagen cualquiera, que ir&iacute;a 
+en lugar del texto, incluso puedes poner el texto junto con una imagen. Por ejemplo para hacer un 
+link que nos lleve al &iacute;ndice desde una bola roja, se escribe:
+<p>
+<pre>
+    Ir al &iacute;ndice &lt;A HREF="indice.htm"> <b>&lt;img src="bolaroja.gif"&gt;</b> &lt;/A>.
+</pre>
+Y este ser&iacute;a el resultado:
+<p>
+
+<center>Ir al &iacute;ndice <a href="indice.htm"><img src="bolaroja.gif" ></A></center>
+<p>
+Al igual que el texto aparece subrayado en azul cuando forma parte de un enlace, los gr&aacute;ficos 
+reciben un borde azul alrededor de toda la imagen, lo que a veces puede resultar poco est&eacute;tico. 
+Esto tambi&eacute;n tiene soluci&oacute;n, pero aqu&iacute; se hace en la 
+instrucci&oacute;n de la imagen:
+<p>
+
+<pre>
+    Ir al &iacute;ndice &lt;A HREF="indice.htm"> &lt;img src="bolaroja.gif" <b>border=0</b>&gt;  &lt;/A>.
+</pre>
+Y este ser&iacute;a el resultado:
+<p>
+<center>Ir al &iacute;ndice <a href="indice.htm"><img src="bolaroja.gif" border=0></A></center>
+
+<P>
+El valor de los atributos hay que escribirlos  EXACTAMENTE como se deba. 
+En el ejemplo anterior no funcionar&iacute;a el link si escribi&eacute;ramos 
+<b>www.miservidor.es</b> en may&uacute;sculas o con alguna otra diferencia, 
+eso es un nombre de m&aacute;quina y ser&iacute;a interpretado como OTRA 
+m&aacute;quina. Esto es aplicable a todos los par&aacute;metros: 
+<b>servicio </b>(http://) <b>servidor</b> (www.miservidor.es) y 
+<b>fichero </b>(mifichero.htm).<br>
+Estas precauciones son ineludibles en el caso de servidores montados en 
+m&aacute;quinas con sistema operativo UNIX. En el caso de que el servidor resida en 
+una m&aacute;quina con Windows NT o Windows 95/98, es indiferente. Si no se 
+sabe el sistema que tiene la m&aacute;quina, es mejor atenerse a la forma UNIX.
+<P>
+Dentro de los par&aacute;metros pasados a HREF, podr&aacute;s ver que al principio pone <b>http://</b>, esto es, el tipo de servicio al que el visualizador va a llamar, y hay varios :
+<P>
+
+<table border>
+<tr><th>Servicio</th><th>Descripci&oacute;n</th><th>Ejemplo</th><th>Efecto</th>
+
+<tr><td><b>http://</b></td><td>Servicios WWW</td><td>&lt;A HREF=&quot;http://www.uv.es/&quot;&gt; WWW&lt;/A&gt;</td><td><A HREF="http://www.uv.es/">WWW</A></td>
+
+<tr><td><b>ftp://</b></td><td>Servicios FTP</td><td>&lt;A HREF=&quot;ftp://ftp.uv.es/&quot;&gt;FTP&lt;/A&gt;</td><td><A HREF="ftp://ftp.uv.es/">FTP</A></td>
+
+<tr><td><b>news://</b></td><td>Servicios NEWS</td><td>&lt;A HREF=&quot;news://news.uv.es/&quot;&gt;NEWS&lt;/A&gt;</td><td><A HREF="news://news.uv.es/">NEWS</A></td>
+
+<tr><td><b>mailto://</b></td><td>Servicios E-mail</td><td>&lt;A HREF=&quot;mailto:jac@uv.es/&quot;&gt;E-mail&lt;/A&gt;</td><td><A HREF="mailto:jac@uv.es/">E-mail</A></td>
+
+<tr><td><b>file:///C|</b></td><td>Fichero local</td><td>&lt;A HREF=&quot;indice.htm/&quot;&gt;Fichero&lt;/A&gt;</td><td><A HREF="indice.htm">Fichero</A></td>
+
+</table>
+<P>
+Adem&aacute;s de HREF, el elemento &lt;A&gt; puede tener otro atributo: <b>TARGET</B>. Se utiliza para ordenar la apertura de otra ventana del visualizador con la p&aacute;gina que se desee. Se escribir&aacute;:
+
+<pre>
+     &lt;A HREF=&quot;indice.htm&quot; <B>TARGET</b>=&quot;Ventana-2&quot;&gt; &lt;/A&gt;
+</pre>
+
+Esta instrucci&oacute;n mostrar&aacute; la p&aacute;gina <b>indice.htm</b> pero con<a href="indice.htm" target="ventana-2"> otra ventana</a> del visualizador, es decir tendremos lanzado el visualizador <b>2 veces</b>. 
+<P>
+Del mismo modo, el atributo <b>TARGET</B> puede utilizarse para salir de una pantalla compuesta de frames. En efecto, si estamos en una pantalla con, por ejemplo, dos frames, cualquier link invocado desde cualquiera de ellos, hace que la p&aacute;gina llamada aparezca en ese mismo frame. Para volver a una pantalla "normal" sin frames, se puede escribir un link con la sintaxis siguiente:
+
+<pre>
+     &lt;A HREF=&quot;indice.htm&quot; <B>TARGET</b>=&quot;_parent&quot;&gt; &lt;/A&gt;
+</pre>
+
+Existen otros valores para TARGET:
+<p>
+<b>TARGET="_blank"</b>: Para que el enlace se muestre en una nueva ventana vacía. Tambi&eacute;n puede darse un nombre cualquiera con el mismo efecto.<br>
+<b>TARGET="_self"</b>: Para mostrar el enlace en la misma ventana o frame que lo referencia (valor por defecto).<BR>
+<b>TARGET="_top"</B>:  El documento solicitado se cargar&aacute; en la pantalla actual, ocupando toda la ventana y destruyendo la estructura de frames anterior, si existe. 
+
+<p>
+Como se acaba de ver, el atributo <B>HREF</B> sirve para enlazar con otro documento, que puede estar en un servidor o ser un fichero local, pero que siempre se nos presentar&aacute; desde la primera l&iacute;nea del mismo. <BR>
+El atributo <B>NAME</b> se utiliza para definir algo as&iacute; como &quot;un punto de aterrizaje&quot; en cualquier l&iacute;nea del documento de destino, de forma que nos aparecer&aacute; en pantalla desde la l&iacute;nea deseada y no desde el principio. Esto es muy &uacute;til cuando se trata de documentos largos divididos en secciones.
+<P>
+Se escribir&aacute; as&iacute;:
+<P>
+<b>En el documento activo:</b>
+<pre>
+&lt;A HREF=&quot;http://www.miservidor.es/mifichero.htm#punto1&quot;&gt; Ir al punto 1&lt;/A&gt;
+</pre>
+
+<b>En el documento destino:</B>
+<pre>
+&lt;A NAME=&quot;punto1&quot;&gt;&lt;/A&gt; 
+</pre>
+
+NAME tambi&eacute;n puede utilizarse para saltar de una l&iacute;nea a otra dentro de un mismo documento. Se escribir&aacute; as&iacute;:
+<P>
+Dentro del documento activo <b>En la l&iacute;nea de partida:</B>
+<pre>
+&lt;A HREF=&quot;#punto1&quot;&gt;Ir al punto 1&lt;/A&gt; 
+</pre>
+En la l&iacute;nea de destino
+
+<pre>
+&lt;A NAME=&quot;punto1&quot;&gt;&lt;/A&gt; 
+</pre>
+Por ejemplo, si haces &quot;clik&quot;<a href="#punto1"> <b>aqu&iacute; </b></a> con el rat&oacute;n, saltar&aacute;s al principio de esta p&aacute;gina.
+<P>
+
+Como habr&aacute;s visto en el cuadro de arriba, es posible enviar un e-mail desde un link con la instrucci&oacute;n: &lt;A HREF=&quot;mailto:jac@uv.es&quot;&gt;Enviar e-mail&lt;/A&gt;. Con esta sintaxis se invoca al cliente de correo predeterminado para que abra una ventana con la direcci&oacute;n deseada ya escrita. Si adem&aacute;s quieres que dicha ventana se abra con el asunto (subject) y el texto (body) ya escritos se puede conseguir as&iacute;:
+<p>
+&lt;A HREF=&quot;mailto:jac@uv.es?&subject=Asunto de prueba&body=Texto de prueba&quot;&gt;Enviar e-mail&lt;/A&gt;
+<p>
+De forma similar, se puede escribir un enlace para que invoque a una función de JavaScript. Esto es muy &uacute;til cuando se dise&ntilde;an men&uacute;s o contenidos din&aacute;micos.<br> Por ejemplo, si escribes: 
+<br><br>
+&lt;a href="javascript:document.write('Prueba de JavaScript')&quot;&gt;Prueba &lt;/A&gt;
+<br><br>
+Se obtiene: &nbsp; <a href="javascript:document.write('Prueba de JavaScript')">Prueba</a>
+
+<hr>
+Con los links, al igual que con los formularios, es posible moverse usando la tecla de tabulaci&oacute;n, para conseguir que el enfoque salte de un link a otro en un cierto orden. Para ello se utiliza el atributo <b>tabindex</b>. Por ejemplo, pulsa la tecla "Tab":
+<p><center>
+<a href="tablas.htm" tabindex="2">Tablas</a> &nbsp; <a href="imagen1.htm" tabindex="3">Im&aacute;genes</a> &nbsp; <a href="body.htm" title="Ir al tema body" tabindex="1">Body</a></center>
+<p>
+Como puedes ver, los saltos en esta l&iacute;nea se han producido siguiendo la numeraci&oacute;n indicada por los disintos <b>tabindex</b>, al resto de links se llega por orden de escritura. Se escribe:
+<p>
+<font size=2 face="courier" color ="blue">
+&lt;A HREF="tablas.htm" tabindex="2"&gt;Tablas&lt;/A&gt; <br>
+&lt;A HREF="imagen1.htm" tabindex="3"&gt;Im&aacute;genes&lt;/A&gt; <br>
+&lt;A HREF="body.htm" tabindex="1"&gt;Body&lt;/A&gt;
+</font>
+<p>
+<A NAME="punto2"></A> 
+Esto solamente funciona con versiones recientes de navegadores. Otro atributo reciente de los links es <b>title</B> que permite escribir una descripci&oacute;n del link sin necesidad de pulsar en &eacute;l, simplemente poniendo encima el puntero del rat&oacute;n. Por ejemplo: 
+<p>
+<font size=2 face="courier" color ="blue">
+&lt;A HREF="tablas.htm" title="Saltar a la secci&oacute;n de tablas"&gt;Tablas&lt;/A&gt; <br>
+</font>
+<p>
+Se obtiene: <a href="tablas.htm" title="Saltar a la secci&oacute;n de tablas">Tablas</a>
+
+<hr>
+<h4>Debes saber que... </h4>
+<ul>
+<li>El texto que pongas despu&eacute;s del s&iacute;mbolo <b>&#35;</b> puede ser cualquiera, siempre que no tenga espacios en blanco,  caracteres especiales ni caracteres codificados, y por supuesto, que no est&eacute; repetido en el mismo documento de destino.
+<li>Si en el documento de destino no existe el punto definido en el documento de origen, el visualizador nos presentar&aacute; en pantalla la &uacute;ltima l&iacute;nea del mismo.
+<li>Cuando hagas un link, es preferible utilizar direcciones relativas. Si utilizas direcciones absolutas y despu&eacute;s tienes que mover los ficheros por cualquier raz&oacute;n, tendr&aacute;s que modificar todas las direcciones.
+<li>Si al hacer un link, despu&eacute;s del nombre de la m&aacute;quina no pones el nombre de un fichero, por defecto el servidor entiende que se le pide la &quot;home page&quot; (p&aacute;gina inicial) de ese directorio. Generalmente (aunque depende de la configuración del servidor) el fichero inicial de un directorio suele ser index.htm o default.htm
+<li>Si un servidor no tiene definida p&aacute;gina inicial, simplemente 
+nos mostrar&aacute; una lista de todos los ficheros y directorios 
+que tenga en el directorio definido como ra&iacute;z si el servidor tiene activada 
+la opci&oacute;n de listar directorios, en caso contrario, dar&aacute; un error.
+<li>Si despu&eacute;s de la direcci&oacute;n de la m&aacute;quina a la que 
+le haces el link en lugar de un nombre de fichero pones el de un directorio, 
+generalmente el servidor nos mostrar&aacute un simple listado de los 
+ficheros y directorios que &eacute;ste contenga si el servidor tiene 
+activada la opci&oacute;n de listar directorios, en caso contrario, 
+dar&aacute; un error.
+<li>No s&oacute;lo puedes montar el link sobre un texto, tambi&eacute;n puedes hacerlo sobre una imagen cualquiera. Es decir, despu&eacute;s del link y antes de &lt;/A&gt; puedes poner lo que quieras.
+<li>El arte de escribir buen HTML reside en dar una buena estructura a la informaci&oacute;n. Siempre que puedas huye de crear p&aacute;ginas muy largas. Crea cuantas necesites, con buena estructura y enl&aacute;zalas con cuantos links sean precisos.
+<li>Recuerda: si tu trabajo HTML no va a residir en un servidor en red, y has utilizado direcciones absolutas, al hacer un link, no empieces con aquello de: <b>&quot;http://....&quot;</b>. No funcionar&aacute;.
+<li>Si continuas deseando poner direcciones absolutas con ficheros locales,  tendr&aacute; que ser as&iacute; <b>file:///C:/MIDIRECTORIO/mifichero.htm</b> 
+<li>Despu&eacute;s de <b>C</b> (que puede ser A, B, D o la unidad de disco que quieras) f&iacute;jate en que las barras que separan los directorios y ficheros son barras <b>a la derecha</b>.
+</ul>
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

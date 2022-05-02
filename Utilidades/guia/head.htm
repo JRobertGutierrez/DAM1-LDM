@@ -1,0 +1,133 @@
+<HTML>
+<HEAD><TITLE>Head de un documento</TITLE>
+
+</HEAD>
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Cabecera (HEAD) de un documento HTML </H2>
+La <b>HEAD</b> es la primera de las dos partes en que se estructura un documento HTML.
+<p>
+
+En la HEAD reside informaci&oacute;n acerca del documento, y generalmente no se ve cuando se navega por &eacute;l. En la HEAD se pone el elemento lleno &lt;<b>TITLE</b>&gt; que es una breve descripci&oacute;n que identifica la p&aacute;gina. Es  lo que el navegador se guarda en el &quot;<b>Bookmarks</b>&quot; (libro de marcas o libro de direcciones), con lo que crea la lista que aparece en la orden &quot;<b>Go</b>&quot; de la barra de &oacute;rdenes, lo que aparece en la esquina superior izquierda cuando se imprime el documento, y lo que aparece en el marco de la ventana del navegador. Tambi&eacute;n lo guarda en su cach&eacute;, y servir&aacute; para mostrar la p&aacute;gina, cuando sea llamada otra vez, sin necesidad de conectarse de nuevo al servidor de origen. 
+<P>
+No hay que confundir el elemento &lt;TITLE&gt; con el nombre del fichero.<BR>
+Por ejemplo, esta p&aacute;gina est&aacute; contenida en un fichero llamado <b>head.htm</b> y el texto de su &lt;TITLE&gt; es: <b>  Head de un documento</b>. Se escibir&aacute; asi:
+
+<pre>
+<b>&lt;HEAD&gt;
+&lt;TITLE&gt;</b>Head de un documento &lt;/TITLE&gt;
+&lt;/HEAD&gt;
+</pre>
+<P>
+Dentro de la HEAD puede utilizarse otro elemento: <B>META</b>. Por ejemplo, si se escribe:
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Head de un documento &lt;/TITLE&gt;
+&lt;<B>META</B> HTTP-EQUIV=&quot;Refresh&quot; CONTENT=&quot;10&quot;&gt;
+&lt;/HEAD&gt;
+</pre>
+
+Esto hace que el visualizador vuelva a cargar la p&aacute;gina activa al cabo de 10 segundos. Tambi&eacute;n puede hacerse a un servidor. As&iacute;:
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Head de un documento &lt;/TITLE&gt;
+&lt;<B>META</B> HTTP-EQUIV=&quot;Refresh&quot; CONTENT=&quot;10; URL=http://miservidor/mipagina.htm&quot;&gt;
+&lt;/HEAD&gt;
+</pre>
+
+<P>
+Utiliza esto con precauci&oacute;n. Si sabes que el contenido de la p&aacute;gina no va a cambiar, es in&uacute;til hacer esto, y si lo haces contra un servidor, puedes sobrecargarlo. Este elemento, s&oacute;lo tendr&aacute; utilidad en casos muy especiales.
+<P>
+Otra opci&oacute;n es forzar la expiraci&oacute;n inmediata en la cach&eacute; del navegador de la p&aacute;gina recibida, lo que provoca que la p&aacute;gina sea solicitada de nuevo al servidor cada vez, en lugar de cargar la copia que ya existe en la m&aacute;quina del cliente. Se escribe as&iacute:
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Head de un documento &lt;/TITLE&gt;
+&lt;<B>META</B> HTTP-EQUIV=&quot;Expires&quot; CONTENT=&quot;Tue, 20 Aug 1996 14:25:27 GMT&quot;&gt;
+&lt;/HEAD&gt;
+</pre>
+
+Si se pone una fecha ya pasada, como la que hay en el ejemplo, el navegador elimina inmediatamente de la cach&eacute; la p&aacute;gina recibida, y si no es pasada, lo har&aacute; en el momento indicado por la misma. Tambi&eacute;n se le puede dar valor cero a la fecha de expiración: 
+<p>
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Head de un documento &lt;/TITLE&gt;
+&lt;<B>META</B> HTTP-EQUIV=&quot;Expires&quot; CONTENT=&quot;0&quot;&gt;
+&lt;/HEAD&gt;
+</pre>
+<p>
+Otra opci&oacute;n es impedir directamente que el navegador guarde en cach&eacute; la p&aacute;gina. Esto es especialmente &uacute;til cuando se trabaja con formularios que consultan datos din&aacute;micos:
+<p>
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Head de un documento &lt;/TITLE&gt;
+&lt;<B>META</B> HTTP-EQUIV=&quot;Expires&quot; CONTENT=&quot;no-cache&quot;&gt;
+&lt;/HEAD&gt;
+</pre>
+<p>
+
+Si tienes inter&eacute;s en que tus p&aacute;ginas aparezcan en los grandes buscadores de Internet, y puedan ser encontradas con facilidad, puedes poner las palabras clave que contiene la p&aacute;gina separadas por comas. Por ejemplo: 
+
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Head de un documento &lt;/TITLE&gt;
+&lt;<B>META</B> NAME=&quot;keywords&quot; CONTENT=&quot;HTML, internet  &quot;>
+&lt;/HEAD&gt;
+</pre>
+
+<p>
+Este otro sirve para que los buscadores puedan ofrecer un breve resumen de los contenidos de tu p&aacute;gina:
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Head de un documento &lt;/TITLE&gt;
+&lt;<B>META</B> NAME=&quot;description&quot; CONTENT=&quot;Manual para escribir HTML.&quot;>
+&lt;/HEAD&gt;
+</pre>
+
+
+El siguiente es importante con los nuevos navegadores, ya que le indica la tabla de caracteres que se ha empleado al escribir la p&aacute;gina. De no usarlo, puede ocurrir que el navegador no muestre correctamente los caracteres especiales no ascii, tales como acentos, letras de alfabetos no occidentales, etc., que se hayan quedado sin <a href="coditext.htm">codificar</a> de la forma t&iacute;pica en html.
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Head de un documento &lt;/TITLE&gt;
+&lt;<b>meta</b> http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot;>
+&lt;/HEAD&gt;
+</pre>
+
+Los charset m&aacute;s habituales suelen ser:
+<br>
+<pre>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; <b>charset=utf-8</b>&quot;>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; <b>charset=iso-8859-1</b>&quot;>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; <b>charset=utf-8 / html5</b>&quot;>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; <b>charset=iso-8859-15</b>&quot;>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; <b>charset=windows-1252</b>&quot;>
+</pre>
+<p>
+Puedes poner todos los elementos &lt;<B>META</B>&gt; que creas necesarios, pero sin repetirlos.
+<p>
+Habr&aacute;s notado que se ha utilizado la palabra "cach&eacute;", y tal vez no sepas a qu&eacute; se refiere. Todos los navegadores, por defecto, siempre que reciben una p&aacute;gina de un servidor se hacen una copia de la misma en el disco de tu m&aacute;quina. Con esto se pretende que si vuelves a solicitar la misma p&aacute;gina, en lugar de pedirla de nuevo al servidor, te mostrar&aacute; la que tiene guardada en el disco. A esta &aacute;rea del disco donde el navegador va poniendo las p&aacute;ginas visitadas, se le denomina <b>cach&eacute;</b>. El tama&ntilde;o de la cach&eacute; lo puedes modificar desde las opciones de configuraci&oacute;n del navegador, e incluso puedes darle tama&ntilde;o cero, con lo que siempre que veas una p&aacute;gina, &eacute;sta habr&aacute; sido solicitada al servidor independientemente de lo que digan las instrucciones META.
+<p>
+Hay otros elementos que pueden aparecer en la HEAD, como ISINDEX, NEXTID, LINK o BASE, pero son de uso muy especializado y poco corriente, algunos ya en desuso, y ninguno obligatorio (&lt;TITLE&gt; s&iacute; lo es). 
+<P>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

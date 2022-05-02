@@ -1,0 +1,495 @@
+<html>
+<head>
+<title>Frames</title> 
+</head>
+<body>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h2>Qu&eacute; son los frames</h2>
+Los frames (en ingl&eacute;s <i>frame</i> = cuadro, bastidor o marco) es un elemento implementado por Netscape, que permite dividir la pantalla en varias &aacute;reas independientes unas de otras, y por tanto con contenidos distintos, aunque puedan estar relacionados. No hay l&iacute;mites para el contenido de cada una de estas &aacute;reas: tienen las mismas propiedades que la pantalla completa normal, tal y como la conocemos. No hay que confundir los frames con las tablas.
+Su apariencia, a veces, puede ser similar, pero mientras el contenido de la celda de una tabla es fijo, en un &aacute;rea de pantalla creado por el elemento <b>FRAME</B> se dispone de todos los recursos del HTML. Es una zona viva.
+<P>
+Las p&aacute;ginas que contienen una definici&oacute;n de FRAME <b>no pueden </b> contener el elemento BODY ni ninguno de los elementos que habitualmente aparecen en el BODY <b>antes</b> del elemento <B>FRAMESET</b> que es el que define la creaci&oacute;n del FRAME. Si esto no se cumple, el FRAME ser&aacute; ignorado.
+<P>
+Algunos visualizadores no soportan los frames. Para que nuestra p&aacute;gina con frames no resulte opaca a ellos, se utilizar&aacute; el elemento <B>NOFRAMES</B> que permite ofrecer un texto alternativo en entorno normal.
+<P>
+Los frames permiten una flexibilidad de presentaci&oacute;n extraordinaria, y para contenidos muy complejos, de dif&iacute;cil estructura por los medios convencionales del HTML, son casi insustituibles. De nuevo se presenta la duda de para qu&eacute; visualizador es preferible programar nuestro WWW.
+<P>
+Por supuesto, los frames son parametrizables en cuanto a tama&ntilde;o y n&uacute;mero de &aacute;reas, si &eacute;stas se pueden redimensionar por el usuario o son fijas, si tienen o no barras de scrolling, se pueden anidar, relacionar sus contenidos, etc. Veamos algunos ejemplos pr&aacute;cticos y su sintaxis:
+
+<hr>
+
+<h3>Un frame b&aacute;sico. Sintaxis general</h3>
+En general, todas las p&aacute;ginas que contengan definiciones de frames, se comportan como si fuesen llamadores o  &quot;lanzaderas&quot;, y deber&aacute;n ser m&aacute;s o menos as&iacute;:
+
+<pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt; Mi titulo &gt;&lt;/TITLE&gt;&lt;/HEAD&gt;
+
+<b>&lt;FRAMESET&gt;</b>
+     <b>&lt;NOFRAMES&gt;</b>
+         &lt;BODY&gt;
+             Su visualizador no soporta frames. Pulse 
+             &lt;A HREF=&quot;indice.htm&quot;&gt;aqui &lt;/A&gt; para volver.
+         &lt;/BODY&gt;
+    &lt;/NOFRAMES&gt;
+
+    <b>&lt;FRAME </b>SRC=&quot;pagina1.htm&quot; &gt;
+    &lt;FRAME SRC=&quot;pagina2.htm&quot; &gt;
+
+&lt;/FRAMESET&gt;
+
+&lt;/HTML&gt;
+</PRE>
+
+F&iacute;jate en que no aparece el elemento &lt;BODY&gt; en su posici&oacute;n habitual, sino dentro de un elemento especial que se activa s&oacute;lo cuando el visualizador no soporta los frames: <B>NOFRAMES</B>. Si no declaras el &aacute;rea NOFRAMES y el visualizador no soporta este efecto, no se ver&aacute; nada. Obviamente, los visualizadores que s&iacute; soportan frames ignorar&aacute;n el contenido del &aacute;rea NOFRAMES.
+<P>
+Hasta aqu&iacute; ya podemos hacernos una idea de c&oacute;mo funcionan los frames: Lo primero es crear una minip&aacute;gina con la definici&oacute;n del frame, viene a ser algo as&iacute; como una &quot;lanzadera&quot; y s&oacute;lo contiene la definici&oacute;n del frame. Y por &uacute;ltimo, crear las p&aacute;ginas que constituir&aacute;n el contenido de cada una de las &aacute;reas definidas en la &quot;lanzadera&quot;. En el ejemplo anterior son <b>pagina1.htm</b> y <b>pagina2.htm</b>, y aqu&iacute; es donde escribir&aacute;s tus cosas; es decir que son p&aacute;ginas completamente normales, y que tambi&eacute;n  pueden ser utilizadas de la forma habitual. A su vez, la &quot;lanzadera&quot; puede ser invocada con un link desde cualquier p&aacute;gina normal. Como puedes ver, no es obligado crear todo tu documento con frames: puedes utilizarlos solamente all&iacute; donde sea necesario, si quieres.
+<P>
+Es posible definir cualquier combinaci&oacute;n de &aacute;reas verticales y horizontales. La clave est&aacute; en combinar adecuadamente los anidamientos del elemento <b>&lt;FRAMESET&gt;</B> con sus atributos <b>COLS</b> o <b>ROWS</b> seg&uacute;n interese. Como puedes ver, el m&aacute;s importante es el primer &lt;FRAMESET&gt;, ya que es el que define c&oacute;mo va a ser "troceada" la p&aacute;gina inicialmente, si en porciones verticales u horizontales, y sobre esta base se deber&aacute;n definir todos los dem&aacute;s anidamientos.
+
+<hr>
+<a name="1"></a>
+<h3>Un frame de 3 &aacute;reas verticales (COLS)</h3>
+
+Se ver&iacute;a as&iacute;:
+
+<TABLE WIDTH=100% >
+<TR>
+<TD WIDTH=50%>
+
+<TABLE width=100 height=120 BORDER>
+<TR>
+<td width=30% align=center> A </td>
+<td width=20% align=center> B </td>
+<td width=50% align=center> C </td>
+</TABLE>
+
+<TD>
+Y se escribir&iacute;a; as&iacute;:
+<pre>
+&lt;FRAMESET <b>COLS</b>=30%,20%,50%&gt;
+   &lt;FRAME SRC="a.htm"&gt;
+   &lt;FRAME SRC="b.htm"&gt;
+   &lt;FRAME SRC="c.htm"&gt;
+&lt;/FRAMESET&gt;
+
+<a href="cols.htm">Ejemplo real</a>
+</pre>
+
+</TABLE>
+
+
+<hr>
+
+<h3>Un frame de 3 &aacute;reas horizontales (ROWS)</h3>
+Se ver&iacute;a as&iacute;:
+
+<TABLE WIDTH=100%>
+<TR>
+<TD WIDTH=50%>
+
+<TABLE width=100 height=120 BORDER>
+<TR height=25%><td align=center> A </td>
+<TR height=25%><td align=center> B </td>
+<TR height=50%><td align=center> C </td>
+</TABLE>
+
+<TD>
+Y se escribir&iacute;a as&iacute;:
+<pre>
+&lt;FRAMESET <B>ROWS</B>=25%,25%,50%&gt;
+   &lt;FRAME SRC="a.htm"&gt;
+   &lt;FRAME SRC="b.htm"&gt;
+   &lt;FRAME SRC="c.htm"&gt;
+&lt;/FRAMESET&gt;
+
+<a href="rows.htm">Ejemplo real</a>
+</pre>
+
+</TABLE>
+
+<hr>
+
+<h3>Un frame combinado de un &aacute;rea vertical y dos horizontales</h3>
+Se ver&iacute;a as&iacute;:
+
+<TABLE WIDTH=100%>
+<TR>
+<TD WIDTH=50%>
+
+<TABLE width=100 height=120 BORDER>
+<TR><td rowspan=2 align=center width=20%> A </td>
+<td align=center height=40%> B </td>
+<TR><td align=center height=60%> C </td>
+</TABLE>
+
+<TD>
+Y se escribir&iacute;a as&iacute;:
+<pre>
+&lt;FRAMESET COLS=20%,*&gt;
+   &lt;FRAME SRC="a.htm"&gt;
+        &lt;FRAMESET ROWS=40%,*&gt;
+           &lt;FRAME SRC="b.htm"&gt;
+           &lt;FRAME SRC="c.htm"&gt;
+        &lt;/FRAMESET&gt;
+&lt;/FRAMESET&gt;
+
+<a href="col_rows.htm">Ejemplo real</a>
+</pre>
+
+</TABLE>
+
+<hr noshade>
+<h3>Un frame combinado de dos &aacute;reas horizontales, la de abajo dividida en dos verticales</h3>
+Se ver&iacute;a as&iacute;:
+
+<TABLE WIDTH=100%>
+<TR>
+<TD WIDTH=50%>
+
+<TABLE width=100 height=120 BORDER>
+
+<TR>
+   <td colspan=2 align=center width=100%> A </td>
+<TR>
+   <td align=center height=50%> B </td>
+   <td align=center height=50%> C </td>
+</TABLE>
+
+<TD>
+Y se escribir&iacute;a as&iacute;:
+<pre>
+&lt;FRAMESET ROWS=50%,*&gt;
+   &lt;FRAME SRC="a.htm"&gt;
+      &lt;FRAMESET COLS=50%,*&gt;
+         &lt;FRAME SRC="b.htm"&gt;
+         &lt;FRAME SRC="c.htm"&gt;  
+      &lt;/FRAMESET&gt;
+&lt;/FRAMESET&gt;
+
+<a href="rows_col.htm">Ejemplo real</a>
+</pre>
+
+</TABLE>
+
+
+<hr noshade>
+Habr&aacute;s podido comprobar que los par&aacute;metros que dimensionan los frames actuan al presentar la p&aacute;gina inicialmente. Despu&eacute;s, si el usuario lo desea, puede redimensionarlos como quiera. Esta es la opci&oacute;n por defecto. Si no se quiere permitir el redimensionado, se aplica el atributo <b>NORESIZE</B> al elemento FRAME. As&iacute;:
+<pre>
+    &lt;FRAME <B>NORESIZE</B> SRC.....&gt;
+</PRE>
+Algo parecido ocurre con las barras de scrolling. Est&aacute;n regidas por el atributo <b>SCROLLING</b>, que puede valer <b>YES NO</b> o <B>AUTO</b>. Por defecto es <b>AUTO</b>. Con esta opci&oacute;n el visualizador decide, en funci&oacute;n del contenido, si son necesarias las barras o no. Con <B>YES</B> las pondr&aacute; siempre, aunque no sean necesarias, y con <B>NO</B> no las pondr&aacute; nunca, aunque sean necesarias.
+<pre>
+    &lt;FRAME <B>SCROLLING</B>=YES ....&gt;
+</PRE>
+
+
+<hr>
+
+<h3>Un frame con dos &aacute;reas verticales. Una normal, la otra con m&aacute;rgenes forzados para el texto (MARGINWIDTH MARGINHEIGHT)</h3>
+
+Se ver&iacute;a as&iacute;:
+<TABLE WIDTH=100%>
+<TR>
+<TD WIDTH=50%>
+
+<TABLE width=100 height=120 BORDER>
+<TR>
+<td width=50% align=center> AAAA </td>
+<td width=50% align=center> AA<br>AA </td>
+</TABLE>
+
+<TD>
+Y se escribir&iacute;a as&iacute;:
+<pre>
+&lt;FRAMESET COLS=50%,50%&gt;
+   &lt;FRAME SRC="a.htm"&gt;
+   &lt;FRAME SRC="a.htm" 
+       <B>MARGINWIDTH</B>=50 
+       <B>MARGINHEIGHT</B>=50&gt;
+&lt;/FRAMESET&gt;
+
+<a href="margen.htm">Ejemplo real</a>
+</pre>
+
+</TABLE>
+
+
+<hr>
+
+<h3> Un frame con referencias cruzadas (NAME TARGET)</h3>
+Se ver&iacute;a as&iacute;:
+
+<TABLE WIDTH=100%>
+<TR>
+<TD WIDTH=50%>
+
+<TABLE width=100 height=120 BORDER>
+<TR>
+<td width=50% align=center> A </td>
+<td width=50% align=center> B </td>
+</TABLE>
+
+<TD>
+Y se escribir&iacute;a as&iacute;:
+<pre>
+&lt;FRAMESET COLS=50%,50%&gt;
+   &lt;FRAME SRC="aa.htm"&gt;
+   &lt;FRAME SRC="bb.htm" <B>NAME</b>="VENTANA"&gt;
+&lt;/FRAMESET&gt;
+
+<a href="cruzado.htm">Ejemplo real</a>
+</pre>
+
+</TABLE>
+
+<hr noshade>
+Esto de los cruces es un poco complicado... f&iacute;jate en el contenido de cada p&aacute;gina que entra en juego. Cuando actives <b>Ejemplo real</B> el fichero llamado es <b>cruzado.htm</b>. Pru&eacute;balo.
+<P>
+<center>
+<table border>
+<tr>
+  <th>Fichero</th><th>Contenido</th><th>Acci&oacute;n</th>
+</tr>
+
+<tr>
+   <th rowspan=2>aa.htm</th>
+        <td>&lt;A HREF=&quot;<B>cc</B>.htm&quot;   
+          TARGET=&quot;VENTANA&quot;&gt;</TD>
+         <TD>Pone CC en el frame derecho</td>
+</tr>
+<tr>
+      <td>&lt;A HREF=&quot;<B>cc</B>.htm&quot;&gt;</td>
+      <td>Trae CC</td>
+</tr>
+<tr>
+   <th>bb.htm</th>
+        <td> Esto es &quot;VENTANA&quot;</td>
+        <td> No hace nada</td>
+</tr>
+<tr>
+   <th rowspan=2>cc.htm</th>
+         <td>&lt;A HREF=&quot;<B>bb</B>.htm&quot; 
+             TARGET=&quot;VENTANA&quot;&gt;</td>
+         <td>Pone BB en el frame derecho porque se llama
+             &QUOT;VENTANA&QUOT;</td>
+<tr>
+         <td>&lt;A HREF=&quot;<B>aa</B>.htm&quot;&gt;</td>
+         <td>Trae AA</td>
+</tr>
+
+<tr>
+   <th rowspan=4>cruzado.htm</th>
+         <td> &lt;FRAMESET&gt;</td>
+         <td>- </td>
+</tr>
+<tr>
+        <td>&lt;FRAME SRC=&quot;<B>aa</B>.htm&quot;&gt;</td>
+        <td>Pone AA en el frame izqdo.</td>
+</tr>
+<tr>
+        <td>&lt;FRAME SRC=&quot;<B>bb</B>.htm&quot;
+                NAME=&quot;VENTANA&quot;&gt;</td>
+        <td>Pone BB en el frame derecho y le<br>
+             da como nombre &quot;VENTANA&QUOT;</td>
+
+</tr>
+<tr>
+        <td> &lt;/FRAMESET&gt; </td>
+        <td>- </td>
+</tr>
+</table>
+
+</center>
+<P>
+Hasta aqui se ha utilizado el nombre de "VENTANA" como destino del atributo TARGET. Este nombre, como ya sabes, es el que hemos definido en el c&oacute;digo de este ejemplo. Si en lugar de poner el nombre de destino que se ha definido en el FRAMESET, pones otro cualquiera, el visualizador lo que hace es abrir otra ventana y colocar alli el contenido de la pagina. Evidentemente, cuantas mas ejecuciones del navegador haya en marcha, mas memoria del ordenador se necesita, y abrir una nueva ventana, implica ejecutar otra vez el navegador. Recuerda cuando hagas esto, que algunos no andan muy sobrados de memoria....
+<p>
+
+<hr>
+<P>
+La versi&oacute;n 3.0 de Netscape, implementa dos nuevas posibilidades de los frames: la  de darle color a la barra de separaci&oacute;n de los distintos frames o la de que no se vea dicha barra.
+Para ello se utilizan los nuevos atributos de FRAMESET y FRAME:
+<P>
+<b>FRAMEBORDER</B> se utiliza como atributo de FRAMESET y establece si ser&aacute;n visibles los bordes del frame o no. Puede tener dos valores: <b>YES</b> (por defecto) y <b>NO</b>.<BR>
+ Si escribes:
+
+<pre>
+&lt;FRAMESET <B>FRAMEBORDER=NO</B> COLS=30%,30%,30%&gt;
+   &lt;FRAME SRC="a.htm"&gt;
+   &lt;FRAME SRC="b.htm"&gt;
+   &lt;FRAME SRC="c.htm"&gt;
+&lt;/FRAMESET&gt;
+</pre>
+
+Se obtiene un frame de tres columnas sin barras de separaci&oacute;n  entre ellas.<BR> <a href="nofra.htm">Ejemplo real</a>
+<P>
+<b>BORDERCOLOR</B> se utiliza como atributo de FRAME y establece el color de los bordes visibles. Evidentemente, para que funcione, se tendr&aacute; que haber establecido <b>FRAMEBORDER=yes</b> <BR>
+ Si escribes:
+
+<pre>
+&lt;FRAMESET  COLS=30%,30%,30%&gt;
+   &lt;FRAME <b>BORDERCOLOR="red"</b> SRC="a.htm"&gt;
+   &lt;FRAME <b>BORDERCOLOR="blue"</b>SRC="b.htm"&gt;
+   &lt;FRAME SRC="c.htm"&gt;
+&lt;/FRAMESET&gt;
+</pre>
+
+ Se obtiene un frame de tres columnas con la primera barra de separaci&oacute;n roja y la segunda azul. <a href="fracolor.htm">Ejemplo real</a>
+<hr>
+
+<b>Salir de una pantalla con frames</b>
+<p>
+Para salir de una pantalla compuesta de frames es necesario definir algun link. En efecto, si estamos en una pantalla con, por ejemplo, dos frames, cualquier link invocado desde cualquiera de ellos, hace que la p&aacute;gina llamada aparezca en ese mismo frame. Para volver a una pantalla "normal" sin frames, se puede escribir un link con la sintaxis siguiente:
+
+<pre>
+     &lt;A HREF=&quot;indice.htm&quot; <B>TARGET</b>=&quot;_parent&quot;&gt;Ver &iacute;ndice sin marcos &lt;/A&gt;
+</pre>
+
+El destino <b>&quot;_parent&quot;</B> indica  que presente la p&aacute;gina llamada por el link en el navegador que se esta ejecutando, sin marcos y sin abrir nuevas ocurrencias del navegador.
+<p>
+Existen otros valores predeterminados para el atributo TARGET: <b>_blank</b> &nbsp; que abre una nueva ventana del navegador, <b>_self</b> &nbsp; que llama el destino del enlace a la misma ventana en que se est&aacute; (valor por defecto), y <b>_top</b> que funciona igual que _parent.
+<hr>
+<h3>Controlar el contenido de los frames con formularios</h3>
+
+Hasta aqu&iacute; hemos visto c&oacute;mo hacer que los frames reciban sus contenidos siempre mediante links. No es la &uacute;nica forma;  tambi&eacute;n pueden utilizarse formularios para esta tarea. Los formularios, adem&aacute;s, nos pueden permitir definir ciertas selecciones previas para que el contenido invocado reuna determinados requisitos, as&iacute; como elegir el frame de destino. Lo malo de esta t&eacute;cnica es que requiere escribir algo de JavaScript, lo que complica bastante la cosa. Veamos un ejemplo de p&aacute;gina con cuatro frames. Por ejemplo, como este:
+<p>
+
+<TABLE WIDTH=100%>
+<TR>
+<TD WIDTH=50%>
+
+<TABLE width=100 height=120 BORDER>
+
+<TR>
+   <td colspan=3 align=center width=100%> Arriba </td>
+<TR>
+   <td align=center height=33%> A </td>
+   <td align=center height=33%> B </td>
+   <td align=center height=33%> C </td>
+</TABLE>
+
+<TD>
+Y se escribir&iacute;a as&iacute;:
+<pre>
+&lt;FRAMESET ROWS=30%,*&gt;
+   &lt;FRAME SRC="fraarriba.htm" NAME="arriba"&gt;
+      &lt;FRAMESET COLS=33%,33%,*&gt;
+         &lt;FRAME SRC="a.htm" NAME="izquierda"&gt;
+         &lt;FRAME SRC="b.htm" NAME="centro"&gt;  
+         &lt;FRAME SRC="c.htm" NAME="derecha"&gt;  
+      &lt;/FRAMESET&gt;
+&lt;/FRAMESET&gt;
+
+<a href="frajscript.htm">Ejemplo real</a>
+</pre>
+
+</TABLE>
+<p>
+Puesto que se va a poder elegir el frame de destino, es importante que todos ellos tengan nombre. Este es el c&oacute;digo del frame <b>arriba</b>, que reside en la p&aacute;gina que carga: <b>fraarriba.htm</b>
+
+<pre>
+<font color="blue">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Frames y formularios&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;CENTER&gt;&lt;H2&gt;FRAMES Y FORMULARIOS&lt;/H2&gt;&lt;/CENTER&gt;
+
+&lt;TABLE BORDER=0 WIDTH="100%"&gt;&lt;TR&gt;
+
+&lt;TD ALIGN=CENTER&gt;
+&lt;FORM&gt;
+&lt;SELECT NAME="list"&gt;
+&lt;OPTION VALUE="a.htm" &gt;Contenido A
+&lt;OPTION VALUE="b.htm" &gt;Contenido B
+&lt;OPTION VALUE="c.htm" &gt;Contenido C
+&lt;/SELECT&gt;
+ &lt;BR&gt;
+&lt;INPUT TYPE=button VALUE="Frame izquierdo"<font color="red"> onClick=
+    "parent.izquierda.location.href=
+     this.form.list.options[this.form.list.selectedIndex].value"</font>&gt;
+&lt;/FORM&gt;
+&lt;/TD&gt;
+
+&lt;TD ALIGN=CENTER&gt;
+&lt;FORM&gt;
+&lt;SELECT NAME="list"&gt;
+&lt;OPTION VALUE="a.htm" &gt;Contenido A
+&lt;OPTION VALUE="b.htm" &gt;Contenido B
+&lt;OPTION VALUE="c.htm" &gt;Contenido C
+&lt;/SELECT&gt;
+ &lt;BR&gt;
+&lt;INPUT TYPE=button VALUE="Frame central"<font color="red"> onClick=
+     "parent.centro.location.href=
+      this.form.list.options[this.form.list.selectedIndex].value"</font>&gt;
+&lt;/FORM&gt;
+&lt;/TD&gt;
+
+&lt;TD ALIGN=CENTER&gt;
+&lt;FORM&gt;
+&lt;SELECT NAME="list"&gt;
+&lt;OPTION VALUE="a.htm" &gt;Contenido A
+&lt;OPTION VALUE="b.htm" &gt;Contenido B
+&lt;OPTION VALUE="c.htm" &gt;Contenido C
+&lt;/SELECT&gt;
+ &lt;BR&gt;
+&lt;INPUT TYPE=button VALUE="Frame derecho"<font color="red"> onClick=
+    "parent.derecha.location.href=
+     this.form.list.options[this.form.list.selectedIndex].value"</font>&gt;
+&lt;/FORM&gt;
+&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Como puedes ver, todo reside en el c&oacute;digo JavaScript que se ejecuta al pulsar el bot&oacute;n de cualquiera de los tres formularios definidos en el frame <b>arriba</B>. Mediante este c&oacute;digo se captura un evento: <b>onClick</b> que se produce al pulsar con el puntero del rat&oacute;n en el bot&oacute;n del formulario. La primera parte de la instrucci&oacute;n ejecutada: <font color="blue" face="courier">parent.<b>derecha</b>.location.href=</font> es la que establece en qu&eacute; frame se va a cargar la p&aacute;gina seleccionada en la lista desplegable, en este caso el llamado <b>derecha</B>. La segunda parte de la instrucci&oacute;n: <font color="blue" face="courier">this.form.list.options[this.form.list.selectedIndex].value</font> es la que indica qu&eacute; p&aacute;gina hay que cargar en el frame definido en la primera parte de la instrucci&oacute;n. Si... esto suena a muy complicado. No es f&aacute;cil entender la compleja estructura de objetos del navegador. Para m&aacute;s detalle, puedes ver la secci&oacute;n sobre JavaScript, en particular, y toda la secci&oacute;n de programaci&oacute;n en general, de esta guia.
+<p>
+ Otra cosa que hay que tener en cuenta cuando se escribe JavaScript, es que distingue entre may&uacute;sculas y min&uacute;sculas. En el ejemplo anterior, si los ficheros llamados por el formulario: a.htm &nbsp; b.htm &nbsp; c.htm  &nbsp; se han guardado con el nombre en may&uacute;sculas, como A.htm o B.htm, no funcionar&aacute; si no se invocan escritos de la misma forma. Esto es especialmente importante cuando tengas tus p&aacute;ginas en servidores con sistemas operativos UNIX o LINUX, que son la mayor&iacute;a de ellos.
+
+<hr>
+<h3>Frames incrustados</h3>
+Se puede insertar un frame en cualquier punto de una p&aacute;gina, ya sea &eacute;sta, a su vez, un frame o una p&aacute;gina normal. Su apariencia recuerda a los gr&aacute;ficos y a los formularios, pero su contenido es el de una p&aacute;gina independiente. Por ejemplo, si se escribe:
+<p>
+<font face="courier" color="red" size=2>
+&lt;IFRAME NAME="indice" SRC="indice.htm" WIDTH="300" HEIGHT="100" FRAMEBORDER="1" MARGINWIDTH="5" MARGINHEIGHT="5" SCROLLING="Auto"&gt;&lt;/IFRAME&gt;</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<center>
+<IFRAME NAME="indice" SRC="indice.htm" WIDTH="600" HEIGHT="200" FRAMEBORDER="1" MARGINWIDTH="5" MARGINHEIGHT="5" SCROLLING="Auto"></IFRAME></center>
+<P>
+Analicemos sus atributos:
+<p>
+<ul>
+   <li><font color="blue"><b>NAME</B></FONT> Como ya habr&aacute;s supuesto, es el nombre del frame incrustado. Puede omitirse si no es necesario.
+    <li><font color="blue"><b>SRC</B></FONT> Nombre de la p&aacute;gina que se mostrar&aacute; en el frame.
+     <li><font color="blue"><b>WIDTH</B></FONT> N&uacute;mero de pixels que tendr&aacute; el frame de ancho. Tambi&eacute;n puede indicarse en tanto por ciento respecto al ancho total de la ventana, como se hace en los frames convencionales.
+     <li><font color="blue"><b>HEIGHT</B></FONT> N&uacute;mero de pixels que tendr&aacute; el frame de alto. Tambi&eacute;n puede indicarse en tanto por ciento respecto al alto total de la ventana.
+    <li><font color="blue"><b>FRAMEBORDER</B></FONT> Indica si se debe mostrar el borde del frame. <b>1</b> = si (por defecto) <b>0</b> = no.
+    <li><font color="blue"><b>MARGINWIDTH</B></FONT> Indica el n&uacute;mero de pixels que tendr&aacute; el ancho de los m&aacute;rgenes interiores izquierdo y derecho del frame respecto a su contenido.
+    <li><font color="blue"><b>MARGINHEIGHT</B></FONT> Indica el n&uacute;mero de pixels que tendr&aacute; el ancho de los m&aacute;rgenes interiores superior e inferior del frame respecto a su contenido.
+    <li><font color="blue"><b>SCROLLING</B></FONT> Indica si hay que mostrar barras de scroll dentro del frame incrustado. Sus valores pueden ser: <b>Yes</b>, <b>No</b> y <b>Auto</b> (por defecto).
+
+</ul>
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,1395 @@
+<html>
+<head>
+<TITLE>Ejemplos de tablas</TITLE>
+</head>
+<BODY> 
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+
+<H2>Ejemplos de tablas</H2>
+
+<B>Tabla b&aacute;sica de 3x2</B>
+<P>
+
+<TABLE BORDER>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Dos ejemplos de l&iacute;nea expandida </b>&lt;ROWSPAN&gt;
+<P>
+
+<TABLE BORDER>
+	<TR>
+		<TD>Item 1</TD>
+		<TD ROWSPAN=2>Item 2</TD>
+		<TD>Item 3</TD>
+	</TR>
+	<TR>
+		<TD>Item 4</TD> <TD>Item 5</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Item 1&lt;/TD&gt;
+		&lt;TD ROWSPAN=2&gt;Item 2&lt;/TD&gt;
+		&lt;TD&gt;Item 3&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Item 4&lt;/TD&gt; &lt;TD&gt;Item 5&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<P>
+<TABLE BORDER>
+	<TR>
+		<TD ROWSPAN=2>Item 1</TD>
+	    	<TD>Item 2</TD> <TD>Item 3</TD> <TD>Item 4</TD>
+	</TR>
+	<TR>
+		<TD>Item 5</TD> <TD>Item 6</TD> <TD>Item 7</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TD ROWSPAN=2&gt;Item 1&lt;/TD&gt;
+	    	&lt;TD&gt;Item 2&lt;/TD&gt; &lt;TD&gt;Item 3&lt;/TD&gt; &lt;TD&gt;Item 4&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Item 5&lt;/TD&gt; &lt;TD&gt;Item 6&lt;/TD&gt; &lt;TD&gt;Item 7&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Ejemplo de columna expandida</b> &lt;COLSPAN&gt;
+<P>
+
+<TABLE BORDER>
+	<TR>
+		<TD>Item 1</TD>
+		<TD COLSPAN=2>Item 2</TD>
+	</TR>
+	<TR>
+		<TD>Item 3</TD> <TD>Item 4</TD> <TD>Item 5</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Item 1&lt;/TD&gt;
+		&lt;TD COLSPAN=2&gt;Item 2&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Item 3&lt;/TD&gt; &lt;TD&gt;Item 4&lt;/TD&gt; &lt;TD&gt;Item 5&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Tabla con cabeceras </b>&lt;TH&gt;
+<P>
+
+<TABLE BORDER>
+	<TR>
+		<TH>Head1</TH> <TH>Head2</TH> <TH>Head3</TH>
+	</TR>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>	
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TH&gt;Head1&lt;/TH&gt; &lt;TH&gt;Head2&lt;/TH&gt; &lt;TH&gt;Head3&lt;/TH&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;	
+</PRE>
+
+<HR>
+
+<B>Combinaci&oacute;n de columna expandida y cabecera</B>
+<P>
+
+<TABLE BORDER>
+	<TR>
+		<TH COLSPAN=2>Head1</TH>
+	    	<TH COLSPAN=2>Head2</TH>
+	</TR>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD> <TD>D</TD> 
+	</TR>
+	<TR>	
+		<TD>E</TD> <TD>F</TD> <TD>G</TD> <TD>H</TD> 
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TH COLSPAN=2&gt;Head1&lt;/TH&gt;
+	    	&lt;TH COLSPAN=2&gt;Head2&lt;/TH&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt; &lt;TD&gt;D&lt;/TD&gt; 
+	&lt;/TR&gt;
+	&lt;TR&gt;	
+		&lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt; &lt;TD&gt;G&lt;/TD&gt; &lt;TD&gt;H&lt;/TD&gt; 
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Combinaci&oacute;n de cabeceras m&uacute;ltiples y columnas expandidas
+</B>
+<P>
+
+<TABLE BORDER>
+	<TR>
+		<TH COLSPAN=2>Head1</TH>
+		<TH COLSPAN=2>Head2</TH>
+	</TR>
+	<TR>
+		<TH>Head 3</TH> <TH>Head 4</TH> 
+		<TH>Head 5</TH> <TH>Head 6</TH> 
+	</TR>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD> <TD>D</TD> 
+	</TR>
+	<TR>
+		<TD>E</TD> <TD>F</TD> <TD>G</TD> <TD>H</TD> 
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TH COLSPAN=2&gt;Head1&lt;/TH&gt;
+		&lt;TH COLSPAN=2&gt;Head2&lt;/TH&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TH&gt;Head 3&lt;/TH&gt; &lt;TH&gt;Head 4&lt;/TH&gt; 
+		&lt;TH&gt;Head 5&lt;/TH&gt; &lt;TH&gt;Head 6&lt;/TH&gt; 
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt; &lt;TD&gt;D&lt;/TD&gt; 
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt; &lt;TD&gt;G&lt;/TD&gt; &lt;TD&gt;H&lt;/TD&gt; 
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+</PRE>
+
+<HR>
+
+<B>Cabeceras laterales</B>
+<P>
+
+<TABLE BORDER>
+	<TR><TH>Head1</TH>
+		<TD>Item 1</TD> <TD>Item 2</TD> <TD>Item 3</TD></TR>
+	<TR><TH>Head2</TH>
+		<TD>Item 4</TD> <TD>Item 5</TD> <TD>Item 6</TD></TR>
+	<TR><TH>Head3</TH>
+		<TD>Item 7</TD> <TD>Item 8</TD> <TD>Item 9</TD></TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;&lt;TH&gt;Head1&lt;/TH&gt;
+		&lt;TD&gt;Item 1&lt;/TD&gt; &lt;TD&gt;Item 2&lt;/TD&gt; &lt;TD&gt;Item 3&lt;/TD&gt;&lt;/TR&gt;
+	&lt;TR&gt;&lt;TH&gt;Head2&lt;/TH&gt;
+		&lt;TD&gt;Item 4&lt;/TD&gt; &lt;TD&gt;Item 5&lt;/TD&gt; &lt;TD&gt;Item 6&lt;/TD&gt;&lt;/TR&gt;
+	&lt;TR&gt;&lt;TH&gt;Head3&lt;/TH&gt;
+		&lt;TD&gt;Item 7&lt;/TD&gt; &lt;TD&gt;Item 8&lt;/TD&gt; &lt;TD&gt;Item 9&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Combinaci&oacute;n de cabeceras laterales y l&iacute;neas expandidas</B>
+<P>
+
+<TABLE BORDER>
+	<TR><TH ROWSPAN=2>Head1</TH>
+	    <TD>Item 1</TD> <TD>Item 2</TD> <TD>Item 3</TD> <TD>Item 4</TD>
+	</TR>
+	<TR><TD>Item 5</TD> <TD>Item 6</TD> <TD>Item 7</TD> <TD>Item 8</TD>
+	</TR>
+	<TR><TH>Head2</TH>
+	    <TD>Item 9</TD> <TD>Item 10</TD> <TD>Item 3</TD> <TD>Item 11</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;&lt;TH ROWSPAN=2&gt;Head1&lt;/TH&gt;
+	    &lt;TD&gt;Item 1&lt;/TD&gt; &lt;TD&gt;Item 2&lt;/TD&gt; &lt;TD&gt;Item 3&lt;/TD&gt; &lt;TD&gt;Item 4&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;&lt;TD&gt;Item 5&lt;/TD&gt; &lt;TD&gt;Item 6&lt;/TD&gt; &lt;TD&gt;Item 7&lt;/TD&gt; &lt;TD&gt;Item 8&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;&lt;TH&gt;Head2&lt;/TH&gt;
+	    &lt;TD&gt;Item 9&lt;/TD&gt; &lt;TD&gt;Item 10&lt;/TD&gt; &lt;TD&gt;Item 3&lt;/TD&gt; &lt;TD&gt;Item 11&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+<B>Combinaci&oacute;n de cabeceras superiores y laterales. Tabla centrada. Contenidos centrados. T&iacute;tulo al pie.</b>
+
+<CENTER>
+<TABLE BORDER>
+<CAPTION ALIGN=bottom>Resumen de tablas</CAPTION>        
+<TR>
+<TD><TH>TABLE</TH><TH>TR</TH><TH>TD</TH><TH>TH</TH><TH>CAPTION</TH></TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>BORDER</TH><TD>X</TD><TD>-</TD><TD>-</TD><TD>-</TD><TD>-</TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>ROWSPAN</TH><TD>-</TD><TD>-</TD><TD>X</TD><TD>X</TD><TD>-</TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>COLSPAN</TH><TD>-</TD><TD>-</TD><TD>X</TD><TD>X</TD><TD>-</TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>ALIGN</TH><TD>-</TD><TD>X</TD><TD>X</TD><TD>X</TD><TD>X</TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>VALIGN</TH><TD>-</TD><TD>-</TD><TD>X</TD><TD>-</TD><TD>-</TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>WIDTH</TH><TD>X</TD><TD>-</TD><TD>X</TD><TD>-</TD><TD>-</TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>HEIGTH</TH><TD>X</TD><TD>-</TD><TD>X</TD><TD>-</TD><TD>-</TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>CELLPADDING</TH><TD>X</TD><TD>-</TD><TD>-</TD><TD>-</TD><TD>-</TD>
+</TR>
+
+<TR ALIGN=CENTER>    
+<TH>CELLSPACING</TH><TD>X</TD><TD>-</TD><TD>-</TD><TD>-</TD><TD>-</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<pre>
+&lt;CENTER&gt;
+&lt;TABLE BORDER&gt;
+&lt;CAPTION ALIGN=bottom&gt;Resumen de tablas&lt;/CAPTION&gt;        
+&lt;TR&gt;
+&lt;TD&gt;&lt;TH&gt;TABLE&lt;/TH&gt;&lt;TH&gt;TR&lt;/TH&gt;&lt;TH&gt;TD&lt;/TH&gt;&lt;TH&gt;TH&lt;/TH&gt;&lt;TH&gt;CAPTION&lt;/TH&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;BORDER&lt;/TH&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;ROWSPAN&lt;/TH&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;COLSPAN&lt;/TH&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;ALIGN&lt;/TH&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;VALIGN&lt;/TH&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;WIDTH&lt;/TH&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;HEIGTH&lt;/TH&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;CELLPADDING&lt;/TH&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR ALIGN=CENTER&gt;    
+&lt;TH&gt;CELLSPACING&lt;/TH&gt;&lt;TD&gt;X&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;&lt;TD&gt;-&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+</pre>
+
+
+<HR>
+
+<B>Ejemplo con todos los elementos y par&aacute;metros</B>
+<P>
+
+<TABLE BORDER>
+	<TR>	<TD><TH ROWSPAN=2></TH>
+		<TH COLSPAN=2>Media</TH></TD>
+	</TR>
+	<TR>	<TD><TH>Altura</TH><TH>Peso</TH></TD>
+	</TR>
+	<TR>	<TH ROWSPAN=2>Sexo</TH>
+	    	<TH>Hombres</TH><TD>1.9</TD><TD>85</TD>
+	</TR>
+	<TR>	<TH>Mujeres</TH><TD>1.7</TD><TD>60</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;	&lt;TD&gt;&lt;TH ROWSPAN=2&gt;&lt;/TH&gt;
+		&lt;TH COLSPAN=2&gt;Media&lt;/TH&gt;&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;	&lt;TD&gt;&lt;TH&gt;Altura&lt;/TH&gt;&lt;TH&gt;Peso&lt;/TH&gt;&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;	&lt;TH ROWSPAN=2&gt;Sexo&lt;/TH&gt;
+	    	&lt;TH&gt;Hombres&lt;/TH&gt;&lt;TD&gt;1.9&lt;/TD&gt;&lt;TD&gt;85&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;	&lt;TH&gt;Mujeres&lt;/TH&gt;&lt;TD&gt;1.7&lt;/TD&gt;&lt;TD&gt;60&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Otro ejemplo de l&iacute;nea y columna  expandidos</B>
+<P>
+
+<TABLE BORDER>
+	<TR>	<TD ALIGN=center ROWSPAN=2 COLSPAN=2>A</TD>
+		<TD>1</TD>
+		<TD>2</TD>
+	</TR>
+	<TR>	<TD>3</TD>
+		<TD>4</TD>
+	</TR>
+	<TR>	<TD ALIGN=center ROWSPAN=2 COLSPAN=2>C</TD>
+		<TD ALIGN=center ROWSPAN=2 COLSPAN=2>D</TD>
+	</TR>
+	<TR>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TD ALIGN=center ROWSPAN=2 COLSPAN=2&gt;A&lt;/TD&gt;
+		&lt;TD&gt;1&lt;/TD&gt;
+		&lt;TD&gt;2&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;3&lt;/TD&gt;
+		&lt;TD&gt;4&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD ALIGN=center ROWSPAN=2 COLSPAN=2&gt;C&lt;/TD&gt;
+		&lt;TD ALIGN=center ROWSPAN=2 COLSPAN=2&gt;D&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR SIZE=4>
+
+<CENTER><H2>Ajustando m&aacute;rgenes y bordes</H2></CENTER>
+
+<P>
+<B>Tabla sin bordes</B>
+<P>
+
+<TABLE>
+	<TR>	<TD>Item 1</TD> <TD ROWSPAN=2>Item 2</TD> <TD>Item 3</TD> 
+	</TR>
+	<TR>	<TD>Item 4</TD> <TD>Item 5</TD> 
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE&gt;
+	&lt;TR&gt;	&lt;TD&gt;Item 1&lt;/TD&gt; &lt;TD ROWSPAN=2&gt;Item 2&lt;/TD&gt; &lt;TD&gt;Item 3&lt;/TD&gt; 
+	&lt;/TR&gt;
+	&lt;TR&gt;	&lt;TD&gt;Item 4&lt;/TD&gt; &lt;TD&gt;Item 5&lt;/TD&gt; 
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+Aqu&iacute; no es visible el borde de las celdas debido a que se ha omitido el atributo <b>BORDER</B> del elemento &lt;TABLE&gt;. La omisi&oacute;n o no es equivalente a parametrizarlo; se consigue lo mismo as&iacute;: <b>BORDER</b>=0, y como ya habr&aacute;s deducido, el valor de BORDER puede ser variable. Mira el siguiente ejemplo:
+
+
+<HR>
+
+<B>Tabla con borde de 10 puntos</B>
+<P>
+
+<TABLE BORDER=10>
+	<TR>	<TD>Item 1</TD> <TD> Item 2</TD>
+	</TR>
+	<TR>	<TD>Item 3</TD> <TD>Item 4</TD> 
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER=10&gt;
+	&lt;TR&gt;	&lt;TD&gt;Item 1&lt;/TD&gt; &lt;TD&gt; Item 2&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;	&lt;TD&gt;Item 3&lt;/TD&gt; &lt;TD&gt;Item 4&lt;/TD&gt; 
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Dimensionado de celdas</B>
+<P>
+
+<TABLE BORDER CELLPADDING=10 CELLSPACING=0>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER CELLPADDING=10 CELLSPACING=0&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<TABLE BORDER CELLPADDING=0 CELLSPACING=10>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER CELLPADDING=0 CELLSPACING=10&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<TABLE BORDER CELLPADDING=10 CELLSPACING=10>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER CELLPADDING=10 CELLSPACING=10&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<P>
+<TABLE BORDER=5 CELLPADDING=10 CELLSPACING=10>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER=5 CELLPADDING=10 CELLSPACING=10&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR SIZE=4>
+
+<CENTER><H2>Alineaci&oacute;n, t&iacute;tulos y subtablas</H3></CENTER>
+
+<P>
+<B>L&iacute;neas m&uacute;ltiples en un tabla</B>
+<P>
+
+<TABLE BORDER>
+	<TR>
+		<TH>Enero</TH>
+		<TH>Febrero</TH>
+		<TH>Marzo</TH>
+	</TR>
+	<TR>
+		<TD>Celda 1</TD>
+	    	<TD>Celda 2</TD>
+	    	<TD>Otra celda <br> Celda 3 </TD>
+	</TR>
+	<TR>
+		<TD>Celda 4</TD>
+	    	<TD>y  esta<br>es la celda 5</TD>
+	    	<TD>Celda 6</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TH&gt;Enero&lt;/TH&gt;
+		&lt;TH&gt;Febrero&lt;/TH&gt;
+		&lt;TH&gt;Marzo&lt;/TH&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Celda 1&lt;/TD&gt;
+	    	&lt;TD&gt;Celda 2&lt;/TD&gt;
+	    	&lt;TD&gt;Otra celda&lt;br&gt; Celda 3&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Celda 4&lt;/TD&gt;
+	    	&lt;TD&gt;y esta&lt;br&gt;es la celda 5&lt;/TD&gt;
+	    	&lt;TD&gt;Celda 6&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+
+</PRE>
+
+<HR>
+
+<B>Alineado horizontal del contenido de las celdas. ALIGN=LEFT | RIGHT | CENTER</B>
+<P>
+Se puede aplicar individualmente a una celda o a toda la l&iacute;nea
+
+<TABLE BORDER>
+	<TR>
+		<TH>Enero</TH>
+		<TH>Febrero</TH>
+		<TH>Marzo</TH>
+	</TR>
+	<TR ALIGN=CENTER>
+	    <TD>Todas alineadas al centro</TD>
+	    <TD>Celda 2</TD>
+	    <TD>Otra celda <br> Celda 3</TD>
+	</TR>
+	<TR>
+	    <TD ALIGN=right>Alineado a la derecha</TD>
+	    <TD ALIGN=CENTER> Alineado al centro </TD>
+	    <TD>Por defecto <br>Alineado a la izquierda </TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+	    &lt;TH&gt;Enero&lt;/TH&gt;
+	    &lt;TH&gt;Febrero&lt;/TH&gt;
+	    &lt;TH&gt;Marzo&lt;/TH&gt;
+	&lt;/TR&gt;
+	&lt;TR ALIGN=center&gt;
+	    &lt;TD&gt;Todas alineadas al centro&lt;/TD&gt;
+	    &lt;TD&gt;Celda 2&lt;/TD&gt;
+	    &lt;TD&gt;Otra celda&lt;br&gt; Celda 3&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+	    &lt;TD ALIGN=right&gt;Alineado a la derecha&lt;/TD&gt;
+	    &lt;TD ALIGN=center&gt;Alineado al centro&lt;/TD&gt;
+	    &lt;TD&gt;Por defecto&lt;br&gt;Alineado a la izquierdat&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+</PRE>
+
+<HR>
+
+<B>Alineado vertical del contenido de las celdas. VALIGN=TOP | BOTTOM | MIDDLE</B>
+<P>
+Se puede aplicar individualmente a una celda o a toda la columna
+<TABLE BORDER>
+	<TR>
+		<TH>Enero</TH>
+		<TH>Febrero</TH>
+		<TH>Marzo</TH>
+	</TR>
+	<TR VALIGN=top>
+	    <TD>Todas alineadas arriba</TD>
+	    <TD>Esta es la<br>Celda 2 </TD>
+	    <TD>Celda 3</TD>
+	</TR>
+	<TR>
+	    <TD VALIGN=top>Alineado arriba</TD>
+	    <TD VALIGN=bottom>Alineado abajo</TD>
+	    <TD>Por defecto<br>Alineado al centro</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt;
+		&lt;TH&gt;Enero&lt;/TH&gt;
+		&lt;TH&gt;Febrero&lt;/TH&gt;
+		&lt;TH&gt;Marzo&lt;/TH&gt;
+	&lt;/TR&gt;
+	&lt;TR VALIGN=top&gt;
+	    &lt;TD&gt;Todas alineadas arriba&lt;/TD&gt;
+	    &lt;TD&gt;Esta es la&lt;br&gt;Celda 2&lt;/TD&gt;
+	    &lt;TD&gt;Celda 3&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+	    &lt;TD VALIGN=top&gt;Alineado arriba&lt;/TD&gt;
+	    &lt;TD VALIGN=bottom&gt;Alineado abajo&lt;/TD&gt;
+	    &lt;TD&gt;Por defecto&lt;br&gt;Alineado al centro&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Titulando las tablas. CAPTION=TOP | BOTTOM</B>
+<P>
+<TABLE BORDER>
+<CAPTION ALIGN=top>T&iacute;tulo arriba</CAPTION>
+	<TR>
+		<TH>Enero</TH>
+		<TH>Febrero</TH>
+		<TH>Marzo</TH>
+	</TR>
+	<TR>
+		<TD>Celda 1</TD>
+		<TD>Celda 2</TD>
+		<TD>Celda 3</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+&lt;CAPTION ALIGN=top&gt;Titulo arriba&lt;/CAPTION&gt;
+	&lt;TR&gt;
+		&lt;TH&gt;Enero&lt;/TH&gt;
+		&lt;TH&gt;Febrero&lt;/TH&gt;
+		&lt;TH&gt;Marzo&lt;/TH&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Celda 1&lt;/TD&gt;
+		&lt;TD&gt;Celda 2&lt;/TD&gt;
+		&lt;TD&gt;Celda 3&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<P>
+<TABLE BORDER>
+<CAPTION ALIGN=bottom>T&iacute;tulo abajo</CAPTION>
+	<TR>
+		<TH>Enero</TH>
+		<TH>Febrero</TH>
+		<TH>Marzo</TH>
+	</TR>
+	<TR>
+		<TD>Celda 1</TD>
+		<TD>Celda 2</TD>
+		<TD>Celda 3</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+&lt;CAPTION ALIGN=bottom&gt;Titulo abajo&lt;/CAPTION&gt;
+	&lt;TR&gt;
+		&lt;TH&gt;Enero&lt;/TH&gt;
+		&lt;TH&gt;Febrero&lt;/TH&gt;
+		&lt;TH&gt;Marzo&lt;/TH&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;Celda 1&lt;/TD&gt;
+		&lt;TD&gt;Celda 2&lt;/TD&gt;
+		&lt;TD&gt;Celda 3&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+
+</PRE>
+
+<HR>
+
+<B>Anidando tablas. La tabla ABCD dentro de la tabla 12345</B>
+<P>
+
+<TABLE BORDER>
+	<TR> <!-- LINEA 1, TABLA 1 -->
+		<TD>1</TD>
+		<TD>2</TD>
+		<TD>3
+		<TABLE BORDER>
+			<TR> <!-- LINEA 1, TABLA 2 -->
+				<TD>A</TD>
+				<TD>B</TD>
+			</TR>
+			<TR> <!-- LINEA 2, TABLA 2 -->
+				<TD>C</TD>
+				<TD>D</TD>
+			</TR>
+		</TABLE>
+		</TD>
+	</TR>
+	<TR> <!-- LINEA 2, TABLA 1 -->
+		<TD>4</TD>
+		<TD>5</TD>
+		<TD>6</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE BORDER&gt;
+	&lt;TR&gt; &lt;!-- ROW 1, TABLE 1 --&gt;
+		&lt;TD&gt;1&lt;/TD&gt;
+		&lt;TD&gt;2&lt;/TD&gt;
+		&lt;TD&gt;3
+		&lt;TABLE BORDER&gt;
+			&lt;TR&gt; &lt;!-- ROW 1, TABLE 2 --&gt;
+				&lt;TD&gt;A&lt;/TD&gt;
+				&lt;TD&gt;B&lt;/TD&gt;
+			&lt;/TR&gt;
+			&lt;TR&gt; &lt;!-- ROW 2, TABLE 2 --&gt;
+				&lt;TD&gt;C&lt;/TD&gt;
+				&lt;TD&gt;D&lt;/TD&gt;
+			&lt;/TR&gt;
+		&lt;/TABLE&gt;
+		&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt; &lt;!-- ROW 2, TABLE 1 --&gt;
+		&lt;TD&gt;4&lt;/TD&gt;
+		&lt;TD&gt;5&lt;/TD&gt;
+		&lt;TD&gt;6&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR SIZE=4>
+
+<CENTER><H2>Longitud horizontal de las tablas</H2></CENTER>
+
+<P>
+<B>Tabla que ocupa el 50 % de la pantalla, y cuyas celdas est&aacute;n dimensionadas al 50 % cada una respecto a la longitud total de la tabla</B>
+<P>
+
+<TABLE BORDER WIDTH="50%">
+	<TR><TD>Width=50%</TD><TD>Width=50%</TD>
+	</TR>
+	<TR><TD>Celda 3</TD><TD>Celda 4</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER WIDTH="50%"&gt;
+	&lt;TR&gt;&lt;TD&gt;Width=50%&lt;/TD&gt;&lt;TD&gt;Width=50%&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;&lt;TD&gt;Celda 3&lt;/TD&gt;&lt;TD&gt;Celda 4&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<P>
+<B>Tabla dimensionada al 50 % de la pantalla,  celdas  sin dimensionar. Obs&eacute;vese que se alargan m&aacute;s de lo que lo har&iacute;an sin forzar la longitud de la tabla</B>
+<P>
+<TABLE BORDER WIDTH="50%">
+	<TR><TD>Celda 1</TD><TD>2</TD>
+	</TR>
+	<TR><TD>Celda 3</TD><TD>4</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER WIDTH="50%"&gt;
+	&lt;TR&gt;&lt;TD&gt;Celda 1&lt;/TD&gt;&lt;TD&gt;2&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;&lt;TD&gt;Celda 3&lt;/TD&gt;&lt;TD&gt;4&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<P>
+<B>El mismo efecto anterior, pero con la tabla dimensionada al 100 %</B>
+<P>
+<TABLE BORDER WIDTH="100%">
+	<TR><TD>WIDTH=100%</TD><TD>Celda 2</TD>
+	</TR>
+	<TR><TD>3</TD><TD>Celda 4</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER WIDTH="100%"&gt;
+	&lt;TR&gt;&lt;TD&gt;WIDTH=100%&lt;/TD&gt;&lt;TD&gt;Celda 2&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;&lt;TD&gt;3&lt;/TD&gt;&lt;TD&gt;Celda 4&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR>
+
+<B>Centrado de una tabla en la p&aacute;gina</B>
+<P>
+
+<CENTER>
+<TABLE BORDER WIDTH="50%">
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+&lt;CENTER&gt;
+&lt;TABLE BORDER WIDTH="50%"&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+</PRE>
+
+<HR>
+
+<B>Tabla forzada al 50 % de la p&aacute;gina, conteniendo otra tabla anidada en una de sus celdas. La segunda tabla est&aacute; forzada a ocupar el 100 % de la celda receptora.</B>
+<P>
+
+<TABLE BORDER WIDTH="50%">
+	<TR><TD>Item 1</TD><TD>Item 2</TD>
+	</TR>
+	<TR><TD>
+	    <TABLE BORDER WIDTH=100%>
+		<TR><TD>Item A</TD><TD>Item B</TD>
+		</TR>
+	    </TABLE>
+	    </TD>
+	    <TD>Item 4</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER WIDTH="50%"&gt;
+	&lt;TR&gt;&lt;TD&gt;Item 1&lt;/TD&gt;&lt;TD&gt;Item 2&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;&lt;TD&gt;
+	    &lt;TABLE BORDER WIDTH=100%&gt;
+		&lt;TR&gt;&lt;TD&gt;Item A&lt;/TD&gt;&lt;TD&gt;Item B&lt;/TD&gt;
+		&lt;/TR&gt;
+	    &lt;/TABLE&gt;
+	    &lt;/TD&gt;
+	    &lt;TD&gt;Item 4&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR SIZE=4>
+
+<CENTER><H2>Longitud vertical de las tablas</H2></CENTER>
+
+<P>
+<B>Tabla que ocupa el 50 % horizontal de la pantalla, y el 25 % vertical.</B> HEIGHT=25% 
+<P>
+<TABLE BORDER WIDTH="50%" HEIGHT="25%">
+	<TR><TD>HEIGHT=25%</TD> <TD>Item 2</TD>
+	</TR>
+	<TR><TD>3</TD><TD>4</TD>
+	</TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER WIDTH="50%" HEIGHT="25%"&gt;
+	&lt;TR&gt;&lt;TD&gt;HEIGHT=15%&lt;/TD&gt; &lt;TD&gt;Item 2&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;&lt;TD&gt;3&lt;/TD&gt;&lt;TD&gt;4&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+
+
+<HR SIZE=4>
+
+<CENTER><H2>Fondos de colores o gr&aacute;ficos en las tablas</H2></CENTER>
+
+<P>
+<B>Una tabla de cuatro celdas. Cada una de un color.</B> 
+<P>
+
+<TABLE BORDER>
+<TR>
+<TD BGCOLOR="RED">Texto ROJO</TD>
+
+<TD BGCOLOR="green">Texto VERDE</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="blue">Texto AZUL</TD>
+
+<TD BGCOLOR="YELLOW">Texto AMARILLO</TD>
+</TR>
+</TABLE>
+
+<pre>
+&lt;TABLE BORDER&gt;
+&lt;TR&gt;&lt;TD BGCOLOR=&quot;RED&quot;&gt;Texto ROJO&lt;/TD&gt;
+    &lt;TD BGCOLOR=&quot;green&quot;&gt;Texto VERDE&lt;/TD&gt;
+&lt;/TR&gt;
+
+&lt;TR&gt;&lt;TD BGCOLOR=&quot;blue&quot;&gt;Texto AZUL&lt;/TD&gt;
+    &lt;TD BGCOLOR=&quot;YELLOW&quot;&gt;Texto AMARILLO&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+</pre>
+
+En este ejemplo se ha dado color individualmente a cada celda. El atributo <b>BGCOLOR="color"</b> puede utilizarse en cada elemento de la tabla para efectos globales. Por ejemplo, para hacer toda la tabla en rojo, s&oacute;lo ser&iacute;a necesario escribir:
+<P>
+<pre>
+        &lt;TABLE BORDER BGCOLOR=&quot;red&quot;&gt;
+        .... 
+        ....
+        &lt;/TABLE&gt;
+</pre>
+
+Para toda la l&iacute;nea:
+<P>
+<pre>
+        &lt;TABLE BORDER&gt;
+        &lt;TR BGCOLOR=&quot;red&quot;&gt;&lt;TD&gt; texto &lt;/TD&gt;&lt;/TR&gt;
+        ....
+        &lt;/TABLE&gt;
+</pre>
+
+
+Tambi&eacute;n se puede usar una imagen como fondo de toda la tabla:
+<P>
+<pre>
+        &lt;TABLE BORDER BACKGROUND=&quot;yellow_r.gif&quot;&gt;
+        .... 
+        ....
+        &lt;/TABLE&gt;
+</pre>
+
+De s&oacute;lo una celda: 
+
+<P>
+<pre>
+        &lt;TABLE BORDER&gt;
+        &lt;TR&gt;&lt;TD BACKGROUND=&quot;yellow_r.gif&quot;&gt texto &lt;/TD&gt;&lt;/TR&gt;
+        ....
+        &lt;/TABLE&gt;
+</pre>
+
+O de toda la fila:
+
+<P>
+<pre>
+        &lt;TABLE BORDER &gt;
+        &lt;TR BACKGROUND=&quot;yellow_r.gif&quot;&gt;&lt;TD&gt; texto &lt;/TD&gt;&lt;/TR&gt;
+        ....
+        &lt;/TABLE&gt;
+</pre>
+<hr>
+
+<CENTER><H2>Bordes de colores en las tablas</H2></CENTER>
+Se puede cambiar el color de los bordes de una tabla, aunque este atributo no funciona igual en todos los navegadores, ya que en el IE el color afecta a todas las l&iacute;neas de la tabla, y en Mozilla solamente a los bordes exteriores. Por ejemplo:
+<p>
+
+<table border=2 bordercolor="red">
+<tr><td bordercolor="red">Ejemplo de bordes </td><td>de color rojo</td></tr>
+<tr><td>Ejemplo de bordes </td><td>de color rojo</td></tr>
+</table>
+
+
+<P>
+<pre>
+        &lt;TABLE BORDER=2 bordercolor="red" &gt;
+        &lt;TR&gt;&lt;TD&gt; Ejemplo de bordes&lt;/TD&gt;&lt;TD&gt; de color rojo &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD&gt; Ejemplo de bordes&lt;/TD&gt;&lt;TD&gt; de color rojo &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+</pre>
+
+<hr>
+
+<center><h2>Atributos de &uacute;ltima generaci&oacute;n</h2></center>
+
+<B>Tabla que solamente muestra los cuatro bordes</B>
+<P>
+
+<TABLE FRAME="border" RULES="none">
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE FRAME="border" RULES="none"&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR SIZE=4>
+
+<B>Tabla que  solamente muestra los bordes superior e inferior</B>
+<P>
+
+<TABLE FRAME="hsides" RULES="none">
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE FRAME="hsides" RULES="none"&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR SIZE=4>
+
+
+<B>Tabla que  solamente muestra los bordes izquierdo y derecho</B>
+<P>
+
+<TABLE FRAME="vsides" RULES="none">
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE FRAME="vsides" RULES="none"&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+<HR SIZE=4>
+
+<B>Tabla que  solamente muestra las l&iacute;neas de divisi&oacute;n entre columnas</B>
+<P>
+
+<TABLE FRAME="void" RULES="cols">
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE FRAME="void" RULES="cols"&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+
+<HR SIZE=4>
+
+<B>Tabla que  solamente muestra las l&iacute;neas de divisi&oacute;n entre filas</B>
+<P>
+
+<TABLE FRAME="void" RULES="rows">
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>
+
+<PRE>
+&lt;TABLE FRAME="void" RULES="rows"&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;A&lt;/TD&gt; &lt;TD&gt;B&lt;/TD&gt; &lt;TD&gt;C&lt;/TD&gt;
+	&lt;/TR&gt;
+	&lt;TR&gt;
+		&lt;TD&gt;D&lt;/TD&gt; &lt;TD&gt;E&lt;/TD&gt; &lt;TD&gt;F&lt;/TD&gt;
+	&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+
+<HR SIZE=4>
+
+<B>Ejemplo de tabla con agrupamientos de columnas y filas</B>
+<P>
+
+<TABLE border="1" frame="border" rules="groups">
+<CAPTION>Ejemplo de grupos de columnas y l&iacute;neas</CAPTION>
+<COLGROUP align="center">
+<COLGROUP align="left">
+<COLGROUP align="center" span="2">
+<COLGROUP align="center" span="3">
+
+<THEAD valign="top">
+<TR>
+<TH>Columna1
+<TH>Columna2
+<TH>Columna3
+<TH>Columna4
+<TH>Columna5
+<TH>Columna6
+<TH>Columna7
+<TBODY>
+<TR><TD>C1L1<TD>C2L1<TD>C3L1<TD>C4L1<TD>C5L1<TD>C6L1<TD>C7L1
+<TR><TD>C1L2<TD>C2L2<TD>C3L2<TD>C4L2<TD>C5L2<TD>C6L2<TD>C7L2
+<TR><TD>C1L3<TD>C2L3<TD>C3L3<TD>C4L3<TD>C5L3<TD>C6L3<TD>C7L3
+<TR><TD>C1L4<TD>C2L4<TD>C3L4<TD>C4L4<TD>C5L4<TD>C6L4<TD>C7L4
+<TBODY>
+<TR><TD>C1L5<TD>C2L5<TD>C3L5<TD>C4L5<TD>C5L5<TD>C6L5<TD>C7L5
+<TR><TD>C1L6<TD>C2L6<TD>C3L6<TD>C4L6<TD>C5L6<TD>C6L6<TD>C7L6
+
+<TFOOT>
+<TR><TD>C1L7<TD>C2L7<TD>C3L7<TD>C4L7<TD>C5L7<TD>C6L7<TD>C7L7
+</TABLE>
+
+
+<pre>
+&lt;TABLE border="1" frame="border" rules="groups"&gt;
+&lt;CAPTION&gt;Ejemplo de grupos de columnas y l&iacute;neas&lt;/CAPTION&gt;
+&lt;COLGROUP align="center"&gt;
+&lt;COLGROUP align="left"&gt;
+&lt;COLGROUP align="center" span="2"&gt;
+&lt;COLGROUP align="center" span="3"&gt;
+
+&lt;THEAD valign="top"&gt;
+&lt;TR&gt;
+&lt;TH&gt;Columna1&lt;/TH&gt;
+&lt;TH&gt;Columna2&lt;/TH&gt;
+&lt;TH&gt;Columna3&lt;/TH&gt;
+&lt;TH&gt;Columna4&lt;/TH&gt;
+&lt;TH&gt;Columna5&lt;/TH&gt;
+&lt;TH&gt;Columna6&lt;/TH&gt;
+&lt;TH&gt;Columna7&lt;/TH&gt;&lt;/TR&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;&lt;TD&gt;C1L1&lt;TD&gt;C2L1&lt;TD&gt;C3L1&lt;TD&gt;C4L1&lt;TD&gt;C5L1&lt;TD&gt;C6L1&lt;TD&gt;C7L1&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;C1L2&lt;TD&gt;C2L2&lt;TD&gt;C3L2&lt;TD&gt;C4L2&lt;TD&gt;C5L2&lt;TD&gt;C6L2&lt;TD&gt;C7L2&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;C1L3&lt;TD&gt;C2L3&lt;TD&gt;C3L3&lt;TD&gt;C4L3&lt;TD&gt;C5L3&lt;TD&gt;C6L3&lt;TD&gt;C7L3&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;C1L4&lt;TD&gt;C2L4&lt;TD&gt;C3L4&lt;TD&gt;C4L4&lt;TD&gt;C5L4&lt;TD&gt;C6L4&lt;TD&gt;C7L4&lt;/TR&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;&lt;TD&gt;C1L5&lt;TD&gt;C2L5&lt;TD&gt;C3L5&lt;TD&gt;C4L5&lt;TD&gt;C5L5&lt;TD&gt;C6L5&lt;TD&gt;C7L5&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;C1L6&lt;TD&gt;C2L6&lt;TD&gt;C3L6&lt;TD&gt;C4L6&lt;TD&gt;C5L6&lt;TD&gt;C6L6&lt;TD&gt;C7L6&lt;/TR&gt;
+&lt;TFOOT&gt;
+&lt;TR&gt;&lt;TD&gt;C1L7&lt;TD&gt;C2L7&lt;TD&gt;C3L7&lt;TD&gt;C4L7&lt;TD&gt;C5L7&lt;TD&gt;C6L7&lt;TD&gt;C7L7&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+</pre>
+
+Como puedes ver, existe un agrupamiento desde la l&iacute;nea 1 a la 4, y otro de la 5 a la 6. A su vez, las columnas 3 y 4 forman un grupo, y la 5, 6 y 7 otro.
+<p>
+Los dos agrupamientos de columnas se definen con las instrucciones:
+<pre>
+&lt;COLGROUP align="center" span="2"&gt;
+&lt;COLGROUP align="center" span="3"&gt;
+</pre>
+
+Hay cuatro grupos de filas: La que aparece debajo de las cabeceras la escribe &lt;THEAD&gt; Las dos l&iacute;neas que separan los grupos de filas centrales las producen las dos instrucciones &lt;TBODY&gt;, Y la &uacute;ltima la produce &lt;TFOOT&gt;. Por supuesto, no es obligado que esten todas, puedes poner solamente las que necesites. Todo esto funciona solamente si en la definici&oacute;n de la tabla se incluye el atributo <b>rules="groups"</b>
+
+<hr size=4>
+<b>Tablas con efectos compatibles con todos los navegadores...</b>
+<p>
+Como ya has podido ver, muchos de los efectos de &uacute;ltima generaci&oacute;n mostrados no funcionan igual, o no funcionan en absoluto con todos los navegadores. &iquest;Qu&eacute; hacer entonces para conseguir tablas cuyas l&iacute;neas de bordes se vean siempre bien? Pues la &uacute;nica soluci&oacute;n es usar una tabla sin bordes. S&iacute;, ya s&eacute; que lo que buscas no es eso, pero si utilizando atributos de tabla para poner l&iacute;neas de bordes donde queramos hay problemas con algunos navegadores, la soluci&oacute;n es utilizar otros recursos del HTML que sean admitidos por todos. No es ninguna soluci&oacute;n m&aacute;gica: solamente tienes que crear un gr&aacute;fico con un punto (preferiblemente cuadrado) del color y grosor que quieras dar a tus l&iacute;neas... y listo.
+<p>
+Supongamos que queremos conseguir con una tabla representar un recuadro con bordes rojos. Para ello, utilizando cualquier editor de gr&aacute;ficos creamos un fichero que contenga un punto de color rojo. Solamente uno, ser&aacute; casi invisible. No necesitamos m&aacute;s. Le llamaremos <b>rojo.gif</b>
+<p>
+<table width="300" height="50" cellspacing="0" cellpadding="0" border="0" bgcolor="#8bb204" align="center">
+  <tr>
+    <td rowspan="3" width="1" height="50"><img src="rojo.gif" width="1px" height="50" border="0" alt=""></td>
+    <td colspan="4"  height="1"><img src="rojo.gif" width="300" height="1" border="0" alt=""></td>
+    <td rowspan="3" width="1"><img src="rojo.gif" width="1px" height="50" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center"  height="48"><font color="white">Ejemplo de recuadro con &aacute;ngulos rectos.</font></td>
+  </tr>
+  <tr>
+    <td colspan="4"  height="1"><img src="rojo.gif" width="300" height="1" border="0" alt=""></td>
+  </tr>
+</table>
+<p>
+Y este ser&iacute;a del c&oacute;digo necesario:
+<pre>
+&lt;table width="300" height="50" 
+          cellspacing="0" cellpadding="0" border="0" bgcolor="#6a7da5" align="center"&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="3" width="1" height="50"&gt;
+	       &lt;img src="rojo.gif" width="1px" height="50" border="0" alt=""&gt;&lt;/td&gt;
+    &lt;td colspan="4"  height="1"&gt;
+	       &lt;img src="rojo.gif" width="300" height="1" border="0" alt=""&gt;&lt;/td&gt;
+    &lt;td rowspan="3" width="1"&gt;
+	      &lt;img src="rojo.gif" width="1px" height="50" border="0" alt=""&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan="4" align="center"  height="48"&gt;
+	     &lt;font color="white"&gt;&lt;b&gt;Ejemplo de recuadro con &aacute;ngulos rectos.&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan="4"  height="1"&gt;
+	     &lt;img src="rojo.gif" width="300" height="1" border="0" alt=""&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+Como puedes ver, el truco consiste en definir celdas alrededor de la celda que lleva el texto. Estas celdas que rodean a la principal solamente contienen el fichero gr&aacute;fico con el punto. Para conseguir que aparezcan las l&iacute;neas, s&oacute;lo hay que "estirar" el punto contenido en nuestro fichero gr&aacute;fico <b>rojo.gif</b>. Esto nos permite "dibujar" las l&iacute;neas que se quieran y donde se quieran, sin problemas de compatibilidad, ya que estos atributos del elemento <a href="imagen1.htm">&lt;IMG&gt;</a> son completamente estandarizados (por lo menos de momento). F&iacute;jate en que adem&aacute;s de atributos propios del elemento IMG tambi&eacute;n se utiliza una instrucci&oacute;n de <a href="estilo1.htm">estilo</a>: <b>width="1px"</b> para asegurar un grosor m&iacute;nimo de la l&iacute;nea. Este es el aspecto de la misma tabla con los bordes visibles:
+
+<p>
+<table width="300" height="50" cellspacing="0" cellpadding="0"  border=1 align="center">
+  <tr>
+    <td rowspan="3" align="center">Vertical izquierda</td>
+    <td colspan="4" align="center">Horizontal arriba</td>
+    <td rowspan="3" align="center">Vertical derecha</td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center" >Ejemplo de recuadro con &aacute;ngulos rectos.</td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center">Horizontal abajo</td>
+  </tr>
+</table>
+<p>
+<center>--------------------</center>
+<p>
+Utilizando una t&eacute;cnica parecida, tambi&eacute;n se pueden conseguir recuadros con las esquinas redondeadas. Al igual que en el anterior ejemplo, es necesario tener un gr&aacute;fico previamente, pero este nos dar&aacute; algo m&aacute;s de trabajo. Con cualquier editor de gr&aacute;ficos (el "Paint" de Windows, por ejemplo) generas un c&iacute;rculo del color que quieras, y con el borde transparente o de otro color. A continuaci&oacute;n lo cortas en cuatro porciones, como una tarta,  y guardas cada trozo con un nombre cualquiera, por ejemplo, angulo1, angulo2, etc. As&iacute;
+<p><center>
+<table border="0" cellspacing="0" cellpadding="0"> 
+<tr> 
+<td bgcolor="#DDE0FC" width="20"><img src="angulo1.gif" width="20" height="20"></td> 
+<td bgcolor="#DDE0FC">&nbsp;</td> 
+<td bgcolor="#DDE0FC" width="20"><img src="angulo2.gif" width="20" height="20"></td> 
+</tr> 
+<tr> 
+<td bgcolor="#DDE0FC" width="20">&nbsp;</td> 
+<td bgcolor="#DDE0FC">Recuadro con &aacute;ngulos redondeados</td> 
+<td bgcolor="#DDE0FC" width="20">&nbsp;</td> 
+</tr> 
+<tr> 
+<td bgcolor="#DDE0FC" width="20"><img src="angulo4.gif" width="20" height="20"></td> 
+<td bgcolor="#DDE0FC">&nbsp;</td> 
+<td bgcolor="#E5E7FD" width="20"><img src="angulo3.gif" width="20" height="20"></td> 
+</tr> 
+</table></center>
+<p>
+Y este es el c&oacute;digo necesario:
+<p>
+<pre>
+&lt;table border="0" cellspacing="0" cellpadding="0"&gt;
+&lt;tr> 
+    &lt;td bgcolor="#DDE0FC" width="20">&lt;img src="angulo1.gif" width="20" height="20">&lt;/td> 
+    &lt;td bgcolor="#DDE0FC">&nbsp;&lt;/td> 
+    &lt;td bgcolor="#DDE0FC" width="20">&lt;img src="angulo2.gif" width="20" height="20">&lt;/td> 
+&lt;/tr> 
+&lt;tr> 
+    &lt;td bgcolor="#DDE0FC" width="20">&nbsp;&lt;/td> 
+    &lt;td bgcolor="#DDE0FC">Recuadro con &aacute;ngulos redondeados&lt;/td> 
+    &lt;td bgcolor="#DDE0FC" width="20">&nbsp;&lt;/td> 
+&lt;/tr> 
+&lt;tr> 
+    &lt;td bgcolor="#DDE0FC" width="20">&lt;img src="angulo4.gif" width="20" height="20">&lt;/td> 
+    &lt;td bgcolor="#DDE0FC">&nbsp;&lt;/td> 
+    &lt;td bgcolor="#E5E7FD" width="20">&lt;img src="angulo3.gif" width="20" height="20">&lt;/td> 
+&lt;/tr> 
+&lt;/table>
+</pre>
+Como puedes ver, para que el efecto sea completo hay que dar el mismo color que tienen los gr&aacute;ficos como fondo de las celdas. Estos son los cuatro gr&aacute;ficos necesarios: 
+<p><center>
+angulo1.gif <img src="angulo1.gif" width="20" height="20"> &nbsp; <img src="angulo2.gif" width="20" height="20"> angulo2.gif <p>angullo4.gif <img src="angulo4.gif" width="20" height="20"> &nbsp; <img src="angulo3.gif" width="20" height="20"> angulo3.gif
+</center>
+<HR>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+
+</HTML>

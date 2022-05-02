@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Texto en movimiento con JavaScript</title>
+</head>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- 
+
+function scrollit_r2l(seed)
+
+{
+	var msg="Hola.. Esto es una demo de JavaScript"
+	var out = " ";
+	var c   = 1;
+	if (seed > 100) {
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 100 && seed > 0) {
+		for (c=0 ; c < seed ; c++) {
+			out+=" ";
+		}
+		out+=msg;
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		    window.status=out;
+		timerTwo=window.setTimeout(cmd,100);
+
+	}
+	else if (seed <= 0) {
+		if (-seed < msg.length) {
+			out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit_r2l(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		}
+		else {
+			window.status=" ";
+			timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+		}
+	}
+}
+
+// -- Fin del script -->
+</SCRIPT>
+
+<BODY bgcolor="00FFFF" onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<h2>Ejemplo de JavaScript</h2>
+<h3>Texto que se desplaza en la ventana de estado del visualizador</h3>
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

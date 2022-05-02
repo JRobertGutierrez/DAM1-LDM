@@ -1,0 +1,75 @@
+<HTML>
+<HEAD><TITLE>Introduccion al HTML</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>Introducci&oacute;n al HTML</H2>
+<P>
+
+<H3>Elementos en un documento HTML</H3>
+
+En esta gu&iacute;a, a las instrucciones que forman el lenguaje HTML les llamaremos  <b>elementos</b>. Otros autores tambi&eacute;n las denominan "TAGS", o "ETIQUETAS". La notaci&oacute;n de los elementos consiste en los s&iacute;mbolos <b></b> &lt; y <b>&gt;</b> que encierran dentro una instrucci&oacute;n.
+<P>
+Los elementos pueden ser llenos o vac&iacute;os.
+<P>
+<h3>Elementos llenos</h3> Se forman escribiendo la instrucci&oacute;n correspondiente seguida del texto al que se quiere aplicar la instrucci&oacute;n y se termina repitiendo la instrucci&oacute;n pero con una barra inclinada inmediatamente antes de la misma. <BR>
+
+Por ejemplo, el elemento <b>H1</b> que sirve para dar el m&aacute;ximo tama&ntilde;o al texto, se escribir&aacute;:
+
+<pre>
+<b>&lt;H1&gt;</b> Texto de prueba &lt;/H1&gt;.
+</pre>
+y este ser&iacute;a el resultado: <h1>Texto de prueba</h1>
+Si olvidas poner &lt;/H1&gt; todo el resto de la p&aacute;gina tendr&aacute; el mismo tama&ntilde;o grande.
+
+
+
+<h3>Elementos vac&iacute;os </h3>
+
+Los elementos vac&iacute;os se escriben como los llenos, pero no es necesario poner la instrucci&oacute;n repetida al final con una barra. Esto se debe a que estos elementos no producen un efecto sobre el texto. Generalmente se utilizan para separar bloques de texto, y por tanto no es necesario indicar su fin. Empiezan y terminan en el mismo punto.
+<P>
+Por ejemplo, el elemento <b>&lt;HR&gt;</b> que sirve para dibujar una linea horizontal en la pantalla, se escribir&aacute;:
+<pre>
+<b>&lt;HR&gt;</b>
+</pre>
+Y este ser&iacute;a el resultado:
+<hr>
+
+
+<h3> Elementos con argumento</h3>
+Algunos elementos se escriben con argumento. Es como pasarle par&aacute;metros a la instrucci&oacute;n, y se llaman  <b>atributos</b> del elemento.
+<P>
+Por ejemplo, el elemento <b>&lt;A&gt;</b> que sirve para hacer un link (enlace) con otro documento o con otra p&aacute;gina del actual, se escribir&aacute;:
+<pre>
+<b>&lt;A</b> HREF="http://www.miservidor.es/mifichero.htm"> Link de prueba  &lt;/A>.
+</pre>
+Este es un elemento lleno donde al atributo HREF se le asigna el valor que aparece entre comillas: &quot;http://www.miservidor.es/mifichero.htm&quot;. El texto al que afecta este elemento es <b>Link de prueba</b> y realiza un link con el fichero <b>mifichero.htm</b> que est&aacute; en el servidor <b>www.miservidor.es</b>.
+<P>
+Los elementos pueden escribirse tanto en may&uacute;sculas como en min&uacute;sculas. Puede ser preferible la primera opci&oacute;n ya que aporta claridad al documento fuente, y eso se agradece a la hora de hacer correcciones, pero CUIDADO, el valor de algunos  atributos hay que escribirlos  EXACTAMENTE como deban ser. En el ejemplo anterior no funcionar&iacute;a el link si escribi&eacute;ramos <i>www.miservidor.es</i> en may&uacute;sculas, eso es un nombre de m&aacute;quina y ser&iacute;a interpretado como OTRA m&aacute;quina.
+<P>
+Los elementos pueden anidarse unos con otros, teniendo cuidado de poner los cierres en el lugar adecuado. Por ejemplo, el elemento <b> &lt;H1&gt; </b> combinado con <b>&lt;I&gt;</b> que sirve para generar texto en it&aacute;lica, se escribir&aacute;:
+
+<pre>
+<b>&lt;H1&gt;&lt;I&gt;</b>Texto de prueba &lt;/I>&lt;/H1&gt;.
+</pre>
+y este ser&iacute;a el resultado: <h1><i>Texto de prueba</i></h1>
+<p>
+Los elementos, en HTML,  los puedes escribir tanto en may&uacute;sculas como en min&uacute;sculas. Funciona igual &lt;P> que &lt;p>. A la hora de revisar el c&oacute;digo escrito, resulta m&aacute;s claro si se escribieron en may&uacute;sculas, pero si en el futuro hay que convertir la p&aacute;gina a otro est&aacute;ndar, como el XHTML, no se admitir&aacute;n  las may&uacute;sculas. Si no piensas migrar a otras tecnolog&iacute;as, hazlo como m&aacute;s c&oacute;modo te resulte.
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

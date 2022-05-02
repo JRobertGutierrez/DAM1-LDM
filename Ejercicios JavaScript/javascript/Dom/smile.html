@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+            <img id="image1" src="images/abejaruco1.jpg" width="160" height="120">
+            <img onclick="pinta()" id="image2" src="images/imagen1.jpg" width="160" height="120">
+            <img onclick="pinta()" id="image2" src="images/imagen2.jpg" width="160" height="120">
+            
+        <script>
+        //Cambiamos la imagen dinámicamente
+            function pinta(){
+
+        document.getElementById("image1").src = "images/imagen3.jpg";
+            }
+        </script>
+</body>
+</html>

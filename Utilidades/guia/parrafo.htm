@@ -1,0 +1,320 @@
+
+<HTML>
+<HEAD><TITLE>bloques, parrafos, lineas y enmarcados</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>Las distintas definiciones de los bloques. Separadores.</H2>
+
+Si se analiza una p&aacute;gina cualquiera veremos que, en realidad,  est&aacute; compuesta de distintos <b>bloques</b>. Es algo así como un mosaico en el que cada parte de la composici&oacute;n final tiene sus propios contenidos, que pueden ser texto, gr&aacute;ficos o las dos cosas. Dependiendo de la composici&oacute;n que se quiera hacer, habr&aacute; que elegir los elementos m&aacute;s convenientes para que nuestros contenidos aparezcan finalmente con la alineaci&oacute;n debida, el tama&ntilde;o apropiado, etc.
+<p>
+Comenzaremos con el elemento  <B>&lt;Hx&gt;</B> &lt;/Hx&gt; donde x es un n&uacute;mero que puede variar entre 1 y 6, siendo 1 el tama&ntilde;o mayor. 
+<P>
+Se escribir&aacute;n as&iacute;:
+
+<pre>
+<B>&lt;H1&gt;</B> Texto de prueba (H1)&lt;/H1&gt;.
+&lt;H2&gt; Texto de prueba (H2)&lt;/H2&gt;
+&lt;H3&gt; Texto de prueba (H3)&lt;/H3&gt;
+&lt;H4&gt; Texto de prueba (H4)&lt;/H4&gt;
+&lt;H5&gt; Texto de prueba (H5)&lt;/H5&gt;
+&lt;H6&gt; Texto de prueba (H6)&lt;/H6&gt;
+</pre>
+
+y este ser&iacute;a el resultado:
+<h1>Texto de prueba (H1)</h1>
+<h2>Texto de prueba (H2)</h2>
+<h3>Texto de prueba (H3)</h3>
+<h4>Texto de prueba (H4)</h4>
+<h5>Texto de prueba (H5)</h5>
+<h6>Texto de prueba (H6)</h6>
+
+No hay que olvidar poner el cierre &lt;/Hx&gt; a cada elemento utilizado.<BR>
+ Este tipo de elemento suele emplearse para escribir encabezamientos, ya que despu&eacute;s del cierre, autom&aacute;ticamente, el visualizador inserta un salto de p&aacute;rrafo.
+<P>
+Por ejemplo, si escribes: 
+<pre>
+&lt;H1&gt; Texto en H1 &lt;/H1&gt; &lt;H3&gt; Texto en H3 &lt;/H3&gt;
+</pre>
+se ver&aacute:
+<h1>Texto en H1</h1> <h3>Texto en H3</h3>
+Y no una cosa al lado de la otra, como cabr&iacute;a esperar. Este elemento admite un par&aacute;metro de alineaci&oacute;n. As&iacute;, si escribes:
+
+<pre>
+&lt;H3 align=center&gt; Texto en H3 &lt;/H3&gt;
+</pre>
+
+<h3 align=center> Texto en H3</h3>
+
+
+<hr>
+
+
+Para definir los p&aacute;rrafos se utiliza el elemento lleno <b>&lt;P&gt; &lt;/P&gt;</b> (por <b>P</b>aragraph). Aunque a menudo no se utiliza el cierre &lt;/P&gt;, ya que el texto continuar&aacute; normalmente hasta que encuentre otro p&aacute;rrafo &lt;P&gt;, es conveniente acostumbrarse a ponerlo siempre. En la nueva definici&oacute;n del XHTML el cierre es obligatorio.
+<P>
+Se escribir&aacute; as&iacute;:
+
+<pre>
+<b>&lt;P&gt; </b>Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 
+Texto 1 Texto 1 <b>&lt;/P&gt; </b>
+<b>&lt;P&gt; </b>Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 <b>&lt;/P&gt; </b>
+</pre>
+
+Y este ser&iacute;a el resultado:
+<P>
+Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 
+Texto 1 Texto 1 </P>
+<p>Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 
+</P>
+<p>Como puede verse, hay una l&iacute;nea en blanco entre los dos bloques. Si no se quiere dejar esa l&iacute;nea vac&iacute;a entre los dos p&aacute;rrafos puede utilizarse el elemento <b>&lt;BR&gt;</b> (por <b>BR</b>eak). Es decir, que el elemento &lt;BR&gt; es un separador, no un indicador de bloque.
+<P>
+Se escribir&aacute; as&iacute;:
+
+<pre>
+&lt;P&gt;Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 
+Texto 1 Texto 1 <b>&lt;BR&gt; </b>
+Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 &lt;/P&gt;
+</pre>
+
+y este ser&iacute;a el resultado:
+<P>
+Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 
+Texto 1 Texto 1 <BR>
+Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 
+
+<p>
+
+El elemento &lt;P&gt; admite cuatro atributos de alineaci&oacute;n: <b>ALIGN=LEFT</b> (por defecto), <B>ALIGN=RIGHT </B>, <B>ALIGN=CENTER</B> y <b>ALIGN=JUSTIFY</b><BR>
+Se escribir&aacute;n as&iacute;:
+
+<pre>
+&lt;P <b>ALIGN=LEFT&gt;</b>
+Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 
+Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 &lt;/P&gt;
+&lt;P <b>ALIGN=RIGHT&gt;</b>
+Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 
+Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 &lt;/P&gt;
+&lt;P<b> ALIGN=CENTER&gt;</b>
+Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3
+Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 &lt;/P&gt;
+&lt;P<b> ALIGN=JUSTIFY&gt;</b>
+Texto 4 Texto 4 Texto 4 Texto 4 Texto 4  Texto 4 Texto 4 Texto 4
+Texto 4 Texto 4 Texto 4 Texto 4 Texto 4  Texto 4 Texto 4 Texto 4 &lt;/P&gt;
+</pre>
+
+y este ser&iacute;a el resultado:
+<P ALIGN=LEFT>
+Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 
+Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 Texto 1 
+<P ALIGN=RIGHT>
+Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 
+Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 Texto 2 
+<P ALIGN=CENTER>
+Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3
+Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3 Texto 3
+<P ALIGN=JUSTIFY>
+Texto 4 tex Texto 4 Texto 4  tex Texto 4 Texto 4  tex Texto 4 Texto 4 
+Texto 4 Texto 4 Texto 4 Texto 4 Texto 4  tex Texto 4 Texto 4 Texto 4
+Texto 4 tex Texto 4 Texto 4  tex Texto 4 Texto 4  tex Texto tex 4 Texto 4
+Texto 4 tex Texto 4 Texto 4  tex Texto 4 Texto 4  tex Texto tex 4 Texto 4  
+Texto 4 tex Texto 4 Texto 4  tex Texto 4 Texto 4  tex Texto tex 4 Texto 4  
+Texto 4 tex Texto 4 Texto 4  tex Texto 4 Texto 4  tex Texto tex 4 Texto 4  
+<P>
+
+<hr noshade>
+
+Un elemento que se comporta de forma parecida  a &lt;BR&gt; es <b>&lt;DIV&gt;</b> pero que admite los mismos atributos que &lt;P&gt;: <B>ALIGN=LEFT ALIGN=RIGHT</B> y <B>ALIGN=CENTER</b>
+<P>
+Se escribe as&iacute:
+
+<pre>
+
+<b>&lt;DIV ALIGN=LEFT&gt;</b>
+texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 
+texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 
+texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 
+texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 
+&lt;/DIV&gt;
+<b>&lt;DIV ALIGN=RIGHT&gt;</b>
+texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 
+texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 
+texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 
+texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 
+texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2
+&lt; /DIV&gt;
+<b>&lt;DIV ALIGN=CENTER&gt;</b>
+texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 
+texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 
+texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 
+texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 
+<b>&lt;/DIV&gt;</b>
+</pre>
+
+F&iacute;jate en que aqu&iacute; s&iacute; se utiliza el cierre <b>&lt;/DIV&gt;</b>. Este ser&iacute;a el resultado:
+<P>
+<DIV ALIGN=LEFT>
+texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 
+</DIV>
+<DIV ALIGN=RIGHT>
+texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2 texto2  
+</DIV>
+<DIV ALIGN=CENTER>
+texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 texto3 
+texto3 texto3 texto3 texto3
+</DIV>
+<p>
+Como puedes ver, salvo por las alineaciones, que ya se hacen con &lt;P&gt;, no tiene ninguna utilidad pr&aacute;ctica, y en general solamente se utiliza para definir bloques especiales definidos con instrucciones de estilo (bordes, tama&ntilde;o, situaci&oacute;n, alineaci&oacute;n, color, etc., etc.)
+
+<hr noshade>
+Otro elemento que es casi igual que &lt;DIV&gt; pero que no admite atributos de alineado, y no produce separaci&oacute;n de p&aacute;rrafo ni de l&iacute;nea es <b>&lt;SPAN</B>&gt;. En realidad, de forma directa no sirve para nada, y ha sido creado tambi&eacute;n para aplicar las hojas de estilo.
+<P>
+Se escribe as&iacute:
+
+<pre>
+
+<b>&lt;SPAN&gt;</b>
+texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 
+texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 texto1 
+<b>&lt;/SPAN&gt;</b>
+</pre>
+<hr noshade>
+
+Otro interesante efecto es el elemento lleno <b>&lt;BLOCKQUOTE&gt;</b> que sirve para presentar p&aacute;rrafos adentrados (como si estuviesen tabulados).
+<P>
+Se escribir&aacute; as&iacute;:
+<pre>
+<b>&lt;BLOCKQUOTE&gt;</b>
+texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto
+<b>&lt;BLOCKQUOTE&gt;</b>
+texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto
+&lt;/BLOCKQUOTE&gt;
+&lt;/BLOCKQUOTE&gt;
+</pre>
+
+Y este ser&iacute;a el resultado:
+<blockquote>
+texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto
+<blockquote>
+texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto
+</blockquote>
+</blockquote>
+<P>
+F&iacute;jate que en este ejemplo hay un anidamiento, y por tanto, debe haber dos cierres <B>&lt;/BLOCKQUOTE&gt;</B> al final
+<P>
+Otro separador de bloques de texto es el elemento vac&iacute;o <B>&lt;HR&gt; </B>(por <b>H</b>orizontal <b>R</b>ule). Este ser&iacute;a el resultado:
+<hr>
+Al igual que al texto, se le puede incluir un par&aacute;metro de color, pero no funciona en todos los navegadores. Tambi&eacute;n se puede cambiar su apariencia a&ntilde;adi&eacute;ndole el atributo <b>&lt;NOSHADE&gt;</b>. As&iacute;:
+<pre>&lt;HR <b>NOSHADE&gt;</b></PRE>
+El resultado es:
+<hr noshade>
+
+El elemento &lt;HR&gt; admite dos par&aacute;metros: <b>WIDTH</b> y <b>SIZE</b>. El primero define la longitud de la l&iacute;nea y el segundo su anchura. No es obligado usar los dos a la vez<BR>
+Por ejemplo, si escribes
+<pre>
+&lt;HR <b>WIDTH</b>=400 <b>SIZE</b>=5>
+</PRE>
+El resultado ser&aacute:
+
+<HR WIDTH=400 SIZE=5>
+
+El valor del atributo WIDTH se puede expresar, como en el ejemplo anterior, en n&uacute;mero de puntos (p&iacute;xels), o en tantos por ciento referidos al ancho total de la ventana. As&iacute;:
+
+<pre>
+&lt;HR WIDTH=<b>80&#37;</b> SIZE=5&gt;
+</PRE>
+
+El resultado ser&aacute:
+
+<HR WIDTH=80&#37; SIZE=5>
+
+Adem&aacute;s se puede indicar su posici&oacute;n respecto a los m&aacute;rgenes de la ventana con los atributos <b>ALIGN=CENTER</b> (por defecto) <b>ALIGN=LEFT</b> y <b>ALIGN=RIGHT</b>. Por ejemplo:
+
+<pre>
+&lt;HR WIDTH=80&#37; SIZE=5 <b>ALIGN=LEFT</b>&gt;
+</PRE>
+
+El resultado ser&aacute:
+
+<HR ALIGN=left WIDTH=80&#37; size=5>
+<P>
+
+O bien:
+
+<pre>
+&lt;HR WIDTH=80&#37; SIZE=5 <b>ALIGN=RIGHT</b>&gt;
+</PRE>
+
+El resultado ser&aacute:
+
+<HR ALIGN=RIGHT WIDTH=80&#37; size=5>
+<P>
+Hay otro elemento, aparecido en la versi&oacute;n 6 de Netscape, que permite rodear un texto con un marco, y opcionalmente ponerle una etiqueta. Se trata del elemento: <b>&LT;FIELDSET&GT;</B>. Recuerda que si no tienes la versi&oacute;n adecuada de navegador, en los siguientes ejemplos s&oacute;lo ver&aacute;s el texto, pero no los enmarcados.<br>
+Si se escribe:
+
+<pre>
+&lt;<B>FIELDSET</b>&gt;
+   Esto es una prueba de enmarcado
+&lt;<B>/FIELDSET</b>&gt;
+</PRE>
+<p>
+Se obtiene:
+<p>
+<FIELDSET>Esto es una prueba de enmarcado</FIELDSET>
+<p>
+Este elemento tiene un par&aacute;metro que permite etiquetar el recuadro: <b>&lt;LEGEND&GT;</B>
+
+Si se escribe:
+
+<pre>
+&lt;<B>FIELDSET</b>&gt;
+         <b>&lt;LEGEND&GT;</B>Esto es una etiqueta<b>&lt;/LEGEND&GT;</B>
+   Esto es una prueba de enmarcado
+&lt;<B>/FIELDSET</b>&gt;
+</PRE>
+<p>
+Se obtiene:
+<p>
+<FIELDSET>
+ <legend>Esto es una etiqueta</legend>
+Esto es una prueba de enmarcado</FIELDSET>
+<p>
+El par&aacute;metro <b>&lt;LEGEND&GT;</B> tiene tres atributos que indican la posici&oacute;n de la etiqueta: <b>LEFT</B> (por defecto), <b>RIGHT</B> y <b>CENTER</B>, aunque no funciona en todos los navegadores. Por ejemplo: 
+
+<pre>
+&lt;<B>FIELDSET</b>&gt;
+         <b>&lt;LEGEND ALIGN=CENTER</B>&GT; Esto es una etiqueta<b> &lt;/LEGEND&GT;</B>
+   Esto es una prueba de enmarcado
+&lt;<B>/FIELDSET</b>&gt;
+</PRE>
+<p>
+Se obtiene:
+<p>
+<FIELDSET>
+ <legend align=center>Esto es una etiqueta</legend>
+Esto es una prueba de enmarcado</FIELDSET>
+<p>
+Si en estos ejemplos no ves el recuadro o la etiqueta no est&aacute; donde debiera, es porque no tienes una versi&oacute;n de navegador adecuada.
+
+<p>
+Por supuesto, dentro del recuadro generado por &lt;<B>FIELDSET</b>&gt; se puede poner cualquier cosa: formularios, im&aacute;genes, texto, etc.
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Palindromos</title>
+</head>
+<body>
+    <script>
+        var nombre;
+
+        nombre=prompt("Introduce un nombre","sometemos");
+         
+        nombre=nombre.toUpperCase();
+
+		var nombre2="";
+		for(var i=nombre.length -1; i>=0; i--) {
+			nombre2=nombre2+nombre.charAt(i);
+		}
+		if(nombre2.match(nombre)) {
+			document.write("Es un palíndromo");
+		}
+		else {
+			document.write("No es un palíndromo");	
+		}
+    
+    </script>
+</body>
+</html>

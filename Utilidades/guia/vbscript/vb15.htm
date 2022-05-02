@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>VBScript 15 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h3>El objeto Link</h3>
+
+Este objeto hace referencia a un array (matriz de datos) que contiene todos los links que existan en la p&aacute;gina HTML cargada en el navegador. Como ya sabr&aacute;s, un link se define con el elemento <b>&lt;A&gt;</b> junto con su atributo <b>HREF</B>. En un link t&iacute;pico existen 9 partes diferenciadas, que son precisamente, las 9 propiedades del objeto <b>Link</b>. Sea por ejemplo:
+
+<pre>
+<font size=2 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+  Sub Prueba
+     Document.Write "1 - " & <font color="red">Document.Link(0).Href</font> & "&lt;br&gt;"
+     Document.Write "2 - " & <font color="red">Document.Link(0).Protocol</font> & "&lt;br&gt;"
+     Document.Write "3 - " & <font color="red">Document.Link(0).Host</font> & "&lt;br&gt;"
+     Document.Write "4 - " & <font color="red">Document.Link(0).HostName</font> & "&lt;br&gt;"
+     Document.Write "5 - " & <font color="red">Document.Link(0).Port</font> & "&lt;br&gt;"
+     Document.Write "6 - " & <font color="red">Document.Link(0).PathName</font> & "&lt;br&gt;"
+     Document.Write "7 - " & <font color="red">Document.Link(0).Search</font> & "&lt;br&gt;"
+     Document.Write "8 - " & <font color="red">Document.Link(0).Hash</font> & "&lt;br&gt;"
+     Document.Write "9 - " & <font color="red">Document.Link(0).Target</font> & "&lt;br&gt;"
+  End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY OnLoad="Prueba"&gt;
+
+&lt;A HREF="http://sestud.uv.es/manual.esp/vbscript/vb15.htm?tema="VBSscript" target="mi_ventana"&gt;Link&lt;/A&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Este ser&iacute;a el resultado:
+<p>
+<font color="green">
+1 - http://sestud.uv.es/manual.esp/vbscript/vb15.htm?tema=<br>
+2 - http:<br>
+3 - sestud.uv.es:80<br>
+4 - sestud.uv.es<br>
+5 - 80<br>
+6 - manual.esp/vbscript/vb15.htm<br>
+7 - ?tema=<br>
+8 - <br>
+9 - mi_ventana<br>
+</font>
+<p>
+
+Recuerda que este objeto es un array, y &eacute;stos siempre comienzan la numeraci&oacute;n por el cero. Cada registro del array corresponder&aacute; a un link.
+
+<p>
+El objeto <b>Link</b> tiene tambi&eacute;n dos eventos: 
+<p>
+
+<font color="red"><b>OnMouseOver</b></font> &nbsp; Dispara el evento cuando el puntero del rat&oacute;n pasa por encima del link, sin pulsar sobre el mismo. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+  Sub <b>Prueba</b>
+     MsgBox "Prueba de evento"
+  End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;A HREF="http://sestud.uv.es/manual.esp/vbscript/vb15.htm" <font color="red">OnMouseOver</font>="<b>Prueba</b>"&gt;Link&lt;/A&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+
+
+<p>
+<font color="red"><b>OnClick</b></font> &nbsp; Se dispara al pulsar con el rat&oacute;n sobre el link. Primero se ejecutar&aacute; la acci&oacute;n programada para el evento, y despu&eacute;s se saltar&aacute; a la p&aacute;gina indicada por el link. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+  Sub <b>Prueba</b>
+     MsgBox "Prueba de evento"
+  End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;A HREF="http://sestud.uv.es/manual.esp/vbscript/vb15.htm" <font color="red">OnClick</font>="<b>Prueba</b>"&gt;Link&lt;/A&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

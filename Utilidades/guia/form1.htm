@@ -1,0 +1,140 @@
+<html>
+
+<head>
+<title> Introduccion a los formularios </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2>Introducci&oacute;n a los formularios </H2>
+<H4>Generalidades</h4>
+Esta es una de las partes m&aacute;s t&eacute;cnicas y complejas del HTML. Los formularios o <em>forms</em> en ingl&eacute;s, son unas p&aacute;ginas especiales que se utilizan para realizar transacciones. En una p&aacute;gina que contenga un formulario pueden adem&aacute;s existir todos los elementos hasta ahora conocidos, incluso el propio formulario puede estar integrado dentro de otros elementos, como por ejemplo una tabla. Los formularios, en algunas impresoras, pueden dar problemas al imprimir las p&aacute;ginas que los contienen.
+<P>
+<h4>&#191;C&oacute;mo funcionan los formularios?</h4>
+El formulario no es m&aacute;s que una p&aacute;gina escrita en HTML como cualquier otra. Lo que la hace diferente es que permite capturar datos de varias maneras: directamente desde el teclado, escogiendo un valor de una lista desplegable o seleccionando una opci&oacute;n desde botones fijos o de todas ellas combinadas.
+<P>
+Una vez terminada la captura de datos, estos forman un registro que es  enviado a un servidor http (web) que lo procesar&aacute; y devolver&aacute; una respuesta (o no). Pueden utilizarse tambi&eacute;n para enviar su contenido a una direcci&oacute;n de correo electr&oacute;nico, o que simplemente abran otra p&aacute;gina.
+<p>
+Si el formulario se dise&ntilde;a para abrir una p&aacute;gina o para ser enviado por e-mail, todo se reduce a escribir HTML, pero la cosa se complica cuando se trata de transacciones de datos que hay que guardar en un servidor (comercio electr&oacute;nico). En este caso, en el servidor tiene que haber un programa especial, creado espec&iacute;ficamente para ese formulario, que reciba los datos y sepa qu&eacute; hacer con ellos, procesarlos y confeccionar la respuesta que remitir&aacute; al navegadorr. A esa respuesta se le denomina <i>documento virtual</i> ya que esa p&aacute;gina no est&aacute; escrita en ninguna parte; es generada, enviada y destruida.
+<P>
+<a name="punto1"></a>
+ A los programas que hacen de puente entre el formulario y el servidor, se les llama programas <b>CGI</b> (<b>C</b>ommon <b>G</b>ateway <b>I</b>nterface) y no hay que confundirlos con las p&aacute;ginas din&aacute;micas escritas en ASP o PHP, aunque se parecen mucho.
+<P>
+Los programas CGI pueden estar escritos en cualquier lenguaje de programaci&oacute;n que sea soportado por el sistema operativo del servidor, y pueden estar dise&ntilde;ados para cualquier funci&oacute;n: desde una simple captura de datos que ser&aacute;n guardados en un fichero, hasta la m&aacute;s sofisticada consulta a una base de datos.
+<P>
+<h4>&#191;C&oacute;mo es un CGI?</h4>
+Aunque el prop&oacute;sito de esta gu&iacute;a no es tratar temas de programaci&oacute;n, como breve orientaci&oacute;n se muestra un sencillo programa hecho con comandos shell de UNIX.  Muestra los valores de las variables de servidor m&aacute;s usuales, as&iacute; como el nombre de los campos definidos en el formulario y contenido de cada uno de ellos.
+<h4>Ejemplo de programa CGI (shell UNIX)</h4>
+<pre>
+#!/bin/sh
+
+echo Content-type: text/plain
+echo
+
+echo Test CGI. Se visualiza el contenido de las variables mas usuales
+echo
+echo numero de argumentos: $#. valor argumentos: "$*".
+echo
+
+echo SERVER_SOFTWARE      = $SERVER_SOFTWARE
+echo SERVER_NAME          = $SERVER_NAME
+echo GATEWAY_INTERFACE    = $GATEWAY_INTERFACE
+echo SERVER_PROTOCOL      = $SERVER_PROTOCOL
+echo SERVER_PORT          = $SERVER_PORT
+echo REQUEST_METHOD       = $REQUEST_METHOD
+echo HTTP_ACCEPT          = $HTTP_ACCEPT
+echo PATH_INFO            = $PATH_INFO
+echo PATH_TRANSLATED      = $PATH_TRANSLATED
+echo SCRIPT_NAME          = $SCRIPT_NAME
+echo QUERY_STRING         = $QUERY_STRING
+echo REMOTE_HOST          = $REMOTE_HOST
+echo REMOTE_ADDR          = $REMOTE_ADDR
+echo REMOTE_USER          = $REMOTE_USER
+echo REMOTE_IDENT         = $REMOTE_IDENT
+echo AUTH_TYPE            = $AUTH_TYPE
+echo CONTENT_TYPE         = $CONTENT_TYPE
+echo CONTENT_LENGTH       = $CONTENT_LENGTH
+echo HTTP_USER_AGENT      = $HTTP_USER_AGENT
+echo HOME                 = $HOME
+echo HTTP_FROM            = $HTTP_FROM
+echo HTTP_REFERER         = $HTTP_REFERER
+echo REFERER_URL          = $REFERER_URL
+
+if [ "$CONTENT_TYPE" = "application/x-www-form-urlencoded" ]; then
+
+read lo_que_viene
+echo
+echo ESTO VIENE POR  LA INPUT:
+echo
+echo $lo_que_viene
+
+exit 0
+else
+
+echo NO VIENE NADA POR LA INPUT
+exit 0
+fi
+</pre>
+<hr>
+Esta ser&iacute;a la respuesta del CGI <b>test2-cgi</b> a un imaginario formulario llamado <b>prueba.htm</b> con dos campos de captura por teclado llamados <b>CAMPO1 y CAMPO2</b> en los que hemos introducido: &quot;<b>Esto es una</b>&quot; y &quot;<b>demostracion de formularios</b>&quot; respectivamente.
+
+<a name="punto1"></a>
+
+<h4>Ejemplo de respuesta del programa test2-cgi al formulario prueba.htm</h4>
+
+<pre>
+Test CGI. Se visualiza el contenido de las variables mas usuales
+
+numero de argumentos: 0. valor argumentos: .
+
+SERVER_SOFTWARE = NCSA/1.3
+SERVER_NAME = miserver.midominio.mipais
+GATEWAY_INTERFACE = CGI/1.1
+SERVER_PROTOCOL = HTTP/1.0
+SERVER_PORT = 80
+REQUEST_METHOD = POST
+HTTP_ACCEPT = image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*
+PATH_INFO =
+PATH_TRANSLATED =
+SCRIPT_NAME = <b>/cgi-bin/test2-cgi</b>
+<b>QUERY_STRING =</b>
+REMOTE_HOST = mimaquina.misubdominio.midominio.mipais
+REMOTE_ADDR = 255.255.255.255
+REMOTE_USER =
+REMOTE_IDENT = unknown
+AUTH_TYPE =
+CONTENT_TYPE = application/x-www-form-urlencoded
+CONTENT_LENGTH = 52
+HTTP_USER_AGENT = Mozilla/2.02 (Win95; I)
+HOME =
+HTTP_FROM =
+HTTP_REFERER = http://sestud.uv.es/manual.esp/<b>prueba.htm</b>
+REFERER_URL =
+
+ESTO VIENE POR LA <b>INPUT</b>:
+
+<b>CAMPO1</b>=Esto+es+una&<b>CAMPO2</b>=demostracion+de+formularios
+</pre>
+
+<P>
+F&iacute;jate que las palabras aparecen separadas por el signo + y no por espacios como hemos escrito. Si adem&aacute;s hubi&eacute;ramos escrito alg&uacute;n car&aacute;cter especial, no se ver&iacute;a como tal, sino su valor en hexadecimal precedido del car&aacute;cter %. Por ejemplo, el c&aacute;racter &#38; es transferido como &#37;26. Esta conversi&oacute;n se hace para no confundirlo con el separador de campos, que como puedes ver es el mismo s&iacute;mbolo. El signo = despu&eacute;s del nombre del campo, tambi&eacute;n lo pone el visualizador.
+<P>
+
+Todo esto y algunas cosas m&aacute;s (que habr&aacute; que ver en la documentaci&oacute;n de referencia) han de tenerse presentes  a la hora de realizar programas CGI. Para terminarlo de complicar, no todos los visualizadores utilizan la misma forma de enviar los datos recibidos, por lo que se plantea a menudo la necesidad de decidir para qu&eacute; visualizador queremos programar nuestro WEB. 
+<P>
+Los programas de test, como el del ejemplo, son muy &uacute;tiles cuando se est&aacute;n dise&ntilde;ando formularios, ya que permiten comprobar de forma real su funcionamiento y analizar el registro que env&iacute;an, cosa imprescindible para poder programar el correspondiente CGI. Intenta hacer uno a tu medida, o simplemente copia &eacute;ste, inst&aacute;lalo en tu servidor http, (si no tienes acceso, pide a tu administrador de sistema que lo haga), empieza a probar... y buena suerte.
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

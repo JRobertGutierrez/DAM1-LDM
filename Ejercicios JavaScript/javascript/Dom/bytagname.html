@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bytagname.html</title>
+
+    <style>
+            body {
+              background-color: yellow; 
+              color: red;
+              font-size: 15px;
+            }
+            </style>
+
+
+
+</head>
+<body>
+        <h2>Encontrando elementos por Tag name</h2>
+            <p>Hola Mundo!</p>
+            <p>This example demonstrates the <b>getElementsByTagName</b> method.</p>
+            <p id="demo"></p>
+            --------------------------------------------------------------------------
+            <br>
+        <script>
+            var x = document.getElementsByTagName("p");
+            for(i=0; i<x.length;i++){
+              //document.write(x[i].innerHTML + "<br>")  
+                
+              x[i].style.backgroundColor ="red";
+              x[i].style.padding = "10px";
+
+            }
+            document.getElementById("demo").innerHTML =
+            'El texto del primer párrafo es: ' + x[0].innerHTML;
+            'El texto del segundo párrafo es: ' + x[1].innerHTML;
+          
+        </script>
+
+        <script>
+            var x = document.getElementsByTagName("p");
+            for(i=0; i<x.length;i++){
+              
+                var x = document.getElementsByTagName("STYLE")[i];
+            }
+        </script>
+
+</body>
+</html>

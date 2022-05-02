@@ -1,0 +1,80 @@
+<html>
+
+<head>
+<title> Texto en movimiento </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Texto en movimiento </H2>
+ Este es un nuevo elemento que s&oacute;lo funciona con las &uacute;ltimas versiones de los navegadores. Hasta su implementaci&oacute;n sus efectos solamente pod&iacute;an conseguirse con JavaScript. La ventaja de hacerlo con JavaScript es que siempre funciona, incluso con navegadores antiguos.
+
+<p>
+Se trata del elemento <b>&lt;MARQUEE&gt; &nbsp; &lt;/MARQUEE&gt;</b> que sirve para hacer que el contenido de un bloque se desplace horizontalmente a lo ancho del mismo. Adem&aacute;s de texto el bloque puede contener tambi&eacute;n im&aacute;genes. Tiene muchas parametrizaciones:
+<p>
+<ul>
+
+<li><b><font color="red">DIRECTION=</font></B> Establece en que direcci&oacute;n se mueve el contenido del bloque en la pantalla. Puede tener dos valores:  
+  <ul>
+  <li><font color="blue">LEFT</FONT> izquierda (por defecto)
+  <li><font color="blue">RIGHT</FONT> derecha
+  </ul>
+
+<li><b><font color="red">BEHAVIOR=</font></B> Determina c&oacute;mo se mueve el contenido del bloque en la pantalla. Puede tener tres valores: 
+     <ul>
+     <li><font color="blue">SCROLL</FONT> har&aacute; que el contenido del bloque aparezca por un extremo, desaparezca por el contrario y vuelva a apracer por donde comenz&oacute;.
+     <li><font color="blue">SLIDE</FONT> (por defecto) hace que el contenido del bloque  se deslice hacia el lado indicado por <b>direction</b> y se detenga al llegar al lado opuesto. Solamente volver&aacute; a moverse si la p&aacute;gina es cargada de nuevo. 
+     <li><font color="blue">ALTERNATE</FONT> El contenido del bloque se mover&aacute; alternativamente en una direcci&oacute;n y otra, comenzando por la indicada por <b>direction</b>
+     </ul>
+<li><b><font color="red">LOOP=n</FONT></b> donde <font color="blue"><b>n</b></font> es un n&uacute;mero  que indica las veces que el movimiento programado se realizar&aacute;. El valor <font color="blue">INFINITE</FONT> (por defecto) producir&aacute; un bucle infinito.
+
+<li><b><font color="red">SCROLLDELAY=n</FONT></b> donde <b>n</b> indica el tiempo de espera en milisegundos que se debe aplicar entre cada redibujado del bloque, es decir, la velocidad del movimiento.
+
+<li><b><font color="red">SCROLLAMOUNT=n</FONT></b> donde <b>n</b> indica el n&uacute;mero de pixels  que se deben tomar entre cada redibujado del bloque. Por defecto, tomar&aacute; el bloque entero. Este par&aacute;metro debe utilizarse con cuidado, ya que puede ser contradictorio con el anterior SCROLLDELAY.
+
+<li><b><font color="red">ALIGN=</font></B> Es la alineaci&oacute;n del bloque en la pantalla. no funciona en todos los navegadores, por lo que es m&aacute;s seguro indicar la alineaci&oacute;n <b>fuera</b> del elemento o aplicar instrucciones de estilo. Puede tener tres valores: 
+   <ul>
+   <li><font color="blue">CENTER</FONT> centro 
+   <li><font color="blue">LEFT</FONT> izquierda (por defecto)
+   <li><font color="blue">RIGHT</FONT> derecha
+   </ul>
+
+<li><b><font color="red">BGCOLOR=color</FONT></b> donde <b>color</b> indica el color de fondo del bloque. El color se indica mediante su nombre en ingl&eacute;s, como "red", "blue", etc. Tambi&eacute;n puede hacerse por su c&oacute;digo RGB, pero esto no funciona igual en todos los navegadores, y en algunos, como FireFox no funciona. Con el IE y con Opera en lugar de indicar el color de la forma habitual: #FFFFFF hay que escribirlo precedido de la arroba: <b>@FFFFFF</b>. En el &iacute;ndice encontrar&aacute;s una lista de los <a href="colorind.htm">c&oacute;digos de colores</a>.
+
+<li><b><font color="red">HSPACE=px</FONT></b> donde <b>px</b> indica el n&uacute;mero de pixels que tendr&aacute;n los m&aacute;rgenes izquierdo y derecho <b>de fuera</b> del bloque. Solamente funciona con el IE.
+
+<li><b><font color="red">VSPACE=px</FONT></b> donde <b>px</b> indica el n&uacute;mero de pixels que tendr&aacute;n los m&aacute;rgenes superior e inferior <b>fuera</b> del bloque. Solamente funciona con el IE.
+
+<li><b><font color="red">HEIGHT=px</FONT></b> donde <b>px</b> indica el n&uacute;mero de pixels que tendr&aacute;el bloque de alto. Tambi&eacute;n puede indicarse en tantos por ciento respecto a la altura total de la pantalla.
+
+<li><b><font color="red">WIDTH=px</FONT></b> donde <b>px</b> indica el n&uacute;mero de pixels que tendr&aacute;el bloque de ancho. Tambi&eacute;n puede indicarse en tantos por ciento respecto a la anchura total de la pantalla.
+</ul>
+
+Por ejemplo:
+<p>
+<center><MARQUEE  DIRECTION="RIGHT" height="40" width="50%"
+ behavior="alternate" scrolldelay=400 bgcolor=cyan>
+  texto1<img src="bolaazul.gif"> texto2</MARQUEE></center>
+<p>
+Se escribe:
+<pre>
+&lt;CENTER&gt;&lt;MARQUEE  BGCOLOR="cyan"  HEIGHT="40" WIDTH="50%"
+    DIRECTION="RIGHT" BEHAVIOR="ALTERNATE" SCROLLDELAY=400&gt;
+  texto1 &lt;IMG SRC="bolaazul.gif"&GT; texto2 &lt;/MARQUEE&gt;&lt;/CENTER&gt;
+</pre>
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Que son Los IDC </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2> ¿Qué es el IDC?</h2>
+<h3>El Internet Database Conector</h3>
+<p>
+El acceso fácil desde internet a bases de datos se puede hacer mediante un componente del <b>IIS</b>, llamado <b>I</b>nternet <b>D</b>atabase <b>C</b>onector (<b>IDC</b>). 
+Con el IDC se puede acceder a bases de datos que utilicen SQL como lenguaje de interrogación, como SQL Server o Access 97, 2000, XP o 2003 y siempre utilizando los <b>O</b>pen <b>D</b>ata <b>B</b>ase <b>C</b>onectivity (<b>ODBC</b>) de que vienen provistas las bases de datos. Si... esto parece terriblemente complicado... a ver si este gráfico te ayuda:
+<p>
+<center><img src="figura2.gif" WIDTH="495" HEIGHT="431"></center>
+<p>
+El IDC tan sólo tiene unos pocos comandos, muy sencillos de usar, pero que sabiamente explotados, y aprovechando todos los recursos del HTML, nos permitirán escribir aplicaciones internet, si no sofisticadas, sí prácticas.
+<p>
+<h3>Los elementos del IDC</h3>
+Para que funcione el IDC sólo es necesario escribir un fichero con extensión <b>.idc</b> que contenga una instrucción SQL para la base de datos. Dentro de este fichero, que puede tener cualquier nombre, y entre otros parámetros,  se indica el nombre de otro fichero con extensión <b>.htx</b> que hace las veces de plantilla, y  da formato a los datos devueltos por la instrucción SQL del primer fichero. 
+<p>
+El fichero con extensión <b>.idc</b> se invoca como cualquier otro con extensión <b>.htm</b> o <b>.html</b>, mediante un link, un botón de un formulario o escribiéndolo directamente en la línea de URL, por ejemplo sea el fichero <b>articulos.idc</b>:
+<p>
+<b>Con un link:</b><br>
+&lt;A HREF=&quot;/aplicaciones/<b>articulos.idc</b>&quot;&gt; Ver artículos &lt;/A&gt;
+<p>
+<b>Desde un formulario:</b><br>
+
+&lt;FORM METHOD=&quot;POST&quot; NAME=&quot;ARTICULOS&quot;  ACTION=&quot;/aplicaciones/<b>articulos.idc</b>&quot;&gt;<br>
+      &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Ver articulos&quot;&gt;<br>
+      &lt;/FORM&gt;
+<p>
+<b>Directamente:</b><br>
+ http://Mi_server.mi_empresa.mi_pais/aplicaciones/<b>articulos.idc</b>
+<p>
+Para poder dar formato a los datos devueltos por la instrucción SQL del fichero <b>articulos.idc</b>, disponemos de varias palabras clave que se usarán en el fichero plantilla <b>articulos.htx</b> (para mayor claridad se recomienda dar el mismo nombre base a los dos ficheros, aunque puede utilizarse el que se quiera):
+<p>
+<b>&lt;%begindetail%&gt; &nbsp; &nbsp; &lt;%enddetail%&gt; &nbsp;</b> indican el comienzo y el final, respectivamente, de la descarga de todas las líneas que devuelva la instrucción SQL contenida en <b>articulos.idc</b>. Las instrucciones html que se escriban entre estos dos elementos se repetirán con cada línea devuelta por la DB junto con los datos de cada registro. En esencia es un bucle que se repetirá tantas veces como registros devuelva la instrucción SQL.
+<p>
+También tenemos un elemento de decisión bien conocido de todos los programadores:<br> <b>&lt;%if%&gt; &nbsp; &lt;%else%&gt; &nbsp; &lt;%endif%&gt; &nbsp;</b>
+<p>
+Teniendo el elemento <b>if</b> evidentemente, nos faltan los operadores: <b>EQ</b> para el igual (=), <b>LT</b> para menor que (&lt;), <b>GT</b> para mayor que (&gt;) y <b>CONTAINS</b> para evaluar si un valor est&aacute; contenido, en cualquier posición, en otro. No se pueden utilizar los símbolos directamente, hay que escribir como se ha indicado, EQ, etc.
+<p>
+Como puedes ver es bastante sencillo. He aquí un esquema de funcionamiento:
+<p>
+<img src="idc.gif" WIDTH="569" HEIGHT="683">
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+

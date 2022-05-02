@@ -1,0 +1,273 @@
+<html>
+
+<head>
+<title> Sobre la seguridad </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> La seguridad, esa gran desconocida</H2>
+Este es un tema que no suele tratarse en los manuales t&eacute;cnicos. Generalmente se le considera una cuesti&oacute;n de empresa, pero como buena parte de la seguridad de los datos depender&aacute; de aspectos puramente t&eacute;cnicos o de programaci&oacute;n, lo veremos aqu&iacute; brevemente (muy brevemente, ya que esto es toda una profesi&oacute;n en s&iacute; misma).
+<p>
+Son dos los aspectos que deben contemplarse en cuanto a la seguridad de los datos. El primero es su custodia, y el segundo garantizar la permanencia f&iacute;sica de los mismos. Es decir, hay que evitar que personas no autorizadas accedan a los datos, y al mismo tiempo hay que mantener los sistemas de forma que &eacute;stos no se pierdan.
+<p>
+Respecto a lo primero, ante todo hay que dejar una cosa clara: nuestra responsabilidad. En efecto,  cuando se recogen datos de personas por el medio que sea, y con su conocimiento o sin &eacute;l, si &eacute;stos terminan en un fichero inform&aacute;tico, estamos obligados ante la Ley (por lo menos en Europa) a proteger esos datos, y por supuesto, no estamos autorizados a utilizarlos para ning&uacute;n fin distinto del que se manifiesta cuando se recaudan, ni a cederlos a nadie. 
+<p>
+Aclarado este punto, surge la pregunta: ¿qu&eacute; se puede y/o debe hacer para proteger los datos? La respuesta no depende solamente del programador; la empresa tiene mucho que decir en esto, y desafortunadamente, la mayor&iacute;a de las veces no dice nada porque no tiene ni idea de tales menesteres. En ese caso, es el programador quien debe plantear la conveniencia de establecer una pol&iacute;tica de seguridad de los datos de la empresa, y es &eacute;sta la que debe implantar los protocolos de actuaci&oacute;n correspondientes.
+<p>
+Desde el punto de vista pr&aacute;ctico, en la protecci&oacute;n de datos pueden considerarse dos grandes bloques, ambos de la misma importancia, y ser&aacute; el conjunto el que nos brinde, hasta donde ello es posible (recuerda, no hay sistema totalmente seguro), un cierto nivel de protecci&oacute;n. 
+
+<H3>Seguridad hardware</H3>
+
+Evidentemente,  es el servidor donde f&iacute;sicamente residen los datos  el primer elemento que hay que proteger. Por muchas medidas de seguridad que se establezcan, no servir&aacute;n de mucho si resulta que el servidor est&aacute; accesible a cualquiera. Hay  m&aacute;quinas de usuario mucho mejor protegidas que el servidor corporativo de algunas empresas. 
+
+<p>
+La primera precauci&oacute;n es que un servidor, como su nombre indica, se debe dedicar a eso, a servir datos, no a ser la estaci&oacute;n de trabajo de media oficina... o de toda ella. Eso significa que solamente  unas pocas personas deber&iacute;an tener acceso f&iacute;sicamente a &eacute;l (el jefe, el administrador,  y pocas m&aacute;s). Esta dedicaci&oacute;n exclusiva del servidor, adem&aacute;s de proporcionar una mayor seguridad de los datos, har&aacute; que el rendimiento de la m&aacute;quina sea muy superior. 
+<p>
+Otro eslab&oacute;n de la cadena de seguridad hardware deber&iacute;a ser un elemento frecuentemente olvidado, y que se suele echar en falta cuando ya es demasiado tarde: un SAI (<b>S</b>istema de <b>A</b>limentaci&oacute;n <b>I</b>ninterrumpuda -<b>UPS</b>- en ingl&eacute;s). En efecto, un servidor, si no est&aacute; protegido el&eacute;ctricamente, est&aacute; muy expuesto a sufrir una grave aver&iacute;a, y puede dejar colapsada la empresa si falla. Si la causa es un pico de tensi&oacute;n, o una descarga est&aacute;tica por una tormenta, puede incluso quemarse el servidor, o un disco, o la fuente de alimentaci&oacute;n, o... Si se trata de un apag&oacute;n no programado (que suelen ser casi todos), Murphy se encargar&aacute; de que el corte pille al servidor en mitad de varias transacciones, que al apagarse la m&aacute;quina inesperadamente dejar&aacute; varias tablas de nuestras bases de datos corruptas, o con &iacute;ndices truncados. Cuesta horas recomponer desastres as&iacute;, y a veces no es posible recuperarlos por completo. 
+<p>
+Conviene calcular bien la potencia y autonom&iacute;a necesarias (ver estad&iacute;stica de apagones en la zona si es posible) antes de adquirir el SAI, y es preferible que el servidor de datos tenga uno para &eacute;l solo, o como m&aacute;ximo, compartirlo con el servidor web, si lo hay. El SAI no debe limitarse s&oacute;lo a mantener la alimentaci&oacute;n durante un cierto tiempo. Si el apag&oacute;n es prolongado, tarde o temprano el SAI se agotar&aacute; y tendremos el mismo problema que si no hubiese SAI. Se debe instalar un SAI que pueda conectarse a alg&uacute;n puerto f&iacute;sico del servidor y enviarle una se&ntilde;al de apagado (shutdown) cuando haya transcurrido el tiempo de autonom&iacute;a del SAI, a fin de que el sistema pueda cerrar ordenadamente los procesos que tenga en marcha, y se apague por s&iacute; mismo.
+<p>
+Generalmente, los servidores suelen estar funcionando las 24 horas del dia, y est&aacute; comprobado que las m&aacute;quinas que no se apagan nunca sufren menos aver&iacute;as que las que se desconectan varias veces cada d&iacute;a. Para garantizar una larga vida al servidor, es importante que est&eacute; en un lugar limpio de polvo, seco y fresco. Lo del polvo es muy importante, ya que &eacute;ste es aspirado por los ventiladores hacia el interior, y se depositar&aacute; en los disipadores de los procesadores, reduciendo la disipaci&oacute;n cal&oacute;rica, incluso puede acabar bloqueando los ventiladores, lo que probablemente provocar&aacute; una costosa aver&iacute;a. Es buena idea hacer  peri&oacute;dicamente un chequeo del estado f&iacute;sico del servidor, y si es necesario, proceder a su limpieza. <b>OJO</b> limpiar siempre por aspiraci&oacute;n o soplado, no con brocha, y <b>siempre con la m&aacute;quina apagada</b>. Otra cosa importante es que el servidor no debe estar en el suelo, donde aspirar&aacute; m&aacute;s polvo, y estar&aacute; m&aacute;s expuesto a recibir golpes o a mojarse. Si la m&aacute;quina es movida o recibe un golpe estando en marcha, los m&aacute;s probable es que los discos te recuerden que eso <b>no debe hacerse</b>.
+<p>
+A pesar de todas nuestras precauciones globales, al servidor le puede fallar un elemento interno, como un disco  o la fuente de alimentaci&oacute;n (el m&aacute;s frecuente). Conviene tener siempre repuestos de estos dos elementos, as&iacute; como de los ventiladores de los radiadores de los procesadores. Si un disco falla, evidentemente, los datos que contiene se pierden. Ante esto solamente hay una soluci&oacute;n: tener copias de seguridad. Es increible la cantidad de gente que no hace copias regularmente de sus datos... hasta que ocurre lo que tarde o temprano tiene que ocurrir. Recuerda que los discos tienen un tiempo limitado de trabajo, que aunque suele ser muy alto, puede ser radicalmente reducido si las condiciones de trabajo no son las adecuadas.
+<p>
+Dependiendo de lo cr&iacute;ticos que sean los datos, adem&aacute;s de copias regulares (cada dia por lo menos), es buena idea montar los servidores desde el principio con sistemas tolerantes a fallos. Un m&eacute;todo ideal es que el disco principal, donde est&eacute; el sistema y las bases de datos, tenga RAID-1 (<b>R</b>edundant <b>A</b>rray of <b>I</b>ndependents <b>D</b>isks). Esta t&eacute;cnica consiste en montar dos discos id&eacute;nticos, donde uno se constitute en espejo del otro, de forma que si cualquiera de ellos falla, autom&aacute;ticamente el sistema contin&uacute;a funcionando con el segundo. En ese momento, el sistema advierte de que el espejo se ha roto, y si hemos tenido la precauci&oacute;n de adquirir un  recambio, el tiempo de parada ser&aacute; m&iacute;nimo (nulo si el servidor soporta remoci&oacute;n de discos en caliente) y no se producir&aacute; ninguna p&eacute;rdida de datos. La t&eacute;cnica RAID puede montarse mediante placas base que la soporten en su propia BIOS, o con placas controladoras adicionales. Si no se puede disponer de RAID hardware, tambi&eacute;n hay sistemas operativos de servidor que pueden hacer lo mismo mediante software, aunque es algo menos eficiente,  para instalaciones peque&ntilde;as/medianas, servir&aacute; perfectamente. Es buena idea tener discos de recambio, todos del mismo modelo, ya que pasados algunos años (no muchos) ser&aacute; dif&iacute;cil encontrarlos, y m&aacute;s con prisas. El que sean <b>del mismo modelo</b> tiene mucha importancia si el RAID montado es controlado por placa hardware. Si el RAID es controlado por software no suele ser tan importante que no sean iguales. No olvides poner etiquetas f&iacute;sicas a cada disco con el n&uacute;mero que el sistema le asigna(0, 1, 2, etc.) Si se rompe un espejo, tendr&aacute;s dificultades para saber cu&aacute;l es el defectuoso.
+<p>
+Al margen de tener instalado RAID o no, las copias de seguridad (backup) se deben hacer, y evidentemente, se deben hacer en <b>otro</b> disco distinto, bien en el mismo servidor o en otra m&aacute;quina. El problema de optar por otra m&aacute;quina es que tiene que estar encendida cuando se hagan los backups, que suelen hacerse a horas intempestivas, que esa m&aacute;quina debe observar las mismas precauciones de seguridad que el propio servidor y que, preferentemente, debe estar dentro de la intranet, ya que si hay una ca&iacute;da de la red exterior, ese d&iacute;a no se har&iacute;a del backup. Se deben hacer copias de seguridad, tanto del sistema como de las bases de datos. Es buena idea tener otra copia de seguridad fuera del edificio donde resida el servidor, ya que en caso de incendio o robo podr&iacute;amos perder tanto el servidor como las copias. Recordar que esa copia de seguridad (como todas) debe estar, a su vez, bien protegida y actualizada regularmente.
+<p>
+Si haces copias de seguridad sobre CDROM, DVD o cintas, puede que alguna vez la copia falle, y el soporte no sea legible. Hay quien tira a la papelera el disco o cinta defectuosos sin mayores precauciones. <b>CUIDADO</B>: Con los programas adecuados se pueden extraer datos de esos soportes. 
+
+<H3>Seguridad software</H3>
+
+El primer eslab&oacute;n de esta otra cadena es crear una pol&iacute;tica de contrase&ntilde;as realmente efectiva, con permisos estructurados y gesti&oacute;n de grupos,  donde cada usuario s&oacute;lo tenga acceso a aquello que le compete, y sea consciente de su responsabilidad y obligaci&oacute;n de proteger su clave de acceso. He visto sitios donde la clave de acceso estaba escrita en un "postit" pegado en la pantalla, o vocear en medio de una sala llena de gente: "¿Cual es la clave de esta semana?.."   Lo peor es que contestaron.
+<p>
+As&iacute; mismo, el servidor debe tener instalado un buen cortafuegos (firewall) que no permita conectarse m&aacute;s que a las m&aacute;quinas de la empresa. Desde el servidor no se debe navegar por internet, ni siquiera leer el correo, y si esto se cumple, pr&aacute;cticamente no ser&aacute; necesario instalarle un antivirus,  que actualmente suelen ralentizar bastante el funcionamiento de las m&aacute;quinas. Si no se le instala antivirus, hay que tener presente que existen virus que se transmiten a trav&eacute;s de discos removibles y memorias flash conectados a los puertos USB, por lo que se deben verificar esos dispositivos si se utilizan para introducir datos en el servidor, y asegurarse de que est&aacute;n "limpios".
+<p>
+El servidor de datos no debe permitir conexiones de nadie que no est&eacute; dentro de nuestra red local (intranet), y por supuesto, jam&aacute;s ser&aacute; servidor web al mismo tiempo que servidor de datos. Solamente el servidor web, que debe ser otra m&aacute;quina diferente, dialogar&aacute; con el exterior, y tambi&eacute;n tendr&aacute; su correspondiente cortafuegos. 
+<p>
+Tanto en el servidor de datos como en el servidor web, se deshabilitar&aacute;n todos los servicios que no sean necesarios, como TELNET, FTP, SNMTP, HTTP, o los que procedan en cada caso, sin olvidar los de escritorio remoto. En suma, se trata de que todos los puertos que no tengan una utilidad permanente en el servidor, est&eacute;n debidamente cerrados, o mejor, ni siquiera instalados aquellos programas que no tengan utilidad declarada. Siempre ser&aacute; m&aacute;s f&aacute;cil vigilar un edificio con un par de puertas, que otro con cientos de ellas, y adem&aacute;s abiertas.
+<p>
+La inmensa mayor&iacute;a de p&eacute;rdidas de datos debidas a infecciones de virus o ataques de hackers (piratas inform&aacute;ticos) los provoca o facilita en gran manera el propio usuario de la m&aacute;quina, al tener multitud de puertos TCP abiertos in&uacute;tilmente, abrir adjuntos de e-mail sospechosos,  navegar por p&aacute;ginas web que inspiran poca o ninguna confianza, o instalar programas de dudosa utilidad y nula garant&iacute;a de seguridad (hay mucho freeware asesino por ah&iacute;). Si a esto a&ntilde;adimos que algunos sistemas operativos (y en especial su navegador) son una especie de colador de colores, lo raro es que nuestros datos no terminen en manos del primer aficionado a hacker que pase por all&iacute;.
+<p>
+Aunque pueda parecer obsesivo, un buen administrador de sistema debe estar permanentemente en alerta con los servidores a su cargo. Recuerda que en la actualidad, en general, los atacantes no persiguen borrar tus datos, esas son t&eacute;cnicas del pasado, si no conseguir el acceso a la m&aacute;quina y permanecer en el m&aacute;s absoluto anonimato. Lo que persiguen requiere discreci&oacute;n, y tanto si consiguen un acceso como inyectar un virus o un troyano, intentar&aacute;n permanecer invisibles el mayor tiempo posible. La finalidad de todo es robar datos, claves de acceso o utilizar la m&aacute;quina como "zombie" para lanzar desde ella ataques a otras m&aacute;quinas.
+
+<H3>Seguridad en servidores web</H3>
+
+Son muchas las aplicaciones que, inicialmente, se dise&ntilde;an para trabajar en local y por tanto con niveles muy bajos de seguridad (a veces inexistentes por completo), que terminan siendo parte de otra con conexiones a internet o a redes externas, donde los requerimientos de seguridad son infinitamente m&aacute;s altos que en redes locales. Estas ampliaciones sin incluir m&oacute;dulos de seguridad, representan un grave peligro para los datos, y deben mejorarse cuanto antes. Recuerda que un ataque desde el exterior, generalmente, no se debe a que tus datos sean m&aacute;s o menos interesantes para alguien, sino al simple y fortuito hecho de que un hacker localice tu m&aacute;quina y advierta que es vulnerable. La tentaci&oacute;n ser&aacute; irresistible...
+<p>
+Hay muchas formas de intentar extraer datos de un servidor web, pero para todas ellas, salvo agujeros graves de seguridad del sistema operativo o del programa servidor, el atacante necesita conocer un usuario v&aacute;lido y su clave de acceso. Y a eso dedicar&aacute; todos sus esfuerzos. El eslab&oacute;n m&aacute;s d&eacute;bil de la cadena son los propios usuarios. En efecto, casi siempre que lo consiguen es debido al poco cuidado que los usuarios autorizados tienen con sus contrase&ntilde;as. A nadie se le ocurre dejar las llaves de su casa puestas en la puerta, y si las pierde, se apresurar&aacute; a cambiar la cerradura por si acaso... pero esas elementales precauciones no se tienen cuando de accesos inform&aacute;ticos se trata. &iquest;Por qu&eacute;? misterios de la naturaleza humana.
+<p>
+As&iacute; pues, adem&aacute;s de cuidar con esmero las claves de acceso, lo primero que debemos hacer es cerrar todas las puertas que no sean necesarias del servidor. En un servidor web lo t&iacute;pico necesario suele ser el propio servicio HTTP (puerto 80), y tal vez, el de FTP (puertos 20 y 21). Una herramienta fundamental para conseguir esto es instalar un buen programa firewall (cortafuegos), o utilizar el propio del sistema operativo, si lo tiene, y configurarlo de modo que no se pueda accecer a ning&uacute;n puerto que no sean los mencionados. Tampoco es mala idea deshabilitar todos los protocolos de comunicaciones que no sean de verdad necesarios, como el UDP, y dejar solamente el TCP. Si hay alg&uacute;n otro servicio instalado, pero que no es de uso p&uacute;blico, conviene restringir el acceso filtrando el n&uacute;mero IP o la direcci&oacute;n MAC de las tarjetas de red de las m&aacute;quinas autorizadas, y bloquear todas las dem&aacute;s. Si el firewall dispone de temporizador, es interesante establecer un horario de acceso y bloqueo: Muchos ataques se producen cuando no hay nadie en la empresa vigilando la actividad del servidor, y si no hay nadie, es perfectamente in&uacute;til  tener abierto el acceso de otras m&aacute;quinas de la empresa al servidor. El &uacute;nico que puede necesitar permiso de acceso todo el dia suele ser el servidor web.
+<p>
+El siguiente paso ser&aacute; limitar los privilegios del usuario por defecto (anonymous) que los servidores suelen utilizar para responder a las llamadas del exterior. Este usuario gen&eacute;rico solamente debe tener permisos de lectura en el &aacute;rea donde residan los datos del web, y ocasionalmente, permisos de ejecuci&oacute;n de ficheros de comandos u otro tipo de ejecutables, como CGI, servlets, scripts, etc., si los hay. En resumen, se trata de que si alguien consigue entrar en el servidor utilizando ese usuario, no pueda conseguir con &eacute;l nada distinto de lo que conseguir&iacute;a operando normalmente con un navegador.
+<p>
+Si tu web utiliza bases de datos, que como ya se ha dicho, deber&iacute;an estar en otra m&aacute;quina, <B>NUNCA</b> utilizes el usuario administrador, o un usuario con privilegios altos en tus aplicaciones. Crea un usuario espec&iacute;fico para estos fines, que no pertenezca al grupo de administradores, con una clave de acceso buena (por lo menos 10 caracteres alfanum&eacute;ricos aleatorios), con los privilegios lo m&aacute;s restringidos posible, los justos para que permita operar a la aplicaci&oacute;n, y no es buena idea que tenga permisos de borrado, como m&aacute;ximo de modificaci&oacute;n. Si hay que borrar algo, que lo haga el administrador personalmente. Y por supuesto, no debe tener permisos que le permitan acceder a tablas del sistema. 
+<p>
+Por &uacute;ltimo, hay que acostumbrarse a revisar peri&oacute;dicamente los ficheros de "loggins" de los servidores y los del firewall, verificando que no ha habido accesos a horas extra&ntilde;as, ni de m&aacute;quinas desconocidas, y de vez en cuando, comprobar que todas las pol&iacute;ticas de seguridad que hemos programado siguen activas, ya que lo primero que un hacker har&iacute;a es deshabilitarlas.
+
+<H4>De viaje por la red</H4>
+
+Una vez configurados los aspectos b&aacute;sicos de seguridad del servidor, nos debemos plantear c&oacute;mo se mover&aacute;n los datos por la red. Evidentemente, la decisi&oacute;n a tomar depender&aacute; del tipo de datos de que se trate. No es lo mismo enviar un comentario a un foro, que hacer una compra con tu tarjeta de cr&eacute;dito. Internet es un medio de comunicaci&oacute;n muy inseguro debido a la propia estructura de la red. Los datos que viajan entre el cliente y el servidor no se envian en un &uacute;nico paquete, ni viajan directamente de una m&aacute;quina a otra. Se segmentan en peque&ntilde;os paquetes que se enrutan a trav&eacute;s de un n&uacute;mero variable de nodos hasta que llegan a su destino. En cualquiera de ellos se puede leer su contenido, modificarlo o destruirlo, por lo que la confidencialidad puede decirse que no existe. Recuerda que TODO lo que se hace en internet, de una forma u otra deja rastro. La &uacute;nica "protecci&oacute;n", si es que se le puede llamar as&iacute;, que la red ofrece es la enorme cantidad de informaci&oacute;n que se mueve por ella, lo que dificulta un tanto capturar los datos; no es nada insalvable para un buen hacker, aunque desde luego no con la facilidad que se ve en el cine.
+<p>
+Existen varias t&eacute;cnicas de protecci&oacute;n que pueden aplicarse cuando la naturaleza de los datos exige una mayor seguridad. Posiblemente la m&aacute;s conocida es el protocolo SSL (<b>S</B>ecure <b>S</B>ockets <b>L</B>ayer) dise&ntilde;ado hace ya muchos a&ntilde;os por Netscape. Para utilizarlo no es necesario hacer nada especial, simplemente habilitarlo en el servidor (el navegador ya lo detecta autom&aacute;ticamente) instalando un certificado digital de servidor emitido por una Autoridad Certificadora (<b>CA</B>). Al activarlo en el servidor no olvidar abrir el puerto 443 (por defecto) de este servicio en el firewall. La direcci&oacute;n de los servidores que utilizan SSL comienza por <b>https://</b> en lugar del t&iacute;pico http. Lo que hace SSL es cifrar, con un algoritmo distinto para cada sesi&oacute;n,  los datos intercambiados entre el cliente y el servidor, es decir, lo que viaja por la red no es transparente, como hace el protocolo http. Terminada la transacci&oacute;n, los datos se guardan en el servidor sin cifrar.
+<p>
+Aunque muy extendido, SSL es un protocolo de seguridad que fue dise&ntilde;ado para prop&oacute;sitos generales, y no es una soluci&oacute;n absolutamente  fiable si se requiere gran seguridad, como en el caso de cormercio electr&oacute;nico con pago. Para este tipo de transacciones se dise&ntilde;&oacute; en 1995 el protocolo SET (<b>S</B>ecure <b>E</B>lectronic <b>T</B>ransaction) , que despu&eacute;s de algunas modificaciones se ha convertido en un est&aacute;ndar. Una de las diferencias con SSL estriba en que los datos, adem&aacute;s de viajar encriptados por la red, permanecen as&iacute; tambi&eacute;n en el servidor, lo que asegura m&aacute;s su confidencialidad a&uacute;n en el caso de que el servidor sufriera un ataque con &eacute;xito.
+<p>
+Si no se desea encriptar la informaci&oacute;n (que tambi&eacute;n podr&iacute;a ser interceptada, y con paciencia, descifrada), se puede recurrir a crear una red virtual privada o VPN (en ingl&eacute;s <b>V</b>irtual <b>P</b>rivate <b>N</b>etwork). Esto consiste en crear una especie de "t&uacute;nel" privado directo entre las dos m&aacute;quinas que establecen el di&aacute;logo, de forma que nadie pueda interferir lo que circula por ese t&uacute;nel. El problema de esta t&eacute;cnica es que el cliente tiene que instalarse una peque&ntilde;a aplicaci&oacute;n que permita establecer esa conexi&oacute;n especial, y aunque no es muy complicado, para algunos usuarios puede ser problem&aacute;tico (como casi siempre que se espera alguna acci&oacute;n del cliente). Adem&aacute;s requiere del servidor m&aacute;s recursos para mantener las conexiones activas.
+
+
+<H4>Seguridad en aplicaciones web</H4>
+
+Hasta aqu&iacute;, si se ha aplicado todo lo dicho,  puede parecer que ya lo tenemos todo controlado, pero todav&iacute;a nos queda el &uacute;ltimo eslab&oacute;n de la cadena software: la aplicaci&oacute;n web con la que va a trabajar el cliente. Evidentemente, si los contenidos de la p&aacute;gina son est&aacute;ticos, pocos problemas pueden generarse, pero si se utilizan bases de datos, la cosa cambia. En efecto, aunque la base de datos utilizada por la aplicaci&oacute;n web contenga datos sin importancia, como por ejemplo un libro de visitas, la aplicaci&oacute;n har&aacute; llamadas al mismo servidor donde podemos tener bases de datos que s&iacute; contienen informaci&oacute;n que debe ser protegida. Dependiendo de c&oacute;mo se dise&ntilde;en las aplicaciones web, podemos estar, sin saberlo, dando herramientas a un posible atacante para que llegue a donde no debe. As&iacute; pues, por insignificante que pueda parecer la importancia de algunas bases de datos, no deben utilizarse de cualquier manera, ya que indirectamente podr&iacute;a utilizarse el acceso a ellas para obtener informaci&oacute;n relevante del servidor.
+<p>
+Las primeras precauciones ya se han descrito antes, recuerda: no utilices el usuario administrador, crea un usuario con permisos muy restringidos y con una buena clave alfanum&eacute;rica, y si es posible, que no tenga permisos de borrado. Al margen de todo esto, hay que dise&ntilde;ar la aplicaci&oacute;n de forma que no se le puedan hacer preguntas maliciosas al servidor. Dependiendo del lenguaje de desarrollo utilizado y de la base de datos, la sintaxis de las t&eacute;cnicas de ataque ser&aacute;n diferentes, pero basadas en los mismos principios. A continuaci&oacute;n veremos algunas formas de atacar a un servidor SQL Server con una aplicaci&oacute;n desarrollada en ASP.
+<p>
+Como ya sabes, en las aplicaciones ASP, cuando se produce un error de ejecuci&oacute;n el sistema responde con una explicaci&oacute;n de d&oacute;nde est&aacute; el problema, y esto es lo que puede utilizar el atacante para obtener informaci&oacute;n que le permita llegar a donde quiere. Imaginemos una aplicaci&oacute;n que contiene un m&oacute;dulo de identificaci&oacute;n hecho con muy poco cuidado. Por ejemplo:
+<p>
+<pre><font face=courier size=2 color="blue">
+
+&lt;%@ LANGUAGE="VBScript" %&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Pruebas de Seguridad&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;%
+SQL="SELECT clave FROM users WHERE clave = " & Request.QueryString("clave")
+
+	Set DB = Server.CreateObject("ADODB.Connection")
+        DB.Open "mi_DB", "mi_user", "mi_clave"
+
+	Set RS = Server.CreateObject("ADODB.Recordset") 
+	RS.Open SQL, DB
+ 
+ If RS.BOF And RS.EOF then
+    Response.Write("Clave incorrecta")
+ Else
+        Response.Write("Clave correcta")
+ End if
+
+   RS.Close
+   DB.Close
+   Set RS = Nothing
+   Set DB = Nothing
+%>
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Para obtener acceso simplemente escribimos en la ventana de URL del navegador: <br><b>http://mi_servidor/seguridad.asp?clave='prueba1'</B>
+<p>
+La aplicaci&oacute;n nos devuelve: <b>Clave incorrecta</B>
+<p>
+Parece que todo funciona bien, pero el atacante cambia de estrategia, y escribe:<br>
+<b>http://mi_servidor/seguridad.asp?clave=0</B>
+<p>
+Y la aplicaci&oacute;n, indiscreta donde las haya, dice:
+<p>
+<font face=courier size02 color="blue">
+Microsoft OLE DB Provider for ODBC Drivers error '80040e07'<br>
+[Microsoft][ODBC SQL Server Driver][SQL Server]Error de sintaxis al convertir el valor varchar <font color="red">'hola '</font> para una columna de tipo de datos int.<br>
+/seguridad.asp, l&iacute;nea 13 </font>
+<p>
+Si... acabamos de darle al pirata las llaves del reino, porque la clave buscada es <b>hola</B>. ¿Qu&eacute; ha pasado? Pues que nuestra aplicaci&oacute;n carece de las m&aacute;s elementales normas de seguridad, y simplemente entrando un tipo de dato diferente del que espera la consulta, lo ha puesto en evidencia.
+
+<p>
+El primer error de seguridad est&aacute; en el modo de recibir la consulta: utilizando el objeto <b>Request</B> y su colecci&oacute;n <b>QueryString</B>. Esta forma de operar es como abrirle una consola al atacante para que escriba lo que quiera, sin limitar la longitud de su c&oacute;digo. La colecci&oacute;n <b>Form</B> le dificultar&iacute;a algo m&aacute;s las cosas, sobre todo si los campos est&aacute;n limitados en longitud, pero tambi&eacute;n podr&iacute;a conseguir algo. En este caso concreto eso no arreglar&iacute;a nada, ya que solamente ha tenido que escribir un cero. Lo que s&iacute; podr&iacute;a hacer m&aacute;s fiable el programa es filtrar previamente todos los datos que reciba, y solamente <b>despu&eacute;s</B>, pasarlos a la consulta SQL, y adem&aacute;s,   escribir la consulta de otra forma.
+<p>
+Esto no habr&iacute;a ocurrido si, simplemente, escribimos la consulta as&iacute;:
+<p>
+<pre><font face=courier size=2 color="blue">
+SQL="SELECT clave FROM users WHERE clave = " &  "<font color="red"><b>'</B></font>" & Request.QueryString("clave") & "<font color="red"><b>'</b></font>" 
+</font></pre>
+
+Quede claro que esto es un error de programaci&oacute;n, achacable &uacute;nicamente al programador, y no es un fallo de dise&ntilde;o de la base de datos ni del servidor web. Este tipo de ataques lo pueden sufrir por igual todas las plataformas de desarrollo: ASP, PHP, .NET, etc., y cualquier base de datos: SQL Server, ORACLE o MySQL. 
+<p>
+El ejemplo que hemos visto es muy sencillo, y su fallo clamoroso, pero pueden realizarse ataques m&aacute;s sofisticados mediante una t&eacute;cnica denominada "inyecci&oacute;n SQL". Esto consiste en escribir en los formularios, en lugar de los datos solicitados, parte de instrucciones SQL que se concatenar&aacute;n con la instrucci&oacute;n b&aacute;sica de la aplicaci&oacute;n, y la consulta resultante ser&aacute; la que se ejecute, produciendo errores intencionados que, directamente o en varios pasos, pueden ir filtrando la informaci&oacute;n que el atacante necesita para acceder al servidor. 
+<p>
+Modificaremos un poco el ejemplo anterior, y lo haremos con dos ficheros; Uno en html que ser&aacute; el formulario llamador:
+<p>
+<pre><font face=courier size=2 color="blue">
+
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Pruebas de Seguridad&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM ACTION="seguridad.asp" METHOD="POST"&gt; 
+Usuario: &lt;INPUT TYPE="text" NAME="usuario" SIZE="15" maxlength="15"&gt;
+Clave: &lt;INPUT TYPE="text" NAME="clave" SIZE="15" maxlength="15"&gt;
+&lt;INPUT TYPE="submit" NAME="enviar" VALUE="enviar"&gt; 
+&lt;/FORM&gt; 
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Y el mismo ejemplo en ASP anterior, pero con la consulta SQL diferente:
+
+<p>
+<pre><font face=courier size=2 color="blue">
+
+&lt;%@ LANGUAGE="VBScript" %&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Pruebas de Seguridad&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;%
+SQL="SELECT clave FROM usuarios WHERE usuario = '" & Request.Form("usuario") & _
+     "' And clave = '" &  Request.Form("clave") & "'"
+
+	Set DB = Server.CreateObject("ADODB.Connection")
+        DB.Open "mi_DB", "mi_user", "mi_clave"
+
+	Set RS = Server.CreateObject("ADODB.Recordset") 
+	RS.Open SQL, DB
+ 
+ If RS.BOF And RS.EOF then
+    Response.Write("Clave incorrecta")
+ Else
+        Response.Write("Clave correcta")
+ End if
+
+   RS.Close
+   DB.Close
+   Set RS = Nothing
+   Set DB = Nothing
+%>
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Como puedes ver, ahora s&iacute; se han incluido las comillas que indican que los campos son alfanum&eacute;ricos, para evitar el desastre provocado por el cero del ejemplo anterior; pero nuestro hacker sabe lo que hace, y escribe en el formulario:
+<p>
+<form action=""> 
+Usuario: <input type="text" name="codigo" value="prueba" size="15">
+ Clave: <input type="text" name="servicio" value="'or 1=1 --" size="15">
+<input type="button" name="enviar" value="Enviar"> 
+</form> 
+<p>
+
+Y la aplicaci&oacute;n devuelve: <b>Clave correcta</B>
+<p>
+Desde luego, ni el usuario ni la clave son correctos, pero la aplicaci&oacute;n dice que s&iacute;, es decir, que de nuevo se nos han colado en casa sin tener la llave. Y puede que te est&eacute;s preguntando <I>... pero, ¿qu&eacute; ha fallado ahora?</i>. La respuesta, una vez m&aacute;s, est&aacute; en un error de dise&ntilde;o de la consulta SQL. En efecto, tal como est&aacute; escrita, y utilizada "honradamente", la consulta despu&eacute;s de recibir los valores legales del formulario quedar&iacute;a  as&iacute;:
+<p>
+<font face=courier size=2 color="blue">
+SELECT clave FROM usuarios WHERE usuario = 'mi_user' And clave = 'hola' </font>
+<p>
+En lenguaje humano, nuestro deseo es que la DB busque un registro cuyo usuario sea "mi_user" y que su clave, al mismo tiempo, sea "hola". Pero despu&eacute;s de recibir los valores escritos por el pirata, queda as&iacute;:
+<p>
+<font face=courier size=2 color="blue">
+SELECT clave FROM usuarios WHERE usuario = 'prueba' And clave = '' or 1=1 --'
+</font>
+<p>
+Y su significado para la m&aacute;quina es que busque los registros cuyo usuario sea "prueba" y su clave "" (vacia) <font color="red"><b>O</B></font> que se cumpla la condici&oacute;n (no necesariamente en la tabla) de que 1 sea igual a 1, es decir, <b>todos</B> los registros de la tabla, puesto que esa igualdad se cumple siempre.  El dise&ntilde;o de la aplicaci&oacute;n solamente eval&uacute;a si la consulta devuelve al menos una l&iacute;nea v&aacute;lida, pero en la pr&aacute;ctica est&aacute; devolviendo todas las l&iacute;neas de la tabla, lo que significa que el atacante podr&iacute;a hacerse con todos nuestros usuarios y sus claves de un solo golpe. ¡Qu&eacute; peligrosos son los operadores booleanos! porque, como ya habr&aacute;s supuesto, este nuevo fiasco se debe al operador booleano <b>Or</B> que nos han inyectado en nuestra consulta. El final de la inyecci&oacute;n son los dos guiones <b>--</B> que son el s&iacute;mbolo del comentario para SQL Server, y que evitan que se produzca un error de sintaxis al resultar un n&uacute;mero impar de comillas en la consulta.
+<p>
+Esto no habr&iacute;a ocurrido si, simplemente, escribimos la consulta as&iacute;:
+<p>
+<pre><font face=courier size=2 color="blue">
+SQL="SELECT clave FROM usuarios WHERE <font color="red">(</font>usuario = '" & Request.Form("usuario") & _
+     "'<font color="red">)</font> And <font color="red">(</font>clave = '" &  Request.Form("clave") & "'<font color="red">)</font>"
+</font></pre>
+
+Y la aplicaci&oacute;n en lugar de mostrar nuestras claves, hubiera contestado.
+<p>
+<font face=courier size=2 color="blue">
+Microsoft OLE DB Provider for ODBC Drivers error '80040e14'<br>
+[Microsoft][ODBC SQL Server Driver][SQL Server]L&iacute;nea 1: sintaxis incorrecta cerca de '1'.<br>
+/seguridad.asp, l&iacute;nea 15 
+</font>
+<p>
+Los ejemplos pueden ser interminables. Dependiendo de c&oacute;mo est&eacute; escrita la consulta y con un poco de paciencia (y los hackers tienen mucha...), se puede terminar abriendo la puerta de los datos. Y te preguntar&aacute;s ¿qu&eacute; hacer? Pues ante todo aprender lo m&aacute;s posible del lenguaje SQL de tu servidor, dedicarle un cierto tiempo a probar a romper tu propio programa (si las pruebas las hace otro programador, mejor), y finalmente escribir <b>siempre</b> funciones para controlar el tipo de dato recibido, es decir, que si se espera un n&uacute;mero, asegurarse de que en efecto, llega un n&uacute;mero, etc., y funciones de bloqueo de ciertos caracteres como las comillas simples (<b>'</B>), las comillas dobles (<b>"</B>), los guiones (<b>--</B>), y todo aquel que pueda dar conflictos en una consulta de tu DB. 
+<p>
+Es buena idea programar los m&oacute;dulos de identificaci&oacute;n de forma que tengan un l&iacute;mite de intentos, y si  &eacute;ste se supera, que la aplicaci&oacute;n se cierre de forma permanente, incluso aunque se entre la clave correcta, obligando a cerrar la sesi&oacute;n y comenzar de nuevo (pero sin informar de ello, claro). Otra buena medida es guardar el IP de las m&aacute;quinas cliente, y rehusar la conexi&oacute;n de aquellas que hayan sobrepasado el n&uacute;mero m&aacute;ximo de intentos hasta que el administrador lo permita. Esto, adem&aacute;s, nos permitir&aacute; saber despu&eacute;s qu&eacute; m&aacute;quinas nos est&aacute;n atacando, y si es conveniente, establecer una "lista negra" de IPs o de dominios "non gratos".
+<p>
+Otra cosa a tener en cuenta, es limitar siempre la longitud m&aacute;xima de los campos de los formularios a la longitud que tenga el campo de destino en la tabla, ni uno m&aacute;s, y que la aplicaci&oacute;n rechace los que no sean de la longitud correcta, aunque en realidad las claves deber&aacute;n ser m&aacute;s cortas que ese m&aacute;ximo. Se trata de evitar que puedan escribir mucho, pero sin indicar claramente la longitud m&aacute;xima de la clave. Elimina en las pantallas para el usuario esas indicaciones de longitud t&iacute;picas: <i>..."Escriba una contrase&ntilde;a (m&iacute;nimo 5 y m&aacute;ximo 10 caracteres.."</i>. Por &uacute;ltimo, y si tu servidor lo permite, es recomendable configurarlo para que no devuelva explicaciones de los errores, sino un mensaje fijo informando de que se ha producido un error, sin m&aacute;s, ya que los detalles a un usuario normal no le sirven de nada. Activa los mensajes expl&iacute;citos solamente mientras desarrollas o arreglas algo. De todas formas, recuerda que esto no evitar&aacute; que, si la inyecci&oacute;n se consigue y es correcta, los datos aparezcan, ya que, aunque obtenidos fraudulentamente, no constituyen un error.
+<p>
+Adem&aacute;s de ataques m&aacute;s o menos sofisticados, como los descritos, te pueden intentar aplicar los m&aacute;s t&iacute;picos, como el diccionario o la fuerza bruta. El ataque por diccionario consiste en intentar averiguar la clave de acceso probando una lista de palabras de las m&aacute;s habituales. Esa lista puede ser est&aacute;ndar o personalizada al servidor que se quiera atacar, si se conoce ya algo de &eacute;l. Si ya se conoce por lo menos un usuario, la lista suele ser con datos personales de ese usuario, como su fecha de nacimiento, el nombre de su hijo, el del perro, la matr&iacute;cula de su coche, su n&uacute;mero de tel&eacute;fono, etc. etc. Por eso es importante que las claves nunca sean palabras coherentes y mucho menos relacionadas con datos nuestros. Una clave fiable debe ser algo que no signifique nada: por ejemplo: "ocmo12ert24A". ¿Que es muy dif&iacute;cil de recordar? S&iacute;... pero precisamente por eso es buena. Al principio te puede parecer imposible, pero al final te la aprender&aacute;s. Lo que ciertamente te va a costar m&aacute;s es que tus usuarios utilicen estas claves, sobre todo si tienen libertad para ponerla ellos mismos. No lo har&aacute;n. 
+<p>
+Otra t&iacute;pica forma de ataque es la de fuerza bruta, es decir, ir probando letras y n&uacute;meros de forma aleatoria, o con un cierto orden, hasta que se consiga el acceso. Por supuesto, este sistema puede llevar mucho tiempo, dependiendo de lo buenas que sean las claves utilizadas. Como ya te puedes imaginar, estos ataques no se hacen tecleando a mano posibles claves, sino mediante programas que pueden hacer miles de pruebas en poco tiempo. Por eso, como ya se ha dicho antes, conviene que los m&oacute;dulos de conexi&oacute;n de las aplicaciones tengan un l&iacute;mite de accesos fallidos, a partir del cual, el acceso debe cerrarse a ese cliente, indefinidamente, o por un tiempo prudencial.
+<P> 
+Una forma disuasoria para estos ataques es utilizar en los formularios de acceso la t&eacute;cnica "CAPTCHA" (<B>C</b>ompletely <b>A</b>utomated <b>P</b>ublic <b>T</b>uring test to tell <b>C</b>omputers and <b>H</b>umans <b>A</b>part, que significa algo as&iacute; como -Prueba de Turing p&uacute;blica y autom&aacute;tica para diferenciar m&aacute;quinas y humanos-) que consiste en obligar a escribir manualmente en el formulario una clave aleatoria distorsionada &oacute;pticamente para que no pueda ser le&iacute;da por un programa. Por ejemplo:
+
+<center><img src="captcha.jpg"></center>
+<br>
+Y aqu&iacute; tienes un sencillo ejemplo de c&oacute;digo CAPTCHA escrito en ASP por Emir T&uuml;z&uuml;l bajo Common Public License:<br>
+
+<a href="captcha_test.txt">C&oacute;digo del llamador</a> &nbsp; <a href="captcha.txt">C&oacute;digo generador</a>  <br>
+ Suerte.
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

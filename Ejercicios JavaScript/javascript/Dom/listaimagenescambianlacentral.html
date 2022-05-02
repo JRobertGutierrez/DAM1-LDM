@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head> 
+<body>
+
+        <h1 id="id1">Mi h1</h1>
+      
+        <!--<button type="button"onclick="document.getElementById('id1').style.color = 'red'">-->
+            
+            <button type="button" onclick="cambiaColor();">Click cambia el color</button>
+      
+     
+        <script>
+                function cambiaColor(){
+                    var h1Element = document.getElementById('id1');
+                    var colorActual = h1Element.style.color;
+                    
+                    if (colorActual=='red'){
+                        h1Element.style.color = "blue";
+                    }else{
+                        h1Element.style.color = "red";
+                    }
+                
+                }
+        </script>
+    
+
+</body>
+</html>

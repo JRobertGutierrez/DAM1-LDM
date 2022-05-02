@@ -1,0 +1,44 @@
+<HTML>
+<HEAD><TITLE>ASP 1</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>&iquest;Qu&eacute; es el ASP?</H2>
+<P>
+
+<H3>Un poco de ret&oacute;rica.</H3>
+Aqu&iacute; comienza la parte m&aacute;s complicada del dise&ntilde;o de p&aacute;ginas web. Es muy conveniente que, si vas a programar p&aacute;ginas ASP, tengas algunos conocimientos previos de programaci&oacute;n, preferiblemente en programaci&oacute;n orientada a objetos (por ejemplo Access Basic o Visual Basic). Tambi&eacute;n es recomendable que, aunque no vayas a utilizarlo, leas el tema de aplicaciones con el IDC, ya que los principios b&aacute;sicos de conexi&oacute;n y conceptos generales son v&aacute;lidos para el ASP.
+<p>
+Si no sabes nada de programaci&oacute;n, plant&eacute;ate si con el IDC puedes resolver tu problema; y si el IDC no es suficiente, prep&aacute;rate para adentrarte en un tortuoso laberinto del que no siempre se puede salir. La complejidad de estas t&eacute;cnicas es bastante alta, y a los problemas que te van a surgir en la escritura del c&oacute;digo ASP, hay que sumarle los que te pueda presentar la correcta  configuraci&oacute;n del IIS y su administraci&oacute;n.
+
+<H3>Introducci&oacute;n al ASP.</H3>
+Suponiendo que ya has leido la introducci&oacute;n a las aplicaciones en internet, puede definirse el ASP (<b>A</B>ctive <b>S</B>erver <b>P</B>ages, o lo que es lo mismo: p&aacute;ginas activas en el servidor) como un "modo" de escribir aplicaciones de internet, y que, al igual que ocurre con las escritas para el IDC, se ejecutan en el servidor, enviando a los clientes  HTML est&aacute;ndard. Dicho as&iacute; te preguntar&aacute;s donde est&aacute; la diferencia con el IDC. Pues la diferencia estriba en que el IDC dispone de instrucciones muy reducidas: una sencilla toma de decisiones del tipo si/no y poco m&aacute;s, mientras que ASP pone a disposici&oacute;n del programador todos los recursos de varios lenguajes de secuencias de comandos: el Visual Basic Script (en lo sucesivo <b>VBScript</b>), que es una variante del potente Visual Basic, JavaScript, Perl y otros, incluso mezclados dentro del mismo programa. S&oacute;lo hay que cargar el motor de comandos correspondiente en el IIS, y configurarlo correctamente. Y por supuesto, el HTML tambi&eacute;n est&aacute; presente. El resultado de esta mezcla de lenguajes, junto con algunas prestaciones a&ntilde;adidas al IIS, es lo que gen&eacute;ricamente se conoce como ASP, que como puedes ver, en realidad no es un lenguaje, sino una forma de construir programas utilizando uno o varios lenguajes (en versi&oacute;n script) junto con el HTML, que sigue siendo imprescindible, ya que es el &uacute;nico que entienden los  navegadores. En m&aacute;quinas con sistema operativo UNIX o LINUX el equivalente al ASP es el JSP o el PHP, aunque tambi&eacute;n existen versiones para Windows de &eacute;stos, pero no son nativos.
+<p>
+No tiene mucho sentido utilizar ASP para escribir p&aacute;ginas de contenido est&aacute;tico, aunque se puede hacer. La verdadera utilidad se descubre cuando tenemos que construir aplicaciones complejas, como dialogar con una base de datos: en ese trabajo, ASP se muestra capaz de resolver casi cualquier cosa que podamos necesitar de forma r&aacute;pida y sencilla (hasta donde ello es posible), pudiendo adem&aacute;s elegir el lenguaje m&aacute;s apropiado para cada cosa; por ejemplo podremos: avanzar o retroceder registro a registro en una tabla, paginar grupos de registros en una consulta, filtrar cualquier tipo de datos de un formulario, escribir y leer en ficheros externos a la DB, realizar c&aacute;lculos numéricos con coma flotante, manipular cadenas de texto, generar cualquier tipo de apariencia HTML, a&ntilde;adir, modificar o eliminar registros de una tabla, etc., etc. 
+<p>
+Para escribir p&aacute;ginas ASP, solo necesitamos, como viene siendo habitual en esta obra, un sencillo editor de textos como el bloc de notas, aunque en esta ocasi&oacute;n ser&iacute;a preferible contar con un editor algo m&aacute;s avanzado que provea de numeraci&oacute;n de l&iacute;neas, ya que el debugger (programa de depuraci&oacute;n de errores) de ASP emite sus mensajes de error indicando el n&uacute;mero de l&iacute;nea del programa donde se produce el fallo. 
+<p>
+Una p&aacute;gina ASP es un fichero de <b>s&oacute;lo texto</b> que contiene las secuencias de comandos del lenguaje elegido, junto con el HTML necesario, y que se guarda con la extensi&oacute;n <b>.asp</b><br>  Al ser llamado por el navegador, el motor ASP del IIS se encarga autom&aacute;ticamente de depurarlo y ejecutarlo como se suele hacer con un programa cualquiera, pero cuya salida siempre ser&aacute; a trav&eacute;s del navegador que le invoca. El lenguaje de secuencia de comandos predeterminado del IIS es el VBScript, aunque puede cambiarse.
+<p>
+Hasta aqu&iacute; la cosa no parece muy complicada,  y que todo se va a limitar a usar algunos comandos nuevos, pero es porque todav&iacute;a no hemos hablado de lo que realmente le da potencia al lenguaje de secuencias de comandos que utilicemos, sea indistintamente VBScript o JavaScript: los <b>objetos</b> y <b>componentes</b> de ASP. En efecto, VBScript o JavaScript no tienen funciones intr&iacute;nsecas que les permitan acceder a datos, pero s&iacute; son capaces de utilizar los objetos y componentes de ASP para este fin.... y con esto comienzan las dificultades de programaci&oacute;n. Ya no se trata de utilizar un comando cualquiera y recoger el resultado, el uso de objetos es algo bastante m&aacute;s complicado.... y seguramente ya te estar&aacute;s preguntando que ser&aacute; eso de "objetos" y "componentes".... 
+<p>
+Para definir los objetos har&iacute;a falta todo un libro, as&iacute; que nos limitaremos a considerarlos como unos elementos a los que se puede recurrir desde ASP y que nos ahorrar&aacute;n tener que escribir gran cantidad de c&oacute;digo para, por ejemplo, conectar con una base de datos, o leer un fichero cualquiera. Nos limitaremos aqu&iacute; a saber de qu&eacute; objetos podemos disponer y para qu&eacute; sirven. Pero el ASP no funciona s&oacute;lo con los objetos; tenemos todos los comandos del VBScript, JScript, o Perl que nos permitir&aacute;n manipular y controlar de mil maneras los datos (siempre en el servidor, recuerda). Pero antes de utilizar todas estas herramientas, veamos en que consiste una p&aacute;gina ASP sencilla.
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

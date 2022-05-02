@@ -1,0 +1,78 @@
+<html>
+
+<head>
+
+<title>JavaScript Index</title>
+
+</head>
+
+<body bgcolor="#00FFFF">
+
+<center>
+<h2>Imprimir desde una imagen, un bot&oacute;n o un link con JavaScript</h2>
+<h3>Puede funcionar con Netscape o IE tanto de Windows como MAC<br>
+S&oacute;lo versiones 4.0 o superiores</h3>
+</center>
+
+Este es un ejemplo algo m&aacute;s complicado: Los navegadores de Netscape pueden ejecutar la funci&oacute;n de impresi&oacute;n sin problemas, pero este c&oacute;digo no sirve para los IE de Microsoft. Para solucionarlo, se utiliza JavaScript para imprimir directamente si el navegador es Netscape, y tambi&eacute;n con JavaScript, se crea una funci&oacute;n en VBScript (Visual Basic Script) que ser&aacute; interpretada por los IE.
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var da = (document.all) ? 1 : 0;
+var pr = (window.print) ? 1 : 0;
+var mac = (navigator.userAgent.indexOf("Mac") != -1); 
+
+function printPage2() {
+  if (pr) // NS4, IE5
+    window.print()
+  else if (da && !mac) // IE4 (Windows)
+    vbPrintPage()
+  else // other browsers
+    alert("No soportado por este navegador");
+  return false;
+}
+
+if (da && !pr && !mac) with (document) {
+  writeln('<OBJECT ID="WB" WIDTH="0" HEIGHT="0" CLASSID="clsid:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>');
+  writeln('<' + 'SCRIPT LANGUAGE="VBScript">');
+  writeln('Sub window_onunload');
+  writeln('  On Error Resume Next');
+  writeln('  Set WB = nothing');
+  writeln('End Sub');
+  writeln('Sub vbPrintPage');
+  writeln('  OLECMDID_PRINT = 6');
+  writeln('  OLECMDEXECOPT_DONTPROMPTUSER = 2');
+  writeln('  OLECMDEXECOPT_PROMPTUSER = 1');
+  writeln('  On Error Resume Next');
+  writeln('  WB.ExecWB OLECMDID_PRINT, OLECMDEXECOPT_DONTPROMPTUSER');
+  writeln('End Sub');
+  writeln('<' + '/SCRIPT>');
+}
+
+// -->
+</SCRIPT>
+
+<center>
+<FORM ACTION="#" METHOD=POST>
+<INPUT TYPE=SUBMIT VALUE=" Imprimir " onClick="return printPage2()">
+</FORM>
+
+<a href="#" onClick="return printPage2()"><b>Imprimir</b></a> <br>
+
+ <a href="#" onClick="return printPage2()"><img SRC="printer.gif" border="0" WIDTH="38" HEIGHT="34"></a> 
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>Ejemplos de idc </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<p>
+<font size=4 color ="blue">Ejemplo 3.- </font>Insertar un nuevo registro en la tabla de articulos partiendo de un formulario.
+<p>
+<font size=3 color ="red">insertar.IDC</font>
+<pre>
+
+<b>Datasource</b>: pruebas
+<b>Username</b>: web
+<b>Password</b>:
+<b>Translationfile</b>: C:\aplicaciones\translator.txt
+<b>Template</b>: insertar2.htx 
+<b>SQLStatement</b>: 
+
++INSERT INTO articulos ( codigo, tipo, nombre, precio )
++ <b>%codigo%</b>, <b>'%tipo%'</b>, <b>'%nombre%'</b>, <b>%precio%</b>
+
+</pre>
+
+<p>
+<font size=3 color ="red">insertar.HTM</font><font size=3 color ="blue">  &nbsp;---- &nbsp;<b>OJO</B> &nbsp;esto NO es un HTX, es un HTM normal.</font> 
+<pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Insertar articulos &lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;CENTER&gt;
+&lt;H3&gt;La ferreteria virtual&lt;/H3&gt;
+&lt;FORM ACTION=/aplicaciones/<b>insertar.idc</b>&quot; METHOD=&quot;POST&quot;&gt;
+
+&lt;INPUT TYPE=TEXT NAME=&quot;<b>codigo</b>&quot; SIZE=3 MAXLENGTH=3 &gt;
+&lt;INPUT TYPE=TEXT NAME=&quot;<b>tipo</b>&quot; SIZE=25 MAXLENGTH=25 &gt;
+&lt;INPUT TYPE=TEXT NAME=&quot;<b>nombre</b>&quot; SIZE=30 MAXLENGTH=30 &gt;
+&lt;INPUT TYPE=TEXT NAME=&quot;<b>precio</b>&quot; SIZE=4 MAXLENGTH=4 &gt;
+
+&lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Escriba las caracteristicas del articulo y pulse aqui&quot;&gt;
+&lt;/FORM&gt;
+&lt;/CENTER&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+
+<p>
+<font size=3 color ="red">Resultado 1</font>
+
+<CENTER>
+<A name="1">
+<FORM ACTION="#1" METHOD="GET">
+<H3>La ferreteria virtual</H3>
+
+<INPUT TYPE=TEXT NAME="codigo" SIZE=3 MAXLENGTH=3>
+<INPUT TYPE=TEXT NAME="tipo" SIZE=25 MAXLENGTH=25 >
+<INPUT TYPE=TEXT NAME="nombre" SIZE=30 MAXLENGTH=30>
+<INPUT TYPE=TEXT NAME="precio" SIZE=4 MAXLENGTH=4 >
+
+<INPUT TYPE="SUBMIT" VALUE="Escriba las caracteristicas del articulo y pulse aqui">
+</FORM>
+</CENTER>
+<p>
+Despu&eacute;s de pulsar el bot&oacute;n, y si no se produce ning&uacute;n error, no se ver&aacute; ningun mensaje, ya que no se ha preguntado nada a la DB. Si se desea comprobar que la transacci&oacute;n se ha realizado, hay que escribir otro formulario que muestre el contenido de la tabla, como en alguno de los ejemplos anteriores. 
+<p>
+Si se tiene SQL Server, se puede incluir una segunda sentencia SQL en el IDC para que aparezca  el nuevo contenido de la tabla inmediatamente despu&eacute;s de realizar la transacci&oacute;n. Con una DB de Access, esto no es posible, y por tanto lo m&aacute;s que se puede hacer es incluir un bot&oacute;n que llame a la consulta para mostrar la tabla en un segundo paso.
+<p>
+<p>
+<font size=3 color ="red">insertar2.HTX</font>
+<p>
+
+Este HTX se escribir&aacute;, por tanto, seg&uacute;n convenga un tipo de respuesta u otro despu&eacute;s de haber insertado el nuevo registro. Por ejemplo, un bot&oacute;n que lance la misma consulta que hay en el <a href="gestion7.htm">ejemplo 1</a>, un link para movernos a otra p&aacute;gina, o un texto cualquiera, ya que el HTX no es obligatorio utilizarlo como respuesta habitual del IDC, aunque tiene que existir.
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+
+</body>
+</html>
+
+

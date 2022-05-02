@@ -1,0 +1,234 @@
+<html>
+<head>
+<title>VBScript 4 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Visual Basic Script</H2>
+<h3>Instrucciones</h3>
+<font size=4 color="blue">Instrucciones condicionales</font>
+<p>
+Aqu&iacute; comenzaremos a ver las instrucciones de VBScript, y lo haremos por las que seguramente son las m&aacute;s utilizadas de todas ellas: las <b>instrucciones condicionales</B>. En efecto, raro es el programa, por peque&ntilde;o y simple que sea, que no contenga una o varias instrucciones <font color="red"><b>If.. Then.. Else</b></font>, que traducido viene a ser algo as&iacute;: <font color="red"><b> Si</b></font> <font color="blue"> llueve </font> <font color="red"><b>Entonces</b></font> <font color="blue">haces esto </font><font color="red"><b> Si no</b></font> <font color="blue">haces esto otro</font>. Es como el interruptor el&eacute;ctrico de tu l&aacute;mpara: si est&aacute; abierto la luz se apaga, y si est&aacute; cerrado, se enciende. Y expres&aacute;ndolo en la jerga que entienden los ordenadores, la primera parte de la instrucci&oacute;n ( <font color="red"><b>If</b></font>)  lo que hace es evaluar si la expresi&oacute;n propuesta (en este caso si llueve o no) devuelve  <font color="green"><b>True</b></font> o <font color="green"><b>False</b></font>. Si... de nuevo aparecen los operadores l&oacute;gicos. En las instrucciones condicionales pueden utilizarse todos los <a href="../vbscript/vb03.htm">operadores l&oacute;gicos</a> que ya conocemos.
+<p>
+La instrucci&oacute;n <font color="red"><b>If</b></font> se puede escribir de tres formas distintas, seg&uacute;n el n&uacute;mero de condiciones que haya que evaluar:
+<p>
+Sintaxis de <b>l&iacute;nea &uacute;nica</b>, en la que se omite la palabra clave <b>Else</b>. es decir, que no hay que hacer nada si no se cumple la condici&oacute;n propuesta:
+<font face="courier">
+<pre>
+          <font color="red">If</font><font color="blue"> llueve </font><font color="red">Then</font><font color="blue"> abrir paraguas</font>
+</pre></font>
+<p>
+Sintaxis t&iacute;pica de <b>bloque</b> en la que s&iacute; se indica qu&eacute; hacer si la condici&oacute;n propuesta no devuelve True.<br>
+ Hay que cerrarla con <font color="red">End If</font>:
+<font face="courier">
+<pre>
+          <font color="red">If</font><font color="blue"> llueve </font><font color="red">Then</font>
+             <font color="blue"> abrir paraguas </font>
+          <font color="red"> Else </font>
+             <font color="blue"> no abrir paraguas </font>
+          <font color="red">End If</font>
+</pre></font>
+<p>
+Tambi&eacute;n puede utilizarse esta sintaxis aunque no se escriba la parte <b>Else</b>.
+<p>
+Con la siguiente sintaxis se pueden evaluar condiciones distintas  pudiendo tomar diferentes decisiones o siempre la misma, segun convenga:
+
+<font face="courier">
+<pre>
+          <font color="red">If</font><font color="blue"> llueve </font><font color="red">Then</font>
+             <font color="blue"> abrir paraguas </font>
+          <font color="red">ElseIf</font><font color="blue"> llueve mucho </font><font color="red">Then</font>
+             <font color="blue"> sacar la barca </font>
+          <font color="red">ElseIf</font><font color="blue"> graniza </font><font color="red">Then</font>
+             <font color="blue"> sacar el casco </font>
+         <font color="red"> Else </font>
+             <font color="blue"> ir la playa </font>
+          <font color="red">End If</font>
+O bien:
+
+          <font color="red">If</font><font color="blue"> llueve </font><font color="red">Then</font>
+             <font color="blue"> no salir de casa </font>
+          <font color="red">ElseIf</font><font color="blue"> llueve mucho </font><font color="red">Then</font>
+             <font color="blue"> no salir de casa </font>
+          <font color="red">ElseIf</font><font color="blue"> graniza </font><font color="red">Then</font>
+             <font color="blue"> no salir de casa </font>
+         <font color="red"> Else </font>
+             <font color="blue"> ir la playa </font>
+          <font color="red">End If</font>
+</pre></font>
+<p>
+Aunque en este caso ser&iacute;a m&aacute;s eficiente usar el operador <b>Or</b>, ya que con una sola evaluaci&oacute;n se hallar&iacute;a la decisi&oacute;n, que es &uacute;nica:
+<font face="courier">
+<pre>
+          <font color="red">If</font><font color="blue"> llueve <font color="red">Or</font> graniza <font color="red">Or</font> llueve mucho</font><font color="red"> Then</font>
+             <font color="blue"> no salir de casa </font>
+         <font color="red"> Else </font>
+             <font color="blue"> ir la playa </font>
+          <font color="red">End If</font>
+</pre></font>
+
+En el enunciado de la condici&oacute;n <b>If</b> pueden utilizarse todos los operadores l&oacute;gicos que ya conocemos, pudi&eacute;ndose escribir expresiones muy complejas.
+<p>
+Si lo que queremos es evaluar siempre la misma condici&oacute;n, y tomar distintas decisiones, es preferible utilizar la otra instrucci&oacute;n condicional de VBScript: <b><font color="red">Select Case</font></b>
+<p>
+<font face="courier">
+<pre>
+          <font color="red">Select Case</font><font color="blue"> que tiempo hace? </font>
+          <font color="red">Case</font><font color="blue"> llueve mucho </font>
+             <font color="blue"> sacar la barca </font>
+          <font color="red">Case</font><font color="blue"> graniza </font>
+             <font color="blue"> sacar el casco </font>
+         <font color="red"> Case Else </font>
+             <font color="blue"> ir la playa </font>
+          <font color="red">End Select</font>
+</pre></font>
+
+En cualquier caso, con ambas instrucciones, si m&aacute;s de una condici&oacute;n devuelve True, solamente se ejecutar&aacute;n las decisiones de la primera de ellas, ignor&aacute;ndose el resto. Las dos instrucciones se puede utilizar cuantas veces sea preciso, asi como anidarlas. He aqu&iacute; un ejemplo sencillo de anidamiento:
+<p>
+<font face="courier">
+<pre>
+     <font color="red">If</font><font color="blue"> llueve </font><font color="red">Then</font>
+         <font color="red">If</font><font color="blue"> llueve poco </font><font color="red">Then</font>
+           <font color="blue"> abrir paraguas A</font>
+         <font color="red">End If</font>
+         <font color="red">If</font><font color="blue"> llueve mucho </font><font color="red">Then</font>
+           <font color="blue"> abrir paraguas B</font>
+         <font color="red">End If</font>
+     <font color="red"> Else </font>
+         <font color="red">If</font><font color="blue"> no hace sol </font><font color="red">Then</font>
+           <font color="blue"> coger paraguas</font>
+         <font color="red">End If</font>
+         <font color="red">If</font><font color="blue"> hace sol </font><font color="red">Then</font>
+           <font color="blue"> no coger paraguas</font>
+         <font color="red">End If</font>
+     <font color="red">End If</font>
+</pre></font>
+<p>
+
+<font size=4 color="blue">Instrucciones de bucle</font>
+<p>
+Otro tipo de instrucciones, tambi&eacute;n muy utilizadas en programaci&oacute;n, son las de repetici&oacute;n o <b>instrucciones de bucle</b>. Como su nombre indica, sirven para repetir un grupo de comandos cualesquiera un n&uacute;mero determinado de veces, formando un bucle. Siempre que se programan instrucciones de bucle hay que asegurarse de que &eacute;ste tendr&aacute; un final controlado, para evitar el bucle infinito que colapsar&iacute;a el servidor.
+<p>
+Un bucle t&iacute;pico es el definido con la instrucci&oacute;n <b><font color="red"> For.. To.. Next</font></b>, cuya sintaxis es la siguiente:
+
+<font face="courier">
+<pre>
+     <font color="red">For</font><font color="blue"> contador = <font color="green">inicio</font> </font><font color="red">To</font> <font color="green">final</font> <font color="red"> [Step]</font> <font color="green">incremento</font> 
+         .....
+         .....
+        <font color="red"> [Exit For]</font>
+         .....
+     <font color="red">Next</font>
+  
+</pre></font>
+
+Donde <font color="blue"><b>contador</b></font> es una variable num&eacute;rica o un n&uacute;mero que se utilizar&aacute; como contador del bucle, es decir, para llevar la cuenta de las veces que se ha repetido el bucle. &nbsp;&nbsp;<font color="green"><b>inicio</b></font> es otra variable num&eacute;rica o un n&uacute;mero que indica el valor inicial del contador, lo mismo que <font color="green"><b>final</b></font>, que indica cuantas veces hay que repetir el bucle.  &nbsp;<font color="green"><b>Step</b></font>  es opcional, y sirve para indicar el incremento que se aplicar&aacute; al contador en cada repetici&oacute;n. Si se omite, por defecto el incremento es 1. 
+<p>
+En el caso de que se deba abandonar el bucle antes de que se hayan hecho todas las repeticiones indicadas por la variable <font color="green">final</font>, se escribir&aacute; <font color="red"><b>Exit For</b></font> en el lugar conveniente. En este caso, la ejecuci&oacute;n de comandos continuar&aacute; con la instrucci&oacute;n siguiente despu&eacute;s de <font color="red">Next</font>. Entre <font color="red">For</font> y <font color="red">Next</font> se puede escribir cualquier tipo de instrucciones, funciones o comandos, incluso otras instrucciones <font color="red">For.. To.. Next</font> anidadas. Cada vez que se ejecuta un ciclo del bucle, VBScript suma el valor de <font color="green">Step</font> (1 por defecto) a <font color="blue"> contador</font>, comparando el resultado con <font color="green">final</font> hasta que se igualan. Cuando esto ocurre, el bucle termina y se continua la ejecuci&oacute;n del programa con la instrucci&oacute;n siguiente a <font color="red">Next</font>. 
+<p>
+Esta instrucci&oacute;n tiene otra sintaxis: <b><font color="red"> For.. Each.. Next</font></b> que se utiliza para acceder a todos los elementos de un grupo o colecci&oacute;n de elementos. Ya vimos su uso en algunos objetos de ASP.
+<pre>
+     <font color="red">For Each</font><font color="blue"> elemento <font color="red">In</font> <font color="blue">grupo</font>
+         .....
+         .....
+        <font color="red"> [Exit For]</font>
+         .....
+     <font color="red">Next</font>
+  
+</pre></font>
+Por ejemplo, para ver todas las variables definidas en el objeto Session() de ASP:
+
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br> Session("Variable1") = "Contenido de la variable 1"<br>
+   	      Session("Variable2") = "Contenido de la variable 2"<br>
+		  Session("Variable3") = "Contenido de la variable 3"<br>
+&nbsp;<br>
+<FONT color="red">For Each</font> <FONT color="green">Item </font><FONT color="red">in</font> Session.Contents<br>
+&nbsp;&nbsp;&nbsp;Response.Write <FONT color="green">Item</font> &amp; " = " &amp;  Session.Contents(<FONT color="green">Item</font>) &amp; "&lt;BR&gt;"<br>
+<FONT color="red">Next</font><br>
+%&gt;</font>
+<p>
+Y este ser&iacute;a el resultado:<br>
+<font color="green" size=2 face="courier">
+<pre>
+</font>
+<b>Nombre         Contenido</b>
+-----------------------------------------
+   VARIABLE1 = Contenido de la variable 1
+   VARIABLE2 = Contenido de la variable 2
+   VARIABLE3 = Contenido de la variable 3
+</pre>
+<p>&nbsp;
+<p>&nbsp;
+Otra instrucci&oacute;n de bucle es <b><font color="red">Do.. Loop</font></b>:
+<p>
+<font face="courier">
+<pre>
+     <font color="red">Do</font><font color="blue"> While | Until</font> <font color="green">condicion</font>
+         .....
+         .....
+        <font color="red"> [Exit Do]</font>
+         .....
+     <font color="red">Loop</font>
+  
+</pre></font>
+
+Con esta instrucci&oacute;n el bucle se repite <b>mientras</b> (<font color="blue"> While</font>) la <font color="green"><b>condicion</b></font> devuelva <font color="blue">True</font>, o bien <b>hasta que</b> (<font color="blue"> Until</font>) la <font color="green"><b>condicion</b></font> devuelva <font color="blue">True</font>. Al igual que con la instrucci&oacute;n For To.. Next, si hay que interumpir el bucle antes de que &eacute;ste termine normalmente, se intercalar&aacute;n escapes <font color="red"> Exit Do</font>.
+
+<p>
+<font face="courier" color="blue">
+<pre>
+&lt;%
+Dim <font color="green">contador</font><br>
+     <font color="red">Do</font><font color="blue"> While</font> <font color="green">contador </font>&lt; 4</font>
+       <font color="green">contador = contador</font> + 1
+       Response.Write( <font color="green">contador</font> & " " )
+     <font color="red">Loop</font>
+%&gt;
+</pre></font>
+
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green">1 2 3 4</font>
+<p>
+Cambiando <font color="blue">While</font> por <font color="blue">Until</font>:
+<p>
+<font face="courier" color="blue">
+<pre>
+&lt;%
+Dim <font color="green">contador</font><br>
+     <font color="red">Do</font><font color="blue"> Until</font> <font color="green">contador </font>&gt; 4</font>
+       <font color="green">contador = contador</font> + 1
+       Response.Write( <font color="green">contador</font> & " " )
+     <font color="red">Loop</font>
+%&gt;
+</pre></font>
+
+Se obtiene:
+<p>
+<font color="green">1 2 3 4 5</font>
+<p>
+<font size=4 color="blue">Instrucci&oacute;n On Error</font>
+<p>
+Puede ocurrir que se produzca un error mientras se ejecuta un programa. Si esto sucede, ASP emite un mensaje de error y la ejecuci&oacute;n se detiene. En algunos casos el error puede no ser inesperado, como por ejemplo, si el usuario no ha realizado una acci&oacute;n necesaria para que el programa continue sin problemas. En estos casos, puede utilizarse la instrucci&oacute;n <b><font color="red">On Error Resume Next</font></b>, que hace que el programa continue con la siguiente instrucci&oacute;n y sin emitir ningun mensaje de error.
+<p>
+No es buena idea abusar de esta instrucci&oacute;n. Su uso puede estar justificado en casos muy especiales, pero un buen programa debe tener prevista cualquier  omisi&oacute;n o acci&oacute;n que el usuario pueda realizar indebidamente, reportando el mensaje de aviso correspondiente (no de error de sistema) y obligando a repetir los pasos que sean necesarios. Evidentemente, lo que no puedes tener previsto es un fallo general del servidor o de la red, pero ante este tipo de problemas, no hay soluci&oacute;n.
+<p>
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

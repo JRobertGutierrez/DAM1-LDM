@@ -1,0 +1,20 @@
+body { font-family: "Arial",sans-serif; }
+
+p.description { font-weight: bold; }
+
+@media screen {
+	body { width: 728px; }
+	h1 { color: #434300; background-color: white; margin: 0px; padding: 0px; }
+	h2 { color: #004343; background-color: white; }
+	h3 { color: #430043; background-color: white; }
+	p.description:first-letter {
+		font-size: 2em; text-transform: uppercase; margin-top: -0.25em;
+		float: left; color: #993300; background-color: white; margin-right: 0.75ex;
+		font-family: "Monotype Corsiva",cursive; font-weight: bold; 
+	}
+	a.bc { letter-spacing: 0.15ex; }
+}
+@media print {
+	.noprint { display: none; visibility: hidden; }
+	a { color: black; background-color: white; }
+}

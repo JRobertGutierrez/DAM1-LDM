@@ -1,0 +1,208 @@
+<html>
+<head>
+<title>VBScript 8 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Visual Basic Script</H2>
+<h3>Otras funciones</h3>
+
+<font color="blue" size=4>Funciones matriciales</font>
+<p>
+Una matriz (o array) puede considerarse como un conjunto de elementos ordenados secuencialmente, y con el mismo tipo de datos. Imagina los casilleros que tienen los hoteles para depositar las llaves de los clientes, o más t&eacute;cnicamente, como una tabla de una base de datos. Cada elemento de una matriz posee un n&uacute;mero de &iacute;ndice &uacute;nico que lo identifica. Al igual que en una tabla de base de datos, los cambios efectuados a un elemento  no afectan a los demás elementos. Cada valor es independiente. Las matrices pueden solucionar muchos problemas de programaci&oacute;n, ya que son un almacen de datos muy f&aacute;cil de construir, y al residir en la memoria del servidor, sumamente r&aacute;pidos de acceder. Lo malo de las matrices es precisamente esto &uacute;ltimo, que residen en memoria, y por ello se deben usar con precauci&oacute;n, y teniendo controlado su tama&ntilde;o m&aacute;ximo, pues podr&iacute;an agotar los recursos del servidor.
+<p>
+
+<font color="red" size=4>Array(</font><font color="blue" size=4>argumentos</font><font color="red" size=4>)</font>
+<p>
+Define una matriz de datos, donde <font color="blue">argumentos</font> es una lista de valores, separados por comas, que se guardar&aacute;n en los elementos de la matriz. El tipo de dato devuelto es <b>Variant</b>. Por ejemplo, para asignar una matriz a la variable <b>A</b>:
+<pre>
+Dim A
+A = <font color="red">Array(</font><font color="blue">"aa","bb","cc","dd","ee"</font><font color="red">)</font>
+</pre>
+
+Para recuperar todos los valores almacenados podemos utilizar un bucle:
+<pre>
+<font color="blue">&lt;%
+  For X = 0 TO 4
+     Response.Write(A(X) & " - ")
+  Next
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+aa - bb - cc - dd - ee -</font>
+<P>
+Como puedes ver, funciona de forma muy similar a las instrucciones <b>Dim</b> y <b>ReDim</b>, ya vistas en la p&aacute;gina <a href="vb02.htm">"Constantes y variables"</a>:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+Dim MiVariable()<br>
+...<br>
+...<br>
+ReDim MiVariable(4)<br>
+<p>
+Mivariable(0) = 10<br>
+Mivariable(1) = 20<br>
+Mivariable(2) = 30<br>
+Mivariable(3) = 40<br>
+Mivariable(4) = 50<br>
+%&gt;</font>
+<p>
+
+<p>
+<font color="red" size=4>Split(</font><font color="blue" size=4>String[, Delimitador[, Cuantos[, Comparar]]]</font><font color="red" size=4>)</font>
+<p>
+
+Esta funci&oacute;n toma  <font color="blue">string</font> y lo parte (split) en otros sub strings que carga en una matriz unidimensional. Veamos sus argumentos:
+<p>
+<font color="blue"><b>String</b></font> es una cadena de texto cualquiera o una expresi&oacute;n que devuelva una cadena. Por ejemplo: <b>"Esto es una prueba de matrices"</b>. 
+<br>
+<font color="blue"><b>Delimitador</b></font> Es un car&aacute;cter de la cadena utilizado para identificar los l&iacute;mites de las subcadenas. Si se omite, por defecto el delimitador ser&aacute; un espacio en blanco ("&nbsp;"). Si <font color="blue">Delimitador</font> es una cadena de longitud cero, <font color="red">Split()</font> devuelve una matriz de un solo elemento que contiene la cadena <font color="blue">String</font> completa.
+<br>
+<font color="blue"><b>Cuantos</b></font> indica cuantos trozos, de los que resulten, se desea almacenar. <b>-1</b> indica a <font color="red">Split()</font> que los tome todos (por defecto).
+<br>
+<font color="blue"><b>Comparar</b></font> es un n&uacute;mero que indica de qu&eacute; forma se van a evaluar las subcadenas. Puede escribirse el n&uacute;mero o la constante intr&iacute;nseca equivalente. Puede tener dos valores: 
+<ul>
+	<li><b>0</b> Comparaci&oacute;n binaria -Por defecto- (<b>vbBinaryCompare</b>)
+        <li><b>1</b> Comparaci&oacute;n textual (<b>vbTextCompare</b>)
+</ul>
+Utilizar la Comparaci&oacute;n binaria o textual permite diferenciar, por ejemplo, may&uacute;sculas de min&uacute;sculas, que por defecto VBScript considera iguales. Al ser 0 el valor por defecto de <font color="blue">Comparar</font>, <font color="red">Split()</font> distingue entre may&uacute;sculas y min&uacute;sculas
+<p>
+Sea por ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim A, B
+  
+  A = "Esto es una prueba de matrices"
+  B = <font color="red">Split(</font>A, " "<font color="red">)</font>
+
+  For X = 0 TO 5
+     Response.Write(B(X) & "-")
+  Next
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+Esto-es-una-prueba-de-matrices-</font>
+
+
+<p>
+<font color="red" size=4>Join(</font><font color="blue" size=4>Matriz[, Delimitador]</font><font color="red" size=4>)</font>
+<p>
+Es la funci&oacute;n inversa de <font color="red">Split()</font>. Es decir, toma una <font color="blue">matriz</font> cuyos elementos contengan strings y los concatena en una cadena &uacute;nica. <font color="blue">Delimitador</font> es el car&aacute;cter que se desea utilizar  para separar el contenido de los elementos de la matriz origen en la cadena resultante, y no es necesario que exista en las subcadenas a unir. Si se omite, se utilizar&aacute; el espacio en blanco (<b>"&nbsp; "</b>). Si <font color="blue">Delimitador</font> es una cadena de longitud cero, se concatenan todos los elementos de la matriz sin delimitadores. Por ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim A, B
+  
+  A = "Esto es una prueba de matrices"
+  B = <font color="red">Split(</font>A, " "<font color="red">)</font>
+
+     Response.Write( <font color="red">Join(</font>B<font color="red">)</font> )
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+Esto es una prueba de matrices</font>
+
+
+<p>
+<font color="red" size=4>Filter(</font><font color="blue" size=4>Matriz[, Valor[, Incluir[, Comparar]]]</font><font color="red" size=4>)</font>
+<p>
+
+Esta funci&oacute;n devuelve una matriz cuyos elementos contienen los valores iguales a <font color="blue"><b>Valor</b></font> que han sido buscados y encontrados entre todos los elementos de   <font color="blue"><b>Matriz</B></font>. Tiene otros dos argumentos:
+<p>
+<font color="blue"><b>Incluir</b></font> Es un valor booleano que indica si en los elementos de la matriz resultante se incluyen o excluyen valores iguales a <font color="blue">Valor</font>. Si <font color="blue">Incluir</font> es True (por defecto), se incluyen valores iguales a <font color="blue">Valor</font>. Si es False, se excluyen, y el resultado ser&aacute; los elementos que <b>NO</B> son iguales a <font color="blue">Valor</font>.
+<br>
+<font color="blue"><b>Comparar</b></font> es un n&uacute;mero que indica de qu&eacute; forma se van a evaluar las subcadenas buscadas. Puede escribirse el n&uacute;mero o la constante intr&iacute;nseca equivalente. Puede tener dos valores: 
+<ul>
+	<li><b>0</b> Comparaci&oacute;n binaria. Por defecto (<b>vbBinaryCompare</b>)
+        <li><b>1</b> Comparaci&oacute;n textual (<b>vbTextCompare</b>)
+</ul>
+Utilizar la Comparaci&oacute;n binaria o textual permite diferenciar, por ejemplo, may&uacute;sculas de min&uacute;sculas, que por defecto VBScript considera iguales. Al ser 0 el valor por defecto de <font color="blue">Comparar</font>, <font color="red">Filter()</font> distingue entre may&uacute;sculas y min&uacute;sculas
+<p>
+He aqu&iacute; un ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim A, B
+  
+  A = Array("AA", "BB", "CC", "DD", "AA")
+  B = <font color="red">Filter(</font>A, "AA"<font color="red">)</font>
+
+  For X = 0 TO 1
+     Response.Write(B(X) & "-")
+  Next
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+AA-AA-</font>
+<p>
+Como podr&aacute;s ver, en el bucle utilizado para mostrar el resultado, se ha escrito <font color="blue">For X = 0 TO 1</font>, evidentemente, porque a la vista del array inicial, ya sab&iacute;amos que el bucle se tiene que repetir dos veces. Pero, &iquest;qu&eacute; hacer si el contenido inicial nos es desconocido, o es muy largo para andar contando?  Pues utilizar, seg&uacute;n convenga, alguna de las dos funciones siguientes:
+<p>
+
+
+<font color="red" size=4>Ubound(</font><font color="blue" size=4>Matriz[, Dimensi&oacute;n]</font><font color="red" size=4>)</font> &nbsp; - &nbsp; 
+<font color="red" size=4>Lbound(</font><font color="blue" size=4>Matriz[, Dimensi&oacute;n]</font><font color="red" size=4>)</font>
+<p>
+Estas funciones permiten conocer los sub&iacute;ndices superior e inferior respectivamente, de una matriz. Opcionalmente, y si la matriz tiene m&aacute;s de una <font color="blue">dimensi&oacute;n</font>, puede indicarse de cual de ellas se desea obtener el sub&iacute;ndice. Por defecto es 1.
+<p>
+Sea el ejemplo anterior:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim A, B
+  
+  A = Array("AA", "BB", "CC", "DD", "AA")
+  B = <font color="red">Filter(</font>A, "AA"<font color="red">)</font>
+
+  For X = 0 TO <font color="red">Ubound(</font>B<font color="red">)</font>
+     Response.Write(B(X) & "-")
+  Next
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+AA-AA-</font>
+<p>
+Por &uacute;ltimo, y dentro del grupo de las funciones matriciales, tenemos:
+<p>
+<font color="red" size=4>IsArray(</font><font color="blue" size=4>Variable</font><font color="red" size=4>)</font>
+<p>
+Que como ya habr&aacute;s supuesto, sirve para saber si una <font color="blue">variable</font> contiene un tipo array o no.  Devuelve un tipo booleano, es decir, que si devuelve <b>True</b>, la variable contiene un array, y si devuelve <b>False</b> no.
+
+
+<P>
+<hr>
+<font color="blue" size=4>Otras Funciones</font>
+<p>
+<font color="red" size=4>RGB(</font><font color="red" size=4>rojo,</font> <font color="green" size=4>verde,</font> <font color="blue" size=4>azul</font><font color="red" size=4>)</font>
+<p>
+Devuelve un n&uacute;mero entero que representa un valor de color RGB. Las siglas RGB son las iniciales de los tres colores b&aacute;sicos en ingl&eacute;s: <b>Red</b> (rojo), <b>Green</b> (verde) y <b>Blue</b> (azul). Como ya es sabido, se puede conseguir cualquier color mezclando estos tres colores b&aacute;sicos en las proporciones adecuadas. La cantidad de cada color tiene que estar en un rango de 0 a 255. Si algun valor es mayor de 255 se considera 255.
+<p>
+
+<p>
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

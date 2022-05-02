@@ -1,0 +1,258 @@
+<html>
+<head>
+<title>Java Script 2</title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> &iquest;C&oacute;mo se escribe el JavaScript?</H2>
+<h3>El elemento &lt;SCRIPT&GT;</h3>
+
+Los scripts de JavaScript se escriben de forma similar a los de VBScript, pero su sintaxis es mucho m&aacute;s estricta, y esta es una de las causas m&aacute;s habituales de error. En JavaScript, a diferencia de VBScript, <b>no</b> se pueden escribir may&uacute;sculas alegremente. No es lo mismo <b>MiFuncion()</b> que <b>mifuncion()</b>, y si escribimos, por ejemplo,  <b>Document.Write()</B> no funcionar&aacute;. Todo el c&oacute;digo deber&aacute; ir escrito entre <b>&lt;SCRIPT&gt;</b> y <b>&lt;/SCRIPT&gt;</b>. Puesto que este elemento HTML es el mismo que se emplea con otros lenguajes, como VBScript, es preciso indicar al navegador el lenguaje que se va a utilizar al definir el script. Sea por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write("Esto ha sido escrito por JavaScript")
+     // --&gt;
+&lt;/SCRIPT&gt;
+</font>
+</pre>
+
+F&iacute;jate en que dentro de la etiqueta HTML <b>&lt;SCRIPT&gt;</b> y antes del c&oacute;digo JavaScript propiamente dicho, aparece el s&iacute;mbolo del comentario HTML <b>&lt;!--</b>. Esto se hace para evitar que los navegadores que no son capaces de interpretar el script muestren el c&oacute;digo. Otra cosa importante son las dos barras (<font color="red"><b>//</b></font>) que aparecen justo antes del cierre del comentario html: <b>--&gt;</b>. Estas barras son el indicativo de que lo que viene a continuaci&oacute;n es un comentario tambi&eacute;n, pero del propio JavaScript en este caso, y hay que ponerlas para evitar que el int&eacute;rprete JavaScript tome el cierre del comentario html como una instrucci&oacute;n y produzca un error de sintaxis. Esto es v&aacute;lido siempre que el comentario vaya a tener una sola l&iacute;nea. Si va a tener m&aacute;s se utilizar&aacute;n <b>/* ... */</b>. As&iacute;:
+<p>
+<font color="red"><b>/*</b> <br>
+<font color="blue">Comentario 1<br>Comentario 2<br></font>
+<b>*/</b></font>
+<p>
+
+
+
+<p>
+JavaScript entiende que una instrucci&oacute;n ha terminado cuando encuentra un retorno de l&iacute;nea, pero si se desea escribir m&aacute;s de una instrucci&oacute;n en la misma l&iacute;nea hay que separarlas con &nbsp; <font color="red"><b>;</b></font> &nbsp; al final de cada instrucci&oacute;n, excepto la &uacute;ltima que no lo necesita, aunque no ocurre nada si se escribe.
+<p>
+Los scripts pueden escribirse tanto en la <b>&lt;HEAD&gt;</b> como en el <b>&lt;BODY&gt;</b>  de la p&aacute;gina. Por claridad a la hora de revisar el c&oacute;digo, es preferible escribir todas las declaraciones y sentencias al principio de la p&aacute;gina, en la <b>&lt;HEAD&gt;</b>, aunque esto depender&aacute; de las necesidades del programa, claro. Tambi&eacute;n, si ello es necesario, puede escribirse el c&oacute;digo en los dos sitios a la vez. Por ejemplo, si escribimos
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de JavaScript&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write("Esto ha sido escrito por JavaScript desde HEAD &lt;BR&gt;")
+     // --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write("Esto ha sido escrito por JavaScript desde BODY")
+     // --&gt;
+&lt;/SCRIPT&gt;
+&lt;P&gt;
+Esto ha sido escrito por HTML.
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</font>
+</pre>
+
+Se obtiene:
+<p>
+<font size=3 color="green">
+Esto ha sido escrito por JavaScript desde HEAD<BR>
+Esto ha sido escrito por JavaScript desde BODY
+<p>
+Esto ha sido escrito por HTML.</font>
+<p>
+
+Otra particularidad de la sintaxis de JavaScript son las llaves:  <b><font color="red">{&nbsp;&nbsp;}</b></font>. Estas llaves hay que utilizarlas siempre que el bloque de declaraciones vaya a tener m&aacute;s de una l&iacute;nea, y son obligatorias al definir funciones. Pueden anidarse si el programa va a tener varios bloques, y siempre deben ser pares. Por ejemplo, en la siguiente funci&oacute;n:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Capturar evento de boton&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+  &lt;!--
+     function <b>mensaje()</b> <font color="red"><b>{</b></font>
+        alert("Esto es un mensaje de JavaScript")
+       <font color="red"><b>}</b></font>
+   // --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="<b>mensaje()</b>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+<p>
+F&iacute;jate en que la funci&oacute;n es invocada al pulsar el bot&oacute;n del formulario, capturando un evento: <b>onClick</b>, pero tambi&eacute;n es posible escribir directamente la instrucci&oacute;n en el punto de captura en lugar de utilizar el elemento &lt;SCRIPT&GT;. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Capturar evento de boton&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick=javascript:alert("Mi mensaje")&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Esta forma es aceptable si, como en el ejemplo, la funci&oacute;n es muy simple.
+<p> 
+
+<A NAME="punto1"></A> 
+Al igual que se puede hacer con las hojas de estilo en cascada (CSS), JavaScript permite que todo el c&oacute;digo (o parte de &eacute;l) est&eacute; en un fichero independiente de la p&aacute;gina html, lo que permite modificar y mantener m&aacute;s r&aacute;pidamente la  programaci&oacute;n, sin necesidad de editar muchos ficheros diferentes. El fichero que contiene el c&oacute;digo JavaScript, normalmente tiene la extensi&oacute;n <b>.js</b> &nbsp;&nbsp;
+<br> Sea el ejemplo anterior:
+
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Capturar evento de boton&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript <b>src="fichero.js"</b>&gt;&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="<font color="red">mensaje()</font>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Donde el contenido de <b><font color="blue">fichero.js</font></b> es:
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+function <font color="red">mensaje()</font> {
+    alert("Esto es un mensaje de JavaScript")
+}
+ </font>
+</pre>
+
+Como puedes ver, en este fichero no hay que incluir el elemento &lt;SCRIPT&GT;, sino solamente instrucciones JavaScript. Para mayor claridad de los ejemplos, se emplear&aacute; este sistema siempre que sea posible. Los programas JavaScript, como todos los programas, se comienzan definiendo las variables, despu&eacute;s las funciones, y a continuaci&oacute;n la estructura del programa propiamente dicha, si la hay. Recuerda que este es un lenguaje interpretado, es decir, que las instrucciones se van cargando en memoria a medida que se leen, y por tanto es necesario tener cuidado con el orden en que se escriben las variable y las funciones que ser&aacute;n invocadas desde el n&uacute;cleo del programa. Por ejemplo, si una instrucci&oacute;n que llama a una funci&oacute;n se escribe antes que la funci&oacute;n llamada, se producir&aacute; un error, ya que en ese momento la funci&oacute;n todav&iacute;a no existe.
+
+
+
+
+
+
+<A NAME="variables"></A> 
+<h3>Variables</h3>
+Las variables son espacios de memoria que contienen algun tipo de dato, al que se accede mediante el nombre que se le asigne a la variable. En JavaScript no hay constantes como en VBScript. Los nombres de las variables tienen que comenzar siempre por una letra o el signo del subrayado ( <font color="red"><b>_</b></font> ) y no pueden contener espacios en blanco ni caracteres que no sean letras o n&uacute;meros, lo que excluye letras acentuadas, e&ntilde;es, cedillas, etc. Al escribirlos, si se utilizan may&uacute;sculas, recordar que no es lo mismo <b>MiVariable</b> que <b>mivariable</b>. Por supuesto, no puedes crear una variable con ninguna palabra reservada del lenguaje, como return, if, case, etc.
+<p>
+Para crear una variable, simplemente se escribe su nombre, y si se desea, en ese mismo momento, se le asigna un valor. Dependiendo del &aacute;mbito de actuaci&oacute;n de la variable, habr&aacute; que  utilizar, o no, la instrucci&oacute;n <font color="red"><b>var</b></font> en el momento de crearla. Por ejemplo:
+<p>
+
+<font color="red"><b>var</b></font> <font color="blue"><b>MiVariable</b></font> = 2004
+<p>
+Tambi&eacute;n es posible definir varias variables en una misma l&iacute;nea:
+<p>
+<font color="red"><b>var</b></font> <font color="blue"><b>Variable1, Variable2, Variable3</b></font>
+<p>
+
+
+Como puedes ver, la instrucci&oacute;n <b>var</b> es similar a la instrucci&oacute;n Dim de VBScript. Cuando una variable es definida con la instrucci&oacute;n <font color="red"><b>var</b></font> en un bloque acotado por llaves <b>{ }</b> (&aacute;mbito), solamente estar&aacute; disponible en ese bloque,  y se la denomina variable de &aacute;mbito <b>local</B>. Si se declara sin la instrucci&oacute;n <font color="red"><b>var</b></font>, es una variable de &aacute;mbito <b>global</b>, no importando d&oacute;nde ha sido declarada, y estar&aacute; disponible en cualquier lugar de la p&aacute;gina (a partir de donde ha sido declarada, pero no antes). Si se declaran dos variables con el mismo nombre, pero una global y la otra local, la global ser&aacute; accesible desde toda la p&aacute;gina, excepto en el &aacute;rea donde "reina" la local, que impondr&aacute; su valor all&iacute;. No es buena idea declarar variables duplicadas, salvo que sea estrictamente necesario, claro.
+<p>
+Las variables pueden contener cualquier tipo de dato, como cadenas, n&uacute;meros, valores booleanos, o incluso objetos. Se pueden cambiar los tipos de datos que contienen en cualquier momento sin necesidad de redefinir la variable. 
+<p>
+A los valores contenidos en las variables se les denomina <b>literales</b>. El literal es un concepto a veces confuso. Si, por ejemplo, decimos que <b>variable1 = "A"</b> y <b>variable2 = "B"</b> podemos acceder a <b>"A"</b> o a <b>"B"</b> bien invocando el nombre de las variables correspondientes, o invocando sus literales, es decir, directamente sus valores. La suma (o concatenado en este caso) de <b>variable1 + variable2</b> es lo mismo que la suma de sus literales: <b> "A" + "B"</b> = <b>"AB"</b>
+<p>
+<h3>Variables de cadena</h3>
+
+Construir una variable conteniendo un string o cadena no tiene ninguna dificultad. Como ya sabr&aacute;s, un string o cadena es cualquier contenido acotado por comillas, simples <font color="red"><b>'</b></font> o dobles <font color="red"><b>"</b></font>.
+<p>
+<font color="blue" face="courier">mivariable = "Hola" </font>
+<P>
+Tambi&eacute;n es posible concatenar dos o m&aacute;s cadenas usando el signo <font color="red"><b>+</b></font> :
+<p>
+<font color="blue" face="courier">mivariable = "Prueba de  " <font color="red"><b>+</b></font> "concatenado"</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier">Prueba de concatenado</font>
+<p>
+Si dentro de una cadena acotada por comillas, tanto simples como dobles, se incluye otra subcadena acotada por las otras comillas, no se considera un concatenado. Por ejemplo, son v&aacute;lidas las cadenas:
+<p>
+<font color="blue" face="courier">"Comillas dobles con 'simples' en el interior"<br>
+'Comillas simples con "dobles" en el interior'
+</font>
+
+
+
+<p>
+Puesto que las cadenas se pueden definir tanto con comillas simples  como dobles,  puede ocurrir que dentro de la cadena haya que poner uno de estos signos, o los dos, lo que provocar&iacute;a un error de sintaxis. Para resolver este problema se utilizan los "<b>escapes</b>", es decir, el mismo caracter que se quiere escribir precedido de <font color="red" face="courier"><b>\</b></font> &nbsp; Esto evita que sea interpretado, no como el cierre de las comillas, sino como un car&aacute;cter normal. As&iacute;:
+
+<p>
+<font color="blue" face="courier">mivariable = "Prueba de  " + "<font color="red">\"</font>concatenado<font color="red">\"</font> " + '<font color="red">\'</font>doble<font color="red">\'</font>'</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier">Prueba de "concatenado" 'doble'</font>
+<p>
+Esto mismo tambi&eacute;n es posible hacerlo usando el c&oacute;digo hexadecimal del car&aacute;cter deseado. Normalmente se utiliza la codificaci&oacute;n  hexadecimal s&oacute;lo con los caracteres que <b>no</b> admiten el "escapado" (que son casi todos). Aplic&aacute;ndolo a las comillas ser&iacute;a as&iacute;:
+
+<p>
+<font color="blue" face="courier">mivariable = "Prueba de  " + "<font color="red">\x34</font>concatenado<font color="red">\x34</font> " + '<font color="red">\x27</font>doble<font color="red">\x27</font> '</font>
+<p>
+Adem&aacute;s de las comillas y el c&oacute;digo hexadecimal ya vistos, se puede "escapar" la misma barra inclinada: <font color="red" face="courier"><b>\\</b></font>, la <font color="red" face="courier"><b>\t</b></font> para insertar un tabulador horizontal, y la <font color="red" face="courier"><b>\n</b></font> para forzar una nueva l&iacute;nea. F&iacute;jate que en el caso de estos dos &uacute;ltimos, el escape funciona al rev&eacute;s que en las comillas o la barra inclinada: En efecto, mientras que con las comillas el escape pretende que no se interprete su cualidad para abrir o cerrar cadenas, con <b>t</b> o <b>n</b> lo que se hace es darles las cualidades que no tienen para producir un tabulador o un salto de l&iacute;nea. Recuerda tambi&eacute;n que tanto el tabulador como la nueva l&iacute;nea no tienen efectos visibles en los navegadores,  por lo que su utilidad se limita al formateo de texto dentro del entorno JavaScript exclusivamente. Al ser la barra inclinada <font color="red" face="courier"><b>\</b></font> el controlador de escapes, si en una cadena hay que escribirla, deber&aacute; hacerse escp&aacute;ndose a s&iacute; misma. Por ejemplo, si se escribe la t&iacute;pica ruta del directorio <b>temp</b> en el disco C:
+
+<p>
+<font color="blue" face="courier">document.write(<font color="red">"C:\temp"</font>)</font> se obtiene <font color="green" face="courier">C: emp</font> &nbsp; Como puedes ver, en este caso el error es doble, ya que la barra no puede aparecer sin escape como tal car&aacute;cter, y adem&aacute;s, al estar junto a la <b>t</b>, se ha interpretado como indicador de tabulaci&oacute;n. La sintaxis correcta es: <font color="blue" face="courier">document.write(<font color="red">"C:\\temp"</font>)</font> para obtener <font color="green" face="courier">C:\temp</font>
+
+<p>
+No hay que confundir los caracteres con escape con una de las pocas funciones intr&iacute;nsecas de JavaScript: <font color="red" face="courier">escape()</font> y su inversa:  <font color="red" face="courier">unescape()</font>. La funci&oacute;n <font color="red" face="courier">escape()</font> devuelve el c&oacute;digo ASCII decimal de los caracteres especiales, es decir cualquier caracter que no sea una letra (may&uacute;sculas o min&uacute;sculas), un n&uacute;mero, o el punto, el gui&oacute;n, el subrayado o la arroba (<b>Az 1-9 _ . @</b>). Todos los dem&aacute;s ser&aacute;n codificados. Por ejemplo, si se escribe:
+<p>
+<font color="blue" face="courier">document.write(<font color="red">escape(</font>"$ % & @"<font color="red">)</font>)</font>
+<p>
+Se obtiene:
+<p>
+<font color="green" face="courier"> %24%20%26%20%25%20@ </font>
+<p>
+Como puedes ver, se codifica incluso el espacio en blanco (%20). Y con su inversa:
+<p>
+<font color="blue" face="courier">document.write(<font color="red">unescape(</font>"%24%20%26%20%25%20@"<font color="red">)</font>)</font>
+<p>
+Se obtiene:
+<p>
+<font color="green" face="courier"> $ % & @ </font>
+
+ 
+
+
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

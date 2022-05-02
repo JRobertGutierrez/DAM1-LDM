@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Documento BB</title>
+
+<script  language="JavaScript">
+
+function change2New(bozo)
+ {document.getElementById(bozo).className = "ParentDiv02";
+}
+
+function change2Orig(bozo) 
+{document.getElementById(bozo).className = "ParentDiv01";
+}
+
+function Alternar(Seccion){ 
+    if (Seccion.style.display=="none"){Seccion.style.display=""}
+    else{Seccion.style.display="none"} 
+}
+
+</script>
+
+<style type="text/css">
+ParentDiv01 .ChildDivOrig {display: block;} 
+.ParentDiv01 .ChildDivNew {display: none;}
+.ParentDiv02 .ChildDivOrig {display: none;}
+.ParentDiv02 .ChildDivNew {display: block;}
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="Changer1" class="ParentDiv01">
+   <div class="ChildDivOrig" style="height: 125px;">
+      <div style="border: 2px solid red;  width: 200px;">
+         <div style="background: #0000ff;  color: white;">BLOQUE 1</div>
+         <div style="background: #0000ff;  position: absolute; white;">BLOQUE 1</div>
+         <div style="background: #00a0a0;  position: relative; top: 5px; left: 5px;  color: white; visibility: hidden; ">BLOQUE 2</div>
+         <div style="background: #ffc0c0;  color: white;">BLOQUE 3</div>
+      </div>
+   </div>
+
+   <div class="ChildDivNew" style="height: 145px;">
+      <div style="font-size: 12px;"><BR>
+        <tt>&lt;div style="border: 5px solid red; width: 200px;"&gt;</tt><BR>
+        <tt>&lt;div style="background: #0000ff; color: white;"&gt;BLOQUE 1&lt;/div&gt;</tt><BR>
+        <tt>&lt;div style="background: #00a0a0; color: white;"&gt;BLOQUE 2&lt;/div&gt;</tt><BR>
+        <tt>&lt;div style="background: #ffc0c0; color: white;"&gt;BLOQUE 3&lt;/div&gt;</tt><BR>
+         <tt>&lt;/div&gt;</tt>
+      </div>
+   </div>
+
+</div>
+
+<form action="" >
+  <input type="button" onclick="change2New('Changer1');" value="Ver codigo" >
+  <input type="button" onclick="change2Orig('Changer1');" value="Ver normal">
+</form>
+
+
+<hr>
+
+<p style="cursor:s-resize" onClick="Alternar(seccion1)">
+   Pulsar aqu&iacute; para ocultar o mostrar el p&aacute;rrafo siguiente.
+</p>
+<div id="seccion1" style="background: #ffc0c0; color: white; display: block">
+   Este texto aparece y desaparece de la p&aacute;gina.
+</div> 
+<p>
+Este es un ejemplo de la capacidad de CSS + javaScript para ocultar bloques.
+
+
+</body>
+</html>
+

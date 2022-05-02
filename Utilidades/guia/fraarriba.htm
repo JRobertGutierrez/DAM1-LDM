@@ -1,0 +1,48 @@
+<HTML>
+<HEAD><TITLE>PRUEBA</TITLE></HEAD>
+<BODY>
+<CENTER><H2>FRAMES Y FORMULARIOS</H2></CENTER>
+
+<TABLE BORDER=0 WIDTH="100%"><TR><TD ALIGN=CENTER>
+
+<FORM>
+<SELECT NAME="list">
+<OPTION VALUE="A.htm" >Contenido A
+<OPTION VALUE="B.htm" >Contenido B
+<OPTION VALUE="C.htm" >Contenido C
+</SELECT>
+ <BR>
+<INPUT TYPE=button VALUE="Frame izquierdo"
+onClick="parent.izquierda.location.href=this.form.list.options[this.form.list.selectedIndex].value">
+</FORM>
+</TD>
+
+<TD ALIGN=CENTER>
+<FORM>
+<SELECT NAME="list">
+<OPTION VALUE="A.htm" >Contenido A
+<OPTION VALUE="B.htm" >Contenido B
+<OPTION VALUE="C.htm" >Contenido C
+</SELECT>
+ <BR>
+<INPUT TYPE=button VALUE="Frame central"
+onClick="parent.centro.location.href=this.form.list.options[this.form.list.selectedIndex].value">
+</FORM>
+</TD>
+
+<TD ALIGN=CENTER>
+<FORM>
+<SELECT NAME="list">
+<OPTION VALUE="A.htm" >Contenido A
+<OPTION VALUE="B.htm" >Contenido B
+<OPTION VALUE="C.htm" >Contenido C
+</SELECT>
+ <BR>
+<INPUT TYPE=button VALUE="Frame derecho"
+onClick="parent.derecha.location.href=this.form.list.options[this.form.list.selectedIndex].value">
+</FORM>
+</TD></TR>
+</TABLE>
+
+</BODY>
+</HTML>

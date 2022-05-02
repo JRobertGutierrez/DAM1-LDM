@@ -1,0 +1,93 @@
+<HTML>
+<HEAD><TITLE>ASP 17</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El m&eacute;todo Server.CreateObject</H2>
+
+<h3>Server.CreateObject(<font color="blue">"ADODB.Stream"</font>)  </h3> 
+
+
+Esta es otra interesante propiedad del objeto  <b>Server.CreateObject()</b> &nbsp; Un "stream", en ingl&eacute;s, es una corriente o flujo, en este caso de bits. Es decir, que podemos leer un fichero de forma binaria, lo que significa que se obtendr&aacute; completamente puro y sin cabeceras HTTP, que lo corromper&iacute;an. Y puede que te preguntes por qu&eacute; es necesario complicarse la vida con flujos de bits y dem&aacute;s historias, cuando para descargar un fichero lo podemos obtener simplemente mediante un link. Por ejemplo:
+<p><font face="courier" color="blue">
+ &lt;a href="/gif/privado.gif"&gt;Obtener gr&aacute;fico&lt;/a&gt;</font>
+<P>
+Pues en efecto, este sencillo m&eacute;todo te puede resolver el problema, pero solamente lo har&aacute; si el fichero a descargar reside en un directorio que forma parte del &aacute;rbol de tu web. Es decir, que el fichero est&aacute; en el directorio ra&iacute;z del web o en alguno colgado de &eacute;l, como /gif &nbsp; /graficos &nbsp; o cualquier otro.
+<p>
+&iquest;Qu&eacute; hacer si el fichero no est&aacute; en un directorio colgado de la ra&iacute;z? Y puede que vuelvas a preguntarte: &iquest;Y por qu&eacute; no lo va a estar? Pues simplemente porque no es un fichero p&uacute;blico, es decir, que no queremos que lo vea cualquiera, sino aquellos usuarios que hayan pasado por una validaci&oacute;n previa controlada por nuestra aplicaci&oacute;n. Por supuesto, se puede controlar el acceso a un directorio (cuelgue o no de la ra&iacute;z) creando usuarios autorizados directamente en el servidor, pero eso es muy pesado y poco pr&aacute;ctico; imagina que estamos hablando de cientos, tal vez miles de usuarios. En estos casos la soluci&oacute;n suele ser escribir una aplicaci&oacute;n de registro de usuarios con una Base de Datos SQL Server o Access, y para evitar que alg&uacute;n "listo", que se ha enterado de la ruta donde estan los ficheros a proteger, llegue hasta ellos, se hace que se descarguen en binario desde un directorio situado fuera del &aacute;rbol del web, con lo que podemos controlar f&aacute;cilmente el acceso a los usuarios autorizados.
+<p>
+El siguiente programa extrae ficheros de un directorio llamado "privados" que est&aacute; fuera del &aacute;rbol del web, y ser&aacute; llamado por otro programa que, previamente, ha comprobado si el usuario tiene permiso de acceso o no, dando valor <b>"si"</b> a la variable de sesi&oacute;n <b>Session("acceso")</b>. Esta variable de sesi&oacute;n solamente existir&aacute; si la ha definido el programa llamador, por lo que si el usuario invoca directamente al programa llamado, no obtendr&aacute; el acceso deseado. 
+<p>
+El programa llamador puede invocar al llamado de muchas formas. Una de las m&aacute;s simples puede ser un link o una lista de ellos:
+<p><font face="courier" color="blue">
+ &lt;a href="binarios.asp?file=privado.gif"&gt;Obtener gr&aacute;fico&lt;/a&gt;</font>
+<P>
+Y este ser&iacute;a el programa: &nbsp; 
+<p>
+<font face="courier">binarios.asp</font>
+<font color="blue" face="courier">
+<pre>
+<%
+'Primero se establece el tipo MIME del fichero para que el navegador sepa si lo puede mostrar
+'directamente, tiene que usar un "plug-in" o llamar a otro programa
+
+Select Case Right(Request.QueryString("file"), 3)
+  Case "xls": Response.ContentType = "application/x-msexcel"
+  Case "doc": Response.ContentType = "application/x-msword"
+  Case "pps": Response.ContentType = "application/x-msppoint"   
+  Case "pdf": Response.ContentType = "application/pdf"
+  Case "gif": Response.ContentType = "image/gif"
+  case "mp3": Response.ContentType = "application/x-mplayer2"
+End Select
+
+
+'Esto sirve para que el navegador del cliente  pregunte si lo abre o lo guarda en disco
+Response.AddHeader "content-disposition","attachment; filename=" + Request.QueryString("file") 
+
+'Aqui se comprueba que el acceso es autorizado por el programa llamador.
+'Si es asi, se comienza la descarga
+if Session("acceso") = "si" Then
+   Const adTypeBinary = 1
+   Dim RutaFichero
+
+   RutaFichero = "c:\privados\" + Request.QueryString("file") 
+
+   Set objStream = Server.CreateObject("ADODB.Stream")
+   objStream.Open
+   objStream.Type = adTypeBinary
+   objStream.LoadFromFile RutaFichero
+
+   Response.BinaryWrite objStream.Read
+
+   objStream.Close
+   Set objStream = Nothing
+ Else
+   Response.Write("&lt;h2 align='center'&gt;Acceso denegado&lt;/h2&gt;")
+End if
+%>
+</pre></font>
+
+
+Como puedes ver, es bastante sencillo. F&iacute;jate en que el programa no tiene las t&iacute;picas cabeceras de las p&aacute;ginas HTML como body, head, title, etc. Si las tuviese el fichero extraido llegar&iacute;a con ellas y por tanto inutilizado.
+<p>
+Una cosa que no debes olvidar es que el programa tenga permiso de lectura en el directorio donde est&eacute;n los ficheros.
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<TITLE>Ejemplo de pase de diapositivas aleatorio</TITLE>
+
+<script language="javaScript">
+if (self != top)
+{
+   if (document.images)
+      top.location.replace(window.location.href);
+   else
+      top.location.href = window.location.href;
+}
+
+var aImg = new Array(2);
+aImg[0]='paisaje';
+aImg[1]='caballos';
+aImg[2]='mar';
+
+
+var num
+var num_fotos
+num_fotos = aImg.length
+function diap() { 
+
+num = Math.floor(Math.random()*num_fotos);
+var imagen = aImg[num]+".jpg"
+document.images['fotos'].src=imagen;
+
+var tiempo = setTimeout("diap()","2500");
+}
+
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#00FFFF" onload="diap()" >
+<CENTER>
+<h2>Pase de diapositivas autom&aacute;tico. Orden aleatorio</h2>
+
+  <img id="fotos" src="caballos.gif"  border="0">
+
+<p>&nbsp;
+Sencillo script para realizar un pase autom&aacute;tico de diapositivas. Solamente tienes de incluir en el c&oacute;digo JavaScript cuantas fotos quieras (OJO: todas con la misma extensi&oacute;n), e ir numerando correlativamente las entradas en el Array. No olvides cambiar el n&uacute;mero de entradas en la definici&oacute;n del Array. Es recomendable que todas la fotos tengan el mismo tama&ntilde:o para evitar movimientos de la p&aacute;gina mientas se realiza el pase. 
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+</BODY>
+</HTML>
+
+
+

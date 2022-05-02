@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Que es el ODBC</title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2> ¿Qué es el ODBC?</h2>
+<h3>Open Data Base Conectivity</h3>
+<p>
+O lo que es lo mismo, <b>conectividad abierta de bases de datos</b>. Si escribimos una aplicación para acceder a las tablas de una DB de Access, ¿qué ocurrirá si después queremos que la misma aplicación, y sin reescribir nada,  utilice tablas de SQL Server u otra DB cualquiera? La respuesta es sencilla: no funcionará. Nuestra aplicación, diseñada para un motor concreto, no sabrá dialogar con el otro. Evidentemente, si todas las DB funcionaran igual, no tendríamos este problema.... aunque eso no es probable que ocurra nunca.
+<p>
+Pero si hubiera un elemento que por un lado sea siempre igual, y por el otro sea capaz de dialogar con una DB concreta, solo tendríamos que ir cambiando este elemento, y nuestra aplicación siempre funcionaría sin importar lo que hay al otro lado... algo así como ir cambiando las boquillas de una manguera. A esas piezas intercambiables las llamaremos <b>orígenes de datos</b> de ODBC
+<p>
+Casi todas las DB actuales tienen un ODBC. Debido a que este elemento impone ciertas limitaciones, ya que no todo lo que la DB sabe hacer es compatible con la aplicación, como velocidad de proceso, tiempos de espera, máxima longitud de registro, número máximo de registros, versión de SQL, etc.,  está cayendo en desuso a cambio de otras técnicas de programación, pero aún le quedan muchos años de buen servicio.
+<p>
+Todo lo referido aquí funciona con Windows NT Server 4.0 con el Service Pack 4 o superior instalado (el &uacute;ltimo publicado es el 6). El Option Pack 4 para actualizar el IIS y las extensiones ASP. SQL Server 6.5 y Access 97. Por supuesto, también funciona con las versiones modernas de servidores como 2003 Server, y tambi&eacute;n XP PRO, que lleva un IIS 5.0 de serie. Igualmente es posible utilizar bases de datos de Access 2000 o 2003.
+<p>
+Esas otras técnicas de programación antes mencionadas, se utilizan ya en el nuevo Windows 2003, Office 2003 y SQL Server 2000, que además de ODBC pueden utilizar....  pero esa es otra historia.
+<p>
+Esta es la idea: por un lado el ODBC provee de unas caracteríisticas siempre homogéneas, y por el otro permite distintos controladores que aseguran la conectividad de la aplicación con diferentes bases de datos.
+<p>
+<center><img src="figura3.gif" WIDTH="357" HEIGHT="262"></center>
+<p>
+Ahora que ya sabemos qué es y para lo que sirve, procedamos a su instalación: es un proceso sencillo, pero según la base de datos elegida sea <a href="gestion4.htm">Access</a> o <a href="gestion5.htm">SQL Server</a>, cambian un poco, y como no podía ser menos, hay algunos trucos que conviene conocer.
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+

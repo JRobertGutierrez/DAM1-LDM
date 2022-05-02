@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Tabla de colores</title>
+</head>
+<body>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h1>C&oacute;digos hexadecimales de color</h1>
+<P>
+
+
+<center>
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Original:  Dion (yobo42@hotmail.com) -->
+<!-- Web Site:  http://members.xoom.com/yoboseyo -->
+
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+clr=new Array('00','20','40','60','80','a0','c0','ff');
+for (i=0;i<8;i++) { 
+document.write("<table border=1 cellpadding=8>");
+for (j=0;j<8;j++) {
+document.write("<tr>");
+for (k=0;k<8;k++) {
+document.write('<td bgcolor="#'+clr[i]+clr[j]+clr[k]+'">');
+document.write('<tt><font color="#'+clr[7-i]+clr[7-j]+clr[7-k]+'"> ');
+document.write(clr[i]+clr[j]+clr[k]+' </font></tt></td>'); }
+document.write("</tr>"); }
+document.write("</table><br>"); }
+// end -->
+</script>
+</center>
+
+<p><center>
+<font face="arial, helvetica" size="-2">Free JavaScripts provided<br>
+by <a href="http://javascriptsource.com">The JavaScript Source</a></font>
+</center><p>
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+</body>
+</html>

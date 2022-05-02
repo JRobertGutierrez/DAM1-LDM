@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<title> Cuerpo de un documento </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Cuerpo (BODY) de un documento </H2>
+
+El cuerpo (<b>BODY</B>) es la segunda y &uacute;ltima de las dos partes en que se estructura un documento HTML. Por supuesto es obligatoria, ya que es aqu&iacute; donde reside el verdadero contenido de la p&aacute;gina, y por tanto, al contrario de la HEAD s&iacute; se ve cuando navegamos por ella.
+<p>
+
+Se escibir&aacute; asi:
+
+<pre>
+<B>&lt;BODY&gt;</B>
+
+texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto
+
+&lt;/BODY&gt;
+</pre>
+
+Como ya habr&aacute;s visto, los navegadores, por defecto, presentan el texto de una p&aacute;gina ajustando los contenidos a la esquina superior izquierda de la pantalla. El elemento  BODY tiene par&aacute;metros  que permiten modificar los m&aacute;rgenes por defecto. Lo malo es que cada navegador los interpreta de una manera. Por ejemplo, Netscape utiliza solamente dos instrucciones que afectan simult&aacute;neamente a los m&aacute;rgenes superior e inferior e izquierdo y derecho respectivamente:
+<p>
+&nbsp;&nbsp;<b>marginwidth</b>="pixels", para los m&aacute;rgenes izquierdo y derecho.<br>
+&nbsp;&nbsp;<b>marginheight</b>="pixels", para los m&aacute;rgenes superior e inferior.
+<p>
+En cambio, el Internet Explores, utiliza uno para cada cual:
+<p>
+&nbsp;&nbsp;<b>leftmargin</b>="pixels", para el margen izquierdo <br>
+&nbsp;&nbsp;<b>topmargin</b>="pixels", para el margen superior <br>
+&nbsp;&nbsp;<b>rightmargin</b>="pixels", para el margen derecho <br>
+&nbsp;&nbsp;<b>bottommargin</b>="pixels", para el margen inferior
+<p>
+Donde <b>pixels</b> es el n&uacute;mero de pixels que se quiere mover cada margen hacia el interior de la p&aacute;gina. Estos par&aacute;metros tambi&eacute;n son accesibles desde  instrucciones de estilo.
+<p>
+ Otro problema que suele presentarse con los m&aacute;rgenes es que a la hora de imprimir una p&aacute;gina, cada impresora, junto con el navegador, se las ingeniar&aacute;n para hacer justo lo contrario de lo que se desea... Tal vez algun dia todo esto funcione bien.
+<p>
+Otra cosa que puede controlarse desde BODY es el color que tomar&aacute;n los <a href="link1.htm">links</a> que pongamos en la p&aacute;gina. Por ejemplo,  para hacer que los links sean amarillos antes de ser visitados, azul-verde cuando son activados, y verdes después de haber sido utilizados, se escribe:
+<p>
+
+&lt;BODY LINK="#FFFF00" VLINK="#22AA22" ALINK="#0077FF"&gt;
+
+<p>
+
+Veamos a hora los elementos m&aacute;s habituales del lenguaje que deben escribirse en el BODY.
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+.diascalendario{
+    BACKGROUND: #483d8b ;
+    COLOR: #ffffff;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: bold
+}
+
+.diasfestivo{
+    BACKGROUND: #483d8b;
+    COLOR: red;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 11px;    
+}
+.textofestivo{
+    COLOR: red;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 11px;    
+}
+
+.textocalendario{
+    COLOR: navy;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 10px
+}
+
+.textocalendario{
+    COLOR: navy;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 10px
+}
+ 
+
+

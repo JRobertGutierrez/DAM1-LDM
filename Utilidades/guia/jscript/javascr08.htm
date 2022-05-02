@@ -1,0 +1,491 @@
+<html>
+<head>
+<title>JavaScript 8 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h3>El objeto window</h3>
+Es el objeto b&aacute;sico, y representa en s&iacute; mismo al propio navegador. Al ser el elemento principal del modelo de objetos, para referirse a sus propiedades, m&eacute;todos o eventos, no es necesario referenciarlo espec&iacute;ficamente. Como puedes ver en el <a href="javascr05.htm">esquema de objetos</a>, hay cuatro sub-objetos que pueden considerarse como sin&oacute;nimos del objeto window: <b>frames, top, self y parent</b> que suelen utilizarse en lugar de <b>window</b>. Por ejemplo, es lo mismo <font color="blue" face="courier">window.close()</font> que <font color="blue" face="courier">self.close()</font>. En JavaScript un frame es tambi&eacute;n una ventana (window), pero con la particularidad de que est&aacute; contenida dentro de otra ventana (es decir, el objeto window. En realidad todo est&aacute; dentro de window). <b>top</b> hace referencia a la posici&oacute;n m&aacute;s alta en la lista de ventanas abiertas, es decir, la primera de todas. <b>parent</b> se refiere a una ventana que contiene un elemento <b>frameset</b>. Los cuatro, adem&aacute;s, son considerados <b>propiedades</b> del objeto window. Si... esto es algo complicado. Este objeto, como todos, tiene  <b>m&eacute;todos, propiedades y eventos</b>.  Veamos los m&aacute;s usuales:
+<hr noshade>
+
+<center><FONT SIZE=4>M&Eacute;TODOS</FONT></CENTER>
+<p>
+
+<P>
+<FONT SIZE=3 color="red"><B>open(</B><FONT color="blue">'url', 'name', ['features'] </font><b>)</b></font>&nbsp;Permite abrir una nueva ventana en la que se est&aacute; ejecutando una nueva instancia del navegador  (o simple ventana sin una nueva instancia, depende del navegador de que se trate). Opcionalmente, tambi&eacute;n permite definir las caracter&iacute;sticas que tendr&aacute; la nueva ventana, como son qu&eacute; p&aacute;gina mostrar&aacute;, el nombre de la ventana y el aspecto que ofrecer&aacute; el navegador. En el siguiente ejemplo se captura el evento onClick del bot&oacute;n de un formulario para crear una nueva ventana:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del navegador&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Abrir" 
+   onClick="<font color="red">window.open(</font>'http://sestud.uv.es/manual.esp/', 'Prueba', 
+         'top=100, left=100, width=300, height=300, location=no, status=yes, ' +
+         'toolbar=no, menubar=no, scrollbars=no, resizable=no'<font color="red">)</font>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Y despu&eacute;s de pulsar el bot&oacute;n "<b>Abrir</b>" del formulario, obtendremos una nueva ventana con esta apariencia:
+<p>
+<img src="open.jpg">
+<p>
+F&iacute;jate en las dos &uacute;ltimas l&iacute;neas, las que corresponden al par&aacute;metro "features": 
+
+<pre>
+<font size=3 color="blue" face="courier">
+   onClick="<font color="red">window.open(</font>'http://sestud.uv.es/manual.esp/', 'Prueba', 
+         'top=100, left=100, width=300, height=300, location=no, status=yes,' +
+         'toolbar=no, menubar=no, scrollbars=no, resizable=no'<font color="red">)</font>"&gt;
+</font>
+</pre>
+
+Como puedes ver, estan concatenadas por el signo <b>+</b>. En efecto, esto es javaScript, y no se pueden truncar l&iacute;neas ni dejar espacios innecesarios entre valores. Los valores de estos par&aacute;metros, adem&aacute;s de con yes/no, se pueden escribir con 0/1.<br>
+Por ejemplo: <b>scrollbars=0</b>. Por defecto, todos los valores son <b>yes</b>. El nombre de las ventanas creadas no pueden contener espacios en blanco ni caracteres distintos de letras y/o n&uacute;meros. Se admite el signo de subrayado (<b> _ </B>) pero no el gui&oacute;n (<b> - </b>)
+<hr noshade WIDTH=50%>
+
+<p>
+<FONT SIZE=3 color="red"><B>close()</B></FONT> Cierra una ventana. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del navegador&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario2"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton2" VALUE="Cerrar" 
+   onClick="<font color="red">prueba.close()</font>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Este m&eacute;todo no funciona igual en todos los navegadores. Si escribes una p&aacute;gina con el ejemplo anterior y &eacute;ste juntos, al pulsar el bot&oacute;n "Abrir" se abre una ventana llamada "prueba", y al pulsar el bot&oacute;n "Cerrar" se cerrar&aacute; la ventana "prueba", permaneciendo el navegador abierto con la p&aacute;gina inicial con los dos botones. Esto funciona correctamente con los navegadores Opera, Netscape y Mozilla, pero falla con el IE. Esto se debe a que  los tres primeros navegadores, aunque se abran disferentes ventanas, solamente mantienen una instancia de programa ejecut&aacute;ndose en el sistema, pero el IE ejecuta una nueva instancia de programa con cada ventana, lo que impide que la primera conozca el nombre de las otras ventanas que hay abiertas. Para cerrar una ventana con el IE hay que escribir: 
+<p>
+<font size=3 color="blue" face="courier">
+   onClick="<font color="red">window.close()</font>"&gt;
+</font>
+<p>
+Lo que provocar&aacute; el cierre de la ventana donde estan los dos botones, pero permanecer&aacute; abierta la ventana "prueba" que era la que se pretend&iacute;a cerrar. Para conseguir lo mismo que los otros navegadores, con el IE hay que esribir un complicado script en VBScript.
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>alert(<font color="blue">'mensaje'</font>)</B></FONT> &nbsp; Muestra un mensaje de alerta que no ofrece respuesta alternativa del usuario, sino solamente darse por enterado.  Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del navegador&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton" VALUE="Prueba" 
+   onClick="<font color="red">alert(<font color="blue">'Esto es una prueba'</font>)</font>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Y despu&eacute;s de pulsar el bot&oacute;n "<b>Prueba</b>" del formulario, obtendremos el mensaje:
+<p>
+<img src="alert.jpg">
+<p>
+<hr noshade WIDTH=50%>
+
+<p>
+<FONT SIZE=3 color="red"><B>confirm(<font color="blue">'mensaje'</font>)</B></FONT> &nbsp; Muestra un cuadro de di&aacute;logo con dos botones que devuelven un valor booleano cada uno (true o false) dependiendo del bot&oacute;n pulsado por el usuario. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de mensaje&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"
+         onClick="this.form.Campo1.value=<font color="red">confirm(</font>'¿Quieres continuar?'<font color="red">)</font>">&gt;
+
+    &lt;INPUT TYPE="Text" NAME="Campo1"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Despu&eacute;s de pulsar el bot&oacute;n <b>"Prueba"</b> del formulario tendremos esto:
+<p>
+<img src="confirm1.jpg">
+<p>
+
+Y despu&eacute;s de pulsar el bot&oacute;n <b>"Aceptar"</b> del cuadro de di&aacute;logo tendremos esto:
+<p>
+<img src="confirm2.jpg">
+<p>
+F&iacute;jate en que, en este caso,  el valor devuelto es "Verdadero" en lugar de "true". Para capturar los valores booleanos no se deben utilizar las frases que aparecen aqu&iacute;, que han sido convertidas,  sino que se debe evaluar directamente el valor booleano devuelto por el objeto, sin conversiones que dependan de la lengua utilizada por el navegador o configuraciones personales. As&iacute;:
+<pre>
+<font size=3 color="blue" face="courier">
+       if <font color="red">confirm(</font>'Quieres continuar?'<font color="red">)</font> {
+           this.form.Campo1.value='Ha pulsado Aceptar'}
+          else {
+           this.form.Campo1.value='Ha pulsado Cancelar'}
+</font>
+</pre>
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>prompt(<font color="blue">'mensaje', ['propuesta']</font>)</B></FONT> &nbsp; Muestra un cuadro de di&aacute;logo con dos botones y un campo de texto que, opcionalmente,  puede tener una propuesta predefinida. Su funcionamiento es muy parecido al m&eacute;todo confirm(). Sea por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de entrada&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"
+         onClick="this.form.Campo1.value=<font color="red">prompt(</font>'Escribir un valor', ''<font color="red">)</font>">&gt;
+
+    &lt;INPUT TYPE="Text" NAME="Campo1"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Despu&eacute;s de pulsar el bot&oacute;n <b>"Prueba"</b> del formulario tendremos esto:
+<p>
+<img src="prompt.jpg">
+<p>
+En el ejemplo, despu&eacute;s de escribir un texto cualquiera y pulsar el bot&oacute;n <b>"Aceptar"</b>, lo escrito ser&aacute; recibido por <b>Campo1</b>, pero si se pulsa <b>Cancelar</b>, a diferencia del m&eacute;todo confirm() que devolver&iacute;a <b>false</b>, lo que se recibe es <b>null</b>
+<p>
+<hr noshade WIDTH=50%>
+
+
+
+<P>
+<FONT SIZE=3 color="red"><B>setTimeout(<font color="blue">'instrucciones', espera</font>)</B></FONT> &nbsp;  &nbsp; Evalua y ejecuta el c&oacute;digo JavaScript contenido en  <font color="blue"><b>'instrucciones'</b></font> despu&eacute;s de transcurrido el tiempo, en milisegundos, indicado por <font color="blue"><b>espera</b></font>. La evaluaci&oacute;n de las instrucciones solamente la har&aacute; una vez. Sea por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de entrada&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+function <b>mensaje()</b> {
+   alert('Esto es una prueba')
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"
+         onClick="<font color="red">setTimeout(</font>'<b>mensaje()</b>', 2000<font color="red">)</font>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Despu&eacute;s de pulsar el bot&oacute;n "<b>Prueba</b>" del formulario, y transcurridos dos segundos, obtendremos:
+<p>
+<img src="alert.jpg">
+<p>
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>clearTimeout(<font color="blue">identificador</font>)</B></FONT> Despu&eacute;s de haber utilizado el m&eacute;todo <b>setTimeout()</b> anterior, JavaScript mantiene memorizada la evaluaci&oacute;n que realiz&oacute; del par&aacute;metro <b>'instrucciones'</b>. Si en algun punto del programa es necesario repetir esa evaluaci&oacute;n en lugar de utilizar la ya realizada, es preciso inicializarla previamente. Para ello se utiliza <FONT color="red">clearTimeout(<font color="blue">identificador</font>)</FONT>. Para poder hacerlo, es necesario que el m&eacute;todo <b>setTimeout()</b> haya sido invocado mediante un identificador. As&iacute;, y refiri&eacute;ndonos al ejemplo anterior:
+<p>
+<font size=3 color="blue" face="courier">
+         identificador=<font color="red">setTimeout(</font>'<b>mensaje()</b>', 2000<font color="red">)</font>"&gt;
+</font>
+<p>
+Y para inicializar la evaluaci&oacute;n y poder realizarla de nuevo:
+<p>
+<font size=3 color="blue" face="courier">
+  <font color="red">clearTimeout(</font>identificador<font color="red">)</font></font>
+<p>
+Evidentemente en este ejemplo no tiene sentido inicializar nada, ya que se trata de un mensaje fijo, pero este m&eacute;todo es imprescindible si las instrucciones ejecutadas por setTimeout() son expresiones num&eacute;ricas variables o contadores de tiempo.
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B><font color="blue">elemento.</font>focus(<font color="blue"></font>)</B></FONT> &nbsp; Fija el enfoque en un <b>elemento</b> de los contenidos en la ventana o en la propia ventana. Habitualmente el enfoque se fija en los objetos creados con las instrucciones HTML, como los formularios y todos sus sub-objetos (botones, listas, etc.). Hay que tener presente que una ventana que est&aacute; en primer plano puede no tener el enfoque, aunque lo normal es que lo tenga. Excepto en el objeto <b>window</b>, generalmente el enfoque se fija en un objeto cuando &eacute;ste es tocado con el puntero del rat&oacute;n (tocado, no pasado por encima) o bien al tabular desde el teclado. El objeto <b>window</b> puede recibir el enfoque autom&aacute;ticamente nada m&aacute;s ser abierto, sin necesidad de pulsaci&oacute;n del rat&oacute;n. Un objeto puede tener el enfoque y no parecerlo visualmente, por ejemplo los distintos frames de una p&aacute;gina, y en la que cada uno de ellos tiene el rango de <b>window</b>. El m&eacute;todo contrario de <b>focus()</b> es <FONT SIZE=3 color="red"><B>blur(<font color="blue"></font>)</B></FONT>
+
+
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>eval(<font color="blue"></font>)</B></FONT> &nbsp; &nbsp; 
+<FONT SIZE=3 color="red"><B>scroll(<font color="blue"></font>)</B></FONT> &nbsp; &nbsp; 
+<FONT SIZE=3 color="red"><B>toString(<font color="blue"></font>)</B></FONT> 
+<p>
+Estos son  los <A HREF="javascr07.htm#comunes">tres m&eacute;todos comunes</A> de todos los objetos de javaScript, y ya se describieron en ese apartado.
+
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>moveBy(x,y) &nbsp; moveTo(x,y)</B></FONT> &nbsp; Estos dos m&eacute;todos sirven para mover una ventana, previamente abierta, un n&uacute;mero determinado de p&iacute;xels hasta una determinada posici&oacute;n. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Ventanas en movimiento&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+function Mover()
+{
+	Ventana.<font color="red">moveBy(5,5)</font>;
+	i++;
+	if (i<20) 
+		setTimeout('Mover()',100);
+	else
+		Ventana.close();
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+ &lt;script LANGUAGE="JavaScript"&gt;
+	var dimensiones="left=100,top=100,width=100,height=100";
+        var i=0;
+	Ventana = window.open("","",dimensiones);
+	Ventana.document.write("Ventanas en movimiento");
+	Ventana.<font color="red">moveTo(400,100)</font>;
+	Mover();
+ &lt;/script&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+
+<hr noshade>
+<center><FONT SIZE=4>EVENTOS</FONT></CENTER>
+<p>
+Mientras estas navegando  por el ciberespacio, en la ventana de tu navegador van ocurriendo ciertos sucesos o eventos que pueden ser capturados.  Por ejemplo, cuando el navegador carga una p&aacute;gina se est&aacute; produciendo un evento, cuando carga la siguiente se producen dos: uno al descargar la antigua y otro al cargar la nueva, etc. Cada objeto tiene sus propios eventos. Para poder capturar un evento es necesario un manejador de eventos. El objeto <b>window</b> tiene los siguientes manejadores de eventos:
+
+<P>
+<FONT SIZE=3 color="red"><B>onLoad</B></FONT> &nbsp; Como su nombre indica, se produce cuando el navegador carga una p&aacute;gina. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de entrada&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+function <b>mensaje()</b> {
+   document.write('Prueba de evento onLoad')
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY <font color="red">onLoad</font>="<b>mensaje()</b>"&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green">Prueba de evento OnLoad</font>
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>onUnload</B></FONT> &nbsp; Funciona justo al contrario que el anterior: se activa cuando el navegador descarga la p&aacute;gina actual, por ejemplo al intentar ir a otra. En ese momento se produce el evento. El siguiente ejemplo abre una ventana  predeterminada siempre que se abandona la p&aacute;gina activa:
+
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de entrada&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+function <b>abrir()</b> {
+   window.open('http://sestud.uv.es/manual.esp/')
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY <font color="red">onUnload</font>="<b>abrir()</b>"&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>onFocus</B></FONT> &nbsp; Este manejador de eventos controla el evento <b>focus</B> que se produce cuando un objeto window, frame o form <b>recibe</b> el enfoque como consecuencia de una pulsaci&oacute;n del rat&oacute;n o por ser invocado el m&eacute;todo correspondiente. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de entrada&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+function <b>abrir()</b> {
+   window.open('http://sestud.uv.es/manual.esp/')
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY <font color="red">onFocus</font>="<b>abrir()</b>"&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>onBlur</B></FONT> &nbsp; Es el inverso del anterior. Este manejador de eventos controla el evento <b>blur</B> que se produce cuando un objeto window, frame o form <b>pierde</b> el enfoque.  En el siguiente ejemplo la funci&oacute;n <b>abrir()</b> ser&aacute; invocada al abandonar la p&aacute;gina:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de entrada&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+function <b>abrir()</b> {
+   window.open('http://sestud.uv.es/manual.esp/')
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY <font color="red">onBlur</font>="<b>abrir()</b>"&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>onError</B></FONT> &nbsp; Este manejador controla el evento <b>error</B>. El error puede producirse mientras el navegador est&aacute; cargando una p&aacute;gina. Durante el proceso de carga el navegador verifica la sintaxis del c&oacute;digo JavaScript y carga las im&aacute;genes que indique el c&oacute;digo HTML. Un error de sintaxis HTML no producir&aacute; un error de carga. Tampoco es un error capturable el que un enlace a otra p&aacute;gina falle, ya que eso es un error de navegador (o de navegaci&oacute;n). El siguiente ejemplo muestra un mensaje al cargar una p&aacute;gina que intenta mostrar un gr&aacute;fico que no existe:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de entrada&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+function <b>mensaje()</b> {
+  mensaje('Se ha producido un error de carga')
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+   &lt;IMG SRC="noexiste.gif" <font color="red">onError</font>="mensaje()"&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+No hay que confundir estos mensajes controlados con los que produce la consola javaScript del navegador cuando detecta un error en los programas que se estan cargando.
+
+
+
+<hr noshade>
+<center><FONT SIZE=4>PROPIEDADES</FONT></CENTER>
+
+<P>
+<FONT SIZE=3 color="red"><B>name</B></FONT> &nbsp; Es un string que contiene el nombre de la ventana. El nombre de la ventana se establece en el momento de abrirla mediante el m&eacute;todo <b>window.open('url', '<font color="red">name</font>')</b> y una vez abierta no puede cambiarse. Recuerda que por defecto las ventanas abiertas directamente, como por ejemplo &eacute;sta que est&aacute;s leyendo, no tienen nombre definido.
+
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>status</B></FONT> &nbsp;  String que aparece en la linea de estado del navegador (al pie de la ventana, a la izquierda). Suele utilizarse para mostrar mensajes informativos, normalmente de errores de proceso. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de status&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY onLoad="window.status='Esto es una prueba de status'"&gt;
+   
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Se obtiene:<br>
+ <img src="status.jpg"> <br>
+ Esto funciona con todos los navegadores, excepto Firefox.
+
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>defaulStatus</B></FONT> &nbsp;  Funciona igual que el anterior, pero es el valor por defecto de la l&iacute;nea de estado inmediatamente despu&eacute;s de cargar la p&aacute;gina.
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de status&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY onLoad="window.defaultStatus='Esto es una prueba de status por defecto'"&gt;
+   
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>parent</B></FONT> &nbsp; 
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>self</B></FONT> &nbsp; 
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>top</B></FONT> &nbsp; 
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>opener</B></FONT> &nbsp; 
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>closed</B></FONT> &nbsp; 
+<hr noshade WIDTH=50%>
+
+<P>
+<FONT SIZE=3 color="red"><B>length</B></FONT> &nbsp; 
+<hr noshade WIDTH=50%>
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

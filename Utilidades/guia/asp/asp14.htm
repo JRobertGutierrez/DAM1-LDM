@@ -1,0 +1,209 @@
+<HTML>
+<HEAD><TITLE>ASP 14</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El m&eacute;todo Server.CreateObject</H2>
+
+
+<h3>Server.CreateObject(<font color="blue">"ADODB.Connection"</font>)  </h3> 
+<h3>Server.CreateObject(<font color="blue">"ADODB.RecordSet"</font>)  </h3> 
+
+El ejemplo siguiente crea dos objetos: <font color="green"><b>DB</b></font> que es del tipo  <b>Connection</b> (conexi&oacute;n) a una DB y <font color="green"><b>RS</b></font> que es un <b>RecordSet</b>  (conjunto de registros extraido de una DB). Estos nombres son libres, y puedes llamarlos como quieras:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Set <font color="green"><b>DB</b></font> = <FONT color="red">Server.CreateObject</font>("ADODB.Connection") <br>
+Set <font color="green"><b>RS</b></font> = <FONT color="red">Server.CreateObject</font>("ADODB.RecordSet") <br>
+%&gt;
+</font>
+<p>
+Esta es una buena muestra de la gran potencia y versatilidad de ASP. Con el objeto <b>Server.CreateObject()</b> hemos creado otros dos objetos de ADO: <b>Connection</b> y <b>RecordSet</b>. el primero ser&aacute; utilizado para establecer un v&iacute;nculo con la base de datos, y el segundo nos servir&aacute; para manipular los datos.
+<p>
+Seguramente te habr&aacute;s fijado en que hay una instrucci&oacute;n que hasta ahora no hab&iacute;amos visto: <b>Set</b>. En efecto, hasta el momento para asignar un valor a una variable, simplemente escrib&iacute;amos una igualdad, por ejemplo: 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">Nuevocod = Request.Form("NuevoCod")</font>. 
+<br>
+Esto se puede hacer siempre que la variable vaya a recibir como valor un string, un n&uacute;mero, el resultado de una funci&oacute;n, una propiedad o un m&eacute;todo, pero en el caso de un objeto hay que anteponer la instrucci&oacute;n <font color="blue"><b>Set</b></font>, tal como se muestra. Cuando m&aacute;s tarde se cierre el objeto, hay que recuperar  los recursos asignados ahora.
+<font color="blue"><b>Close</b></font> es en realidad un m&eacute;todo, y se encarga de vaciar el buffer y de cerrar el objeto. Despu&eacute;s, la instrucci&oacute;n <font color="blue"><b>Nothing</b></font> indica al sistema que el objeto ya no est&aacute; vinculado a ninguna variable, por lo que sus recursos pueden ser recuperados.
+<p>
+<p>
+Veamos ahora c&oacute;mo utilizar las propiedades de los dos objetos creados. Si preparamos una consulta escrita en SQL para el objeto <font color="green"><b>DB</b></font>, podremos extraer informaci&oacute;n de la Base de Datos y cargarla en el objeto <font color="green"><b>RS</b></font>, lo que nos permitir&aacute; movernos por el RecordSet o ver su contenido con toda facilidad:
+<pre>
+<font color="blue" face="courier" size=2>
+&lt;%
+SQL ="SELECT convert(char(8), nom_dni) + nom_nif AS 'NIF', " & _
+     "nom_apellidos AS 'Apellidos', "  & _
+     "nom_nombre AS 'Nombre', " & _
+     "nom_postal AS 'Postal' " & _
+     "nom_postal + ' ' + nom_localidad AS 'Localidad', " & _
+     "nom_provincia AS 'Provincia' " & _
+     "FROM nombres WHERE nom_dni = 12345678 "
+%&gt;
+</font></pre>
+Y ahora abrimos los objetos y les damos par&aacute;metros:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+DB.Open "DB_nombre", "DB_user", "DB_password"<br>
+RS.Open SQL, DB<br>
+%&gt;<br>
+</font>
+<p>
+Esto coloca el puntero en el primer registro del RecordSet. Ahora, mediante un bucle, mostraremos en la pantalla del cliente el contenido del RecordSet en formato de tabla:
+<pre><font color="blue" face="courier" size=2>
+&lt;% 
+'---Se comprueba si el RecordSet viene vacio. Si tiene contenido, se muestran los  
+'---registros utilizando las propiedades y colecciones del objeto <b>RS</b>.
+
+If RS.EOF AND RS.BOF Then
+   Response.Write("Error. No se encontraron registros")
+ Else
+   Response.Write("&lt;TABLE BORDER=1&gt;")
+
+   For i = 0 to RS.Fields.Count - 1
+       Response.Write("&lt;TR&gt;&lt;TH&gt;") 
+       Response.Write(RS(i).Name)
+       Response.Write("&lt;/TH&gt;&lt;TD&gt;")
+       Response.Write(RS(i))
+       Response.Write("&lt;/TD&gt;&lt;/TR&gt;")
+   Next
+   Response.Write("&lt;/TABLE&gt;")
+End if
+
+'---Se cierran los objetos, en orden inverso a como se abrieron, y se liberan los 
+'---recursos que el servidor les habia asignado, con la instrucci&oacute;n <b>Nothing</b>
+
+RS.Close
+Set RS = Nothing
+DB.Close
+Set DB = Nothing
+%&gt;
+</font></pre>
+<p>
+
+Y este podr&iacute;a ser el resultado (en cuanto a forma, el contenido depende de lo que haya en la tabla, claro):
+<p>
+<font color="green" face="courier" size=2>
+  <TABLE BORDER=1>
+     <TR><TH>NIF</TH><TD>12345678Z</TD></TR>
+     <TR><TH>Apellidos</TH><TD>Garcia</TD></TR>
+     <TR><TH>Nombre</TH><TD>Juan</TD></TR>
+     <TR><TH>Postal</TH><TD>12345</TD></TR>
+     <TR><TH>Localidad</TH><TD>12345 Villa Desconocida</TD></TR>
+     <TR><TH>Provincia</TH><TD>Guadalajara</TD></TR>
+</TABLE>
+</font>
+<p>
+En este ejemplo se han visualizado todos los registros y campos de la tabla contenida en el objeto <b>RS</b>, sin necesidad de saber cuantos hay ni sus nombres, es decir, utilizando una colecci&oacute;n, pero este objeto tiene varios m&eacute;todos que nos permitir&aacute;n movernos por los registros, y por los campos que los componen, invocando su nombre: por ejemplo, para ver s&oacute;lo el contenido del campo <b>Provincia</b>, se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+Response.Write( <font color="red">RS("Provincia")</font> )<br>
+%&gt;<br>
+</font>
+<p>
+Para escribir un valor en un campo de un registro se procede as&iacute;:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+<font color="red">RS("Provincia")</font> = "Toledo"<br>
+<font color="red">RS("Postal")</font> = 54321<br>
+%&gt;<br>
+</font>
+<p>
+F&iacute;jate en que si el tipo de dato del campo es num&eacute;rico el valor no debe ir entrecomillado, pero si el tipo es de texto o de fecha s&iacute;. Para moverse por el RecordSet tenemos los siguientes m&eacute;todos:
+<ul>
+   <li><b><font color="blue">RS.MoveFirst</b></font>. Para posicionarse en el primer registro.
+   <li><b><font color="blue">RS.MoveLast</b></font>. Para posicionarse en el &uacute;ltimo  registro.
+   <li><b><font color="blue">RS.MoveNext</b></font>. Para pasar al siguiente registro. En el caso de que se invocase este m&eacute;todo estando ya posicionados en el &uacute;ltimo registro (<font color="red">RS.EOF = True AND RS.BOF = False</font>), se producir&iacute;a un error de SQL (<font color="red">RS.EOF = True AND RS.BOF = True</font>). Se deben tener siempre controlados estos dos estados del RecordSet.
+<li><b><font color="blue">RS.MovePrevious</b></font>. Para retroceder al anterior registro. En el caso de que se invocase este m&eacute;todo estando ya posicionados en el primer registro (<font color="red">RS.EOF = False AND RS.BOF = False</font>), se producir&iacute;a un error de SQL (<font color="red">RS.EOF = False AND RS.BOF = True</font>). 
+<li><b><font color="blue">RS.Move N</b></font>. Para mover el puntero al n&uacute;mero de registro <b>N</b>. Tener presente que el primer registro es el 1. El n&uacute;mero de registro obtenido despu&eacute;s de invocar <b>RS.MoveFirst</b> es el 1.
+
+<li><b><font color="blue">RS.Delete N</b></font>. Para borrar el n&uacute;mero de registro <b>N</b>. Por supuesto, no puedes borrar el <b>EOF</b> ni el <b>BOF</b>.
+ <li><b><font color="blue">RS.Refresh</b></font>. Para forzar una nueva consulta, ejecutando la misma sentencia SQL del principio (<b>no</b> otra) sobre la <b>misma</b> DB. Es decir, refrescar los datos por si se hubieran producido cambios (pero no producidos por el usuario actual).
+ <li><b><font color="blue">RS.SubmitChanges</b></font>. Para enviar a la DB los cambios que se hayan realizado sobre los registros o campos del RecordSet, siendo &eacute;stos guardados.
+<li><b><font color="blue">RS.CancelUpdate</b></font>. Para anular todos los cambios que se hayan hecho en el RecordSet, siempre <b>que no se hayan guardado todav&iacute;a</b>, es decir, antes de invocar <b>RS.SubmitChanges</b>.
+</ul>
+
+El RecordSet tambi&eacute;n puede ser manejado por p&aacute;ginas enteras en lugar de registro a registro. Para ello, primero hay que definir una constante llamada <b>adOpenkeyset</b> cuyo valor por defecto es cero, y es correcto para transacciones registro a registro, pero si queremos paginar el RecordSet tiene que valer 1. Por supuesto, hay que definirla antes de crear el objeto RS. Se define as&iacute;:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+<font color="red">Const adOpenkeyset</font> = 1<br>
+%&gt;<br>
+</font>
+<p>
+Dispondremos de tres propiedades para movernos por las p&aacute;ginas del RecordSet:
+<ul>
+<li><b><font color="blue">RS.PageSize=</b></font>. Para definir el n&uacute;mero de registros que deseamos que contenga la p&aacute;gina. 
+<li><b><font color="blue">RS.AbsolutePage=</b></font>. Define el n&uacute;mero de p&aacute;gina, de las resultantes despu&eacute;s de la paginaci&oacute;n, que se desea ver.
+<li><b><font color="blue">RS.PageCount</b></font>. Contiene el n&uacute;mero de p&aacute;ginas que han resultado despu&eacute;s de la paginaci&oacute;n.
+</ul>
+Y de una para el n&uacute;mero de registros total:
+<ul>
+<li><b><font color="blue">RS.RecordCount</b></font>. Para saber el n&uacute;mero de registros que contiene el RecordSet.
+</ul>
+
+Y ahora veamos c&oacute;mo utilizarlas:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Const adOpenkeyset = 1
+<p>
+Set RS = Server.CreateObject("ADODB.Recordset") <br>
+RS.PageSize = 10<br>
+RS.Open SQL, DB, adOpenKeyset<br>
+%&gt;<br>
+</font>
+<p>
+Como puedes ver, se procede igual que en el anterior ejemplo, pero incluyendo como par&aacute;metro de apertura del objeto RS la constante <font color="red">adOpenKeyset</font> e indicando, antes de proceder a la apertura, el n&uacute;mero de registros que debe contener la p&aacute;gina: <font color="red">RS.PageSize = 10</font>.
+<P>
+Con todo lo dicho hasta aqu&iacute; no debes tener dificultad (salvo en los comandos VBScript, tal vez) en comprender c&oacute;mo funciona el siguiente <a href="asp13.htm">ejemplo de programa</a> con estos dos objetos ADO (<b>A</b>ctiveX <b>D</b>ata <b>O</b>bject).
+<p>
+
+<h3>Distintos m&eacute;todos de apertura</h3>
+En la apertura de la Base de Datos del ejemplo se ha utilizado la forma
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+DB.Open "DB_nombre", "DB_user", "DB_password"<br>
+%&gt;<br>
+</font>
+<p>Esta es la forma denominada <b>con DSN</b> en la que el parámetro <b>DB_nombre</b> en realidad no hace referencia al nombre de la base de datos que se desea abrir, sino al nombre del origen de datos ODBC que previamente se habrá creado en el servidor, y que puede tener el mismo nombre que la base de datos a la que apunta o el que se le quiera dar. Pero puede suceder que no tengas acceso físico al servidor para crear ese ODBC, cosa habitual si tienes tus páginas en un "hosting" alquilado. </p>
+
+<p>Para resolver este problema, existen otras formas de apertura: </p>
+Sin DSN:<br>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+DSN="DRIVER={SQL Server};SERVER=mi_server;UID=mi_user;PWD=mi_passw;DATABASE=mi_db"<br>
+DB.open DSN<br>
+%&gt;<br>
+</font>
+<p>
+OLE sin DSN:<br>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+DB.open "PROVIDER=SQLOLEDB;DATA SOURCE=mi_server;UID=mi_user;PWD=mi_passw;DATABASE=mi_db" <br>
+%&gt;
+</font>
+<p>
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

@@ -1,0 +1,325 @@
+<html>
+<head>
+<title>VBScript 14 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h3>El objeto Document</h3>
+Este objeto representa la p&aacute;gina HTML cargada en el momento actual en el navegador. Tambi&eacute;n contiene cualquier objeto definido con HTML en la misma p&aacute;gina, como pueden ser links, im&aacute;genes o formularios. Los formularios, a su vez, contienen sub-objetos, como los botones, cuadros de texto, listas, etc. El objeto <b>Document</b> tiene numerosas propiedades  y m&eacute;todos que son capaces de modificar el aspecto de la p&aacute;gina. Estas propiedades y m&eacute;todos solamente se pueden invocar mientras la p&aacute;gina est&aacute; siendo cargada por el navegador, que es el &uacute;nico momento en que el IE analiza el c&oacute;digo escrito.
+<p>
+El objeto <b>Document</b> tiene 11 propiedades, 5 m&eacute;todos y  2 sub-objetos.
+<p>
+<hr noshade>
+<center><FONT SIZE=4>PROPIEDADES</FONT></CENTER>
+
+<P>
+<FONT SIZE=3 color="red"><B>LinkColor &nbsp; ALinkColor &nbsp; VLinkColor &nbsp; BGColor &nbsp; FGColor</B></FONT> 
+<p>
+Estas 5 propiedades son id&eacute;nticas a los atributos que pueden definirse en HTML, en el elemento &lt;BODY&gt;, para establecer los colores de los links, texto y fondo de la p&aacute;gina. La diferencia estriba en que desde aqu&iacute; se pueden cambiar esos colores, previamente definidos o no, en el elemento &lt;BODY&gt;, o bien obtener los valores actuales existentes en el momento de cargar la p&aacute;gina. Veamos un ejemplo solamente con los colores de fondo y texto (BGColor y FGColor):
+
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub <b>Colores_1</b>
+         <font color="red">Document.BGColor</font>="green"
+         <font color="red">Document.FGColor</font>="#00ff00"
+     End Sub
+
+     Sub <b>Colores_2</b>
+         <font color="red">Document.BGColor</font>="white"
+         <font color="red">Document.FGColor</font>="#000000"
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Color1" onClick="<b>Colores_1</b>"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton2" VALUE="Color2" onClick="<b>Colores_2</b>"&gt;
+&lt;/FORM&gt;
+
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+         Document.Write "BGColor = " & <font color="red">Document.BGColor</font> & "&lt;br&gt;"
+         Document.Write "FGColor = " & <font color="red">Document.FGColor</font> & "&lt;br&gt;"
+  --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<img src="document1.jpg">
+<p>
+Al pulsar el bot&oacute;n <b>Colores1</b> cambiar&aacute;n los colores del fondo y del texto:
+<p>
+<img src="document2.jpg">
+<p>
+Y al pulsar el bot&oacute;n <b>Colores2</b> se recuperan los colores originales en blanco y negro. F&iacute;jate en que el valor de los colores que aparecen debajo de los botones estar&aacute; siempre codificado en hexadecimal, incluso aunque el color haya sido escrito de forma directa ("green", "white") en la p&aacute;gina. Recuerda tambi&eacute;n que el valor de los colores que se obtiene de estas cinco propiedades es el que exista <b>en el momento de cargar la p&aacute;gina</b> el IE, no el que hay despu&eacute;s de pulsar el bot&oacute;n.
+
+
+
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Anchors</B></FONT> &nbsp;
+
+<P>
+<FONT SIZE=3 color="red"><B>Location</B></FONT> &nbsp; Devuelve un string con la URL completa de la p&aacute;gina que haya cargada. No hay que confundir esta <b>propiedad del objeto Document</b> con el objeto <a href="vb13.htm">Location</a> dependiente a su vez del objeto <b>Window</b>. Sea, por ejemplo, esta misma p&aacute;gina:
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub <b>Prueba</b>
+         Document.Write <font color="red">Document.Location</font>
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="<b>Prueba</b>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+Y despu&eacute;s de pulsar el bot&oacute;n <b>Prueba</b>, este ser&iacute;a el resultado:
+<p>
+<font color="green"><b>http://sestud.uv.es/manual.esp/vbscript/vb14.htm</b></font>
+<p>
+
+
+<P>
+<FONT SIZE=3 color="red"><B>LastModified</B></FONT> &nbsp;Devuelve un string con la fecha de la &uacute;ltima modificaci&oacute;n, es decir, la fecha que le asigne el sistema, de la p&aacute;gina que haya cargada. Por ejemplo:
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub <b>Prueba</b>
+         Document.Write <font color="red">Document.LastModified</font>
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="<b>Prueba</b>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+Y despu&eacute;s de pulsar el bot&oacute;n <b>Prueba</b>, este ser&iacute;a el resultado:
+<p>
+<font color="green"><b>04/02/2004 10:02:10</b></font>
+<p>
+
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Title</B></FONT> &nbsp; Devuelve el string que haya dentro del elemento &lt;TITLE&GT; de la p&aacute;gina que se haya cargado. Por ejemplo:
+
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;<b>&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;</b>
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub <b>Prueba</b>
+         Document.Write <font color="red">Document.Title</font>
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="<b>Prueba</b>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+Y despu&eacute;s de pulsar el bot&oacute;n <b>Prueba</b>, este ser&iacute;a el resultado:
+<p>
+<font color="green"><b>Objetos del IE</b></font>
+<p>
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Cookie</B></FONT> &nbsp;Devuelve o define un string con el <b>cookie</b>, de la p&aacute;gina que haya cargada. Por ejemplo:
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub <b>Prueba</b>
+         Document.Write <font color="red">Document.Cookie</font>
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+      <font color="red">Document.Cookie</font>= "Prueba de control de cookie"
+  --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="<b>Prueba</b>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+<p>
+Y despu&eacute;s de pulsar el bot&oacute;n <b>Prueba</b>, este ser&iacute;a el resultado:
+<p>
+<font color="green"><b>
+Prueba de control de cookie; ASPSESSIONIDQGGGGGDE=KMMCDGBCPKILGJFPADJFDECG
+</b></font>
+<p>
+Si utilizas esto, recuerda que el navegador del cliente puede tener desactivada la posibilidad de recibir cookies.
+
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Referrer</B></FONT> &nbsp;
+
+<p>
+<hr noshade>
+<center><FONT SIZE=4>M&Eacute;TODOS</FONT></CENTER>
+
+<P>
+<FONT SIZE=3 color="red"><B>Write</B></FONT> &nbsp; Como su nombre indica, escribe un string dado. Al escribir con este m&eacute;todo, hay que tener cuidado en d&oacute;nde se pone la instrucci&oacute;n, ya que al escribir puede borrar otros contenidos de la p&aacute;gina. En el siguiente ejemplo, al cargar la p&aacute;gina aparece un bot&oacute;n llamado <b>Prueba</b> y debajo la frase <font color="blue"><b>Prueba de escritura 1</b></font>. Al pulsar el bot&oacute;n, &eacute;ste desaparece y la frase <font color="blue"><b>Prueba de escritura 2</b> </font> pasa a ocupar su lugar, quedando como &uacute;nico contenido de la p&aacute;gina. Esto significa que <b>Write</b> sobreescribe <b>toda</b> la pantalla. As&iacute;:
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Sub <b>Escritura</b>
+         <font color="red">Document.Write</font> "Prueba de escritura 2."
+     End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="<b>Escritura</b>"&gt;
+&lt;/FORM&gt;
+
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+         <font color="red">Document.Write</font> "Prueba de escritura 1."
+  --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+
+
+
+<P>
+<FONT SIZE=3 color="red"><B>WriteLn</B></FONT> &nbsp; Funciona igual que el anterior, pero adem&aacute;s del string dado, escribe a continuaci&oacute;n un retorno de l&iacute;nea (<b>vbLf</b>). Como ya sabes, en HTML los retornos de l&iacute;nea no son interpretados por los navegadores, que precisan el elemento <b>&lt;BR&gt;</b> para hacer efectivo el truncamiento. As&iacute; pues, este m&eacute;todo solamente tiene utilidad si va a escribir dentro de un &aacute;rea delimitada por el elemento <b>&lt;PRE&gt;</b>. Por ejemplo:
+<p>
+
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;<b>PRE</b>&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+    <font color="red">Document.WriteLn</font>="Prueba de escritura 1."
+    <font color="red">Document.WriteLn</font>="Prueba de escritura 2."
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;<b>/PRE</b>&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Se obtiene:
+<p>
+<font color="green">
+<b>Prueba de escritura 1.<br>
+Prueba de escritura 2.</b></font>
+<p>
+
+
+
+
+
+<P>
+<FONT SIZE=3 color="red"><B>Open</B></FONT> &nbsp;
+
+<P>
+<FONT SIZE=3 color="red"><B>Close</B></FONT> &nbsp;
+
+<P>
+<FONT SIZE=3 color="red"><B>Clear</B></FONT> &nbsp;
+
+
+
+
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

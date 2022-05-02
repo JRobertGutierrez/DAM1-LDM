@@ -1,0 +1,154 @@
+
+
+/* Se define parte del estilo del body junto con el gráfico que  */
+/* crea el efecto sombra                                         */
+body {
+	background: #eee url(sombra.gif) repeat-y 50%;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	margin: 0;
+	padding: 0;
+}
+/* Se define el estilo de las listas.            */
+/* Este estilo lo heredarán desde otros bloques  */
+li { list-style: square; }
+
+/*Se define el bloque de la barra de cambio de idioma  */
+#idioma {
+	width: 622px;
+	margin: 0 auto;
+	background-color: #000;
+	border-bottom: 1px solid #FFF;
+}
+/*Estilos de  la barra de cambio de idioma  */
+#idioma ul {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	margin: 0;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+#idioma ul li {
+	display: inline;
+	margin-left: -3px;
+}
+#idioma ul li a {
+	padding: 5px 10px 5px 10px;
+	color: white;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+}
+#idioma ul li a:hover {
+	background-color: #003300;
+	color: white;
+}
+
+/*Se define el bloque de cabecera junto con su estilo  */
+h1#cabecera  {
+	width: 622px;
+	height: 90px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 200%;
+	background: url(cabecera.gif);
+	border-bottom: 5px solid #222222;
+	line-height: 90px;
+	font-weight: normal;
+	letter-spacing: 3px;
+	margin: 0px auto;
+	margin-bottom: 15px;
+	text-align: center;
+}
+#cabecera a, a:hover {
+	color: #00ffa0;
+	text-decoration: none;
+}
+
+
+/*Se define el bloque del contenedor principal  */
+#contenedor {
+	margin: 0 auto;
+	width: 600px;
+}
+
+/*  Se define el estilo del contenedor principal                */
+/*  Fíjate en que este bloque no tiene contenidos propios       */
+/*  pero sus estilos serán heredados por algunos de los bloques */
+/*  que lleva dentro                                            */
+#contenedor a:link, #contenedor a:visited {
+	text-decoration: none;
+	color: #003366;
+	border-bottom: 0px solid #003366;
+}
+#contenedor a:hover {
+	text-decoration: none;
+	color: #CC3300;
+	border-bottom: 0px solid #CC3300;
+}
+
+
+/*Se define el bloque izquierdo */
+#bloq_izq {
+	float: left;
+	width: 400px;
+	text-align: justify;
+}
+/*Se define el estilo del bloque izquierdo */
+#bloq_izq h2 {
+	font-weight: normal;
+	font-size: 155%;
+	color: #222;
+	border-bottom: 1px dotted #ccc;
+	margin-bottom: 5px;
+	padding-bottom: 2px;
+}
+
+
+/*Se define el bloque derecho */
+#bloq_der {
+	float: right;
+	color: #999;
+	width: 170px;
+}
+/*Se define el estilo del bloque derecho */
+#bloq_der h3 {
+	font-weight: normal;
+	font-size: 150%;
+	color: #777;
+	margin-bottom: -5px;
+}
+#bloq_der ul { 
+        padding: 3px 0px 3px 10px; 
+}
+
+/*Se define el bloque del pie */
+#pie {
+	margin: 0 auto;
+	padding: 10px 0 10px 0;
+	color: #fff;
+	background: #333 url(pie.gif);
+	width: 622px;
+	clear: both;
+	text-align: center;
+}
+/*Se define el estilo del pie */
+#pie a {
+	color: #00ffa0;
+	text-decoration: none;
+}
+#pie a:hover {
+	color: #ccc;
+}
+#pie p { 
+        padding: 0; 
+}
+
+
+
+
+
+
+
+
+

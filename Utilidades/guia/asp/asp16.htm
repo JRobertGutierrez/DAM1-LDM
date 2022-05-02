@@ -1,0 +1,117 @@
+<HTML>
+<HEAD><TITLE>ASP 16</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El m&eacute;todo Server.CreateObject</H2>
+
+<h3>Server.CreateObject(<font color="blue">"Scripting.FileSystemObject"</font>)  </h3> 
+
+Continuando con los objetos  que pueden crearse con <b>Server.CreateObject()</b> veremos ahora los de acceso a la estructura de archivos de un disco, es decir, a sus directorios y ficheros. Para poder acceder a todos ellos, previamente habr&aacute; que crear un objeto FileSystem y a continuaci&oacute;n el objeto <b>File</b> o <b>Folder</b> seg&uacute;n se trate de ficheros o directorios (ya existentes, por supuesto). 
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Set <font color="green"><b>FS</b></font> = <FONT color="red">Server.CreateObject("Scripting.FileSystemObject") </font><br>
+Set <font color="green"><b>Fichero</b></font> = <FONT color="red"> FS.GetFile("C:\ASP\texto.txt") </font><br>
+Set <font color="green"><b>Directorio</b></font> = <FONT color="red"> FS.GetFolder("C:\ASP") </font><br>
+%&gt;
+</font>
+<p>
+
+<ul>
+<li><font color="green"><b>FS</b></font> es un objeto <b>FileSystem</b> que permite acceder al sistema de ficheros del servidor.
+
+<li><font color="green"><b>Fichero</b></font> es un objeto <b>File</b> que permite acceder a las propiedades de un fichero de texto llamado <b>texto.txt</b>.
+<li><font color="green"><b>Directorio</b></font> es un objeto <b>Folder</b> que permite acceder a las propiedades de un directorio llamado <b>ASP</b>.
+</ul>
+
+<p>
+ Veamos las <font color="blue">propiedades</font>, que pueden ser de lectura y escritura (<b>RW</b>) o de s&oacute;lo lectura (<b>R</b>), y donde <font color="green"><b>Objeto</b></font> puede ser <font color="green"><b>Fichero</b></font> o <font color="green"><b>Directorio</b></font>, salvo que se indique concretamente.
+
+<ul>
+<li><b><font color="green">Objeto</font>.<font color="blue">Attributes [=nuevos]</font></b> Establece nuevos o muestra los atributos del objeto.  Los valores y significados de los atributos son los siguientes, pudiendo utilizarse indistintamente el nombre de las constantes o su valor num&eacute;rico:
+  <ul>
+     <li><b>Normal</B> = <b>0</b> &nbsp; Archivo normal. No se establecen atributos.
+     <li><b>ReadOnly</B> = <b>1</b> &nbsp; Archivo de s&oacute;lo lectura. <b>RW</b>
+     <li><b>Hidden</B> = <b>2</b> &nbsp; Archivo oculto. <b>RW</b>
+     <li><b>System</B> = <b>4</b> &nbsp; Archivo de sistema. <b>RW</b>
+     <li><b>Volume</B> = <b>8</b> &nbsp; Etiqueta de volumen de la unidad de disco. <b>R</b>
+     <li><b>Directory</B> = <b>16</b> &nbsp; Carpeta o directorio. <b>R</b>
+     <li><b>Archive</B> = <b>32</b> &nbsp; El archivo se ha modificado desde la &uacute;ltima copia de seguridad.  <b>RW</b>
+     <li><b>Alias</B> = <b>64</b> &nbsp; V&iacute;nculo o acceso directo.  <b>R</b>
+     <li><b>compressed</B> = <b>128</b> &nbsp; Archivo comprimido.  <b>R</b>
+  </ul>
+<li><b><font color="green">Objeto</font>.<font color="blue">DateCreated </font></b> Devuelve la fecha y  hora en la que se cre&oacute; el objeto. <b>R</b>
+<li><b><font color="green">Objeto</font>.<font color="blue">DateLastAccessed </font></b> Devuelve la fecha y hora en la que se tuvo acceso por &uacute;ltima vez al objeto. <b>R</b>
+
+<li><b><font color="green">Objeto</font>.<font color="blue">DateLastModified</font></b> Devuelve la fecha y hora en la que se modific&oacute; por &uacute;ltima vez el objeto. <b>R</b>
+ 
+<li><b><font color="green">Objeto</font>.<font color="blue">Drive</font></b> Devuelve la letra de unidad del disco en el que reside el objeto. <b>R</b>
+ 
+<li><b><font color="green">Objeto</font>.<font color="blue">Name [= nuevonombre] </font></b> Establece nuevo o devuelve el nombre de un archivo o una carpeta. <b>RW</b>
+
+<li><b><font color="green">Objeto</font>.<font color="blue">ParentFolder</font></b> Devuelve el objeto <b><font color="green">Directorio</font></b> que es el directorio primario del objeto especificado. <b>R</b>
+
+<li><b><font color="green">Objeto</font>.<font color="blue">Path</font></b> Devuelve la ruta de acceso del objeto especificado. <b>R</b>
+
+<li><b><font color="green">Objeto</font>.<font color="blue">ShortName </font></b> Devuelve el nombre corto (8.3), utilizado por los programas DOS, del objeto.  <b>R</b>
+
+<li><b><font color="green">Objeto</font>.<font color="blue">ShortPath </font></b> Devuelve la ruta corta (8.3), utilizado por los programas DOS, del objeto.  <b>R</b>
+
+<li><b><font color="green">Objeto</font>.<font color="blue">Size </font></b> Para los archivos, devuelve el tama&ntilde;o en bytes del archivo especificado. Para los directorios, devuelve el tama&ntilde;o en bytes de todos los archivos y subdirectorios que est&eacute;n contenidos en el directorio. <b>R</b>
+
+<li><b><font color="green">Objeto</font>.<font color="blue">Type </font></b> Devuelve informaci&oacute;n acerca del tipo de un archivo o directorio. Por ejemplo, para los archivos que terminan en .GIF, se devuelve "Imagen GIF". Para un directorio muestra "Carpeta de archivos". <b>R</b>
+
+<li><b><font color="green">Directorio</font>.<font color="blue">Files </font></b> Devuelve una colecci&oacute;n <b>Files</b> que consta de todos los objetos File (<b><font color="green">Fichero</font></b>) contenidos en el directorio especificado, incluyendo aquellos que tienen establecidos los atributos de archivo oculto y de sistema. Puede obtenerse por medio de un bucle <B> For Each .. in .. Next</b>, t&iacute;pico.
+
+<li><b><font color="green">Directorio</font>.<font color="blue">SubFolders  </font></b> Devuelve una colecci&oacute;n <b>Folders</b> que consta de todos los objetos Folder (<b><font color="green">Directorio</font></b>) contenidos en el directorio especificado, incluyendo aquellos que tienen establecidos los atributos de oculto y de sistema. Puede obtenerse por medio de un bucle <B>For Each .. in .. Next</b>, t&iacute;pico.
+
+<li><b><font color="green">Directorio</font>.<font color="blue">IsRootFolder</font></b> Devuelve <font color="red">True</font> si el directorio especificado es el directorio raiz; <font color="red">False</font> si no lo es.
+
+</ul>
+
+Y a continuaci&oacute;n veamos los <font color="red">m&eacute;todos</font>:
+<ul>
+<li><b><font color="green">Objeto</font>.<font color="red">Copy destino[, sobrescribir] </font></b> Copia un directorio o fichero especificado desde una posici&oacute;n en otra. El par&aacute;metro opcional <b>sobreescribir</b> puede tener dos valores: <font color="red">True</font> (por defecto si se omite) si se desea sobrescribir los ficheros o directorios existentes en destino; <font color="red">False</font> si no se van a sobrescribir. Al escribir la ruta de destino <b>no</b> se permiten caracteres comod&iacute;n.
+
+<li><b><font color="green">Objeto</font>.<font color="red">Delete opcion </font></b> Elimina un directorio o fichero especificado. El par&aacute;metro <b>opcion</b> puede tener dos valores: <font color="red">True</font>  si se desea eliminar los ficheros o directorios con el atributo s&oacute;lo lectura establecido; <font color="red">False</font> (por defecto si se omite) si no se van a eliminar.
+
+<li><b><font color="green">Objeto</font>.<font color="red">Move destino</font></b> Mueve un directorio o fichero especificado desde una posici&oacute;n a otra. Al escribir la ruta de destino <b>no</b> se permiten caracteres comod&iacute;n.
+</ul>
+
+En todos los casos se cerrar&aacute;n todos los objetos creados en orden inverso a como fueron abiertos:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Fichero.Close<br>
+Set Fichero = Nothing<br>
+Directorio.Close<br>
+Set Directorio = Nothing<br>
+FS.Close<br>
+Set FS = Nothing<br>
+%&gt;
+</font>
+<p>
+Estos objetos, juntos con sus propiedades y m&eacute;todos, no tienen mucha utilidad en programas que se ejecuten en el servidor, tal vez salvo aplicaciones exclusivamente usadas en red local (intranet) y con las debidas precauciones. No obstante, es posible utilizarlos en scripts que se ejecuten en el cliente, en cuyo caso tienen m&aacute;s sentido. El problema es que el VBScript solamente es interpretado por los navegadores Internet Explorer de Microsoft. A decisi&oacute;n del programador queda de nuevo decidir para qu&eacute; navegador escribe la aplicaci&oacute;n. 
+<p>
+Todos estos objetos tienen equivalencia tambi&eacute;n en JavaScript, que es interpretado por casi todos los navegadores, incluido el IE. Si te decides por esta soluci&oacute;n, prueba cuidadosamente el c&oacute;digo con distintas versiones de los navegadores, ya que no todas las expresiones JavaScript son soportadas por igual.
+<p>
+Este asunto de las versiones de navegador, representa una de los problemas de m&aacute;s dificil soluci&oacute;n para los programadores de aplicaciones internet. En efecto, nada hay m&aacute;s frustrante para un posible cliente, que enfrentarse a una aplicaci&oacute;n que se comporta de forma impredecible, y que falla estrepitosamente debido a que su navegador no es el que la aplicaci&oacute;n espera. Normalmente, esto es un cliente perdido. 
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

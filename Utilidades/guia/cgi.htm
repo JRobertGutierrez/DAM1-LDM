@@ -1,0 +1,441 @@
+<html>
+
+<head>
+<title> Ejemplos de formularios </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2>Ejemplos de formularios </H2>
+
+<b>Juego de botones direccionados a p&aacute;ginas LOCALES.<BR></b>
+Esto s&oacute;lo funciona abriendo la p&aacute;gina como <b>file:///</B> no como servicio <b>http://</B>.
+<P>
+<table>
+<tr>
+<td>
+<form method="GET" action="indice.htm">
+<input type="submit" value="Indice">
+</form></td>
+
+<td>
+<form method="GET" action="notas.htm">
+<input type="submit" value="Notas">
+</form></td>
+
+<td>
+<form method="GUET" action="como.htm">
+<input type="submit" value="C&oacute;mo funciona?">
+</form></td>
+</tr>
+</table>
+
+<pre>
+&lt;TABLE&gt;
+&lt;TR&gt;
+   &lt;TD&gt;
+      &lt;FORM METHOD=&quot;GET&quot; ACTION=&quot;indice.htm&quot;&gt;
+      &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Indice&quot;&gt;
+      &lt;/FORM&gt;
+   &lt;/TD&gt;
+
+   &lt;TD&gt;
+      &lt;FORM METHOD=&quot;GET&quot; ACTION=&quot;notas.htm&quot;&gt;
+      &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Notas&quot;&gt;
+      &lt;/FORM&gt;
+   &lt;/TD&gt;
+
+   &lt;TD&gt;
+      &lt;FORM METHOD=&quot;GET&quot; ACTION=&quot;como.htm&quot;&gt;
+      &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;C&oacute;mo funciona?&quot;&gt;
+      &lt;/FORM&gt;
+   &lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+</pre>
+
+<hr noshade>
+
+<b>Juego de botones direccionados a p&aacute;ginas REMOTAS.<BR></b>
+Puede funcionar abriendo la p&aacute;gina como servicio  <b>http://</B> o como <b>file:///</B>. pero deber&aacute; utilizarse  <B>METHOD=GET</b> en lugar de <b>METHOD=POST</b>.
+<P>
+<table>
+<tr>
+<td>
+<form method="GET" action="http://www.uv.es/jac/guia/indice.htm">
+<input type="submit" value="Indice">
+</form></td>
+
+<td>
+<form method="GET" action="http://www.uv.es/jac/guia/notas.htm">
+<input type="submit" value="Notas">
+</form></td>
+
+<td>
+<form method="GET" action="http://www.uv.es/jac/guia/como.htm">
+<input type="submit" value="C&oacute;mo funciona?">
+</form></td>
+</tr>
+</table>
+
+<pre>
+&lt;TABLE&gt;
+&lt;TR&gt;
+ &lt;TD&gt;
+  &lt;FORM METHOD=&quot;GET&quot; ACTION=&quot;http://www.uv.es/jac/guia/indice.htm&quot;&gt;
+  &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Indice&quot;&gt;
+  &lt;/FORM&gt;
+ &lt;/TD&gt;
+
+ &lt;TD&gt;
+  &lt;FORM METHOD=&quot;GET&quot; ACTION=&quot;http://www.uv.es/jac/guia/notas.htm&quot;&gt;
+  &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Notas&quot;&gt;
+  &lt;/FORM&gt;
+ &lt;/TD&gt;
+
+ &lt;TD&gt;
+  &lt;FORM METHOD=&quot;GET&quot; ACTION=&quot;http://www.uv.es/jac/guia/como.htm&quot;&gt;
+  &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;C&oacute;mo funciona?&quot;&gt;
+  &lt;/FORM&gt;
+ &lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+</pre>
+
+<hr noshade>
+
+
+
+<b>1 campo vac&iacute;o. Longitud no limitada.<BR>
+1 campo vac&iacute;o. Longitud limitada a 10</b>
+<P>
+
+<form method="POST" action=" ">
+ <input name="campo1">
+ <input name="campo2" size=10 maxlength=10>
+<P>
+ <input type="submit" value="Procesar">
+ <input type="reset" value="Inicializar"></form>
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://miservidor/cgi-bin/test2-cgi&quot;&gt;
+ &lt;INPUT NAME=&quot;campo1&quot;&gt;
+ &lt;INPUT NAME=&quot;campo2&quot; SIZE=10 MAXLENGTH=10&gt;
+&lt;P&gt;
+ &lt;INPUT TYPE=&quot;submit&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;reset&quot; VALUE=&quot;Inicializar&quot;&gt;&lt;/FORM&gt;
+</pre>
+
+<hr noshade>
+
+<b>1 campo vac&iacute;o. Longitud no limitada.<BR>
+1 campo con contenido visible.<BR>
+1 campo con contenido oculto</b>
+<P>
+<form method="POST" action="  ">
+ <input name="campo1">
+ <input name="campo2" VALUE="TEXTO VISIBLE">
+ <input type="password" name="campo3" VALUE="TEXTO OCULTO">
+<P>
+ <input type="submit" value="Procesar">
+ <input type="reset" value="Inicializar"></form>
+
+<pre>
+&lt;form method=&quot;POST&quot; action=&quot;http://miservidor/cgi-bin/test2-cgi&quot;&gt;
+ &lt;input name=&quot;campo1&quot;&gt;
+ &lt;input name=&quot;campo2&quot; VALUE=&quot;TEXTO VISIBLE&quot;&gt;
+ &lt;input type=&quot;password&quot; name=&quot;campo3&quot; VALUE=&quot;TEXTO OCULTO&quot;&gt;
+&lt;P&gt;
+ &lt;input type=&quot;submit&quot; value=&quot;Procesar&quot;&gt;
+ &lt;input type=&quot;reset&quot; value=&quot;Inicializar&quot;&gt;&lt;/form&gt;
+</pre>
+
+<hr noshade>
+
+<B>1 campo vac&iacute;o. Longitud sin limitar.<BR>
+1 campo vac&iacute;o. Longitud limitada a 10.<BR>
+2 botones de selecci&oacute;n.</b>
+<P>
+<form method="post" action=" ">
+ <input name="campo1">
+ <input name="campo2" size=10 maxlength=10>
+<P>
+Clase A <input type="radio" name="clase" VALUE="A">
+Clase B <input type="radio" name="clase" VALUE="B">
+<P>
+ <input type="submit" value="Procesar">
+ <input type="reset" value="Inicializar">
+</form>
+
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://miservidor/cgi-bin/test2-cgi">
+ &lt;INPUT NAME=&quot;campo1&quot;&gt;
+ &lt;INPUT NAME=&quot;campo2&quot; SIZE=10 MAXLENGTH=10&gt;
+&lt;P&gt;
+Clase A &lt;INPUT TYPE=&quot;RADIO&quot; NAME=&quot;clase&quot; VALUE=&quot;A&quot;&gt;
+Clase B &lt;INPUT TYPE=&quot;RADIO&quot; NAME=&quot;clase&quot; VALUE=&quot;B&quot;&gt;
+&lt;P&gt;
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+
+&lt;/form&gt;
+</pre>
+
+
+<hr noshade>
+
+<B>1 campo vac&iacute;o. Longitud sin limitar.<BR>
+1 campo vacio. Longitud limitada a 10.<BR>
+2 botones selecci&oacute;n<BR>
+2 casillas selecci&oacute;n</b>
+<P>
+<form method="post" action=" ">
+ <input name="campo1">
+ <input name="campo2" size=10 maxlength=10>
+<P>
+Clase A <input type="radio" name="clase" VALUE="A">
+Clase B <input type="radio" name="clase" VALUE="B">
+<P>
+Tipo 1 <input type="checkbox" name="tipo" VALUE="1">
+Tipo 2 <input type="checkbox" name="tipo" VALUE="2">
+
+<P>
+ <input type="submit" value="Procesar">
+ <input type="reset" value="Inicializar">
+</form>
+
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://miservidor/cgi-bin/test2-cgi">
+ &lt;INPUT NAME=&quot;campo1&quot;&gt;
+ &lt;INPUT NAME=&quot;campo2&quot; SIZE=10 MAXLENGTH=10&gt;
+&lt;P&gt;
+Clase A &lt;INPUT TYPE=&quot;RADIO&quot; NAME=&quot;clase&quot; VALUE=&quot;A&quot;&gt;
+Clase B &lt;INPUT TYPE=&quot;RADIO&quot; NAME=&quot;clase&quot; VALUE=&quot;B&quot;&gt;
+&lt;P&gt;
+Tipo 1 &lt;INPUT TYPE=&quot;CHECKBOX&quot; NAME=&quot;tipo&quot; VALUE=&quot;1&quot;&gt;
+Tipo 2 &lt;INPUT TYPE=&quot;CHECKBOX&quot; NAME=&quot;tipo&quot; VALUE=&quot;2&quot;&gt;
+&lt;P&gt;
+&lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+&lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+
+&lt;/form&gt;
+</pre>
+
+
+<hr noshade>
+
+<b>1 lista desplegable de 3 valores. 1 visible </b>
+
+<FORM METHOD="POST" ACTION=" ">
+ <INPUT TYPE="SUBMIT" VALUE="Procesar">
+ <INPUT TYPE="RESET" VALUE="Inicializar">
+
+ <SELECT NAME="lista1">
+  <OPTION>Valor 1
+  <OPTION>Valor 2
+  <OPTION>Valor 3
+</SELECT>
+</FORM>
+
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://miservidor/cgi-bin/test2-cgi">
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+
+ &lt;SELECT NAME=&quot;lista1&quot;&gt;
+  &lt;OPTION&gt;Valor 1
+  &lt;OPTION&gt;Valor 2
+  &lt;OPTION&gt;Valor 3
+&lt;/SELECT&gt;
+&lt;/FORM&gt;
+</pre>
+
+<hr noshade>
+<b>1 lista desplegable de 5 valores. 3 visibles. </b>
+<P>
+
+<FORM METHOD="POST" ACTION=" ">
+
+<SELECT NAME="lista1" size=3>
+  <OPTION>Valor 1
+  <OPTION>Valor 2
+  <OPTION>Valor 3
+  <OPTION>Valor 4
+  <OPTION>Valor 5
+</SELECT>
+<P>
+ <INPUT TYPE="SUBMIT" VALUE="Procesar">
+ <INPUT TYPE="RESET" VALUE="Inicializar">
+
+</FORM>
+
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://miservidor/cgi-bin/test2-cgi">
+
+ &lt;SELECT NAME=&quot;lista1&quot; SIZE=3&gt;
+  &lt;OPTION&gt;Valor 1
+  &lt;OPTION&gt;Valor 2
+  &lt;OPTION&gt;Valor 3
+  &lt;OPTION&gt;Valor 4
+  &lt;OPTION&gt;Valor 5
+&lt;/SELECT&gt;
+&lt;P&gt;
+ &lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+ &lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+&lt;/FORM&gt;
+</pre>
+
+
+<hr noshade>
+
+<b>1 Ventana de texto de 5x40</b>
+<P>
+
+<FORM METHOD="POST" ACTION=" ">
+
+ <TEXTAREA NAME="texto1" ROWS=5 COLS=40></TEXTAREA>
+<P>
+ <INPUT TYPE="SUBMIT" VALUE="Procesar">
+ <INPUT TYPE="RESET" VALUE="Inicializar">
+
+</FORM>
+
+
+<pre>
+&lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;http://miservidor/cgi-bin/test2-cgi"&gt;
+&lt;TEXTAREA NAME=&quot;texto1&quot; ROWS=5 COLS=40 &gt;&lt;/TEXTAREA&gt;
+&lt;P&gt;
+&lt;INPUT TYPE=&quot;SUBMIT&quot; VALUE=&quot;Procesar&quot;&gt;
+&lt;INPUT TYPE=&quot;RESET&quot; VALUE=&quot;Inicializar&quot;&gt;
+&lt;/FORM&gt;
+</pre>
+
+<hr noshade>
+
+<b>Un t&iacute;pico  y complejo formulario</b>
+<P>
+
+<FORM ACTION=" " METHOD=POST>
+
+<center>
+<TABLE BORDER>
+
+<tr>
+<td>Nombre:</td><td> <INPUT TYPE="text" NAME="nombre" SIZE=18 MAXLENGTH=18> F.Nac.: <INPUT TYPE="text" NAME="edad" SIZE=8 MAXLENGTH=8> DNI: <INPUT TYPE="text" NAME="dni" SIZE=8 MAXLENGTH=8></td><tr>
+
+<td>Apellidos:</td><td> <INPUT TYPE="text" NAME="apellidos" SIZE=48 MAXLENGTH=48></td><tr>
+
+<td>Calle y n&uacute;mero:</td><td> <INPUT TYPE="text" NAME="domicilio" SIZE=48 MAXLENGTH=48></td><tr>
+
+<td>C&oacute;digo Postal:</td><td> <INPUT TYPE="text" NAME="postal" SIZE=5 MAXLENGTH=5>Ciudad:<INPUT TYPE="text" NAME="localidad" SIZE=36 MAXLENGTH=36></td><tr>
+
+<td>Provincia: </td><td> <INPUT TYPE="text" NAME="provincia" SIZE=20 MAXLENGTH=20> Tel&eacute;fono: <INPUT TYPE="text" NAME="telefono" SIZE=19 MAXLENGTH=19></td><tr>
+
+<td>Opci&oacute;n:</td><td> <SELECT NAME="OPCION">
+<OPTION>OPCION 1
+<OPTION>OPCION 2
+<OPTION>OPCION 3
+<OPTION>OPCION 4
+<OPTION>OPCION 5
+
+</SELECT>Escoja una opci&oacute;n</td>
+<tr>
+<td>Comentarios<BR>
+    personales:</td>
+<td> <TEXTAREA NAME="coment" ROWS=2 COLS=48></TEXTAREA></td>
+<tr>
+<td><B>Pulse aqu&iacute;:</B></td>
+
+<td align=center>
+<INPUT TYPE="submit" VALUE="Enviar datos "><INPUT TYPE="reset" VALUE="Borrar los datos"></td>
+</TABLE>
+</center>
+</form>
+
+
+<pre>
+
+&lt;FORM ACTION=&quot;http://miserver.midominio.mipais/cgi-bin/test2-cgi&quot; METHOD=POST&gt;
+
+&lt;CENTER&gt;
+&lt;TABLE BORDER&gt;
+
+&lt;TR&gt;
+   &lt;TD&gt;Nombre:&lt;/TD&gt;
+   &lt;TD&gt; &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;nombre&quot; SIZE=18 MAXLENGTH=18&gt; F.Nac.:
+        &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;edad&quot; SIZE=8 MAXLENGTH=8&gt; DNI: 
+        &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;dni&quot; SIZE=8 MAXLENGTH=8&gt;&lt;/TD&gt;
+
+&lt;TR&gt;
+   &lt;TD&gt;Apellidos:&lt;/TD&gt;
+   &lt;TD&gt; &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;apellidos&quot; SIZE=48 MAXLENGTH=48&gt;&lt;/TD&gt;
+
+&lt;TR&gt;
+   &lt;TD&gt;Calle y n&uacute;mero:&lt;/TD&gt;
+   &lt;TD&gt; &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;domicilio&quot; SIZE=48 MAXLENGTH=48&gt;&lt;/TD&gt;
+
+&lt;TR&gt;
+  &lt;TD&gt;C&oacute;digo Postal:&lt;/TD&gt;
+  &lt;TD&gt; &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;postal&quot; SIZE=5 MAXLENGTH=5&gt;Ciudad:
+       &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;localidad&quot; SIZE=36 MAXLENGTH=36&gt;&lt;/TD&gt;
+
+&lt;TR&gt;
+   &lt;TD&gt;Provincia: &lt;/TD&gt;
+   &lt;TD&gt; &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;provincia&quot; SIZE=20 MAXLENGTH=20&gt;                Tel&eacute;fono: 
+         &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;telefono&quot; SIZE=19 MAXLENGTH=19&gt;&lt;/TD&gt;
+
+&lt;TR&gt;
+   &lt;TD&gt;Opci&oacute;n:&lt;/TD&gt;
+   &lt;TD&gt; &lt;SELECT NAME=&quot;OPCION&quot;&gt;
+            &lt;OPTION&gt;OPCION 1
+            &lt;OPTION&gt;OPCION 2
+            &lt;OPTION&gt;OPCION 3
+            &lt;OPTION&gt;OPCION 4
+            &lt;OPTION&gt;OPCION 5
+
+        &lt;/SELECT&gt;Escoja una opci&oacute;n&lt;/TD&gt;
+
+&lt;TR&gt;
+   &lt;TD&gt;Comentarios&lt;BR&gt; personales:&lt;/TD&gt;
+   &lt;TD&gt; &lt;TEXTAREA NAME=&quot;coment&quot; ROWS=2 COLS=48&gt;&lt/TEXTAREA&gt;&lt;/TD&gt;
+
+&lt;TR&gt;
+   &lt;TD&gt;&lt;B&gt;Pulse aqu&iacute;:&lt;/B&gt;&lt;/TD&gt;
+   &lt;TD ALIGN=CENTER&gt;
+       &lt;INPUT TYPE=&quot;submit&quot; VALUE=&quot;Enviar datos &quot;&gt;
+       &lt;INPUT TYPE=&quot;reset&quot; VALUE=&quot;Borrar los datos&quot;&gt;&lt;/TD&gt;
+
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+&lt;/FORM&gt;
+
+</pre>
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

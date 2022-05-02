@@ -1,0 +1,429 @@
+<html>
+<head>
+<title>VBScript 5 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Visual Basic Script</H2>
+<h3>Funciones de fecha y hora</h3>
+
+<p>
+<font color="red" size=4>Date()</font>
+<p>
+Devuelve la fecha del servidor con formato mes, dia y a&ntilde;o:
+
+<pre>
+<font color="blue">&lt;%
+     Response.Write( <font color="red">Date()</font> )
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>22/12/03</b></font>
+<P>
+
+
+<font color="red" size=4>Time()</font>
+<p>
+Devuelve la hora del servidor con formato hora, minutos y segundos:
+
+<pre>
+<font color="blue">&lt;%
+     Response.Write( <font color="red">Time()</font> )
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>10:24:23</b></font>
+<P>
+
+
+<font color="red" size=4>Now()</font>
+<p>
+Devuelve la fecha y hora del servidor juntas:
+
+<pre>
+<font color="blue">&lt;%
+     Response.Write( <font color="red">Now()</font> )
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>22/12/03 10:24:23</b></font>
+<P>
+
+
+<font color="red" size=4>Day(<font color="blue" size=4>una_fecha</font>) - Month(<font color="blue" size=4>una_fecha</font>) - Year(<font color="blue" size=4>una_fecha</font>)</font>
+<p>
+Estas tres funciones devuelven el dia, mes y a&ntilde;o, repectivamente,  de <font color="blue">una_fecha</font> dada, por ejemplo, por la funci&oacute;n <font color="red">Date()</font> o escrita directamente en la forma <font color="blue">"22/12/03"</font> o <font color="blue">"22-12-03"</font>: 
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write( <font color="red">Date()</font> )
+    Response.Write(<font color="red">Day(</font>Date()<font color="red">)</font> & "&lt;BR&gt;")
+    Response.Write(<font color="red">Month(</font>Date()<font color="red">)</font> & "&lt;BR&gt;")
+    Response.Write(<font color="red">Year(</font>Date()<font color="red">)</font> & "&lt;BR&gt;")
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>22/12/03<br>
+22<br>
+12<br>
+2003</b></font>
+<p>
+Y lo mismo tenemos para las horas. En el caso de escribir directamente la hora, se deber&aacute; hacer en la forma: <font color="blue">"10:05:18"</font> 
+<P>
+
+
+<font color="red" size=4>Hour(<font color="blue" size=4>una_hora</font>) - Minute(<font color="blue" size=4>una_hora</font>) - Second(<font color="blue" size=4>una_hora</font>)</font>
+<p>
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write( <font color="red">Time()</font> )
+    Response.Write(<font color="red">Hour(</font>Time()<font color="red">)</font> & "&lt;BR&gt;")
+    Response.Write(<font color="red">Minute(</font>Time()<font color="red">)</font> & "&lt;BR&gt;")
+    Response.Write(<font color="red">Second(</font>Time()<font color="red">)</font> & "&lt;BR&gt;")
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>11:05:18<br>
+11<br>
+5<br>
+18<br>
+</b></font>
+<p>
+
+
+
+<font color="red" size=4>Weekday(<font color="blue" size=4>una_fecha, [primero]</font>)</font>
+<p>
+Devuelve un n&uacute;mero que representa el d&iacute;a de la semana de <font color="blue">una_fecha</font>. El par&aacute;metro opcional <font color="blue">[primero]</font> es un n&uacute;mero que indica cu&aacute;l es el primer d&iacute;a de la semana, siendo 1 (domingo) su valor por defecto. Los valores devueltos y el nombre de las constantes son: 
+<table>
+<tr><th align=left>vbSunday</th><td>1</td><td>Domingo</td></tr>
+<tr><th align=left>vbMonday</th><td>2</td><td>Lunes</td></tr>
+<tr><th align=left>vbTuesday</th><td>3</td><td>Martes</td></tr>
+<tr><th align=left>vbWednesday</th> <td>4</td><td>Mi&eacute;rcoles</td></tr>
+<tr><th align=left>vbThursday</th><td>5</td><td>Jueves</td></tr>
+<tr><th align=left>vbFriday</th><td>6</td><td>Viernes</td></tr>
+<tr><th align=left>vbSaturday</th><td>7</td><td>S&aacute;bado</td></tr>
+</table>
+<p>
+Estos mismos valores coinciden con los utilizados para <font color="blue">[primero]</font>. Por ejemplo, si el 22/12/2003 era lunes: 
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write( <font color="red">Date()</font>  & "&lt;BR&gt;" )
+    Response.Write(<font color="red">Weekday(</font>Date()<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>22/12/03<br>
+2<br>
+</b></font>
+<p>
+     
+
+<font color="red" size=4>DateAdd(<font color="blue" size=4>intervalo, cuantos, mi_fecha</font>)</font>
+<p>
+Devuelve una fecha cuyo valor es el resultado de adicionarle a <font color="blue"><b>mi_fecha</b></font> un <font color="blue"><b>intervalo</b></font> de tiempo el n&uacute;mero de veces indicado por <font color="blue"><b>cuantos</b></font>. Los valores codificados de <font color="blue">intervalo</font> son los siguientes:
+<p>
+
+<TABLE>
+<TR><Th><font color="blue">Intervalo</font></Th><Th>Descripci&oacute;n</Th></tr>
+<tr><TD>yyyy</TD><TD>A&ntilde;o</TD></TR>
+<TR><TD>q</TD><TD>Trimestre</TD></TR>
+<TR><TD>m</TD><TD>Mes</TD></TR>
+<TR><TD>y</TD><TD>D&iacute;a del a&ntilde;o</TD></TR>
+<TR><TD>d</TD><TD>D&iacute;a</TD></TR>
+<TR><TD>w</TD><TD>D&iacute;a de la semana</TD></TR>
+<TR><TD>ww</TD><TD>Semana</TD></TR>
+<TR><TD>h</TD><TD>Hora</TD></TR>
+<TR><TD>n</TD><td>Minuto</TD></TR>
+<TR><TD>s</TD><TD>Segundo</TD></TR>
+</TABLE>
+<p>
+Sea, por ejemplo, la fecha <b>30/12/03</b> a la que se desea sumar un mes:
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateAdd(</font>"m", 1, "30-12-03"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>30/01/04</b></font>
+<p>
+
+La funci&oacute;n <font color="red">DateAdd()</font> no devuelve fechas err&oacute;neas, y "redondea"  los valores que se le den. Por ejemplo, si a la fecha anterior en lugar de un mes se le suman dos, no nos devuelve 30/02/04, que ser&iacute;a incorrecto, sino que:
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateAdd(</font>"m", 2, "30-12-03"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>29/02/04</b></font>
+<p>
+Como puedes ver, no ha sumado de forma absoluta dos meses (es decir, al menos 60 dias), pero ha dado un resultado correcto desde el punto de vista del calendario, incluso siendo el 2004 bisiesto. Si en lugar de sumar, queremos restar, solamente hay que dar los valores de <font color="blue">cuantos</font> en negativo:
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateAdd(</font>"m", -2, "30-12-03"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>30/10/03</b></font>
+<p>
+Otra caracter&iacute;stica, que puede ser muy util al escribir aplicaciones, de la funci&oacute;n <font color="red">DateAdd()</font> consiste en no ser necesario escribir el a&ntilde;o en el par&aacute;metro <font color="blue">mi_fecha</font>, siempre que &eacute;sta sea escrita como una cadena en la forma <font color="blue">"30/12/03"</font> o <font color="blue">"30-12-03"</font>. Si en lugar de la fecha entera, escribimos:
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateAdd(</font>"m", 1, "30-12"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene:
+<p><font color="green">
+<b>30/01/04</b></font>
+<p>
+Con esto se puede conseguir no tener que revisar los programas cada a&ntilde;o, siempre que los procedimientos sean en los mismos dias y meses, claro. Tambi&eacute;n pueden sumarse intervalos de tiempo m&aacute;s peque&ntilde;os. Por ejemplo, dos segundos: 
+
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateAdd(</font>"s", 2, "31/12/03 23:59:59"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene:
+<p><font color="green">
+<b>1/01/04 0:00:01</b></font>
+<p>
+
+
+<font color="red" size=4>DateDiff(<font color="blue" size=4>intervalo, fecha1, fecha2</font>)</font>
+<p>
+Devuelve el n&uacute;mero de <font color="blue"><b>intervalo</b></font>s de tiempo que hay entre <font color="blue"><b>fecha1</b></font> y <font color="blue"><b>fecha2</b></font>. Los valores codificados de <font color="blue">intervalo</font> son los siguientes:
+<p>
+
+<TABLE>
+<TR><Th><font color="blue">Intervalo</font></Th><Th>Descripci&oacute;n</Th></tr>
+<tr><TD>yyyy</TD><TD>A&ntilde;o</TD></TR>
+<TR><TD>q</TD><TD>Trimestre</TD></TR>
+<TR><TD>m</TD><TD>Mes</TD></TR>
+<TR><TD>y</TD><TD>D&iacute;a del a&ntilde;o</TD></TR>
+<TR><TD>d</TD><TD>D&iacute;a</TD></TR>
+<TR><TD>w</TD><TD>D&iacute;a de la semana</TD></TR>
+<TR><TD>ww</TD><TD>Semana</TD></TR>
+<TR><TD>h</TD><TD>Hora</TD></TR>
+<TR><TD>n</TD><td>Minuto</TD></TR>
+<TR><TD>s</TD><TD>Segundo</TD></TR>
+</TABLE>
+<p>
+Sea, por ejemplo, la diferencia en meses entre <b>1/1/03</b> y <b>1/1/04</b>:
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateDiff(</font>"m", "1-1-03", "1-1-04"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>12</b></font>
+<p>
+
+ Si <font color="blue">fecha2</font> es menor que <font color="blue">fecha1</font> se obtiene un resultado con signo negativo:
+
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateDiff(</font>"m", "1-1-03", "1-1-02"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene:
+<p><font color="green">
+<b>-12</b></font>
+<p>
+Las valores obtenidos no indican que necesariamente hayan transcurridos estos intervalos de tiempo. Asi, si por ejemplo, se compara el 31 de diciembre con el 1 de enero del a&ntilde;o inmediatamente posterior, <font color="red">DateDiff()</font> devuelve 1 aunque solamente haya transcurrido un d&iacute;a. 
+<p>
+
+
+
+<font color="red" size=4>DatePart(<font color="blue" size=4>intervalo, fecha</font>)</font>
+<p>
+Extrae de <font color="blue"><b>fecha</b></font>  la parte indicada por <font color="blue"><b>intervalo</b></font>. Los valores codificados de <font color="blue">intervalo</font> son los mismos que utilizan DateAdd() o DateDiff(). Sea por ejemplo: 
+<p>
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DatePart(</font>"m", "31/12/03 23:59:59"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene:
+<p><font color="green">
+<b>12</b></font>
+<p>
+
+
+<font color="red" size=4>IsDate(<font color="blue" size=4>expresi&oacute;n</font>)</font>
+<p>
+Eval&uacute;a si <font color="blue"><b>expresi&oacute;n</b></font> puede ser convertida a fecha, o lo que es lo mismo, si tiene un formato v&aacute;lido para representar una fecha. Por ejemplo: 
+<p>
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">IsDate(</font>"31/12/03 23:59:59"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene:
+<p><font color="green">
+<b>Verdadero</b></font>
+<p>
+
+
+<font color="red" size=4>CDate(<font color="blue" size=4>expresi&oacute;n</font>)</font>
+<p>
+Convierte  <font color="blue"><b>expresi&oacute;n</b></font> a tipo fecha. Es conveniente examinar primero la expresi&oacute;n para asegurarse de que la conversi&oacute;n es posible. Por ejemplo: 
+<p>
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">CDate(</font>"31/12/03 23:59:59"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene:
+<p><font color="green">
+<b>31/12/03 23:59:59</b></font>
+<p>
+
+
+<font color="red" size=4>DateSerial(<font color="blue" size=4>a&ntilde;o, mes, dia</font>)</font>
+<p>
+Sirve para obtener un resultado con tipo de dato fecha a partir de valores num&eacute;ricos directos o resultado de expresiones.
+ Por ejemplo: 
+<p>
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateSerial(</font>2003, 12, 1<font color="red">)</font>)
+    Response.Write(<font color="red">DateSerial(</font>2003, 6+6, 3-2<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene para ambos:
+<p><font color="green">
+<b>01/12/2003</b></font>
+<p>
+Para el argumento a&ntilde;o, los valores entre 0 y 99, inclusive, se interpretan como los a&ntilde;os 1900–1999. Para todos los dem&aacute;s hay que utilizar cuatro dígitos (por ejemplo, 1800 o 2000). El valor m&aacute;ximo es 9999.
+<p>
+Cuando cualquier argumento sobrepase el intervalo aceptado para dicho argumento, se aumenta a la siguiente unidad mayor que resulte apropiada. Por ejemplo, si se especifica 35 d&iacute;as, se eval&uacute;a como un mes y algunos días, seg&uacute;n el mes del a&ntilde;o al que se aplique. Sin embargo, si cualquier argumento simple est&aacute; fuera del intervalo entre -32.768 y 32.767 (los l&iacute;mites del tipo <b>integer</b>), o si la fecha especificada por los tres argumentos, directamente o por expresi&oacute;n, queda fuera del intervalo de fechas aceptable, se produce un error. 
+
+<p>
+<font color="red" size=4>DateValue(<font color="blue" size=4>string</font>)</font>
+<p>
+Sirve para obtener un resultado con tipo de dato fecha a partir de un cadena de texto. Por ejemplo: 
+<p>
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateValue(</font>"2003/12/1"<font color="red">)</font>)
+    Response.Write(<font color="red">DateValue(</font>"1/12/2003"<font color="red">)</font>)
+    Response.Write(<font color="red">DateValue(</font>"1/diciembre/2003"<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene para todos:
+<p><font color="green">
+<b>01/12/2003</b></font>
+<p>
+Como puedes ver, la funci&oacute;n reconoce tanto el tipo de fecha americano como europeo, y adem&aacute;s interpreta el nombre del mes si no es un n&uacute;mero. Si la cadena contiene tambi&eacute;n la hora, por ejemplo, "1/12/2003 16:30", DateValue devolver&aacute; la fecha pero no la hora, No obstante, si la hora tiene un valor err&oacute;neo, como "1/12/2003 16:70" se producir&aacute; un error. El rango de fechas aceptado es una fecha comprendida entre el 1 de enero del año 100 hasta el 31 de diciembre del año 9999
+<p>
+
+<font color="red" size=4>TimeSerial(<font color="blue" size=4>hora, minuto, segundo</font>)</font>
+<p>
+Sirve para obtener un resultado con tipo de dato hora a partir de valores num&eacute;ricos directos o resultado de expresiones.
+ Por ejemplo: 
+<p>
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">TimeSerial(</font>7, 50, 0<font color="red">)</font>)
+    Response.Write(<font color="red">TimeSerial(</font>12-5, 60-10, 0<font color="red">)</font>)
+%&gt;</font>
+</pre>
+<p>
+Se obtiene para ambos:
+<p><font color="green">
+<b>7:50:00</b></font>
+<p>
+El intervalo para cada argumento debe estar en el intervalo aceptado para la unidad; es decir, 0–23 para horas y 0–59 para minutos y segundos. Tambi&eacute;n se puede especificar horas relativas para cada argumento mediante cualquier expresi&oacute;n num&eacute;rica.
+<p>
+Cuando cualquier argumento sobrepasa el intervalo aceptado para dicho argumento, se aumenta hasta la siguiente unidad mayor apropiada. Por ejemplo, si especifica 75 minutos, se eval&uacute;a como una hora y 15 minutos. Sin embargo, si cualquier argumento simple est&aacute; fuera del intervalo de -32.768 a 32.767 (los l&iacute;mites del tipo <b>integer</b>), o si la hora especificada por los tres argumentos, directamente o por expresi&oacute;n, hace que la hora quede fuera del intervalo aceptable de horas, se produce un error.
+
+
+<p>
+<font color="red" size=4>TimeValue(<font color="blue" size=4>string</font>)</font>
+<p>
+Sirve para obtener un resultado con tipo de dato hora a partir de un cadena de texto. La cadena debe representar una hora desde las 0:00:00 (12:00:00 a.m.) a las 23:59:59 (11:59:59 p.m.), inclusive. También cualquier expresi&oacute;n que represente una hora dentro de dicho intervalo. Si hora contiene Null, se devuelve Null. Por ejemplo: 
+<p>
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">DateValue(</font>"2:30PM"<font color="red">)</font>)
+<font color="blue">
+    Response.Write(<font color="red">DateValue(</font>"14:30"<font color="red">)</font>)
+<font color="blue">
+    Response.Write(<font color="red">DateValue(</font>"2:30"<font color="red">)</font>)
+%&gt;
+</pre>
+<p>
+Se obtiene:
+<p><font color="green">
+<b>14:30:00</b><br><b>14:30:00</b><br><b>2:30:00</b>
+</font>
+
+<p>
+<font color="red" size=4>LastDay(<font color="blue" size=4>mes, a&ntilde;o</font>)</font>
+<p>
+Sirve para obtener el n&uacute;mero correspondiente al &uacute;ltimo d&iacute;a de un mes/a&ntilde;o dados. Por ejemplo: 
+<p>
+<pre>
+<font color="blue">&lt;%
+    Response.Write(<font color="red">LastDay(</font>2, 2004<font color="red">)</font>)
+%&gt;
+</pre>
+<p>
+Se obtiene:
+<p><font color="green">
+<b>29</b>
+</font>
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

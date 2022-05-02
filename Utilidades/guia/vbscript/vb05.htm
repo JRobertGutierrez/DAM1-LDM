@@ -1,0 +1,358 @@
+<html>
+<head>
+<title>VBScript 5 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Visual Basic Script</H2>
+<h3>Funciones num&eacute;ricas</h3>
+
+<font color="blue" size=4>Funciones de conversi&oacute;n num&eacute;rica</font>
+<p>
+Las funciones de conversi&oacute;n num&eacute;rica se utilizan para cambiar el <A HREF="../vbscript/vb02.htm#tipos"> tipo de dato</A>,  de una expresi&oacute;n no num&eacute;rica, a algun tipo num&eacute;rico, a fin de poder operar metem&aacute;ticamente con ella. Evidentemente, el resultado de la expresi&oacute;n s&oacute;lo debe contener n&uacute;meros. Si hay letras o signos se producir&aacute; un error. No olvides que si hay varias expresiones, que una vez convertidas, ser&aacute;n utilizadas en un c&aacute;lculo matem&aacute;tico, los tipos de conversi&oacute;n deben ser equivalentes, de lo contrario los resultado son imprevisibles.
+
+<p>
+<font color="red" size=4>CBool(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Convierte un tipo no num&eacute;rico a tipo <b>Booleano</b>, donde <b><font color="blue">valor</font></b> debe ser una cadena num&eacute;rica, un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico. Si <font color="blue">valor</font> vale cero <b><font color="red">CBool()</font></b> devuelve <font color="green">False</font>, si es mayor que cero devuelve <font color="green">True</font> y si no es num&eacute;rico, se producir&aacute; un error.
+<p>
+
+<font color="red" size=4>CByte(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Convierte un tipo no num&eacute;rico a tipo <b>Byte</b> (cuyo rango es de 0 a 255), donde <b><font color="blue">valor</font></b> debe ser un n&uacute;mero, una cadena num&eacute;rica o una expresi&oacute;n que devuelva un tipo num&eacute;rico. Si <font color="blue">valor</font> es mayor de 255 o no es num&eacute;rico, <b><font color="red">CByte()</font></b> devuelve error.
+<p>
+
+<font color="red" size=4>CCur(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Convierte un tipo no num&eacute;rico a tipo <b>Currency</b> (cuyo rango va de -922.337.203.685.477,5808 a 922.337.203.685.477,5807), donde <b><font color="blue">valor</font></b> debe ser un n&uacute;mero, una cadena num&eacute;rica o una expresi&oacute;n que devuelva un tipo num&eacute;rico.
+<p>
+
+<font color="red" size=4>CDbl(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Convierte un tipo no num&eacute;rico a tipo <b>Double</b> (n&uacute;mero de precisi&oacute;n doble y punto flotante), donde <b><font color="blue">valor</font></b> debe ser un n&uacute;mero, una cadena num&eacute;rica o una expresi&oacute;n que devuelva un tipo num&eacute;rico. 
+<p>
+
+<font color="red" size=4>CLng(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Convierte un tipo no num&eacute;rico a tipo <b>Long</b> (entre -2.147.483.648 y 2.147.483.647), donde <b><font color="blue">valor</font></b> debe ser un n&uacute;mero, una cadena num&eacute;rica o una expresi&oacute;n que devuelva un tipo num&eacute;rico. <font color="red">CLng()</font> se diferencia de las funciones <font color="red">Fix()</font> e <font color="red">Int()</font> en que redondea, en lugar de truncar, la parte decimal de un n&uacute;mero. Cuando la parte decimal es exactamente 0,5, la funci&oacute;n <font color="red">CLng()</font> siempre redondea al n&uacute;mero par m&aacute;s cercano. Por ejemplo: 0,5 se redondea a 0 y 1,5 se redondea a 2.
+<p>
+
+<font color="red" size=4>CInt(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Convierte un tipo no num&eacute;rico a tipo <b>Integer</b> (entre -32.768 a 32.767), donde <b><font color="blue">valor</font></b> debe ser un n&uacute;mero, una cadena num&eacute;rica o una expresi&oacute;n que devuelva un tipo num&eacute;rico. Al igual que la anterior,  <font color="red">CInt()</font> se diferencia de las funciones <font color="red">Fix()</font> e <font color="red">Int()</font> en que redondea, en lugar de truncar, la parte decimal de un n&uacute;mero. Tambi&eacute;n redondea de la misma forma que <font color="red">CLng()</font>.
+<p>
+
+<font color="blue" size=4>Funciones trigonom&eacute;tricas</font>
+<p>
+Todas las funciones trigonom&eacute;tricas trabajan con el argumento en <b>radianes</b>. Recuerda que para convertir grados en radianes hay que  multiplicar los grados por (pi/180) y para convertir radianes en grados, multiplicar los radianes por (180/pi). Otro recordatorio: el n&uacute;mero pi vale aproximadamente 3,1415926535...
+<p>
+
+<font color="red" size=4>Sin(</font><font color="blue" size=4>&aacute;ngulo</font><font color="red" size=4>)</font>
+<p>
+Devuelve el seno de un &aacute;ngulo, medido en radianes, que expresa el argumento <b><font color="blue">&aacute;ngulo</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico.
+<p>
+El seno de un &aacute;ngulo es la raz&oacute;n de dos lados de un tri&aacute;ngulo rect&aacute;ngulo. Dicho de otro modo, la raz&oacute;n  es la longitud del cateto opuesto al &aacute;ngulo dividida por la longitud de la hipotenusa. El resultado est&aacute; dentro del intervalo -1 a 1. 
+<p>
+
+<font color="red" size=4>Cos(</font><font color="blue" size=4>&aacute;ngulo</font><font color="red" size=4>)</font>
+<p>
+Devuelve el coseno de un &aacute;ngulo, medido en radianes, que expresa el argumento <b><font color="blue">&aacute;ngulo</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico.
+<p>
+El coseno de un &aacute;ngulo es la raz&oacute;n de dos lados de un tri&aacute;ngulo rect&aacute;ngulo. Dicho de otro modo, la raz&oacute;n es la longitud del cateto adyacente al &aacute;ngulo dividida por la longitud de la hipotenusa. El resultado est&aacute; dentro del intervalo -1 a 1. 
+<p>
+
+<font color="red" size=4>Tan(</font><font color="blue" size=4>&aacute;ngulo</font><font color="red" size=4>)</font>
+<p>
+Devuelve la tangente de un &aacute;ngulo, medido en radianes, que expresa el argumento <b><font color="blue">&aacute;ngulo</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico.
+<p>
+La tangente de un &aacute;ngulo es la raz&oacute;n de dos lados de un tri&aacute;ngulo rect&aacute;ngulo. Dicho de otro modo, la raz&oacute;n es la longitud del cateto opuesto al &aacute;ngulo, dividida por la longitud del cateto adyacente al &aacute;ngulo
+<p>
+
+<font color="red" size=4>Atn(</font><font color="blue" size=4>n&uacute;mero</font><font color="red" size=4>)</font>
+<p>
+Devuelve el arco tangente de un n&uacute;mero, que expresa el argumento <b><font color="blue">n&uacute;mero</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico.
+<p>
+Esta funci&oacute;n obtiene la raz&oacute;n entre los dos catetos de un tri&aacute;ngulo rect&aacute;ngulo y devuelve el &aacute;ngulo correspondiente en radianes. La raz&oacute;n es la longitud del lado opuesto al &aacute;ngulo dividida por la longitud del lado adyacente al mismo.
+El resultado est&aacute; entre (-pi/2) y (pi/2) radianes.
+<p>
+Con las funciones trigonom&eacute;tricas <b>intr&iacute;nsecas</b> vistas hasta aqu&iacute;, y algunas que se exponen m&aacute;s abajo,  se pueden construir otras funciones:
+<p>
+<TABLE WIDTH=87% BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR VALIGN=TOP>
+<TH><FONT SIZE=2><b>Funciones no intr&iacute;nsecas</b></FONT></TH>
+<TH><FONT SIZE=2><b>Equaciones basadas en funciones intr&iacute;nsecas</b></FONT></TH></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Secante</FONT></TD>
+<TD><FONT SIZE=2>Sec(X) = 1 / <font color="red">Cos</font>(X)</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Cosecante</FONT></TD>
+<TD><FONT SIZE=2>Cosec(X) = 1 / <font color="red">Sin</font>(X)</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Cotangente</FONT></TD>
+<TD><FONT SIZE=2>Cotan(X) = 1 / <font color="red">Tan</font>(X)</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Seno inverso</FONT></TD>
+<TD><FONT SIZE=2>Arcsin(X) = <font color="red">Atn</font>(X / <font color="red">Sqr</font>(-X * X + 1))</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Coseno inverso</FONT></TD>
+<TD><FONT SIZE=2>Arccos(X) = <font color="red">Atn</font>(-X / <font color="red">Sqr</font>(-X * X + 1)) + 2 * <font color="red">Atn</font>(1)</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Secante inversa</FONT></TD>
+<TD><FONT SIZE=2>Arcsec(X) = <font color="red">Atn</font>(X / <font color="red">Sqr</font>(X * X - 1)) + <font color="red">Sgn</font>((X) -1) * (2 * <font color="red">Atn</font>(1))</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Cosecante inversa</FONT></TD>
+<TD><FONT SIZE=2>Arccosec(X) = <font color="red">Atn</font>(X / <font color="red">Sqr</font>(X * X - 1)) + (<font color="red">Sgn</font>(X) - 1) * (2 * <font color="red">Atn</font>(1))</FONT></TD></TR>
+<TR VALIGN=TOP><TD><FONT SIZE=2>Cotangente inversa</FONT></TD>
+<TD><FONT SIZE=2>Arccotan(X) = <font color="red">Atn</font>(X) + 2 * <font color="red">Atn</font>(1)</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Seno hiperbólico</FONT></TD>
+<TD><FONT SIZE=2>HSin(X) = (<font color="red">Exp</font>(X) - <font color="red">Exp</font>(-X)) / 2 </FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Coseno hiperbólico</FONT></TD>
+<TD><FONT SIZE=2>HCos(X) = (<font color="red">Exp</font>(X) + <font color="red">Exp</font>(-X)) / 2</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Tangente hiperbólica</FONT></TD>
+<TD><FONT SIZE=2>HTan(X) = (<font color="red">Exp</font>(X) - <font color="red">Exp</font>(-X)) / (<font color="red">Exp</font>(X) + <font color="red">Exp</font>(-X))</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Secante hiperbólica</FONT></TD>
+<TD><FONT SIZE=2>HSec(X) = 2 / (<font color="red">Exp</font>(X) + <font color="red">Exp</font>(-X))</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Cosecante hiperbólica</FONT></TD>
+<TD><FONT SIZE=2>HCosec(X) = 2 / (<font color="red">Exp</font>(X) - <font color="red">Exp</font>(-X))</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Cotangente hiperbólica</FONT></TD>
+<TD><FONT SIZE=2>HCotan(X) = (<font color="red">Exp</font>(X) + <font color="red">Exp</font>(-X)) / (<font color="red">Exp</font>(X) - <font color="red">Exp</font>(-X))</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Seno hiperbólico inverso</FONT></TD>
+<TD><FONT SIZE=2>HArcsin(X) = <font color="red">Log</font>(X + <font color="red">Sqr</font>(X * X + 1))</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Coseno hiperbólico inverso</FONT></TD>
+<TD><FONT SIZE=2>HArccos(X) = <font color="red">Log</font>(X + <font color="red">Sqr</font>(X * X - 1))</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Tangente hiperbólica inversa</FONT></TD>
+<TD><FONT SIZE=2>HArctan(X) = <font color="red">Log</font>((1 + X) / (1 - X)) / 2</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Secante hiperbólica inversa</FONT></TD>
+<TD><FONT SIZE=2>HArcsec(X) = <font color="red">Log</font>((<font color="red">Sqr</font>(-X * X + 1) + 1) / X)</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Cosecante hiperbólica inversa</FONT></TD>
+<TD><FONT SIZE=2>HArccosec(X) = <font color="red">Log</font>((<font color="red">Sgn</font>(X) * <font color="red">Sqr</font>(X * X + 1) +1) / X)</FONT></TD></TR>
+<TR VALIGN=TOP>
+<TD><FONT SIZE=2>Cotangente hiperbólica inversa</FONT></TD>
+<TD><FONT SIZE=2>HArccotan(X) = <font color="red">Log</font>((X + 1) / (X - 1)) / 2</FONT></TD></TR>
+
+</TABLE>
+
+<p>
+
+<font color="blue" size=4>Otras funciones num&eacute;ricas</font>
+<p>
+<font color="red" size=4>Int(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font> - <font color="red" size=4>Fix(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Estas dos funciones devuelven el valor entero de un n&uacute;mero trunc&aacute;ndolo, es decir, que no redondean. La diferencia entre <font color="red">Fix()</font> e <font color="red">Int()</font> es que si <b><font color="blue">valor</font></b> es negativo, <font color="red">Int()</font> devuelve el primer entero negativo  menor o igual a <b><font color="blue">valor</font></b>, mientras que <font color="red">Fix()</font> devuelve el primer entero negativo mayor o igual a <b><font color="blue">valor</font></b>. Por ejemplo: <font color="red">Int()</font> convierte -5,4 en -6 y <font color="red">Fix()</font> convierte -5,4 a -5. Si <b><font color="blue">valor</font></b> contiene <b>Null</b> devuelven Null.
+<p>
+
+<font color="red" size=4>Abs(</font><font color="blue" size=4>numero</font><font color="red" size=4>)</font>
+<p>
+Devuelve el valor absoluto de un n&uacute;mero o de cualquier expresi&oacute;n num&eacute;rica. El valor absoluto de un n&uacute;mero no tiene signo. Por ejemplo, Abs(-1) y Abs(1) devuelven 1.
+<p>
+
+<font color="red" size=4>Sgn(</font><font color="blue" size=4>numero</font><font color="red" size=4>)</font>
+<p>
+Devuelve un entero que indica el signo de un n&uacute;mero o de cualquier expresi&oacute;n num&eacute;rica. <font color="red">Sgn()</font> puede devolver tres valores: Si <font color="blue">numero</font> vale 0, devulve 0. Si es mayor que 0 devuelve 1 y si es menor que 0 devuelve -1.
+<p>
+
+<font color="red" size=4>Round(</font><font color="blue" size=4>valor[, posiciones_decimales]</font><font color="red" size=4>)</font>
+<p>
+Redondea el n&uacute;mero contenido en <b><font color="blue">valor</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico. El argumento <b><font color="blue">[, posiciones_decimales]</font></b> es opcional. Indica cu&aacute;ntas posiciones decimales a la derecha del punto se van a incluir en el redondeo. Si se omite, la función <font color="red">Round()</font> devuelve un entero. 
+<p>
+
+<font color="red" size=4>Sqr(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Devuelve la raiz cuadrada de <b><font color="blue">valor</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico de valor 0 o mayor que 0.
+<p>
+
+<font color="red" size=4>Log(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Devuelve el logaritmo natural de <b><font color="blue">valor</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico mayor que 0. El logaritmo natural es el logaritmo en base e. El valor de la constante e es aproximadamente 2.718282.
+<p>
+Utilizando <font color="red">Log()</font> se pueden calcular logaritmos en base-n para cualquier n&uacute;mero x, dividiendo el logaritmo natural de x por el logaritmo natural de n. Veamos un ejemplo de funci&oacute;n para calcular logaritmos en base 10:
+
+<pre>
+        Function Log10(X)
+              Log10 = <font color="red">Log(</font><font color="blue">X</font><font color="red">)</font> / <font color="red">Log(</font><font color="blue">10</font><font color="red">)</font>
+        End Function
+</pre>
+
+F&iacute;jate en que <b>Log10</b> es el nombre de nuestra funci&oacute;n de ejemplo, y no es lo mismo que <font color="red">Log(</font><font color="blue">10</font><font color="red">)</font>.
+
+<p>
+<font color="red" size=4>Exp(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Devuelve <b>e</b> elevado a una potencia, contenida en <b><font color="blue">valor</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico, mayor que 0 y menor que 709,78271.  El valor de la constante <b>e</b> es aproximadamente 2.718282. La función <font color="red">Exp()</font>, a veces llamada antilogaritmo,  complementa la acci&oacute;n de la funci&oacute;n <font color="red">Log()</font>.
+
+<p>
+<font color="red" size=4>Oct(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Devuelve un string con el valor en  <b>Octal</b>  de <b><font color="blue">valor</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico entero. Si tiene parte decimal, ser&aacute; redondeado al entero m&aacute;s cercano antes de obtener su equivalente octal. El m&aacute;ximo valor octal obtenido no puede ser mayor de 11 caracteres octales.
+<p>
+
+<font color="red" size=4>Hex(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Devuelve un string con el valor en  <b>Hexadecimal</b>  de <b><font color="blue">valor</font></b>, que es obligatorio, y que debe ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico entero. Si tiene parte decimal, ser&aacute; redondeado al entero m&aacute;s cercano antes de obtener su equivalente hexadecimal. El m&aacute;ximo valor obtenido no puede ser mayor de 8 caracteres hexadecimales.
+<p>
+
+<font color="red" size=4>IsNumeric(</font><font color="blue" size=4>expresi&oacute;n</font><font color="red" size=4>)</font>
+<p>
+Devuelve un valor de tipo <b>Booleano</b> que indica si <b><font color="blue">expresi&oacute;n</font></b> puede ser evaluada como un n&uacute;mero.  <font color="red">IsNumeric()</font> devuelve <b>True</b> si la expresi&oacute;n completa se reconoce como un n&uacute;mero, en caso contrario, devuelve <b>False</b>. Tambi&eacute;n devuelve <b>False</b> si la expresi&oacute;n es una fecha. 
+<p>
+
+
+<font color="red" size=4>Rnd(</font><font color="blue" size=4>[N]</font><font color="red" size=4>)</font>
+<p>
+Genera un n&uacute;mero aleatorio partiendo de <font color="blue" size=4>N</font>, que es opcional. 
+<p>
+<font color="red">Rnd</font> devuelve un valor menor que 1 y mayor o igual que 0, por lo que si se quieren obtener n&uacute;meros enteros mayores que 1 hay que hacer algunas operaciones.
+<p>
+Por ejemplo, si se utiliza <font color="red">Rnd</font> de forma simple:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Randomize
+  For x = 0 To 5
+    Response.Write(<font color="red">Rnd(</font><font color="red">)</font> & "&lt;BR&gt;")
+  Next
+%&gt;</font>
+</pre>
+<p>
+Se obtiene algo as&iacute;:
+<p>
+<font color="green">
+0,2860071<BR>
+0,4326702<BR>
+0,959905<BR>
+0,9140284<BR>
+0,1316752<BR>
+</font>
+<p>
+Si se quieren obtener n&uacute;meros enteros dentro de un cierto intervalo puede utilizarse una expresi&oacute;n:
+<p>
+   <center><b>Int((N_mayor - N_menor + 1) * <font color="red">Rnd</font> + N_menor)</b></center>
+<p>
+Por ejemplo para obtener una secuencia aleatoria entre 1 y 5:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Randomize
+  For x = 0 To 5
+    Response.Write(Int((5 - 1 + 1) * <font color="red">Rnd</font> + 1) & "&lt;BR&gt;")
+  Next
+%&gt;</font>
+</pre>
+<p>
+Y este podr&iacute;a ser el resultado:
+<p>
+<font color="green">
+5<br>
+4<br>
+5<br>
+2<br>
+1<br>
+</font>
+<p>
+Te preguntar&aacute;s de d&oacute;nde ha salido y para qu&eacute; sirve la instrucci&oacute;n <font color="blue">Randomize[n]</font> que aparece antes del bucle For..To..Next de cada ejemplo;  pues se utiliza para inicializar el generador de n&uacute;meros aleatorios.
+<p>
+En efecto, la instrucción <font color="blue">Randomize[n]</font> utiliza <font color="blue">[n]</font> (opcional) para inicializar el generador de n&uacute;meros aleatorios de la funci&oacute;n <font color="red">Rnd()</font>, asign&aacute;ndole un nuevo valor de inicializaci&oacute;n. Si se omite <font color="blue">[n]</font>, se usar&aacute; para este fin el valor devuelto por el reloj del sistema.
+<p>
+Si no se utiliza la instrucci&oacute;n <font color="blue">Randomize</font>, la funci&oacute;n <font color="red">Rnd()</font> (sin argumento) utiliza como  valor de inicializaci&oacute;n el mismo que utiliz&oacute; la primera vez que se la invoca,  por lo que repetir&aacute; la misma secuencia.
+
+
+<p>
+<font color="red" size=4>FormatNumber(</font><font color="blue" size=4>Expresi&oacute;n [, Decimales, [Ceros, [Negativos, [Grupos]]]]</font><font color="red" size=4>)</font>
+<p>
+Sirve para dar formato a un n&uacute;mero o expresi&oacute;n num&eacute;rica. El resultado de <font color="red">FormatNumber()</font> sigue siendo de tipo num&eacute;rico. Tiene los siguientes par&aacute;metros:
+<p>
+<font color="blue"><b>Expresi&oacute;n</b></font> Obligatorio. Es el valor que se pretende formatear. Por supuesto, tiene que ser un n&uacute;mero o una expresi&oacute;n que devuelva un tipo num&eacute;rico
+<br>
+<font color="blue"><b>Decimales</b></font> Opcional. Valor num&eacute;rico que indica cuantas posiciones se muestran a la derecha del signo decimal. Si se omite, por defecto se aplica -1, y se utilizan los valores de la configuraci&oacute;n regional del servidor. Si <font color="blue">Decimales</font> es menor que el n&uacute;mero de d&iacute;gitos existente, se aplica redondeo,
+<br>
+<font color="blue"><b>Ceros</b></font> Opcional. Indica si se muestran o no los ceros a la izquierda en los valores fraccionarios. Puede tener dos valores: <b>0</b> (por defecto) para no mostrarlos, y <b>-1</b> para mostrarlos.
+<br>
+<font color="blue"><b>Negativos</b></font> Opcional. Indica si se muestran entre par&eacute;ntesis los valores negativos. Puede tener dos valores: <b>0</b> (por defecto) para no mostrarlos, y <b>-1</b> para mostrarlos.
+<br>
+<font color="blue"><b>Grupos</b></font> Opcional. Indica si se agrupan o no los n&uacute;meros utilizando el delimitador de grupos especificado en el panel de control del servidor. Puede tener dos valores: <b>0</b> (por defecto) para no agruparlos, y <b>-1</b> para agruparlos.
+<p>
+Por ejemplo, al escribir:
+<p>
+<pre>
+<font color="blue">&lt;%
+Response.Write(0012345.1299 & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>0012345.1299, 3, 0, 0, 0<font color="red">)</font> & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>0.1299, 3, 0, 0, 0<font color="red">)</font> & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>0.1299, 3, -1, 0, 0<font color="red">)</font> & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>-0.1299, 3, -1, 0, 0<font color="red">)</font> & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>-0.1299, 3, -1, -1, 0<font color="red">)</font> & "&lt;BR&gt;")
+%&gt;</font>
+</pre>
+<p>
+Se obtiene:
+<p>
+<font color="green">
+12345,1299<br>
+12345,130<br>
+,130<br>
+0,130<br>
+-0,130<br>
+(0,130)<br>
+</font>
+<p>
+
+<font color="red" size=4>FormatPercent(</font><font color="blue" size=4>Expresi&oacute;n [, Decimales, [Ceros, [Negativos, [Grupos]]]]</font><font color="red" size=4>)</font>
+<p>
+Es muy similar a la anterior. Sirve para dar formato a un n&uacute;mero o expresi&oacute;n num&eacute;rica, y adem&aacute;s lo multiplica por 100, a&ntilde;adi&eacute;ndole a la derecha el signo del tanto por ciento (<b>%</b>). El resultado de <font color="red">FormatPercent()</font> <b>NO</b> es de tipo num&eacute;rico. Tiene los mismos par&aacute;metros que <font color="red">FormatNumber()</font>.
+<p>
+Por ejemplo, si se escribe:
+<p>
+<pre>
+<font color="blue">&lt;%
+Response.Write(0012345.1299 & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>0012345.129999, 3, 0, 0, 0<font color="red">)</font> & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>0.129999, 3, 0, 0, 0<font color="red">)</font> & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>0.129999, 3, -1, 0, 0<font color="red">)</font> & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>-0.129999, 3, -1, 0, 0<font color="red">)</font> & "&lt;BR&gt;")
+Response.Write(<font color="red">FormatNumber(</font>-0.129999, 3, -1, -1, 0<font color="red">)</font> & "&lt;BR&gt;")
+%&gt;</font>
+</pre>
+<p>
+Se obtiene:
+<p>
+<font color="green">
+12345,129999<br>
+1234513,000%<br>
+13,000%<br>
+13,000%<br>
+-13,000%<br>
+(13,000%)<br>
+</font>
+<p>
+
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

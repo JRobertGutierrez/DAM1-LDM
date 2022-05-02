@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Como empezar </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2> ¿Cómo empezar?</h2>
+<h3>Lo que necesitamos.</h3>
+<p>
+<img src="figura1.gif" align="left" WIDTH="349" HEIGHT="364">En primer lugar definiremos como <b>cliente</b> la máquina remota, incluido su navegador, que se va a dirigir a nuestro servidor para, a través de una aplicación, realizar una transacción cualquiera, que deberá ser almacenada. La idea general se representa en la figura.
+<p>
+A la hora de construir una aplicación para internet, no se puede pensar exclusivamente en la parte cliente, sino que ha de diseñarse perfectamente conjuntada con otra aplicación local que permita administrar y explotar los datos capturados  al cliente. Hay una cierta tendencia a realizar la explotación y/o administración también a través de navegadores, pero esto restringe posibilidades, además de ser menos seguro en todos los aspectos.
+<p>
+Estas son algunas <b>especificaciones que se deben cumplir</b>: la aplicación no deberá depender nunca de las características del cliente, ni deberá obligar a éste a utilizar ningún software especial, debiendo respetar la libre elección de navegador de su propietario. La aplicación deberá servir al cliente HTML estandard, debidamente probado en varios navegadores, y conviene limitar al máximo la inclusión de código JavaScript, a fin de evitar incompatibilidades de versiones o de otro tipo. Se realizarán diseños con el menor número posible de gráficos, a fin de reducir al máximo el tiempo de carga de las pantallas. Según la naturaleza de las transacciones, se proveerá de conexiones seguras (shtml). Se facilitará un e-mail para la solución de los problemas o dudas que tenga el cliente, y se deberán responder con diligencia.
+<p>
+De estas breves l&iacute;neas ya se pueden extraer algunas conclusiones: necesitamos un <b>servidor</b> capaz de ejecutar nuestras aplicaciones tanto locales, para administraci&oacute;n, como remotas, que serán ejecutadas por los clientes. Tambi&eacute;n necesitaremos donde almacenar las transacciones de los clientes, es decir: una <b>base de datos</b> que en lo sucesivo llamaremos simplemente <b>DB</b>, y que por supuesto deber&aacute;s aprender a manejar y programar. Las buenas bases de datos relacionales suelen utilizar el lenguaje SQL (ANSI o alguna de sus variantes) para hacer las consultas y/o transacciones, y del buen dise&ntilde;o de estas consultas depender&aacute; que la aplicaci&oacute;n sea eficiente o no. Tambi&eacute;n será necesario dominar los distintos lenguajes que cada servidor web nos ofrece para conectar con las bases de datos, y por &uacute;ltimo, pero no por ello menos importante, hay que saber administrar y configurar correctamente el servidor, tanto a nivel m&aacute;quina como de servicios, en especial los de http y ftp.
+<p>
+<b>&iquest;Qu&eacute; elegir?</b>
+<p>
+Peliaguda pregunta esta... quien la responda asume que lo conoce casi todo, cosa difícil en estos tiempos. Yo me limitaré a comentar lo que conozco, que no es mucho, y a presentar fragmentos de lo que se utiliza en mi empresa. Que sea o no lo mejor o lo más adecuado, queda al mejor criterio de cada cual...
+<p>
+Si la empresa ya tiene infraestructura informática, te tienes que adaptar a ella... y arreglártelas como puedas. Si partimos de cero, lo primero que hay que analizar es la carga de trabajo que va a tener que resolver el servidor, pero pensando siempre en el futuro, no vaya a ser que por ahorrar un poco ahora, tengamos que tirarlo todo el año que viene. 
+<p>
+En nuestro caso (mi empresa) se trata de una instalación de tipo medio-bajo, con tres servidores: uno para la red local (intranet), otro para la red exterior (internet) y el tercero hace de puente con grandes sistemas IBM. Los dos primeros son PCs con dos procesadores Pentium II 450 y discos Ultra Wide SCSI. Uno actua como servidor de aplicaciones, servidor de disco y servidor de bases de datos para 90 máquinas. Est&aacute; configurado de forma que no se puede acceder a &eacute;l si no es desde la intranet (red local). El segundo, que actua de servidor HTTP y FTP, obtiene las p&aacute;ginas est&aacute;ticas de sus propios discos, y los datos din&aacute;micos del servidor de bases de datos. Adem&aacute;s ejecuta continuamente 30 aplicaciones internet, recibiendo en total m&aacute;s de 10.000 visitas diarias entre consultas est&aacute;ticas y transacciones de las aplicaciones. Son m&aacute;quinas baratas, sin marca ni arquitectura de servidor (aunque cuidadosamente ensambladas con elementos de calidad, de probada compatibilidad con el sistema operativo), y por ahora llevan varios a&ntilde;os funcionando las 24 horas sin problemas. Para evitar asaltos y problemas desde la red, por supuesto, las dos tienen instalado un programa firewall. El firewall, bien configurado, hace posible no tener que instalar un antivirus en los servidores, que los ralentizar&iacute;a notablemente. Y una cosa muy importante: <b>los servidores solamente deben utilizarse como servidores</b>, si adem&aacute;s se utilizan como estaciones de trabajo, las prestaciones pueden caer peligrosamente. Las labores de administraci&oacute;n conviene hacerlas antes de que los usuarios comiencen a trabajar. 
+<p>
+En cuanto al sistema operativo, nuestro primer servidor (el tercero de los descritos) fue un LINUX, pero ocurri&oacute; lo que suele ocurrir: es casi imposible que un usuario normal se aclare con un sistema UNIX. Y como no hay muchas alternativas, se opt&oacute; por instalar Windows NT Server en los servidores y Windows variados (95, 98, ME, XP) en los clientes. El pobre LINUX se ha quedado solo como intermediario entre nuestra mainframe y el servidor web (una mainframe es una m&aacute;quina muy, muy grande y cara que no suele hablarse bien m&aacute;s que consigo misma).
+<p>
+El siguiente paso era elegir una buena base de datos local. Tampoco hay muchas alternativas: La mainframe tiene la DB2 de IBM, cuyo precio es prohibitivo, y necesita m&aacute;quinas muy potentes. Algunos dicen que la mejor es Oracle, pero su precio tambien es enorme. Otros dicen que la mejor relaci&oacute;n calidad-precio es SQL Server de Microsoft, y optamos por esta. 
+<p>
+En nuestro caso, fue una decisi&oacute;n acertada, ya que a su buen rendimiento hay que a&ntilde;adir su facilidad de conexi&oacute;n con el resto de productos Microsoft, como  cabr&iacute;a esperar. Con este entorno se desarrollan las aplicaciones locales con Access 97 o 2003, las aplicaciones internet con ASP (Active Server Pages) o IDC (Internet Data base Conector), y el servidor web es el IIS (Internet Information Server) que va incluido en el sistema Windows NT Server. El conjunto se muestra muy s&oacute;lido, y no ha sido necesario emigrar a versiones superiores de sistema operativo, que probablemente necesitar&iacute;an m&aacute;quinas m&aacute;s potentes.
+<p>
+Puede que estas caracter&iacute;sticas no le parezcan a algunos propias de una instalaci&oacute;n &quot;seria&quot;, pero la realidad es que funciona sin un solo problema, los sistemas operativos no se &quot;cuelgan&quot; jam&aacute;s (no se permite a los usuarios instalar nada por su cuenta), la velocidad es excelente, habida cuenta de que algunas bases de datos tienen vol&uacute;menes muy repetables (m&aacute;s de 4 millones de registros) y que soportan accesos concurrentes de hasta 120 usuarios al ser accedidas simult&aacute;neamente por el servidor web y por los usuarios locales, y todo a un precio muy asequible.
+<p>
+Montajes similares a este, e incluso muy superiores, es posible realizarlos con servidores y clientes LINUX o cualquier otra variante de UNIX. La ventaja de LINUX es que es gratis, y funciona pr&aacute;cticamente sobre cualquier cosa que tenga un procesador y un disco (bueno, las &uacute;ltimas versiones ya no tanto). La desventaja es que si tienes problemas, no hay una marca a la que consultar; de ah&iacute; la gran diferencia de precio entre este sistema y los UNIX licenciados. Existen, tambi&eacute;n de libre distribuci&oacute;n, programas de servidores web (por ejemplo el famoso Apache), bases de datos (PostGres y otras) y paquetes de ofim&aacute;tica (Star Office, Open Office) para LINUX y para otros sistemas UNIX.
+<p>
+El gran problema de las instalaciones UNIX en general, es que no resultan f&aacute;ciles de instalar ni de administrar. Hay que ser un muy buen profesional de la inform&aacute;tica para mantener instalaciones as&iacute; (lo que no significa que con Windows no haya que saber nada). Es un mundo completamente diferente al de los sistemas Windows. Te lo tienes que hacer todo a mano: adapataciones del kernel a la m&aacute;quina, creaci&oacute;n de controladores, comunicaciones, configuraci&oacute;n de los clientes, Xwindows, hay que dominar los lenguajes C y Perl, los compiladores, el shell, dominar bien el ingl&eacute;s, etc., etc. Aunque en internet hay gran cantidad de informaci&oacute;n sobre UNIX, incluso algo en espa&ntilde;ol (proyecto LUCAS), es sin duda un gran reto...
+<p>
+<b>Otra soluci&oacute;n</b>
+<p>
+Si no se est&aacute; en disposici&oacute;n de montar y mantener un servidor, una buena soluci&oacute;n puede ser recurrir a un "hosting", es decir, alquilar un espacio web en un servidor montado, mantenido y custodiado por una de las muchas empresas que hay dedicadas a prestar estos servicios. Hay muy buenos proveedores de hosting que por un precio bastante razonable pueden ahorrarnos muchos problemas. Habitualmente, adem&aacute;s del espacio web, se pueden contratar bases de datos, dominios propios, IPs fijos, y cuanto nuestro proyecto pueda necesitar.
+
+<p>
+<h3>Ensalada de siglas....</h3>
+<p>
+Hasta ahora en esta gu&iacute;a se hab&iacute;a evitado la utilizaci&oacute;n de siglas. Dada la longitud de los nombres que se emplear&aacute;n en lo sucesivo,  no queda m&aacute;s remedio que utilizarlas... He aqu&iacute; un peque&ntilde;o glosario:
+<ul>
+    <li><b>IIS</b>: &nbsp; &nbsp;Servidor web que rueda en máquinas con Windows NT Server.
+    <li><b>NT</b>: &nbsp; &nbsp;Windows NT Server. Sistema operativo de apariencia similar a Windows 95 o 98, pero capaz de gestionar máquinas servidor de gran potencia, con varios procesadores, cientos de usuarios, grandes discos, y multitud de servicios. Actualmente ha sido sustituido por el Windows 2003 Server, que b&aacute;sicamente hace lo mismo, pero con muchas m&aacute;s medidas de seguridad, y por tanto m&aacute;s complicado de usar.
+	<li><b>PWS</b>: Personal Web Server. Servidor web personal que rueda en m&aacute;quinas con Windows 95/98/ME. Forma parte del  paquete de desarrollo  Microsoft FrontPage, aunque es posible conseguirlo solo. Puede utilizarse en peque&ntilde;as instalaciones de intranet, e incluso en internet, siempre que se est&eacute; seguro de que el n&uacute;mero de clientes ser&aacute; bajo (soporta 6). Se comporta exactamente igual que el IIS de los Windows Server, y se pueden ejecutar aplicaciones escritas tanto para el IDC como en ASP. 
+	<li><b>DB</b>: &nbsp; &nbsp;Base de datos. Programas que contienen un motor para gestionar enormes tablas con datos. Son un simple almac&eacute;n de datos, aunque son capaces de moverlos muy r&aacute;pidamente. No confundirlos con los generadores de aplicaciones. 
+    <li><b>Access 9x - 2007</b>: Componente del paquete Office 9x - 2007. Es un h&iacute;brido entre DB y generador de aplicaciones; incorpora su propio motor de DB. Es multiusuario, aunque no soporta un gran n&uacute;mero de ellos. Utiliza el Visual Acces (variante del Visual Basic) para la programaci&oacute;n de aplicaciones, lo que le permite una gran versatilidad. Adem&aacute;s de sus propias tablas, puede utilizar, mediante vínculos dinámicos y ODBC, tablas de SQL Server, de otras DB de Access, hojas de c&aacute;lculo, ficheros de texto, tablas de DBase, Fox Pro, y algunos otros or&iacute;genes de datos. Utiliza  una variante de SQL como lenguaje de interrogaci&oacute;n.
+    <li><b>SQL Server</b>: Es un  potente servidor de bases de datos de alto rendimiento. Soporta centenares de usuarios y tablas de enormes dimensiones. Al ser un producto profesional, no resulta tan sencillo de manejar o administrar. Utiliza el SQL ANSI como lenguaje de consulta.
+	<li><b>IDC</b>: &nbsp;Componente de los servidores web (Windows) que permite acceder, de manera sencilla, a una base de datos, pero como cada una dialoga a su manera, necesita un intermediario que le aclare las cosas: el ODBC
+    <li><b>ODBC</b>: Componente de los sistemas operativos que provee de controladores que permiten dialogar a otros elementos del sistema con las m&aacute;s variadas bases de datos.
+    <li><b>ASP</b>: &nbsp;Lenguaje mezcla de HTML, Visual Basic y Java que permite acceder a bases de datos y realizar complejas aplicaciones. Es muchísimo más potente que el IDC, que sólo tiene unas pocas instrucciones. Con él se puede hacer casi cualquier cosa. Funciona en sistemas operativos Windows Server con el servidor web IIS, o con Windows 95/98/ME con el PWS. Windows XP Pro lleva un IIS de serie.
+
+    <li><b>ASP.NET</b>: &nbsp; Es la nueva versi&oacute;n de ASP que funciona en los servidores con sistema operativo a partir de Windows Server 2003. Proporciona muchas m&aacute;s utilidades y prestaciones, siendo totalmente compatible con el ASP tradicional.
+
+<li><b>SQL</b> &nbsp; Lenguaje de consulta que utilizan casi todas las bases de datos relacionales. No sirve para escribir aplicaciones de usuario, s&oacute;lo se utiliza para darle instrucciones al motor de bases de datos.
+    <li><b>IE</b>: &nbsp; Internet Explorer. Navegador web de Microsoft. Existen versiones para Macintosh y para todos los Windows.  Su mayor particularidad es que forma parte de los sistemas operativos Windows, hasta el punto de no ser posible su desinstalaci&oacute;n completa. Esta peculiaridad permite dise&ntilde;ar aplicaciones internet espec&iacute;ficas para &eacute;l, mediannte controles Active X, con resultados imposibles de conseguir con otros navegadores, y por tanto no se tratar&aacute;n en esta guía. 
+    <li><b>Netscape</b>: Netscape Navigator. Navegador web de Netscape. Existen versiones para Macintosh, UNIX y Windows (incluido servidor). Es el navegador, junto con Opera,  que utiliza mayor cantidad de recursos HTML estandard de la actualidad. Ha desaparecido como marca, siendo sustituido por el <b>Mozilla Firefox</b>.
+    <li><b>Opera</b>: Otro muy buen navegador. Es el que se atiene de forma m&aacute;s estricta a las especificaciones del HTML estandard marcadas por la W3C.
+</ul>
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+

@@ -1,0 +1,234 @@
+<HTML>
+<HEAD><TITLE>ASP 11</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El objeto Server</H2>
+<p>
+Este objeto proporciona acceso a distintas funciones de utilidad para el programador de aplicaciones internet. 
+<p>
+El objeto <b>Server</b> tiene 1 <b>propiedad</b> y 7 <b>m&eacute;todos</b>: 
+
+<hr noshade>
+<center><font size=4>PROPIEDADES</font></center><p>
+
+<h3>Server.ScriptTimeout = Tiempo </h3>
+Esta propiedad especifica el tiempo, medido en segundos, de que dispondr&aacute; una p&aacute;gina o script para ejecutarse. El valor por defecto es de 90 segundos, y suele ser suficiente incluso para p&aacute;ginas largas y complicadas. Si en este tiempo no se ha concluido el procesamiento de todo el c&oacute;digo, probablemente se debe a que ha entrado en un bucle sin salida, el servidor est&aacute; bloqueado o intentando obtener un dato del cliente sin conseguirlo. Salvo raras ocasiones, no conviene aumentarlo, ya que  varios procesos incompletos simult&aacute;neos, posiblemente dejar&aacute;n el servidor "colgado". No confundir esta propiedad con <b>Session.Timeout</b> que es el tiempo dado a una sesi&oacute;n, y que comienza a contar cuando todo el c&oacute;digo ya ha sido interpretado y ejecutado. 
+<p>
+Por ejemplo, si se quiere aumentar el tiempo de ejecuci&oacute;n a 100 segundos, se escribe:
+<p>
+
+<font color="blue" face="courier" size=2>
+&lt;% <FONT color="red">Server.ScriptTimeout</FONT> = 100 %&gt;
+</font>
+
+
+<hr noshade>
+<center><font size=4>METODOS</font></center><p>
+<h3>Server.CreateObject(<font color="blue">"ObjectID"</font>)  </h3> 
+Este es, probablemente, uno de los m&eacute;todos m&aacute;s importantes de ASP, ya que permite al usuario crear instancias a otros <b>objetos</b> (componentes <b>activeX</b> o componentes creados por el usuario), que al igual que los ya existentes intr&iacute;nsecamente en ASP, tienen sus propias colecciones, eventos, m&eacute;todos y propiedades asociadas con ellos. Tiene un argumento  obligatorio, <font color="blue">ObjectID</font>, que especifica el tipo de objeto que se va a crear.
+<p>
+El ejemplo siguiente crea dos objetos: <font color="green"><b>DB</b></font> que es del tipo  <b>Connection</b> (conexi&oacute;n) a una DB y <font color="green"><b>RS</b></font> que es un <b>RecordSet</b>  (conjunto de registros extraido de una DB). Los nombres asignados a los objetos son libres, y puedes llamarlos como quieras:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Set <font color="green"><b>DB</b></font> = <FONT color="red">Server.CreateObject</font>("ADODB.Connection") <br>
+Set <font color="green"><b>RS</b></font> = <FONT color="red">Server.CreateObject</font>("ADODB.RecordSet") <br>
+%&gt;
+</font>
+<p>
+Seguramente te habr&aacute;s fijado en que hay una instrucci&oacute;n que hasta ahora no hab&iacute;amos visto: <b>Set</b>. En efecto, hasta el momento para asignar un valor a una variable, simplemente escrib&iacute;amos una igualdad, por ejemplo: 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">Nuevocod = Request.Form("NuevoCod")</font>. 
+<br>
+Esto se puede hacer siempre que la variable vaya a recibir como valor un string, un n&uacute;mero, el resultado de una funci&oacute;n, una propiedad o un m&eacute;todo, pero en el caso de recibir un objeto hay que anteponer la instrucci&oacute;n <font color="blue"><b>Set</b></font>, tal como se muestra.
+<p>
+Otro tipo de objetos muy utilizados son los <b>FileSystem</b> y <b>TextStream</b> que sirven para crear, leer y escribir ficheros de texto. Por ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Set <font color="green"><b>FS</b></font> = <FONT color="red">Server.CreateObject("Scripting.FileSystemObject") </font><br>
+Set <font color="green"><b>Fichero</b></font> = <FONT color="red"> FS.CreateTextFile("D:\ASP\texto.txt", True) </font><br>
+%&gt;
+</font>
+<p>
+Dada su utilidad, en otras p&aacute;ginas de la guia veremos ejemplos m&aacute;s extensos de estos y otros objetos creados con el m&eacute;todo Server.CreateObject().
+
+<hr WIDTH=50%>
+<h3>Server.Execute(<font color="blue">"Ruta"</font>)</h3>
+ Permite llamar desde una p&aacute;gina ASP a otra p&aacute;gina ASP. Cuando la p&aacute;gina llamada concluye su proceso, el control vuelve a la p&aacute;gina llamadora. Es un efecto parecido al que se consigue con los <a href="asp2.htm#1">ficheros de inclusi&oacute;n</a>, ya explicados en otro punto. B&aacute;sicamente se diferencia de los include en que no pasa a formar  parte del mismo fichero en el momento de ser procesado, sino que se ejecuta un segundo fichero por separado y <b>con otro nombre</b>.
+<p>
+No debe confundirse con los m&eacute;todos <b>Server.Transfer</b> o <b>Response.Redirect</b> ya que con ellos el control no vuelve a la p&aacute;gina llamadora, y el proceso concluye en la p&aacute;gina llamada.
+<p>
+Por ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero llamador.asp<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+Esto es la parte 1 que se escribe desde el fichero <b>Llamador</b> &lt;BR&gt;<br>
+&lt;%<FONT color="red"> Server.Execute</font>("llamado.asp") %&gt;<br>
+Esto es la parte 3 que se escribe desde el fichero <b>Llamador</b> &lt;BR&gt;<br>
+
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;
+<p>
+
+'---Fichero llamado.asp<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;%<br>
+Response.Write "Esto es la parte 2 que se escribe desde el fichero <b>Llamado</b> &lt;BR&gt;"<br>
+%&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;
+<p>
+</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+Esto es la parte 1 que se escribe desde el fichero <b>Llamador</b><br>
+Esto es la parte 2 que se escribe desde el fichero <b>Llamado</b><br>
+Esto es la parte 3 que se escribe desde el fichero <b>Llamador</b><br>
+</font>
+
+
+<hr WIDTH=50%>
+<h3>Server.GetLastError( )</font></h3>
+
+Ver el objeto <a href="asp7.htm">ASPError </a>
+
+
+<hr WIDTH=50%>
+<h3>Server.HTMLEncode(<font color="blue">"String"</font>)</h3>
+Con este m&eacute;todo se puede convertir un string codificado en HTML, y por tanto ejecutable por los navegadores, en c&oacute;digo <b>solamente visible</b> pero no ejecutable por los navegadores. Es decir, se trata de obtener, partiendo de HTML normal, un tipo de c&oacute;digo que aunque el navegador lo muestra como si fuese HTML, en realidad es ASCII puro. Es &uacute;til  para escribir manuales como &eacute;ste. Veamos un ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% Response.Write <FONT color="red">Server.HTMLEncode</font>("Esto es un break &lt;BR&gt; que no funciona") %&gt;</font>
+<p>
+Este ser&iacute;a el c&oacute;digo interno obtenido, <b>visible</b> en formato HTML pero <b>no ejecutable</b> como tal:<br>
+<font color="green" face="courier" size=2>
+Esto es un break &amp;lt;BR&amp;gt; que no funciona<br></font>
+<p>
+Y esto es lo que mostrar&aacute; es navegador:<br>
+<font color="green" face="courier" size=2>
+Esto es un break &lt;BR&gt; que no funciona
+</font>
+
+<hr WIDTH=50%>
+<h3>Server.MapPath(<font color="blue">"Ruta"</font>) </h3>
+Traza un mapa de rutas f&iacute;sicas (absolutas) partiendo de rutas virtuales (relativas) de ficheros que se encuentren dentro del &aacute;rbol de directorios declarados como parte de la estructura del servidor web. Por ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+La ruta de fichero1.asp es: &lt;%  Response.Write <FONT color="red">Server.MapPath</font>("fichero1.asp") %&gt;<br>
+La ruta de fichero2.asp es: &lt;%  Response.Write <FONT color="red">Server.MapPath</font>("\fichero2.asp") %&gt;<br>
+La ruta de fichero3.asp es: &lt;%  Response.Write <FONT color="red">Server.MapPath</font>("asp\fichero3.asp") %&gt;<br>
+La ruta de fichero4.asp es: &lt;%  Response.Write <FONT color="red">Server.MapPath</font>("\") %&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+La ruta de fichero1.asp es: D:\Inetpub\wwwroot\fichero1.asp <br>
+La ruta de fichero2.asp es: D:\Inetpub\wwwroot\asp\fichero2.asp <br>
+La ruta de fichero3.asp es: D:\Inetpub\wwwroot\asp\fichero3.asp <br>
+La ruta de fichero4.asp es: D:\Inetpub\wwwroot<br>
+</font>
+
+
+<hr WIDTH=50%>
+<h3>Server.Transfer(<font color="blue">"Ruta"</font>)</h3>
+ Permite llamar desde una p&aacute;gina ASP a otra p&aacute;gina ASP. Cuando la p&aacute;gina llamada concluye su proceso, el control <b>no</b> vuelve a la p&aacute;gina llamadora, y concluye en la p&aacute;gina llamada.
+<p>
+No confundir con el m&eacute;todo <b>Response.Redirect</b>  que funciona de modo similar, pero partiendo de otro objeto. El proceso de transferencia de una p&aacute;gina a otra es completo, incluyendo todos los objetos y variables que hayan sido creados en la p&aacute;gina llamadora como si se tratase de la misma, aunque con <b>otro nombre de p&aacute;gina</b>.
+<p>
+Por ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero llamador.asp<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+Esto es la parte 1 que se escribe desde el fichero <b>Llamador</b> &lt;BR&gt;<br>
+&lt;%<br>
+Session("prueba") = "Variable de sesi&oacute;n creada desde el fichero <b>Llamador</b> &lt;BR&gt;"<br>
+<FONT color="red"> Server.Transfer</font>("llamado.asp") <br>
+%&gt;<br>
+Esto es la parte 3 que se escribe desde el fichero <b>Llamador</b> &lt;BR&gt;<br>
+
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;
+<p>
+
+'---Fichero llamado.asp<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;%<br>
+Response.Write Session("prueba") & "&lt;BR&gt;" <br>
+Response.Write "Esto es la parte 2 que se escribe desde el fichero <b>Llamado</b> &lt;BR&gt;"<br>
+%&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;
+<p>
+</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+Esto es la parte 1 que se escribe desde el fichero <b>Llamador</b><br>
+Variable de sesi&oacute;n creada desde el fichero <b>Llamador</b> <br>
+Esto es la parte 2 que se escribe desde el fichero <b>Llamado</b><br>
+</font>
+<p<
+como puedes ver, la parte 3 que est&aacute; despu&eacute;s de producirse la transferencia, no ha sido ejecutada.
+
+
+
+<hr WIDTH=50%>
+<h3>Server.URLEncode(<font color="blue">"String"</font>)</h3>
+Este m&eacute;todo puede convertir un string conteniendo una direcci&oacute;n URL en formato ASCII a formato <b>URL-encoded</b>. Veamos un ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% Response.Write <FONT color="red">Server.URLEncode</font>("http://sestud.uv.es/manual.esp") %&gt;</font>
+<p>
+Este ser&iacute;a el c&oacute;digo interno obtenido <b>URL-encoded</b>, que es precisamente con el que trabajan internamente los navegadores, aunque habitualmente se vea de otra forma (formato <b>ASCII</b>).
+<p>
+<font color="green" face="courier" size=2>
+http%3A%2F%2Fsestud%2Euv%2Ees%2Fmanual%2Eesp
+</font>
+<p>
+Como puedes ver, la conversi&oacute;n lo que hace es transformar cualquier cosa que no sea una letra o un n&uacute;mero en su c&oacute;digo <b>hexadecimal</b> separados por el signo <b>%</b> 
+<pre>
+Hex   Dec   ASCII
+---------------------
+3A    58      :
+2F    47      /
+2E    46      .
+</pre>
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

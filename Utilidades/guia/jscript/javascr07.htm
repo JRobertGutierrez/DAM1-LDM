@@ -1,0 +1,481 @@
+<html>
+<head>
+<title>JavaScript 7 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>Objetos y funciones de JavaScript</H2>
+
+<H3>Los objetos de JavaScript</H3>
+
+JavaScript dispone de objetos intr&iacute;nsecos del lenguaje, es decir, que ya existen y est&aacute;n disponibles sin crearlos. No hay que confundirlos con los <a href="javascr05.htm">objetos del navegador</a>, que tienen funcionalidades distintas. Casi todos tienen propiedades y m&eacute;todos, pero no todos tienen manejadores de eventos. Algunos de ellos en otros lenguajes son funciones (por ejemplo, Date).
+<p>
+Todos los objetos de JavaScript comienzan por una letra may&uacute;scula y las instrucciones por una min&uacute;scula.
+
+
+<p>
+<font face="courier" color="red"> <b>Array</b></font> &nbsp; El array (o matriz) es un objeto que permite almacenar datos con un cierto orden. Recuerda siempre que los arrays almacenan todos sus datos en memoria, y por tanto no es posible utilizarlos para recuperar en otra sesi&oacute;n lo almacenado, no son ficheros. Al ser la memoria del cliente el lugar donde se almacenan los datos, el acceso a ellos es muy r&aacute;pido. Los datos almacenados pueden ser de cualquier tipo: n&uacute;meros, cadenas, objetos, etc., y pueden mezclarse.
+<p>
+Seg&uacute;n la sintaxis que se utilice, el objeto funciona de distinta manera. Si se escribe: 
+<p>
+ <font color="red" face="courier">Array(<font color="blue">2</font>)</font> &nbsp; se crea un array vac&iacute;o de longitud 3, es decir con tres celdas, ya que los &iacute;ndices comienzan por el cero. En cambio, si se escribe  <font color="red" face="courier">Array(<font color="blue">"2"</font>)</font> &nbsp; tendremos un array de una sola celda, cuyo contenido es "2". Si en lugar de un solo n&uacute;mero se escriben varios separados por comas, tambi&eacute;n ser&aacute;n almacenados, y el array tendr&aacute; tantas celdas como argumentos se hayan escrito dentro de los par&eacute;ntesis, por ejemplo:  <font color="red" face="courier">Array(<font color="blue">1, 2, 3, 4</font>)</font> &nbsp; crea un array con cuatro celdas conteniendo 1, 2, 3 y 4 respectivamente. Puede ocurrir que al crear el array,  no se tengan todav&iacute;a disponibles los datos que se guardar&aacute;n en &eacute;l. &iquest;c&oacute;mo mover los datos despu&eacute;s? cambiando de nuevo la sintaxis:
+<p>
+ Se crea el array:&nbsp; <font color="red" face="courier">Array(<font color="blue">2</font>)</font> &nbsp; y se le mueven los datos: 
+ <font color="red" face="courier">Array[0]<font color="blue"> = "A" </font></font> &nbsp;
+ <font color="red" face="courier">Array[1]<font color="blue"> = "B" </font></font> &nbsp;
+ <font color="red" face="courier">Array[2]<font color="blue"> = "C" </font></font> 
+<p>
+F&iacute;jate en que para asignarle valores a las celdas, esta vez se hace escribiendo el n&uacute;mero de &iacute;ndice de la celda entre corchetes en lugar de par&eacute;ntesis.
+<p>
+Aunque en estos ejemplos, por claridad, no se ha utilizado, al crear un array se debe emplear el operador <b>new</b>, as&iacute; como cuando haya que inicializarlo si ya estaba creado previamente:  <font color="red" face="courier"> <b>new</b> Array(<font color="blue">2</font>)</font> &nbsp;. 
+<p>
+Hasta aqu&iacute; hemos visto que se invoca el array directamente, pero &iquest;qu&eacute; ocurre si en nuestro programa tenemos que crear m&aacute;s de uno? si no tienen un nombre que los distinga, al crear el segundo, estar&iacute;amos reinicializando de nuevo el primero. Para resolver esto, se asigna el array a una variable en el momento de crearlo, lo que nos permitir&aacute; invocarlo por su nombre para todo:
+<p>
+ Se crea el array:&nbsp; <font color="red" face="courier"> Mi_array = <font color="blue">new Array(2)</font></font> &nbsp; y se le mueven los datos invocando su nombre:
+<p> 
+ <font color="red" face="courier">Mi_array[0]<font color="blue"> = "A" </font></font> &nbsp;
+ <font color="red" face="courier">Mi_array[1]<font color="blue"> = "B" </font></font> &nbsp;
+ <font color="red" face="courier">Mi_array[2]<font color="blue"> = "C" </font></font> 
+<p>
+Esta sintaxis sirve tanto para mover datos al array como para extraerlos si ya estaban almacenados.<br>
+El sistema de utilizar el &iacute;ndice, permite recorrer r&aacute;pidamente el array con una instrucci&oacute;n de bucle <b>for</b>. Como ya se ha dicho, en cada celda de un array se puede poner cualquier cosa, incluso otro array. Esto permite crear arrays complejos de m&aacute;s de una dimensi&oacute;n, ya que JavaScript no tiene instrucciones para crear arrays multidimensionales como VBScript. El siguiente ejemplo crea un array de dos dimensiones utilizando instrucciones de bucle para recorrer los dos arrays:
+<p>
+<pre><font face="courier" color="blue">
+Mi_array = new Array(1)
+for (i=0; i < 2; i++) {
+   Mi_array[i] = new Array(2)
+   for (j=0; j < 2; j++) {
+      Mi_array[i][j] = "["+i+","+j+"]"
+   }
+}
+for (i=0; i < 2; i++) {
+   resultado = "Linea "+i+":"
+   for (j=0; j < 2; j++) {
+      resultado += Mi_array[i][j]
+   }
+   document.write(resultado,"&lt;p&gt;")
+}
+</pre></font>
+Y esto es lo que se obtiene:
+<pre>
+<font face="courier" color="green">
+Linea 0:[0,0][0,1]
+
+Linea 1:[1,0][1,1]
+</font>
+</pre>
+
+La longitud de los arrays es din&aacute;mica. Es decir, que si se crea un array de una longitud cualquiera (incluso cero) y despu&eacute;s se mueve un dato a una posici&oacute;n de &iacute;ndice superior a la creada, el array se redimensiona hasta el nuevo valor. Todas las posiciones entre el anterior l&iacute;mite y el nuevo, l&oacute;gicamente, estan vacias.
+<p>
+<b>Propiedades</b><br>
+El objeto array tiene una propiedad: <font color="red" face="courier">length</font> que indica la longitud del &iacute;ndice. Por ejemplo, si se crea el array:
+<p>
+<font face="courier" color="blue">
+Mi_array = new Array(2)<br>
+document.write(Mi_array<font color="red">.length</font>)</font>
+<p>
+Se obtiene: <font face="courier" color="green">2</font> &nbsp;&nbsp; F&iacute;jate en que, aunque el resultado es 2,  son 3 las posiciones disponibles, ya que el &iacute;ndice comienza por el 0.
+<p>
+<b>M&eacute;todos</b><br>
+Adem&aacute;s de los 3 m&eacute;todos comunes a otros objetos de JavaScript, el objeto array tiene otros 3 propios: <font color="red">join &nbsp; reverse &nbsp; sort</font> &nbsp; Veamos c&oacute;mo funcionan:
+<p>
+<font color="red">join(<font color="blue">separador</font>)</font> Este m&eacute;todo se utiliza para concatener todos los valores almacenados en el array en un string. Opcionalmente se puede establecer un string separador entre valores, que por defecto es la coma <b>,</b>. Si se establece un separador que no es del tipo string, ser&aacute; convertido a string. Por ejemplo:
+<p>
+<font face="courier" color="blue">
+Mi_array = new Array("Item1", 100, "Item3")<br>
+document.write(Mi_array<font color="red">.join(", ")</font>)</font>
+<p>
+Se obtiene: <font face="courier" color="green">Item1, 100, Item3 </font>
+
+<p>
+<font color="red">sort(<font color="blue">orden</font>)</font> Como indica su nombre, sirve para ordenar los elementos del array seg&uacute;n el modo indicado por <font color="blue">orden</font> que puede ser una funci&oacute;n, o una muestra de caracteres. Si se omite el modo de ordenaci&oacute;n, todos los valores son convertidos a string y ordenados seg&uacute;n el diccionario ingl&eacute;s por sus valores ASCII.
+<p>
+<font face="courier" color="blue">
+Mi_array = new Array("B", 100, "A")<br>
+document.write(Mi_array<font color="red">.sort()</font>)</font>
+<p>
+Se obtiene: <font face="courier" color="green">100,A,B </font>
+<p>
+
+<p>
+<font color="red">reverse()</font> Se utiliza para transponer los elementos de un array de forma inversa, es decir que el primer elemento pasar&aacute; a ser el &uacute;ltimo y viceversa. No es una ordenaci&oacute;n, simplemente cambian de sitio.
+<p>
+<font face="courier" color="blue">
+Mi_array = new Array("B", 100, "A")<br>
+document.write(Mi_array<font color="red">.reverse()</font>)</font>
+<p>
+Se obtiene: <font face="courier" color="green">A,100,B </font>
+
+<hr>
+
+<font face="courier" color="red"> <b>Boolean</b></font> Este objeto sirve para convertir cualquier valor a booleano, es decir, <b>false</b> o <b>true</b>. Por ejemplo.
+<p>
+<font face="courier" color="blue">
+Mi_booleano = new <font color="red">Boolean</font>("mi_valor")<br>
+document.write(Mi_booleano)</font>
+<p>
+Se obtiene: <font face="courier" color="green">true </font>
+<p>
+Si el argumento <font face="courier" color="blue">"mi_valor"</font> es omitido o su valor es cero, null, false o empty ("") el objeto devuelve <b>false</b>. Cualquier otro valor, incluso la cadena "false" devuelve <b>true</b>.
+<p>
+<b>M&eacute;todos</b><br>
+Tiene los tres m&eacute;todos comunes de todos los objetos JavaScript.
+<hr>
+
+<font face="courier" color="red"><b> Date</b></font> &nbsp; Trabaja con fechas y horas. Por ejemplo:
+<p>
+<font face="courier" color="blue">
+Mi_fecha = new <font color="red">Date</font>([argumentos])<br>
+document.write(Mi_fecha)</font>
+<p>
+Si se omite <b>argumentos</b> se obtiene: <font face="courier" color="green">Mon, 25 Apr 2005 11:43:55 GMT+0200</font>. 
+<p>
+Los argumentos son opcionales y sirven para inicializar el objeto. Si se omiten se inicializa con la fecha y hora del sistema (cliente). Tambi&eacute;n pueden escribirse de diversas formas:
+<p>
+Date(<font color="red">"month day, year hours:minutes:seconds"</font>)<br>
+Date(<font color="red">year, month, day</font>)<br>
+Date(<font color="red">year, month, day, hours, minutes, seconds</font>)
+<p>
+<b>M&eacute;todos</b><br>
+Se dispone de un gran n&uacute;mero de m&eacute;todos destinados a obtener o establecer las distintas partes de una fecha/hora. Sea la variable Mi_fecha del ejemplo anterior. Para obtener alguna de las partes de su valor se escribe el objeto seguido del m&eacute;todo.  Por ejemplo: <font face="courier" color="blue">Mi_fecha.getDate()</font>
+<ul>
+  <li><font face="courier" color="blue">getDate</font> El  dia del mes. Es un n&uacute;mero entre 1 y 31.
+  <li><font face="courier" color="blue">getDay </font>  Dia de la semana en n&uacute;mero. El domingo = 0. Es un n&uacute;mero entre 0 y 6.
+  <li><font face="courier" color="blue">getHours </font> La hora. Es un n&uacute;mero entre 0 y 23.
+  <li><font face="courier" color="blue">getMinutes </font> Los minutos. Es un n&uacute;mero entre 0 y 59.
+  <li><font face="courier" color="blue">getMonth </font> El mes. Es un n&uacute;mero entre 0 y 11. 0 = enero.
+  <li><font face="courier" color="blue">getSeconds </font> Los segundos. Es un n&uacute;mero entre 0 y 59.
+  <li><font face="courier" color="blue">getTime </font> Es el n&uacute;mero de milisegundos transcurridos desde el 1 de enero de 1970 a las 0:00:00 y la fecha/hora actual.
+  <li><font face="courier" color="blue">getTimezoneOffset </font> Zona horaria. Devuelve la diferencia en minutos entre la hora local y la GMT (Greenwich Meridian Time).
+  <li><font face="courier" color="blue">getYear </font> El a&ntilde;o. Dependiendo del valor devolver&aacute; dos o cuatro d&iacute;gitos. Entre 1900 y 1999 devuelve <b>dos</b> y a partir de 2000 <b>cuatro</b>.
+  <li><font face="courier" color="blue">getFullYear </font> Funciona como el anterior, pero con el a&ntilde;o con <b>cuatro</b> d&iacute;gitos siempre. Solamente funciona con versiones modernas de navegador.
+  <li><font face="courier" color="blue">parse</font> Funciona igual que <b>getTime</b>, pero en lugar de obtener los milisegundos hasta la fecha/hora actual, lo hace hasta la contenida en un string del tipo  "Dec 20, 2005" o "Mon, 29 Dec 1999 13:30:00 GMT."
+</ul>
+
+Como ya has visto, cuando el objeto ya tiene una fecha almacenada  se utilizan los m&eacute;todos <b>get...</b> para obtener algunas de las partes de esa fecha. Esta fecha se puede modificar en cualquier momento, bien entera o algunas de sus partes, mediante los m&eacute;todos <b>set...</b>:
+<ul>
+  <li><font face="courier" color="blue">setDate </font>
+  <li><font face="courier" color="blue">setHours </font>
+  <li><font face="courier" color="blue">setMinutes </font>
+  <li><font face="courier" color="blue">setMonth </font>
+  <li><font face="courier" color="blue">setSeconds </font>
+  <li><font face="courier" color="blue">setTime </font>
+  <li><font face="courier" color="blue">setYear </font>
+  <li><font face="courier" color="blue">setFullYear </font>
+  <li><font face="courier" color="blue">toGMTString </font>
+  <li><font face="courier" color="blue">toLocaleString </font>
+  <li><font face="courier" color="blue">UTC </font>
+</ul>
+
+
+<hr>
+
+<font face="courier" color="red"> <b>Function</b>(<font color="blue">[argumentos]</font>, "instrucciones")</font> Curiosa forma de escribir funciones. Este objeto puede contener una funci&oacute;n que trabajar&aacute; de forma an&aacute;loga a las declaradas con la instrucci&oacute;n <b>function</b>. F&iacute;jate en que la diferencia de sintaxis entre ambas es simplemente que el objeto se define con una "<b>F</b>" may&uacute;scula y la instrucci&oacute;n con una "<b>f</b>" min&uacute;scula. La diferencia pr&aacute;ctica entre los dos procedimientos es que el objeto tiene propiedades que pueden invocarse, y la declarada con la instrucci&oacute;n no. Por contra, el objeto es evaluado cada vez que se invoca, mientras que la declarada con la instrucci&oacute;n es compilada, lo que la hace m&aacute;s eficiente. Los argumentos pueden omitirse si no son necesarios, las instrucciones, evidentemente, no. La particularidad de esta forma de escribir funciones es que tanto los argumentos (incluso aunque vayan a ser valores num&eacute;ricos) como las instrucciones van dentro de strings en lugar del t&iacute;pico par de llaves. Por ejemplo:
+<p>
+<font face="courier" color="blue">
+var Mi_funcion = new <font color="red">Function(</font>"a", "b", <font color="red">"return (a * b)")</font><br>
+document.write(Mi_funcion(2,5))
+</font>
+<p>
+Se obtiene: <font face="courier" color="green"><b>10</b></font>
+<p>
+<b>Propiedades</b><br>
+<p>
+<b>M&eacute;todos</b><br>
+Los tres comunes de los objetos JavaScript.
+<hr>
+
+
+
+<font face="courier" color="red"><b>Math</b></font> Este objeto se utiliza para trabajar con constantes y funciones matem&aacute;ticas. Esto hay que hacerlo mediante sus propiedades y m&eacute;todos. Por ejemplo, la propiedad PI:
+<p>
+<font face="courier" color="blue">
+document.write(<font color="red">Math.PI</font>)
+</font>
+<p>
+Se obtiene: <font face="courier" color="green"><b>3.141592653589793</b></font>
+<p>
+Las <b>propiedades</b> devuelven valores constantes:
+<ul>
+  <li><font face="courier" color="blue">Math.<font color="red">E</font> = <font color="green">2.718281828459045</font></font> La constante de Euler o n&uacute;mero <b>e</b>.
+
+<li><font face="courier" color="blue">Math.<font color="red">LN2</font> = <font color="green">0.6931471805599453</font></font> Logaritmo natural de 2.
+
+<li><font face="courier" color="blue">Math.<font color="red">LN10</font> = <font color="green">2.302585092994046</font></font> Logaritmo natural de 10.
+
+<li><font face="courier" color="blue">Math.<font color="red">LOG2E</font> = <font color="green">1.4426950408889634</font></font> Logaritmo en base 2 de <b>e</b>.
+
+<li><font face="courier" color="blue">Math.<font color="red">LOG10E</font> = <font color="green">0.4342944819032518</font></font> Logaritmo en base 10 de <b>e</b>.
+
+<li><font face="courier" color="blue">Math.<font color="red">PI</font> = <font color="green">3.141592653589793</font></font> Relaci&oacute;n entre la circunferencia de un c&iacute;rculo y su di&aacute;metro.
+
+<li><font face="courier" color="blue">Math.<font color="red">SQRT1_2</font> = <font color="green">0.7071067811865476</font></font> Ra&iacute;z cuadrada de un medio (1/2).
+
+<li><font face="courier" color="blue">Math.<font color="red">SQRT2</font> = <font color="green">1.4142135623730951</font></font> Ra&iacute;z cuadrada de 2.
+</ul>
+
+Los <b>m&eacute;todos</b> son funciones matem&aacute;ticas que admiten argumentos. Adem&aacute;s de los tres comunes tenemos:
+<ul>
+<li><font face="courier" color="blue">Math.<font color="red">sin(90)</font> = <font color="green">0.8939966636005579 </font></font> &nbsp; Seno de un &aacute;ngulo medido en radianes. El rango devuelto estar&aacute; entre -1 y 1.
+
+<li><font face="courier" color="blue">Math.<font color="red">asin(-1)</font> = <font color="green">-1.5707963267948966</font></font> &nbsp;  Arco seno (en radianes) de un n&uacute;mero. Tiene que ser un valor entre -1 y 1. El resultado obtenido siempre estar&aacute; dentro del rango entre -pi/2 y pi/2 radianes. Si el valor est&aacute; fuera de este rango devuelve <b>NaN</b>.
+
+<li><font face="courier" color="blue">Math.<font color="red">cos(1)</font> = <font color="green">0.7853981633974483</font></font> &nbsp;  Coseno (en radianes) de un n&uacute;mero. El resultado obtenido siempre estar&aacute; dentro del rango entre -pi/2 y pi/2 radianes. 
+
+<li><font face="courier" color="blue">Math.<font color="red">acos(-1)</font> = <font color="green">3.141592653589793 = pi</font></font> &nbsp; Arco coseno (en radianes) de un n&uacute;mero. Tiene que ser un valor entre -1 y 1. Si el valor est&aacute; fuera de este rango devuelve <b>NaN</b> (Not-a-Number).
+
+<li><font face="courier" color="blue">Math.<font color="red">tan(90)</font> = <font color="green">-1.995200412208242 </font></font> &nbsp; Tangente de un &aacute;ngulo medido en radianes.
+
+<li><font face="courier" color="blue">Math.<font color="red">atan(1)</font> = <font color="green">0.7853981633974483</font></font> &nbsp;  Arco tangente (en radianes) de un n&uacute;mero. El resultado obtenido siempre estar&aacute; dentro del rango entre -pi/2 y pi/2 radianes. 
+
+<li><font face="courier" color="blue">Math.<font color="red">atan2(20,50)</font> = <font color="green">0.3805063771123649</font></font> &nbsp;  Devuelve, en un sistema cartesiano de coordenadas, el &aacute;ngulo en radianes formado por el eje trazado entre el origen y el punto x,y definido por los argumentos de este m&eacute;todo.
+
+<li><font face="courier" color="blue">Math.<font color="red">abs(01234)</font> = <font color="green">1234</font></font> &nbsp; Valor absoluto de un n&uacute;mero.
+
+<li><font face="courier" color="blue">Math.<font color="red">ceil(20.5)</font> = <font color="green">21</font></font> &nbsp;  Obtiene el n&uacute;mero entero m&aacute;s pequeño posible que sea igual o mayor que el argumento dado.
+
+<li><font face="courier" color="blue">Math.<font color="red">floor(20.5)</font> = <font color="green">20</font></font> &nbsp;  Al contrario que el anterior, obtiene el n&uacute;mero entero m&aacute;s grande posible que sea igual o menor que el argumento dado.
+
+<li><font face="courier" color="blue">Math.<font color="red">exp(1)</font> = <font color="green">2.302585092994046 </font></font> &nbsp;  N&uacute;meros <b>e</b>.
+
+<li><font face="courier" color="blue">Math.<font color="red">log(10)</font> = <font color="green">2.302585092994046 </font></font> &nbsp;  Devuelve el logaritmo natural (en base <b>e</b>) del argumento dado.
+
+<li><font face="courier" color="blue">Math.<font color="red">pow(10, 3)</font> = <font color="green">1000 </font></font> &nbsp;  Potencia. El primer argumento es la <b>base</b> y el segundo el <b>exponente</b>.
+
+<li><font face="courier" color="blue">Math.<font color="red">max(10, 5)</font> = <font color="green">10 </font></font> &nbsp;  Compara el valor de los dos argumentos, que tienen que ser num&eacute;ricos, y devuelve el <b>mayor</b> de ellos.
+
+<li><font face="courier" color="blue">Math.<font color="red">min(10, 5)</font> = <font color="green">5 </font></font> &nbsp;  El inverso del anterior. Compara el valor de los dos argumentos, que tienen que ser num&eacute;ricos, y devuelve el <b>menor</b> de ellos.
+
+<li><font face="courier" color="blue">Math.<font color="red">random()</font> = <font color="green">0.09618143970146775 </font></font> &nbsp; Se obtiene un n&uacute;mero aleatorio  entre 0 y 1 cuyo origen es el reloj del sistema.
+
+<li><font face="courier" color="blue">Math.<font color="red">round(2.5)</font> = <font color="green">3 </font></font> &nbsp; Redondeo. Devuelve el  n&uacute;mero entero m&aacute;s pr&oacute;ximo al argumento dado. Si la parte decimal es <b>.5 o mayor</b>, se redondea por <b>exceso</b>, como en el ejemplo. Si la parte decimal es <b>menor que .5</b> se redondea por <b>defecto</b>.
+
+<li><font face="courier" color="blue">Math.<font color="red">sqrt(2)</font> = <font color="green">1.4142135623730951 </font></font> &nbsp; Raiz cuadrada de un n&uacute;mero. 
+</ul>
+
+<hr>
+<font face="courier" color="red"> <b>Number</b></font> &nbsp; Objeto para trabajar con valores num&eacute;ricos. Es poco utilizado.
+<p>
+<b>Propiedades</b><br>
+<font face="courier" color="blue">MAX_VALUE &nbsp; MIN_VALUE &nbsp; NaN &nbsp; NEGATIVE_INFINITY &nbsp; POSITIVE_INFINITY</FONT>
+<P>
+<b>M&eacute;todos</b><br>
+Los tres comunes.
+<hr>
+<font face="courier" color="red"> <b>String</b></font> &nbsp; Pr&aacute;ctico objeto para trabajar con cadenas. Tiene una propiedad: <b>length</b>. Por ejemplo:
+<p>
+<font face="courier" color="blue">
+var Mi_cadena = new <font color="red">String(</font>"Esto es una prueba" <font color="red">)</font><br>
+document.write(Mi_cadena.<b>length</b>)
+</font>
+<p>
+Se obtiene: <font face="courier" color="green"><b>18</b></font> &nbsp; que como ya habr&aacute;s supuesto es la longitud de la cadena dada.
+<p>
+<b>M&eacute;todos</b><br>
+Adem&aacute;s de los tres comunes hay un gran n&uacute;mero de ellos. Utilizando el mismo texto del ejemplo anterior, tendremos:
+<ul>
+<li><font face="courier" color="blue">String.<font color="red">big()</font> = <font color="green" size=4><b>Esto es una prueba</b></font></font> &nbsp; Aumenta el tama&ntilde;o del texto. El tama&ntilde;o  es equivalente al obtenido con &lt;FONT SIZE=4&GT;
+
+<li><font face="courier" color="blue">String.<font color="red">small()</font> = <font color="green" size=2>Esto es una prueba</font></font> &nbsp; Disminuye el tama&ntilde;o del texto. El tama&ntilde;o  es equivalente al obtenido con &lt;FONT SIZE=2&GT;
+
+<li><font face="courier" color="blue">String.<font color="red">fixed()</font> = <font color="green" face="courier">Esto es una prueba</font></font> &nbsp; Cambia el tipo de letra a paso fijo. Es equivalente al obtenido con &lt;FONT FACE="Courier"&GT;
+
+<li><font face="courier" color="blue">String.<font color="red">sup()</font> = <font color="green"><sup>Esto es una prueba</sup></font></font> &nbsp; Aplica el efecto super&iacute;ndice al texto. Es equivalente al obtenido con &lt;SUP&GT;
+
+<li><font face="courier" color="blue">String.<font color="red">sub()</font> = <font color="green"><sub>Esto es una prueba</sub></font></font> &nbsp; Aplica el efecto sub&iacute;ndice al texto. Es equivalente al obtenido con &lt;SUB&GT;
+
+<li><font face="courier" color="blue">String.<font color="red">fontcolor("ff0000")</font> = <font color="red" size=4>Esto es una prueba</font></font> &nbsp; Establece el color del texto. Es equivalente al obtenido con &lt;FONT color="ff0000"&GT;. F&iacute;jate en que el color hay que darlo en formato RGB hexadecimal.
+
+<li><font face="courier" color="blue">String.<font color="red">size(5)</font> = <font color="green" size=5>Esto es una prueba</font></font> &nbsp; Cambia el tama&ntilde;o del texto. Es equivalente al obtenido con &lt;FONT SIZE=x&GT; donde x es un valor entre 1 y 7
+
+<li><font face="courier" color="blue">String.<font color="red">blink()</font> = <font color="green"><blink>Esto es una prueba</blink></font></font> &nbsp;  Efecto de intermitencia, equivalente al elemento &lt;BLINK&gt;
+
+<li><font face="courier" color="blue">String.<font color="red">bold()</font> = <font color="green"><b>Esto es una prueba</b></font></font> &nbsp;  Aumenta el peso del texto. Es equivalente al elemento &lt;B&GT;
+
+<li><font face="courier" color="blue">String.<font color="red">italics()</font> = <font color="green"><i>Esto es una prueba</i></font></font> &nbsp; Aplica el tipo de letra it&aacute;lica al texto. Es equivalente al obtenido con &lt;I&GT;
+
+<li><font face="courier" color="blue">String.<font color="red">strike()</font> = <font color="green"><strike>Esto es una prueba</strike></font></font> &nbsp; Aplica el tipo de letra tachado al texto. Es equivalente al obtenido con &lt;STRIKE&GT;
+
+<li><font face="courier" color="blue">String.<font color="red">charAt(0)</font> = <font color="green">E</font></font> &nbsp;  Devuelve el caracter que haya en la posici&oacute;n del &iacute;ndice que se indica. Para este m&eacute;todo el &iacute;ndice comienza por el cero. No confundir con la propiedad <b>length</b> que devuelve el n&uacute;mero de caracteres que hay en la cadena, no un &iacute;ndice.
+
+<li><font face="courier" color="blue">String.<font color="red">indexOf("t", [start])</font> = <font color="green">2</font></font> &nbsp;  Devuelve la posici&oacute;n del primer caracter (solamente uno) indicado en el argumento que exista en la cadena. Para este m&eacute;todo el &iacute;ndice comienza por el cero. Por defecto comienza a buscar por el primer caracter de la izquierda, y opcionalmente, se le puede indicar que comience la busca desde otra posici&oacute;n con [start]. Si el car&aacute;cter buscado no existe devuelve -1.
+
+<li><font face="courier" color="blue">String.<font color="red">lastIndexOf(cadena, "prueba")</font> = <font color="green">12 </font></font> &nbsp; Devuelve la posici&oacute;n de una subcadena (o un solo caracter) dentro de la cadena principal. Comienza a contar por el cero. Si el car&aacute;cter o subcadena buscados no existen devuelve -1.
+
+<li><font face="courier" color="blue">String.<font color="red">search(cadena, "prueba")</font> = <font color="green">12 </font></font> &nbsp; Es exactamente igual que la anterior, pero esta es una sintaxis m&aacute;s moderna que solamente funciona en versiones 4 o superiores de navegador.
+
+<li><font face="courier" color="blue">String.<font color="red">replace("prueba", "muestra")</font> = <font color="green">Esto es una muestra </font></font> &nbsp; Reemplaza un substring, un caracter o incluso la cadena entera por otro/a. Si la subcadena a buscar no existe devuelve la cadena original sin cambios. Cuando la primera ocurrencia es encontrada y sustituida no se continua con el resto de la cadena.
+
+<li><font face="courier" color="blue">String.<font color="red">split([separador])</font>  </font> &nbsp;  Como su nombre indica, corta la cadena inicial y coloca cada substring  obtenido en una celda de un array. El corte se realiza por el caracter indicado por  <b>separador</b>. Por ejemplo: 
+<pre>
+<font face="courier" color="blue">
+      var cadena = new String("Esto es una prueba")
+      var cadena2 = cadena.<b>split</b>(" ")
+
+      for (var i=0; i < cadena2.length; i++) {
+        document.write (cadena2[i] + " / ")
+   }</font>
+</pre>
+Se obtiene: &nbsp; <font color="green">Esto / es / una / prueba /</font>
+
+<li><font face="courier" color="blue">String.<font color="red">link(URL)</font>  </font> &nbsp;  Genera un enlace (link) a la direcci&oacute;n indicada por  <b>URL</b>. Por ejemplo: 
+<pre><font face="courier" color="blue">
+     var cadena = new String("Esto es una prueba")
+     var cadena2 = cadena.<b>link</b>("http://sestud.uv.es/manual.esp ")
+     document.write(cadena2)</font>
+</pre>
+Se obtiene: &nbsp; <font color="green"><a href="http://sestud.uv.es/manual.esp">Esto es una  prueba </a></font>
+
+<li><font face="courier" color="blue">String.<font color="red">toLowerCase()</font>  = <font color="green">esto es una prueba</font></font>  &nbsp; Convierte la cadena dada a todo min&uacute;sculas.
+
+<li><font face="courier" color="blue">String.<font color="red">toUpperCase()</font>  = <font color="green">ESTO ES UNA PRUEBA</font></font>  &nbsp; Convierte la cadena dada a todo may&uacute;sculas.
+</ul>
+<hr>
+<font face="courier" color="red"><b> RegExp</b></font> Abreviatura de <b>Reg</b>ular <b>Exp</b>ressions, es decir, expresiones regulares. Esta es una forma de trabajar con cadenas muy utilizada en algunos lenguajes de programaci&oacute;n, como perl, muchos comandos del shell de Unix o Linux, etc. Consiste en ciertas convenciones para localizar cadenas o subcadenas con caracter&iacute;sticas variadas y son independientes de las acciones que se realizar&aacute;n con ellas una vez localizadas.  Se trata de establecer un patr&oacute;n de b&uacute;squeda, que puede llegar a ser muy complejo, para localizar cualquier cadena  y sus variantes dentro de otra cadena. Por ejemplo, partiendo de nuestra conocida cadena anterior: <b>Esto es una prueba</b> y su m&eacute;todo <b>search</b>
+<p>
+<font face="courier" color="blue">String.search<font color="red">(/una/, "Esto es una prueba")</font> = <font color="green">8 </font> </font> &nbsp;  Al aplicar este patr&oacute;n se le est&aacute; preguntando si la cadena contiene la subcadena "una", y como la respuesta es <b>true</b> devuelve su posici&oacute;n. Esta es una expresi&oacute;n regular muy simple, veamos otra m&aacute;s complicada:
+<p>
+<font face="courier" color="blue">String.search<font color="red">(/uno|[zxE]/, "Esto es una prueba")</font> = <font color="green">0 </font> </font> &nbsp; En este caso se busca "uno", que no existe en la cadena, y/o cualquiera de los caracteres que hay entre los corchetes. Como no existen &nbsp;z&nbsp; ni &nbsp;x,&nbsp; pero s&iacute; &nbsp;E,&nbsp; devuelve su posici&oacute;n que es la cero. F&iacute;jate en que para enlazar una parte de la expresi&oacute;n con la otra se utiliza el caracter &nbsp; <b>|</b>&nbsp;  llamado "pipe", y se pueden poner tantos como sean necesarios separando cada parte de la expresi&oacute;n regular. Si lo indicado por el patr&oacute;n es encontrado m&aacute;s de una vez, se devolver&aacute; la posici&oacute;n de la &uacute;ltima ocurrencia
+<p>
+Dentro de los corchetes, adem&aacute;s de caracteres o n&uacute;meros sueltos, se pueden poner rangos completos indicando el primer caracter y el &uacute;ltimo separados por un gui&oacute;n: <font face="courier" color="red">[a-z]</font> o <font face="courier" color="red">[0-9]</font>. Esto significa que se debe buscar si en la cadena se encuentra cualquier caracter entre &nbsp;a&nbsp; y &nbsp;z&nbsp; o entre &nbsp;0&nbsp; y &nbsp;9.&nbsp; Si lo que se buscan son may&uacute;sculas, hay que indicarlo aparte: <font face="courier" color="red">[A-Z]</font> o dentro del mismo par de corchetes: <font face="courier" color="red">[zxy A-Z]</font>.
+<p>
+En el caso de que el caracter a buscar sea el propio gui&oacute;n <b>-</b> o algun caracter especial, seg&uacute;n donde se escriba habr&aacute; que ponerle el s&iacute;mbolo de "escape"  (<font face="courier"><b>\</b></font>) o no,  como ya se dijo en el apartado <a href="javascr02.htm">&iquest;C&oacute;mo se escribe el JavaScript?</a>. Por ejemplo, si va el primero: <font face="courier" color="red"> /[\-A-Z]/</font> &nbsp; pero no es necesario "escaparlo" si va el &uacute;ltimo: <font face="courier" color="red"> /[A-Z-]/</font>
+<p>
+Adem&aacute;s de para los caracteres especiales, el signo de escape se utiliza con algunos caracteres normales que tienen un doble significado y sirven para definir conjuntos de caracteres:<br>
+<font face="courier" color="red"> /\w/</font> &nbsp; Cualquier caracter alfanum&eacute;rico.<br>
+<font face="courier" color="red"> /\d/</font> &nbsp; Cualquier d&iacute;gito.<br>
+<font face="courier" color="red"> /\s/</font> &nbsp; Cualquier caracter no visible, como el tabulador, el retorno o el espacio.
+<p>
+Otros caracteres especiales que no necesitan escape son:
+<p>
+<ul>
+<li><font face="courier" color="red"> /./</font> &nbsp; El patr&oacute;n coincidir&aacute; con cualquier caracter, excepto un salto de l&iacute;nea.
+
+<li><font face="courier" color="red"> /^[abc]/</font> &nbsp; Indica que el patr&oacute;n buscado "abc" debe estar al comienzo de la cadena.
+
+<li><font face="courier" color="red"> /[^abc]/</font> &nbsp; Acepta cualquier caracter <b>excepto</b> los contenidos entre los corchetes.
+
+<li><font face="courier" color="red"> /$[abc]/</font> &nbsp; Indica que el patr&oacute;n buscado debe estar al final de la cadena.
+</ul>
+
+Tambi&eacute;n se puede indicar cuantas veces debe existir el patr&oacute;n en la cadena original: <br>
+<font face="courier" color="red"> /E+/</font> &nbsp; Significa que E debe aparecer al menos una vez. <br>
+<font face="courier" color="red"> /E*/</font> &nbsp; Cero o m&aacute;s veces. <br>
+<font face="courier" color="red"> /E?/</font> &nbsp; Cero o una vez. <br>
+<font face="courier" color="red"> /E{2}/</font> &nbsp; Dos veces. <br>
+<font face="courier" color="red"> /E{2,}/</font> &nbsp; Dos veces como m&iacute;nimo. <br>
+<font face="courier" color="red"> /E{2,3}/</font> &nbsp; De dos a tres veces, inclusive.
+<p>
+Una vez definida la expresi&oacute;n regular, es posible aplicarle un modificador para que no sean tenidas en cuenta las may&uacute;sculas y min&uacute;sculas: 
+<font face="courier" color="red"> /xyz A-Z/<b>i</b></font> &nbsp; No distinguir&aacute; entre  may&uacute;sculas y min&uacute;sculas (<b>i</b>nsensitive).
+<p>
+Cuando se estan haciendo sustituciones en lugar de b&uacute;squedas el proceso se detiene al encontrar la primera ocurrencia. Para evitar esto y que se hagan todas las sustituciones posibles hay que emplear otro modificador: <br>
+<font face="courier" color="red"> cadena.replace(/a/<b>g</b>, "e")</font> (<b>g</b>lobal). &nbsp; cambia todas las "a" de la cadena por "e". Si es necesario, tambi&eacute;n pueden ponerse los dos modificadores juntos, y tiene importancia en que orden se escriben, normalmente ser&aacute; <b>gi</b>
+
+<p>
+En JavaScript admiten expresiones regulares algunos m&eacute;todos del objeto String como <b>search</b>, <b>split</b> y  <b>replace</b> y por supuesto, el propio objeto <b>RegExp</b>, que no est&aacute; muy claro para qu&eacute; sirve. Las expresiones regulares, en general, son bastante complicadas por lo poco descriptivas que son en s&iacute; mismas. En su construcci&oacute;n tiene mucha importancia el orden en que se escriben las cosas. Hasta que tengas cierta pr&aacute;ctica, si no consigues que funcione a la primera, no desesperes, es normal.
+<hr>
+
+<A NAME="comunes"></A>
+<H3>M&eacute;todos comunes de los objetos</H3>
+<font face="courier" color="blue">[objeto].<font face="courier" color="red"><b>eval</b>(cadena)</font> </font>&nbsp; Este m&eacute;todo, com&uacute;n a todos los objetos de JavaScript, tiene por finalidad evaluar cualquier expresi&oacute;n contenida en una cadena, es decir obtener un resultado num&eacute;rico de la misma.  Puede invocarse incluso sin hacer referencia a ningun objeto. Si dentro de la cadena a evaluar hay instrucciones JavaScript, objetos o variables previamente definidas, <b>eval</b> obtendr&aacute; sus valores ejecutando las instrucciones y evaluando los objetos previamente. Por ejemplo:
+<p>
+<font face="courier" color="blue">
+var x = 2; var y = 10; var z = "5"<br>
+document.write(<font color="red">eval</font>("x * y + z + 1")) </font>
+<p>
+Se obtiene: <font face="courier" color="green">2051</font>
+<p>
+Como puedes ver, la idea es muy parecida  a la presentada por el objeto <b>Function</b> que hemos visto m&aacute;s arriba, que tambi&eacute;n trabaja con instrucciones dentro de una cadena.
+<hr>
+
+<font face="courier" color="blue">objeto.</font><font face="courier" color="red"><b>toString</b>()</font> &nbsp; La finalidad de este m&eacute;todo, com&uacute;n para todos los objetos, es convertir a string cualquiera de ellos. Por ejemplo, sea el array 
+<p>
+<font face="courier" color="blue">
+var meses = new Array("Enero","Febrero","Marzo")</font>
+<p>
+Como ya sabemos, <b>meses</b> es un objeto, y no es posible concatenarlo con un string, ya que sus tipos son diferentes e incompatibles, pero si se escribe:
+<p>
+<font face="courier" color="blue">
+document.write("Los meses son: " + meses)</font>
+<p>
+Se obtiene: <font face="courier" color="green">Los meses son: Enero,Febrero,Marzo </font>
+<p>
+&iquest;Qu&eacute; ha ocurrido? &iquest;porqu&eacute; no se obtiene un error? Pues no se produce error porque JavaScript ha invocado autom&aacute;ticamente el m&eacute;todo <b>toString</b> del objeto Array, a fin de intentar que los dos elementos a concatenar sean del mismo tipo. Es decir,  que ha hecho esto:
+<p>
+<font face="courier" color="blue">
+document.write("Los meses son: " + meses.<font color="red">toString()</font>)</font> &nbsp; Muy inteligente! Por supuesto, podemos escribirlo directamente y no esperar a que lo arregle JavaScript.
+<p>
+
+
+<hr>
+<font face="courier" color="blue">objeto.</font><font face="courier" color="red"><b>valueOf</b>()</font> &nbsp; Este &uacute;ltimo  m&eacute;todo, com&uacute;n para todos los objetos, permite obtener el valor original de un objeto despu&eacute;s de haber sido convertido, por ejemplo, con el anterior m&eacute;todo toString. Al igual que el anterior, tambi&eacute;n ser&aacute; invocado de forma autom&aacute;tica por JavaScript si es necesario en el contexto de la instrucci&oacute;n.
+
+<hr>
+<H3>Las funciones predeterminadas de JavaScript</H3>
+<p>
+A diferencia de otros lenguajes, JavaScript solamente tiene tres funciones intr&iacute;nsecas. Esto significa que cualquier utilidad que se precise programar hay que obtenerla escribiendo el usuario la funci&oacute;n correspondiente.
+
+<p>
+<font face="courier" color="red"><b>isNaN()</b></font> &nbsp; Evalua el argumento dado, que puede ser un valor o una expresi&oacute;n  y devuelve un booleano que indica si puede considerarse como num&eacute;rico o no num&eacute;rico (<b>N</b>ot <b>a N</b>umber). Por ejemplo, si se escribe:
+<p>
+<font face="courier" color="blue">
+document.write(<font color="red">isNaN(</font>22<font color="red">)</font>)</font>
+&nbsp; Se obtiene: <font face="courier" color="green"><b>true</b></font>
+
+<hr>
+<font face="courier" color="red"><b>parseInt(string [,base])</b></font> &nbsp; Esta funci&oacute;n analiza un <b>string</b>, y teniendo en cuenta la base num&eacute;rica indicada (si se indica), devuelve su valor <b>entero</b>.  Si no se indica la base, JavaScript la decidir&aacute; analizando los dos primeros caracteres de la cadena:
+<Ul>
+ <li>Si la cadena comienza por "0x," la base es 16 (hexadecimal). 
+ <li>Si la cadena comienza por "0," la base es 8 (octal). 
+ <li>Para cualquier otro valor la base es 10 (decimal). 
+</ul>
+En cualquier caso, aunque se indique la base, si el contenido de la cadena indica otra cosa, &eacute;sta ser&aacute; cambiada. Los tres ejemplos siguientes devuelven <b><font face="courier" color="green">17</font></b>:
+<p>
+<font face="courier" color="red">parseInt(<font color="blue">"0x11", 16</font>)</font><br>
+<font face="courier" color="red">parseInt(<font color="blue">"0x11", 0</font>)</font><br>
+<font face="courier" color="red">parseInt(<font color="blue">"0x11"</font>)</font><br>
+<p>
+Como puede ver, el principio <b>0x</b> de las cadenas es decisivo a la hora de obtener el entero resultante.
+<p>
+Con otros contenidos, todos los ejemplos siguientes devuelven <b><font face="courier" color="green">15</font></b>:
+<p>
+<font face="courier" color="red">parseInt(<font color="blue">"F", 16</font>)</font><br>
+<font face="courier" color="red">parseInt(<font color="blue">"17", 8</font>)</font><br>
+<font face="courier" color="red">parseInt(<font color="blue">"15", 10</font>)</font><br>
+<font face="courier" color="red">parseInt(<font color="blue">15.99, 10</font>)</font><br>
+<font face="courier" color="red">parseInt(<font color="blue">"FXX123", 16</font>)</font><br>
+<font face="courier" color="red">parseInt(<font color="blue">"1111", 2</font>)</font><br>
+<font face="courier" color="red">parseInt(<font color="blue">"15*3", 10</font>)</font><br>
+<p>
+Como puedes ver, si se encuentra un caracter que no puede ser considerado n&uacute;mero en la base establecida, se ignorar&aacute;n todos los caracteres siguientes, y se devolver&aacute; el entero obtenido hasta ese punto. Si el primer caracter de la cadena no puede ser considerado como n&uacute;mero, la funci&oacute;n devuelve <b>NaN</b>. No se evaluan expresiones dentro de la cadena, pero s&iacute; expresiones num&eacute;ricas sin formato de cadena (en realidad tampoco sirven, pero JavaScript primero las evalua y despu&eacute;s las convierte en cadena).
+
+<hr>
+
+<font face="courier" color="red"><b>parseFloat(string)</b></font> &nbsp; De forma similar a la anterior, esta funci&oacute;n analiza un <b>string</b> pero en lugar de devolver un entero devuelve un decimal de coma flotante. Si el primer caracter de la cadena no puede ser convertido a n&uacute;mero, devolver&aacute; <b>NaN</b>. Los tres ejemplos siguientes devuelven <b><font face="courier" color="green">3.14</font></b>:
+<p>
+<font face="courier" color="red">parseFloat(<font color="blue">"3.14"</font>)</font><br>
+<font face="courier" color="red">parseFloat(<font color="blue">"314e-2"</font>)</font><br>
+<font face="courier" color="red">parseFloat(<font color="blue">"0.0314E+2"</font>)</font><br>
+<p>
+
+
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

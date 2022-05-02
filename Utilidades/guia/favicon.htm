@@ -1,0 +1,71 @@
+<HTML>
+<HEAD><TITLE>Iconos identificadores</TITLE>
+
+</HEAD>
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2>&#191;Qu&eacute; son los iconos?</h2>
+
+Las últimas generaciones de navegadores soportan unos pequeños ficheros de imagen que ayudan a identificar de forma visual los distintos servidores. Sin duda los habrás visto en tu navegador, a la izquierda de la dirección a la que te has conectado, en la llamada ventana de URL. También aparecen en tu libro de direcciones, en lo que se ha dado en llamar "favoritos".
+<p>
+Estos pequeños ficheros gráficos cuya extensión es <b>.ico</b> se denominan "iconos", y son los mismos que se utilizan para identificar  cualquier programa de Windows. Los ficheros .ico <b>no</b> son internamente lo mismo que un fichero .jpg o .gif  &nbsp; Es decir, son un tipo de gráfico de distinto formato, y se caracterizan sobre todo por su extrema ligereza, que suele ser de unos pocos bytes. En internet tienes gran cantidad de programas para ver, crear o editar iconos. También hay programas capaces de convertir un fichero típico .jpg o .gif a .ico &nbsp; y por supuesto, tienes miles de librerías de iconos ya hechos. 
+<p>
+Implementar los iconos en tus páginas HTML es muy sencillo. Solamente tienes que conseguir tu icono y ponerlo en el directorio raiz de tu servidor. Por defecto, y sin necesidad de escribir nada en el código HTML de la página, los navegadores solicitan al servidor un fichero de icono llamado <b>favicon.ico</b> &nbsp; Este curioso nombre es una contracción del ingl&eacute;s (c&oacute;mo no) de "favourite icon" es decir icono favorito, y se inventó para facilitar la identificación visual de las direcciones de tus webs favoritos.
+<p>
+El fichero de icono puede tener cualquier otro nombre, y estar en cualquier otro sitio, pero entonces hay que decirle al navegador donde tiene que buscarlo, igual que se hace con un fichero gráfico típico. La sintaxis para insertar un icono que no tenga los valores por defecto, es diferente de la de los gráficos normales, y hay que escribirla en la <b>HEAD</b> de la página:
+
+<p>
+<pre><font face=courier size=2 color="blue">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;TITLE&gt;Prueba de iconos&lt;/TITLE&gt;
+  <b>&lt;link rel="shortcut icon" href="http://tu_servidor/iconos/favicon.ico"&gt;</b>
+  &lt;/HEAD&gt;
+&lt;BODY&gt;
+
+Esto es una prueba con iconos
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Esta sería la sintaxis en el caso de que el icono esté en un servidor distinto del nuestro. Lo normal será que esté en nuestro propio servidor, y entonces bastará con poner la ruta relativa.
+
+<p>
+<pre><font face=courier size=2 color="blue">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;TITLE&gt;Prueba de iconos&lt;/TITLE&gt;
+  <b>&lt;link rel="shortcut icon" href="/iconos/favicon.ico"&gt;</b>
+  &lt;/HEAD&gt;
+&lt;BODY&gt;
+
+Esto es una prueba con iconos
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Generalmente el icono pretende facilitar la identificación <b>del servidor</b>, no de los contenidos.  Si se pone el fichero <b>favicon.ico</b> en el directorio raíz del web, el icono aparecerá en todas las páginas sin necesidad de escribir nada en ninguna de ellas. Pero si quieres que el icono sea diferente en cada grupo de páginas, por ejemplo, en cada directorio, entonces tienes que escribir la llamada correspondiente en cada página, la que no la lleve, mostrará el icono del directorio raiz, si lo tiene.
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

@@ -1,0 +1,118 @@
+<HTML>
+<HEAD><TITLE>Canales RSS</TITLE>
+
+</HEAD>
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2>Canales RSS</h2>
+<h3>&iquest;Qu&eacute; son y para qu&eacute; sirven?</h3>
+<p>Los <b>R</b>ich <b>S</b>ite <b>S</b>ummary (otros autores afirman que es el acr&oacute;nimo de <b>R</b>eally <b>S</b>imple <b>S</b>yndication) o RSS, son unos ficheros escritos en un dialecto de XML 1.0, que deben cumplir las especificaciones de la W3C, y son utilizados para publicar res&uacute;menes de  contenidos de un sitio web. Su finalidad b&aacute;sica es evitar a los clientes el tener que navegar constantemente por sus sitios preferidos buscando novedades, y est&aacute; muy indicado  si las p&aacute;ginas cambian con frecuencia de contenido, como por ejemplo, peri&oacute;dicos, blogs, etc. A estos canales se les llama tambi&eacute;n fuentes de contenidos o "feeds" (alimentadores en ingl&eacute;s). </p>
+
+<p>Aunque no es oficial, este icono se ha convertido en el s&iacute;mbolo est&aacute;ndar de los canales RSS: &nbsp; <img src="rss.png" width="25" height="25"><br> Y en algunas p&aacute;ginas tambi&eacute;n puedes encontrarlos con alguno de estos otros:   <img src="iconosrss.gif" align="bottom"></p>
+
+<p>Y puede que te preguntes qu&eacute; es eso del "xml". El xml (e<b>X</b>tensible <b>M</b>arkup <b>L</b>anguage) es un lenguaje parecido al html que ya conoces, pero a diferencia de &eacute;ste, en el que el nombre de las etiquetas (o elementos, como se les ha llamado en esta gu&iacute;a) ya est&aacute;n predefinidos, el programador puede crear las etiquetas que quiera y cuantas quiera, seg&uacute;n las necesidades de su aplicaci&oacute;n. Esto, en la pr&aacute;ctica, se traduce en que con xml se pueden crear sublenguajes, y por tanto, el xml es en realidad un "metalenguaje".</p> 
+
+<p>Ejemplos de sublenguajes xml son, adem&aacute;s del RSS que nos ocupa, el <a href="xhtml1.htm">xhtml</a>  o los ficheros del reproductor <a href="dew.htm">DEW</a> de los que se habla  en otras secciones de la gu&iacute;a</p>
+
+
+<h3>&iquest;C&oacute;mo se leen?</h3>
+<p>Para acceder a la informaci&oacute;n de los canales RSS hay que suscribirse a ellos. Esta suscripci&oacute;n se puede hacer mediante programas lectores de canales, llamados "agregadores", que son algo parecido a los programas clientes de correo electr&oacute;nico o de noticias. Tambi&eacute;n se puede hacer directamente con la mayor&iacute;a de navegadores actuales. Esta, probablemente, es la opci&oacute;n m&aacute;s c&oacute;moda. Leer un RSS no es lo mismo que navegar por el sitio que lo contiene. El s&iacute;mil m&aacute;s parecido es el de un cliente de e-mail, solo que en lugar de mirar cada cierto tiempo el buz&oacute;n para ver si hay correos nuevos, se mira el alimentador para ver si ha cambiado.</p>
+
+<h3>&iquest;C&oacute;mo se monta un canal RSS?</h3>
+<p>Es muy sencillo: solamente tienes que informar al navegador cliente de que tienes un canal disponible. En el servidor no hay que tocar nada. Todo este invento se basa en escribir (y mantener al dia, claro) un fichero en xml con las novedades que haya, y listo. Si el volumen de noticias a incluir es grande, se deber&iacute;a instalar alg&uacute;n programa que los genere autom&aacute;ticamente, y tambi&eacute;n puede ser buena idea separar las noticias por temas, generando cuantos ficheros xml sean necesarios y poner todos los enlaces en una p&aacute;gina &iacute;ndice, como suelen hacer los peri&oacute;dicos.</p>
+
+<p>Para que el navegador del visitante de nuestra p&aacute;gina sepa que hay un canal RSS activo, simplemente hay que a&ntilde;adir una entrada de referencia en la cabecera de la p&aacute;gina (&lt;HEAD&GT;) y un enlace dentro del cuerpo (&lt;BODY&gt;) para saber d&oacute;nde est&aacute; el fichero o ficheros.</p>
+
+<pre><font face=courier size=2 color="blue">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;TITLE&gt;Canal RSS&lt;/TITLE&gt;
+  <font color="red">&lt;link rel="alternate" type="application/rss+xml"  
+  href="http://miservidor.com/rss.xml" title="Canal RSS"&gt;</font>>
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+<font color="red">&lt;a href="http://miservidor.com/rss.xml" title="Canal RSS">Suscr&iacute;base
+ &lt;img src="rss.png" border="0" width="25" height="25"&gt; &lt;/a&gt;</font>
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+<p>F&iacute;jate en que en todas las referencias la direcci&oacute;n del fichero, tanto en la cabecera como en el enlace, es <b>absoluta</b>. En efecto, si el cliente es un navegador valdr&iacute;an las direcciones relativas, pero como ya se ha dicho, el cliente puede ser un programa que no navega, sino que simplemente muestra el resumen de noticias que hayamos publicado, y necesitar&aacute; saber de d&oacute;nde extraerlas. Adem&aacute;s, una vez suscritos al canal, los programas o navegadores explorar&aacute;n peri&oacute;dicamente el fichero xml <b>sin navegar por el sitio</b>, y por tanto, una ruta relativa no  servir&iacute;a para llegar a &eacute;l.</p>
+
+<h3>&iquest;C&oacute;mo se escribe el fichero xml para un canal RSS?</h3>
+<p>Los ficheros xml, al igual que los html, se pueden escribir con cualquier editor de texto "transparente", es decir, sin formato ni caracteres extra&ntilde;os a la tabla ASCII. Todo lo que no sea as&iacute; habr&aacute; que codificarlo, tambi&eacute;n como en html, pero mucho m&aacute;s estricto. <b>Un solo error</b> en el fichero har&aacute; que &eacute;ste no funcione. Por tanto, es buena idea pasarlo por un validador xml antes de ponerlo en su sitio de servicio. En internet hay muchas p&aacute;ginas y programas de validación xml, y tambi&eacute;n se puede utilizar el servicio de validación de la W3C.</p>
+
+<p>Este es un modelo de fichero xml para un RSS:</p>
+<pre>
+&lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt;
+&lt;rss version="0.91"&gt;
+&lt;channel&gt;
+  &lt;title&gt;Canal RSS&lt;/title&gt;
+  &lt;link&gt;http://miservidor.com&lt;/link&gt;
+  &lt;description&gt;Gu&amp;#237;a para escribir documentos HTML&lt;/description&gt;
+  &lt;language&gt;es-ES&lt;/language&gt;
+
+&lt;image&gt;
+  &lt;title&gt;Canal RSS&lt;/title&gt;
+  &lt;url&gt;http://miservidor.com/milogo.gif&lt;/url&gt;
+  &lt;link&gt;http://miservidor.com/&lt;/link&gt;
+  &lt;width&gt;128&lt;/width&gt;
+  &lt;height&gt;128&lt;/height&gt;
+&lt;/image&gt;
+
+&lt;item&gt;
+  &lt;title&gt;Noticia 1&lt;/title&gt;
+  &lt;link&gt;http://miservidor.com/noticia1.htm&lt;/link&gt;
+  &lt;pubDate&gt;Wed, 10 Sep 2010 00:00:00 GMT&lt;/pubDate&gt;
+  &lt;description&gt; Descripci&amp;#243;n de la noticia 1 &lt;/description&gt;
+&lt;/item&gt;
+
+&lt;item&gt;
+  &lt;title&gt;Noticia 2&lt;/title&gt;
+  &lt;link&gt;http:/miservidor.com/contenidos.asp?nivel=18&amp;amp;cont=567&lt;/link&gt;
+  &lt;pubDate&gt;Tue, 21 Sep 2010 00:00:00 +0200&lt;/pubDate&gt;
+  &lt;description&gt; Emoci&amp;#243;n en el Bol d&amp:#39;Or &lt;/description&gt;
+&lt;/item&gt;
+
+&lt;/channel&gt;
+&lt;/rss&gt;
+
+</pre>
+
+<p>Los ficheros RSS suelen crearse con la extensi&oacute;n <b>.xml</b> pero tambi&eacute;n funcionan con <b>.rss</b> o <b>.rdf</b></p>
+
+<p>La parte inicial del fichero ser&aacute; siempre igual; lo que cambiar&aacute; ser&aacute;n los elementos &lt;item&gt;, que son los que muestran las nuevas noticias que aparezcan. Por supuesto, se pueden a&ntilde;adir cuantos sean nacesarios, y conviene planificar la antig&uuml;edad de las noticias que se mostrar&aacute;n, eliminando los que proceda. Conviene prestar especial atenci&oacute;n al borrado de los items que apunten a noticias que ya han caducado, y que tal vez, ya no est&eacute;n disponibles en el servidor.</p>
+
+<p>No hay que confundir la versi&oacute;n de lenguaje xml (1.0) con la de RSS (0.91). Hasta ahora han aparecido cuatro versiones de RSS: 0.91, 0.92, 1.0 y 2.0. La diferencia entre ellas simplemente consiste en que se le han ido a&ntilde;adiendo etiquetas nuevas al lenguaje, y no est&aacute; muy claro que algunas de ellas sirvan para algo. Como siempre, todo va a depender del cliente utilizado, pero el funcionamiento b&aacute;sico es el mismo. La estricta sintaxis xml debe respetarse en todas ellas.</p>
+
+<p>Cuando se escriben ficheros xml, hay que tener en cuenta que no se pueden poner letras con acentos, comillas, &, ap&oacute;strofes, e&ntilde;es, los signos &lt; y &gt;, y algunos otros. Todo esto deber&aacute; ir codificado como en html, pero no todo se puede codificar igual. Se puede utilizar &amp;apos; &amp;amp; &amp;quot; &amp;lt; &amp;gt; pero no es v&aacute;lido &amp;aacute; &nbsp; Para no confundir cuales se pueden codificar como en html y cuales no, lo mejor es utilizar el formato num&eacute;rico en todos ellos: &#038;#225; = á &nbsp; &nbsp; &#038;#038; = & &nbsp; &nbsp; &nbsp; <br>En esta gu&iacute;a tienes la tabla con los <a href="coditab.htm">c&oacute;digos de los caracteres</a>.
+</p>
+
+<p>Otra cosa que hay que controlar para evitar problemas de validaci&oacute;n es el formato de las fechas para la etiqueta &lt;pubDate&gt; que tiene que ser el definido en la norma RFC 822, como puedes ver en el ejemplo.</p>
+
+
+
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

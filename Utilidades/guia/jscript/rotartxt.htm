@@ -1,0 +1,59 @@
+<HTML>
+<HEAD><TITLE>JavaScript Index</TITLE>
+
+</HEAD>
+
+<BODY bgcolor="#00FFFF" >
+
+<center>
+<h2>Rotar textos</h2>
+</center>
+
+
+<BODY>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+var beforeMsg = "<center><font color=blue size=+2><b>";
+var afterMsg = "</b></font></center>";
+
+var msgRotateSpeed = 3000; // aqui se ajusta la velocidad en milisegundos
+var textStr = new Array(); // En las siguientes lineas van los textos que rotaran
+textStr[0] = "Esto es una prueba de";
+textStr[1] = "rotación de textos";
+textStr[2] = "y, ya puestos, además te diré que";
+textStr[3] = "tu navegador es "+navigator.userAgent;
+
+if (document.layers) {
+document.write('<ilayer id="NS4message" height=25 width=100%><layer id="NS4message2" height=25 width=100%></layer></ilayer>')
+temp = 'document.NS4message.document.NS4message2.document.write(beforeMsg + textStr[i++] + afterMsg);'+
+'document.NS4message.document.NS4message2.document.close()';
+}
+else if (document.getElementById) {
+document.write(beforeMsg + '<div id="message" style="position:relative;">IE division</div>' + afterMsg);
+temp = 'document.getElementById("message").firstChild.nodeValue = textStr[i++];';
+}
+else if (document.all) {
+document.write(beforeMsg + '<div id="message" style="position:relative;">IE division</div>' + afterMsg);
+temp = 'message.innerHTML = textStr[i++];';
+}
+var i = 0;
+function msgRotate() {
+eval(temp);
+if (i == textStr.length) i = 0;
+setTimeout("msgRotate()", msgRotateSpeed);
+}
+window.onload = msgRotate;
+//  End -->
+</script>
+
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+</BODY>
+</HTML>

@@ -1,0 +1,349 @@
+<html>
+<head>
+<title>VBScript 5 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> Visual Basic Script</H2>
+<h3>Funciones de texto</h3>
+
+<p>
+<font color="red" size=4>Asc(</font><font color="blue" size=4>string</font><font color="red" size=4>)</font>
+<p>
+Devuelve el <a href="../coditab.htm">c&oacute;digo num&eacute;rico</a> (ANSI) del primer car&aacute;cter de la cadena <font color="blue"><b>string</b></font>, que por lo menos debe tener uno. En caso contrario se produce un error. Por ejemplo para obtener el c&oacute;digo de la letra <b>A</b>:
+
+<pre>
+<font color="blue">&lt;%
+     Response.Write( <font color="red">Asc(</font>"A"<font color="red">)</font> )
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>65</b></font>
+<P>
+
+<p>
+<font color="red" size=4>Chr(</font><font color="blue" size=4>c&oacute;digo</font><font color="red" size=4>)</font>
+<p>
+Funciona justo al contrario que <b>Asc()</b>: su argumento es el <font color="blue"><b>c&oacute;digo</b> </font>num&eacute;rico (ANSI)  de un car&aacute;cter. Por ejemplo para obtener la letra <b>A</b>:
+
+<pre>
+<font color="blue">&lt;%
+     Response.Write( <font color="red">Chr(</font>65<font color="red">)</font> )
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>A</b></font>
+<P>
+Respecto a estas dos funciones, conviene recordar que los c&oacute;digos comprendidos entre <b>0</b> y <b>32</b> no son visibles en pantalla ni pueden imprimirse, ya que son caracteres de control. Por ejemplo  <b>Chr(10)</b> es un avance de l&iacute;nea.
+
+
+<p>
+<font color="red" size=4>String(</font><font color="blue" size=4>cuantos, cod_caracter</font><font color="red" size=4>)</font>
+<p>
+Devuelve una cadena compuesta por el/los caracteres cuyo c&oacute;digo indica <font color="blue" size=4> cod_caracter</font> y de la longitud indicada por <font color="blue" size=4>cuantos</font>. Por ejemplo:
+
+<pre>
+<font color="blue">&lt;%
+     Response.Write( <font color="red">String(</font>5, 65<font color="red">)</font> )
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>AAAAA</b></font>
+<P>
+
+
+<p>
+<font color="red" size=4>Space(</font><font color="blue" size=4>cuantos</font><font color="red" size=4>)</font>
+<p>
+Es parecida a la anterior, pero solamente es capaz de generar cadenas compuestas por espacios en blanco, de la longitud indicada por <font color="blue" size=4>cuantos</font>. Esto mismo se puede hacer tambi&eacute;n con la funci&oacute;n <font color="red">String()</font>. 
+
+
+<p>
+<font color="red" size=4>Cstr(</font><font color="blue" size=4>valor</font><font color="red" size=4>)</font>
+<p>
+Devuelve un string conteniendo <font color="blue"><b>valor</b></font>. Es decir, que convierte cualquier tipo de dato contenido en <font color="blue">valor</font> al tipo <b>string</b>. Hay algunas particularidades que conviene conocer en funci&oacute;n del tipo de dato recibido por <font color="blue">valor</font>. Si recibe
+<ul>
+<dd><b>Booleano</b>: devuelve un string con la palabra "False" o "True"
+<dd><b>Date</b>: devuelve un string con una fecha en el formato corto: "30/12/2002"
+<dd><b>Null</b>: Error
+<dd><b>Error</b>: devuelve un string con la palabra "Error" seguida del n&uacute;mero del error
+<dd><b>Num&eacute;rico</b>: devuelve un string con el n&uacute;mero aplicando la configuraci&oacute;n regional (coma decimal, etc.)
+</ul>
+
+
+<p>
+<font color="red" size=4>InStr(</font><font color="blue" size=4>[Inicio, ]Cadena, Subcadena[, Comparación]</font><font color="red" size=4>)</font>
+<p>
+Devuelve un n&uacute;mero  que indica la posici&oacute;n del primer car&aacute;cter de una <font color="blue"><b>subcadena</b></font> dentro de otra, obviamente de mayor longitud. <font color="blue"><b>cadena</b></font>. Sus argumentos son:
+<p>
+<font color="blue"><b>Inicio</b></font> Opcional. Es un n&uacute;mero  que indica en qu&eacute; posici&oacute;n, dentro de <font color="blue">Cadena</font>, se comienza a buscar <font color="blue">Subcadena</font>. Si se omite, por defecto se comienza por la posici&oacute;n 1.
+<br>
+<font color="blue"><b>Cadena</b></font> Obligatorio. Es la cadena principal dentro de la cual hay que buscar <font color="blue">Subcadena</font>. Debe tener el tipo de dato <b>string</b>.
+<br>
+<font color="blue"><b>Subcadena</b></font> Obligatorio. Es la cadena con la muestra de lo que se va a buscar dentro de <font color="blue">Cadena</font>. Debe tener el tipo de dato <b>string</b>.
+<br>
+<font color="blue"><b>Comparaci&oacute;n</b></font> Opcional. Es es un n&uacute;mero que indica de qu&eacute; forma se van a evaluar la subcadena buscada. Puede escribirse el n&uacute;mero o la constante intr&iacute;nseca equivalente. Puede tener dos valores: 
+<ul>
+        <li><b>0</b> Comparaci&oacute;n binaria. Por defecto (<b>vbBinaryCompare</b>)
+        <li><b>1</b> Comparaci&oacute;n textual (<b>vbTextCompare</b>)
+</ul>
+Utilizar la Comparaci&oacute;n binaria o textual permite diferenciar, por ejemplo, may&uacute;sculas de min&uacute;sculas, que por defecto VBScript considera iguales. Al ser 0 el valor por defecto de <font color="blue">Comparar</font>, <font color="red">Instr()</font> distingue entre may&uacute;sculas y min&uacute;sculas
+<p>
+He aqu&iacute; un ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim Cadena
+  
+  Cadena = "Esto es una prueba de buscar subcadenas"
+
+  Response.Write(<font color="red">Instr(</font>1, Cadena, "prueba"<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>13</b></font>
+<p>
+Este es el funcionamiento ideal, pero pueden ocurrir cosas inesperadas en el valor de las cadenas. Entonces, la funci&oacute;n se comportar&aacute; de la siguiente manera: Si la longitud de <font color="blue">Cadena</font> es 0, <font color="red">Instr()</font> devuelve 0. Si el valor de <font color="blue">Inicio</font> es mayor que la longitud de <font color="blue">Cadena</font> tambi&eacute;n devolver&aacute; 0. Si la longitud de <font color="blue">Subcadena</font> es 0, devolver&aacute; el valor de <font color="blue">Inicio</font>. Si <font color="blue">Subcadena</font> no es encontrada dentro de <font color="blue">Cadena</font>, devolverá 0. Y por &uacute;ltimo, si <font color="blue">Cadena</font> o <font color="blue">Subcadena</font> contienen Null devolver&aacute; Null.
+
+<p>
+<font color="red" size=4>InStrRev(</font><font color="blue" size=4>Cadena, Subcadena[, Inicio[,  Comparar]]</font><font color="red" size=4>)</font>
+<p>
+Como habr&aacute;s visto, tiene una peque&ntilde;a diferencia de sintaxis con la anterior, aunque en todo lo dem&aacute;s funciona igual, excepto en que en lugar de comenzar la b&uacute;squeda por defecto en la posici&oacute;n 1 de <font color="blue">Cadena</font> lo hace comenzando por la &uacute;ltima posici&oacute;n de la misma, o lo que es equivalente, por la posici&oacute;n <b>-1</b>.
+
+<p>
+<font color="red" size=4>LCase(</font><font color="blue" size=4>Cadena</font><font color="red" size=4>)</font>
+<p>
+Devuelve una cadena cuyas letras may&uacute;sculas han sido convertidas a min&uacute;sculas. por ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim Cadena
+  Cadena = "Esto es una prueba DE MAYÚSCULAS y Números: 1234"
+
+  Response.Write(<font color="red">LCase(</font>Cadena<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>esto es una prueba de mayúsculas y números: 1234 </b></font>
+<p>
+
+<font color="red" size=4>UCase(</font><font color="blue" size=4>Cadena</font><font color="red" size=4>)</font>
+<p>
+Devuelve una cadena cuyas letras min&uacute;sculas han sido convertidas a may&uacute;sculas. Es decir, justo lo contrario que la anterior funci&oacute;n <font color="red">LCase()</font>
+
+<p>
+<font color="red" size=4>Left(</font><font color="blue" size=4>Cadena, Cuantos</font><font color="red" size=4>)</font>
+<p>
+
+Devuelve una cadena conteniendo el número de caracteres especificado por <font color="blue">Cuantos</font> del lado <b>izquierdo</b> de <font color="blue">Cadena</font>. Por ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim Cadena
+  Cadena = "ABCDEFGHIJK"
+
+  Response.Write(<font color="red">Left(</font>Cadena, 3<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>ABC</b></font>
+<p>
+
+<p>
+<font color="red" size=4>Right(</font><font color="blue" size=4>Cadena, Cuantos</font><font color="red" size=4>)</font>
+<p>
+
+Devuelve una cadena conteniendo el número de caracteres especificado por <font color="blue">Cuantos</font> del lado <b>derecho</b> de <font color="blue">Cadena</font>. Por ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim Cadena
+  Cadena = "ABCDEFGHIJK"
+
+  Response.Write(<font color="red">Right(</font>Cadena, 3<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>IJK</b></font>
+<p>
+
+
+<p>
+<font color="red" size=4>Len(</font><font color="blue" size=4>Cadena</font><font color="red" size=4>)</font>
+<p>
+
+Devuelve un n&uacute;mero que indica cuantos  caracteres contiene <font color="blue">Cadena</font>. Por ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim Cadena
+  Cadena = "ABCDEFGHIJK"
+
+  Response.Write(<font color="red">Len(</font>Cadena<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>11</b></font>
+<p>
+Si en lugar de una cadena el argumento es un n&uacute;mero, <font color="red">Len()</font> devolver&aacute; el n&uacute;mero de d&iacute;gitos que forman el n&uacute;mero propiamente dicho. Por ejemplo:
+
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim Valor
+  Valor = 2003
+
+  Response.Write(<font color="red">Len(</font>Valor<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>4</b></font>
+<p>
+
+
+<font color="red" size=4>Mid(</font><font color="blue" size=4>Cadena, Inicio[,  Cuantos]</font><font color="red" size=4>)</font>
+<p>
+
+Devuelve una cadena conteniendo el n&uacute;mero de caracteres indicado por <font color="blue">Cuantos</font> extraida de <font color="blue">Cadena</font> y comenzando en la posici&oacute;n indicada por <font color="blue">Inicio</font>. Por ejemplo:
+
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim cadena
+  Cadena = "ABCDEFGHIJK"
+
+  Response.Write(<font color="red">Mid(</font>Cadena, 2, 3)<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>BCD</b></font>
+<p>
+
+
+
+<font color="red" size=4>LTrim(</font><font color="blue" size=4>Cadena</font><font color="red" size=4>)</font> &nbsp; <font color="red" size=4>RTrim(</font><font color="blue" size=4>Cadena</font><font color="red" size=4>)</font> &nbsp; <font color="red" size=4>Trim(</font><font color="blue" size=4>Cadena</font><font color="red" size=4>)</font>
+<p>
+
+Estas tres funciones sirven para eliminar los espacios en blanco que haya en el lado <b>izquierdo</b>, <b>derecho</b> o en <b>ambos</b> de <font color="blue">Cadena</font>. Los espacios que contenga <font color="blue">Cadena</font> en el interior no se ver&aacute;n afectados. Por ejemplo:
+
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim cadena
+  Cadena = " ABCD EFGH IJK "
+
+  Response.Write(Chr(34) & <font color="red">LTrim(</font>Cadena) & Chr(34)<font color="red"> )</font>
+  Response.Write(Chr(34) & <font color="red">RTrim(</font>Cadena) & Chr(34)<font color="red">)</font>
+  Response.Write(Chr(34) & <font color="red">Trim(</font>Cadena) & Chr(34)<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font face="courier" color="green">
+<b>"ABCD EFGH IJK "</b><br>
+<b>" ABCD EFGH IJK"</b><br>
+<b>"ABCD EFGH IJK"</b></font>
+<p>
+
+
+
+<p>
+<font color="red" size=4>Replace(</font><font color="blue" size=4>Cadena, Busca, Cambio[, Inicio, [Cuantos, [Comparar]]]</font><font color="red" size=4>)</font>
+<p>
+Localiza el contenido de <font color="blue"><b>Busca</b></font> dentro de <font color="blue"><b>Cadena</b></font> y lo sustituye (Replace) por el valor de <font color="blue"><b>Cambio</b></font>. Sus argumentos son:
+<p>
+<font color="blue"><b>Cadena</b></font> Obligatorio. Es la cadena principal dentro de la cual hay que realizar los cambios. Debe tener el tipo de dato string.
+<br>
+<font color="blue"><b>Busca</b></font> Obligatorio. Es la subcadena que indica lo que hay que buscar dentro de <font color="blue">Cadena</font> para cambiarlo. También debe tener el tipo de dato string.
+<br>
+<font color="blue"><b>Cambio</b></font> Obligatorio. Es la subcadena que sustituirá a <font color="blue">Busca</font>. Al igual que los dos anteriores, debe tener el tipo de dato string.
+<p>
+<font color="blue"><b>Inicio</b></font> Opcional. Es un n&uacute;mero  que indica en qu&eacute; posici&oacute;n, dentro de <font color="blue">Cadena</font>, se comienza a buscar el valor de <font color="blue">Busca</font>. Si se omite, por defecto se comienza por la posici&oacute;n 1.
+<br>
+<font color="blue"><b>Cuantos</b></font> Opcional. Indica cuantas sustituciones, de todas las posibles, se quiere realizar. El valor por defecto es -1, que significa todas.
+<br>
+<font color="blue"><b>Comparar</b></font> Opcional. Es es un n&uacute;mero que indica de qu&eacute; forma se va a evaluar la subcadena buscada. Puede escribirse el n&uacute;mero o la constante intr&iacute;nseca equivalente. Puede tener dos valores: 
+<ul>
+        <li><b>0</b> Comparaci&oacute;n binaria. Por defecto (<b>vbBinaryCompare</b>)
+        <li><b>1</b> Comparaci&oacute;n textual (<b>vbTextCompare</b>)
+</ul>
+Utilizar la Comparaci&oacute;n binaria o textual permite diferenciar, por ejemplo, may&uacute;sculas de min&uacute;sculas, que por defecto VBScript considera iguales. Al ser 0 el valor por defecto de <font color="blue">Comparar</font>, <font color="red">Replace()</font> distingue entre may&uacute;sculas y min&uacute;sculas
+<p>
+He aqu&iacute; un ejemplo:
+<p>
+<pre>
+<font color="blue">&lt;%
+  Dim Cadena
+  
+  Cadena = "Esto es una prueba de buscar subcadenas y cambiarlas"
+
+  Response.Write(<font color="red">Replace(</font>Cadena, "prueba", "muestra"<font color="red">)</font>
+%&gt;</font>
+</pre>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green">
+<b>Esto es una muestra de buscar subcadenas y cambiarlas</b></font>
+<p>
+Hay que tener en cuenta algunas cosas: Si la longitud de <font color="blue">Cadena</font> es 0, <font color="red">Replace()</font> devuelve lo mismo. Se producir&aacute; un error si <font color="blue">Cadena</font> es <b>Null</b>. Otra cosa importante es que si <font color="blue">inicio</font> es mayor que 0, la cadena resultante será la comprendida entre el punto se&ntilde;alado por <font color="blue">Inicio</font> y el fin de <font color="blue">Cadena</font>, es decir que ser&aacute; <b>menos</b> larga que el original.
+
+
+
+<p>
+<font color="red" size=4>StrComp(</font><font color="blue" size=4>Cadena1, Cadena2[, Comparar]</font><font color="red" size=4>)</font>
+<p>
+Compara <font color="blue"><b>Cadena1</b></font> con <font color="blue"><b>Cadena2</b></font> y devuelve un valor num&eacute;rico para indicar el resultado. El modo de comparar las dos cadenas viene indicado por <font color="blue"><b>Comparar</b></font>, que es opcional. Puede escribirse el n&uacute;mero o la constante intr&iacute;nseca equivalente para definir <font color="blue">Comparar</font>. Puede tener dos valores: 
+<ul>
+        <li><b>0</b> Comparaci&oacute;n binaria. Por defecto (<b>vbBinaryCompare</b>)
+        <li><b>1</b> Comparaci&oacute;n textual (<b>vbTextCompare</b>)
+</ul>
+Utilizar la Comparaci&oacute;n binaria o textual permite diferenciar, por ejemplo, may&uacute;sculas de min&uacute;sculas, que por defecto VBScript considera iguales. Al ser 0 el valor por defecto de <font color="blue">Comparar</font>, <font color="red">StrComp()</font> distingue entre may&uacute;sculas y min&uacute;sculas
+<p>
+Los valores obtenidos con <font color="red">StrComp()</font> son:
+
+<ul>
+        <li><b>-1</b> si <font color="blue">cadena1</font> es <b>menor</b> que <font color="blue">cadena2</font>
+        <li><b>0</b> si <font color="blue">cadena1</font> es <b>igual</b> que <font color="blue">cadena2</font>
+        <li><b>1</b> si <font color="blue">cadena1</font> es <b>mayor</b> que <font color="blue">cadena2</font>
+        <li><b>Null</b> si <font color="blue">cadena1</font> o <font color="blue">cadena2</font> contienen <b>Null</b>
+</ul>
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

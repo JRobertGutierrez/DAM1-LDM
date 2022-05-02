@@ -1,0 +1,192 @@
+<html>
+
+<head>
+<title>Paginas multimedia </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2> P&aacute;ginas con ficheros multimedia (audio/video) y otros objetos</h2>
+
+Pueden utilizarse indistintamente ficheros multimedia con las extensiones .wav, .aiff, .au, .mid, .mp3, .mpg, .mpeg, .avi, .wmv, .rm, etc., etc.  Los navegadores no admiten directamente ning&uacute;n tipo de formato multimedia por defecto, y es necesario cargar un plugin, que el cliente tendr&aacute; que buscar e instalar.
+<p>
+Un plugin es un pequeño programa que har&aacute; las veces de conector entre el navegador y el fichero multimedia, es decir, que dotar&aacute; al navegador de una cierta capacidad que de serie no tiene. Los plugins no solamente son necesarios para reproducir los ficheros multimedia, sino tambi&eacute;n para poder cargar cualquier otro tipo de fichero que no sea HTML, que es el &uacute;nico formato que realmente entienden los navegadores. 
+<p>
+Casi todos los navegadores precisar&aacute;n de un plugin para reproducir cualquier tipo de formato (multimedia o no), excepto el Internet Explorer que echa mano de los ActiveX propios de los sistemas operativos Windows.
+<p>
+El primer elemento disponible en HTML para los ficheros multimedia fue <b>&lt;EMBED&gt;</b>. Este elemento, que en realidad nunca lleg&oacute; a estar incluido oficialmente en el lenguaje por la w3c, todav&iacute;a funciona en todos los navegadores modernos, pero presenta algunos problemas, que al no estar sujeto a estandarizaci&oacute;n alguna, ha provocado que cada navegador interprete a su manera las cosas. No est&aacute; en la especificaci&oacute;n del nuevo XHTML, que recomienda el uso del elemento <b>&lt;OBJECT&gt;</b> para estos menesteres.
+<p>
+<b>&lt;EMBED&gt;</b> cuenta con un buen n&uacute;mero de atributos: <b> SRC, AUTOSTART, LOOP, STARTTIME, ENDTIME, VOLUME, WIDTH, HEIGHT, ALIGN, CONTROLS y  HIDDEN</b>. 
+<p>
+<b>SRC</b> Indica d&oacute;nde est&aacute; el fichero a reproducir, pero no puede utilizarse solo, necesita la compañ&iacute;a de otros atributos del elemento, concretamente los que definen el tamaño de la consola (que es un icono parecido al teclado que tiene un casette pequeño): <b>WIDTH</b> (largo) y <b>HEIGHT</b> (alto)
+<p>
+Otro atributo de EMBED es <b>AUTOSTART</b> con dos posibles valores: <b>FALSE</b> (por defecto) y <b>TRUE</b>, y como ya habr&aacute;s deducido, TRUE hace que comience la reproducci&oacute;n inmediatamente despu&eacute;s de cargar la p&aacute;gina, y sin necesidad de pulsar el bot&oacute;n &quot;start&quot; de la consola.
+
+<p>
+El siguiente atributo a analizar es <b>HIDDEN</b> que s&oacute;lo tiene un valor: <b>TRUE</b>, y hace invisible la consola, pero evidentemente, si es invisible no puedes activar el sonido, y por tanto lo hace &eacute;l mismo, siempre que no hayas puesto AUTOSTART=FALSE, claro.
+<p>
+Un atributo de repetici&oacute;n no pod&iacute;a faltar, y lo tenemos en <b>LOOP</b> y sus tres posibles valores: <b>FALSE</b> (por defecto), <b>TRUE</b> que fuerza a la repetici&oacute;n sin fin de la audici&oacute;n, e <b>INTEGER</b> donde INTEGER es el n&uacute;mero de veces que deseas que se repita la audici&oacute;n.
+<p>
+No es obligado comenzar una audici&oacute;n por el principio del fichero. Imag&iacute;nate que tienes una serie de instrucciones habladas, y quieres dar la oportuna en cada momento, no todas de golpe. Para esto tenemos los atributos <b>STARTTIME=mm:ss</b> y <b>ENDTIME=mm:ss</b> donde <b>mm</b> son los minutos y <b>ss</b> los segundos del punto de comienzo o fin de la audici&oacute;n. <b>Cuidado</b>: los valores hay que darlos con dos d&iacute;gitos:
+<p>
+Por &uacute;ltimo tenemos el atributo <b>ALIGN</b> y sus valores <b>TOP, BOTTOM, CENTER, LEFT, RIGHT, MIDDLE y TEXTTOP</b> que funcionan igual que sus respectivos del elemento <a href="imagen1.htm" <b>IMG</b></a>, es decir, que no tiene efectos sobre el sonido o el v&iacute;deo, sino sobre la imagen de la consola y su alineaci&oacute;n con el texto de la p&aacute;gina.
+<p>
+ He aqu&iacute; un breve ejemplo con los atributos b&aacute;sicos: 
+<p>
+<pre>
+    &lt;<b>EMBED</b> SRC=&quot;minueto.mid&quot; WIDTH=160 HEIGHT=70 AUTOSTART="FALSE"&gt;
+</pre>
+
+Funciona bien con todos los navegadores, excepto con Opera.
+<hr>
+
+
+<h3>El elemento &lt;OBJECT&gt; &nbsp; &lt;/OBJECT&gt;</h3> 
+
+Este nuevo elemento pretende evitar la necesidad de continuar creando elementos fijos cada vez que aparece un nuevo formato de ficheros, como ocurri&oacute;, por ejemplo, con los multimedia y EMBED. En efecto, puesto que EMBED no ha resuelto las diferencias entre navegadores a la hora de cargar los distintos formatos, el XHTML ha implementado un elemento que puede incluir todos los par&aacute;metros que el formato a cargar precise, pero no con par&aacute;metros fijos como hasta ahora, sino "a la medida" de cada uno y trat&aacute;ndolos como objetos independientes. Como "objeto" se entender&aacute; cualquier fichero externo, incluso HTML, que deba mostrarse en la p&aacute;gina.
+<p>
+En el nuevo XHTML se ha eliminado el elemento <b>iframe</b> que era utilizado para insertar una ventana con contenido independiente al de la página que la soporta. Por ejemplo:
+<p>
+&lt;IFRAME id="indice" SRC="indice.htm" WIDTH="600" HEIGHT="150" FRAMEBORDER="1" MARGINWIDTH="5" MARGINHEIGHT="5" SCROLLING="Auto"&gt;&lt;/IFRAME&gt;
+</p>
+Y esta es la forma de sustituirlo:
+<pre>
+&lt;object id=&#34;indice&#34; type="text/html" data="indice.htm" style="width:500; height:200px;"&gt;
+&lt;p&gt;Texto alternativo, si la p&aacute;gina no es encontrada&lt;/p&gt;
+&lt;/object&gt;
+</pre>
+
+<object id="indice? type="text/html" data="indice.htm" style="width:600; height:150px;">
+<p>Texto alternativo, si la p&aacute;gina no es encontrada</p>
+</object>
+<p>
+Y para un gr&aacute;fico sustituyendo a &lt;IMG&gt;:
+
+<pre>
+&lt;object data="sugeren.gif" type="image/gif"&gt;
+&lt;p&gt;Contenido alternativo, si el gr&aacute;fico no es encontrado&lt;/p&gt;&lt;/object&gt;
+</pre>
+
+<p>
+<object data="sugeren.gif" type="image/gif">
+<p>Contenido alternativo, si el gr&aacute;fico no es encontrado</p></object>
+
+<p>
+Dependiendo del tipo de fichero a tratar, no todos los navegadores funcionan correctamente con OBJECT. Los m&aacute;s conocidos, como Firefox, IE, Opera, Chrome o Safari, en general, con los tipos de fichero  m&aacute;s habituales, suelen funcionar bastante bien si se afina la parametrizaci&oacute;n (&lt;param name="valor"&gt;). Puede no resultar f&aacute;cil encontrar plugins para algunos tipos de fichero. Y por supuesto, los par&aacute;metros necesarios pueden no ser los mismos para todos los navegadores.
+
+<p>
+En el siguiente ejemplo se muestra el c&oacute;digo m&iacute;nimo necesario para reproducir un fichero .mp3 y que generalmente, con todos los navegadores excepto el IE, solicitar&aacute; al cliente que instale el plugin de QuickTime si no lo tiene ya:
+<p>
+<pre>
+&lt;object  <font color="blue"><b>data</b></font>="test.mp3" <font color="blue"><b>type</b></font>="audio/x-mp3" height="50" width="300" &gt;
+	&lt;param name="src" value="test.mp3" /&gt;
+	&lt;param name="autostart" value="0" /&gt;
+&lt;/object&gt;
+</pre>
+<p>
+<object  data="test.mp3" type="audio/x-mp3" height="50" width="300" >
+<param name="src" value="test.mp3" />
+<param name="autostart" value="0" />
+</object>
+<p>
+En la sintaxis de este elemento son clave los dos primeros atributos de la primera l&iacute;nea: 
+<p>
+<font color="blue"><b>data</b></font> indica la ruta del fichero a cargar (pueden ser tanto rutas relativas como absolutas).<br>
+<font color="blue"><b>type</b></font> indica al navegador el tipo de contenido del fichero, o lo que es igual el <a href="estruc.htm#mime">MIME type</a> del que ya se ha hablado en otra secci&oacute;n de esta gu&iacute;a.
+<p>
+Seg&uacute;n el MIME declarado, el navegador cargar&aacute; los recursos del sistema que tenga disponibles para reproducir correctamente el fichero. En general todos los navegadores mostrar&aacute;n la consola del QuickTime y el IE la del Media Player.
+<p>
+Es importante la elecci&oacute;n del valor de <b>type</b> ya que eso definir&aacute; que el navegador tenga que buscar un plugin o no. Por ejemplo, si en lugar de definirlo como est&aacute;, con <b>audio/x-mp3</b> (que parece el m&aacute;s natural, dado el tipo de fichero) se define como <b>type="application/x-mplayer2"</b> todos los navegadores presentar&aacute;n la consola del Media Player sin necesidad de buscar nada. Parece la soluci&oacute;n ideal, pero si el cliente no se conecta desde una m&aacute;quina Windows, no funcionar&aacute;, ya que el Media Player es exclusivo de este sistema operativo.
+<p>
+veamos un ejemplo para reproducir un fichero mp3 (no funciona bien con Opera ni con las &uacute;ltimas versiones de Mozilla):
+<pre>
+&lt;object height="80" width="300"type="application/x-mplayer2" data="test.mp3">
+	&lt;param name="src" value="test.mp3" />
+	&lt;param name="controller" value="false" />
+	&lt;param name="autostart" value="0">
+&lt;/object>
+</pre>
+<!--
+<OBJECT id="mediaPlayer" width="450" height="350" 
+classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95"
+codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701" 
+standby="Loading Microsoft Windows Media Player components..." 
+type="application/x-oleobject" >
+<PARAM name="fileName" value="colon.avi" >
+<PARAM NAME="ShowStatusBar" VALUE="1">
+<PARAM NAME="AutoStart" VALUE="false">
+</OBJECT>
+-->
+<p>
+<object height="80" width="300"type="application/x-mplayer2" data="test.mp3">
+	<param name="src" value="test.mp3" />
+	<param name="controller" value="false" />
+	<param name="autostart" value="0">
+</object>
+<p>
+Tambi&eacute;n se puede utilizar para reproducir un video:
+<pre>
+&lt;object height="300" width="350"type="application/x-mplayer2" data="colon.avi">
+	&lt;param name="src" value="colon.avi" />
+	&lt;param name="controller" value="false" />
+	&lt;param name="autostart" value="0">
+&lt;/object>
+</pre>
+
+<object height="300" width="350"type="application/x-mplayer2" data="colon.avi">
+	<param name="src" value="colon.avi" />
+	<param name="controller" value="false" />
+	<param name="autostart" value="0">
+</object>
+<p>
+Este &uacute;ltimo no funciona bien con Opera ni con las &uacute;ltimas versiones de Mozilla.
+<p>
+Hasta aqu&iacute; hemos visto c&oacute;mo presentar un fichero multimedia con el Media Player de Windows, pero solo uno. En efecto, &iquest;qu&eacute; hacer si tenemos un fichero de gran tama&ntilde;o troceado en varias partes? O simplemente, varios ficheros relacionados aunque no formen parte de uno solo. Si el n&uacute;mero de partes es relativamente elevado, puede ser muy cargante presentarlos todos de la forma que ya conocemos, y lo que es peor, puede suceder que el navegador se cuelgue.
+<p>
+Existe una forma de acceder a una lista de ficheros multimedia utilizando el Media Player. Es decir, que escribiendo solamente una definici&oacute;n de consola  se puede ver o escuchar una serie de ficheros; hablamos de los ficheros <b>.asx</b>
+<p>
+ La particularidad reside en la extensi&oacute;n del fichero multimedia. No, no es un nuevo tipo de video super comprimido, es simplemente un fichero de texto, editado con cualquier editor, como el bloc de notas, que contiene la referencia a los ficheros que se desea encadenar. Por ejemplo, para encadenar dos peque&ntilde;os ficheros multimedia de formato .mid se escribe:
+<p>
+<pre>
+Fichero <b>lista.asx</b>
+
+&lt;ASX version = "3.0"&gt;
+&lt;ENTRY&gt;&lt;REF HREF="minueto.mid"/&gt;&lt;/ENTRY&gt;
+&lt;ENTRY&gt;&lt;REF HREF="adagio.mid"/&gt;&lt;/ENTRY&gt;
+&lt;/ASX&gt;
+</pre>
+ATENCION: Todas las l&iacute;neas de los ficheros .asx deben comenzar justo junto al margen izquierdo, sin ningun espacio en blanco.
+<p>
+El c&oacute;digo para mostrar la consola es el ya conocido, solamente cambia el fichero a reproducir, que puede incluir ficheros de distintos tipos:
+<pre>
+&lt;object height="300" width="350"type="application/x-mplayer2" data="lista.asx">
+	&lt;param name="src" value="lista.asx" />
+	&lt;param name="controller" value="false" />
+	&lt;param name="autostart" value="0">
+&lt;/object>
+</pre>
+
+<object height="80" width="300"type="application/x-mplayer2" data="lista.asx">
+	<param name="src" value="lista.asx" />
+	<param name="controller" value="false" />
+	<param name="autostart" value="0">
+</object>
+<p>
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+

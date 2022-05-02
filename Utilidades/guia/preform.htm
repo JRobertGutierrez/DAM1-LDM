@@ -1,0 +1,106 @@
+
+
+<HTML>
+<HEAD><TITLE>Preformato de texto</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>Textos preformateados</H2>
+
+Posiblemente ya te habr&aacute;s dado cuenta de que, cuando escribes un texto con tu editor, a la hora de ver lo hecho con el visualizador, algunas cosas no est&aacute;n como t&uacute; las pusiste... Como por ejemplo poner dos o tres espacios en blanco entre palabras, o intentar encolumnar los datos de una peque&ntilde;a tabla: &#161;acaba todo junto y en la misma l&iacute;nea!
+<P>
+Este efecto se puede eliminar con el elemento lleno <b>&lt;PRE&gt;</b> . Al texto que va dentro del elemento PRE se le pueden aplicar todos los elementos que se quiera, siempre que sean elementos que no alteren la posici&oacute;n del texto. Por ejemplo si utilizas el elemento &lt;H&gt;, se romper&iacute;a el preformateo pero no ocurrir&aacute; lo mismo con  &lt;FONT SIZE&gt;. Por defecto, los textos preformateados se ven con  tipo de letra  &quot;curier&quot;, es decir de paso fijo y los no preformateados en &quot;Times New Roman&quot;. Estos tipos son configurables en el visualizador.
+<P>
+
+Se escribir&aacute; as&iacute;:
+<P>
+&lt;PRE><BR>
+<PRE>
+       1  2  3  4  5  6  7      &lt;B&gt;Esto es una demostracion de&lt;/B&gt;
+
+       8  9 10 11 12 13 14         texto preformateado.
+
+      15 16 17 18 19 20 21
+</PRE>
+&lt;/PRE><P>
+
+y este ser&iacute;a el resultado:
+<P>
+
+<pre>
+       1  2  3  4  5  6  7        <b> Esto es una demostracion de </b>
+
+       8  9 10 11 12 13 14         texto preformateado.
+
+      15 16 17 18 19 20 21
+</pre>
+
+Dentro de un bloque preformateado tambi&eacute;n se pueden poner links a otros documentos y codificaci&oacute;n para caracteres especiales (se ver&aacute; m&aacute;s adelante lo que es eso).<BR>
+Este elemento admite el par&aacute;metro WIDTH=x donde x define la m&aacute;xima longitud de l&iacute;nea visualizada. No funciona con Netscape.
+<hr>
+
+El navegador, por defecto, elimina varios espacios en blanco y los convierte en uno solo. Si lo que deseas es separar una palabra de otra m&aacute;s de un espacio, se puede recurrir a una instrucci&oacute;n especial que le indica esto al navegador, pero hay que darla codificada;  funciona como un avance de carro, y aunque en pantalla cumple su objetivo, cuando se imprime la p&aacute;gina, no todas las impresoras son capaces de interpretarlo correctamente. Se escribe: <b>&#38;&#35;160;</b> y como alias se utiliza: <b>&#38;nbsp;</b>
+<p>
+Por ejemplo, si escribes: <br>
+<pre>texto texto&#38;nbsp;&#38;nbsp;&#38;nbsp;&#38;nbsp;&#38;nbsp;texto texto</pre>
+Se ve as&iacute;:<p>
+texto texto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;texto texto
+<hr>
+Con Netscape 3.0 se ha implementado un nuevo elemento que permite definir espacios en blanco sin utilizar el elemento &lt;PRE&gt;<br>
+Se trata del elemento <B> &lt;SPACER&gt;</B>. este elemento puede ir acompa&ntilde;ado de los atributos <b>TYPE</b> y <b> SIZE</b> y  se puede utilizar en cualquier zona de una p&aacute;gina, pero donde m&aacute;s se aprecia su efecto es en las columnas.   
+
+Se escibir&aacute; asi:
+
+<pre>
+&lt;MULTICOL COLS=2&gt;
+<B>&lt;SPACER TYPE=HORIZONTAL SIZE=35&gt;</B>
+texto texto texto texto texto texto texto texto texto texto texto texto
+&lt;P&gt;
+<B>&lt;SPACER TYPE=HORIZONTAL SIZE=35&gt;</B>
+texto texto texto texto texto texto texto texto texto texto texto texto
+<B>&lt;SPACER TYPE=VERTICAL SIZE=35&gt;</B>
+texto texto texto texto texto texto texto texto texto texto texto texto
+&lt;/MULTICOL&gt;
+
+</pre>
+
+Y se ve as&iacute;:<BR>
+
+
+<multicol cols=2>
+<spacer type=horizontal size=35>
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto
+<p>
+<spacer type=horizontal size=35 align=left>
+texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+
+<spacer type=vertical size=35>
+texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+</multicol>
+<p>
+Como puedes ver, con <b>TYPE=horizontal</b> deja espacio en blanco a la izquierda de la primera linea. Es el valor por defecto. 
+
+<b>TYPE=vertical</b> deja espacio en blanco por arriba de la primera linea. Para ambos tipos el tama&ntilde;o del espacio se da en puntos (pixels) con el atributo <b>SIZE</b>. El valor por defecto es 0.
+<P>
+F&iacute;jate en que entre las dos instrucciones con tipo horizontal hay un elemento &lt;P&gt;. En efecto, es necesario indicarle a &lt;SPACER&gt; donde termina el p&aacute;rrafo para que ejecute la siguiente instrucci&oacute;n del mismo tipo. Este elemento no funciona con el navegador de Microsoft. Para conseguir columnas sin utilizar este elemento la &uacute;nica soluci&oacute;n es emplear tablas: &lt;TABLE&GT;
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

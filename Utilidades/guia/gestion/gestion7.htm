@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Ejemplos de idc </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<p>
+<font size=4 color ="blue">Ejemplo 1.- </font>Petici&oacute;n sin condiciones de dos campos de una tabla. Presentaci&oacute;n directa en formato tabla.
+<p>
+<font size=3 color ="red">articulos.IDC </font>
+<pre>
+
+<b>Datasource</b>: pruebas
+<b>Username</b>: web
+<b>Password</b>:
+<b>Translationfile</b>: C:\aplicaciones\translator.txt
+<b>Template</b>: articulos.htx 
+<b>SQLStatement</b>: 
+
++SELECT tipo, nombre 
++ FROM articulos
+
+</pre>
+
+<p>
+<font size=3 color ="red">articulos.HTX </font>
+<pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Lista de articulos &lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;CENTER&gt;
+&lt;H3&gt;La ferreteria virtual&lt;/H3&gt;
+&lt;TABLE BORDER=1&gt;
+&lt;TR&gt;&lt;TH&gt;Tipo articulo&lt;/TH&gt;&lt;TH&gt;Nombre articulo&lt;/TH&gt;&lt;/TR&gt;
+
+<b>&lt;%begindetail%&gt;</b>
+   &lt;TR&gt;&lt;TD&gt;<b>&lt;%tipo%&gt;</b>&lt;/TD&gt;&lt;TD&gt;<b>&lt;%nombre%&gt;</b>&lt;/TD&gt;&lt;/TR&gt;
+<b>&lt;%enddetail%&gt;</b>
+
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+
+<p>
+<font size=3 color ="red">Resultado</font>
+
+<center>
+<h3>La ferreteria virtual</h3>
+<table border=1>
+<tr><th>Tipo articulo</th><th>Nombre articulo</th></tr>
+<tr><td>HERRAMIENTAS</td><td>Martillo</td></tr>
+<tr><td>HERRAMIENTAS</td><td>Alicates</td></tr>
+<tr><td>MATERIAL</td><td>Clavos</td></tr>
+<tr><td>MATERIAL</td><td>Tornillos</td></tr>
+</table></center>
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+

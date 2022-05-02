@@ -1,0 +1,175 @@
+<HTML>
+<HEAD><TITLE>ASP 6</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El objeto Application</H2>
+
+El objeto <b>Application</b> sirve para compartir, almacenar y recibir informaci&oacute;n en respuesta a las llamadas recibidas desde los clientes de los usuarios de la aplicaci&oacute;n. Cualquier informaci&oacute;n que se almacene en este objeto estar&aacute; disponible para TODOS los usuarios de la aplicaci&oacute;n.
+<p>
+El objeto <b>Application</b> tiene 2 <b>colecciones</b>, 4 <b>m&eacute;todos</b> y 2 <b>eventos</b>: 
+<hr noshade>
+<center><font size=4>COLECCIONES</font></center><p>
+
+<h3>Application.Contents()</h3> 
+Contiene (de ah&iacute; su nombre) una colecci&oacute;n de todos los items que han sido creados y a&ntilde;adidos  al objeto <b>Application</b>. Los items se pueden a&ntilde;adir a la lista mediante asignaci&oacute;n directa de variables, o bien con el objeto <b>Server</b> y su m&eacute;todo <b>CreateObject</b>.
+<p>
+Puede obtenerse una lista completa mediente un bucle del tipo  <b>For Each item in ... Next</b>. Veamos como funciona:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br> Application("Variable") = "Esto no es un objeto"<br>
+   Set Application("Objeto") = Server.CreateObject("ADODB.Connection")<br>
+&nbsp;<br>
+For Each Item in <FONT color="red">Application.Contents</FONT><br>
+&nbsp;&nbsp;&nbsp;  If IsObject(<FONT color="red">Application.Contents</FONT>(Item)) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Response.Write Item &amp; " = Esto es un objeto.&lt;BR&gt;"<br>
+&nbsp;&nbsp;&nbsp;  Else        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Response.Write Item &amp; " = " &amp; <FONT color="red">Application.Contents</FONT>(Item) &amp; "&lt;BR&gt;"<br>
+&nbsp;&nbsp;&nbsp;  End If<br>
+Next<br>
+%&gt;</font>
+<p>
+Y este ser&iacute;a el resultado:<br>
+<font color="green" size=2 face="courier">
+<pre>
+<b>Nombre del item     Contenido</b>
+-----------------------------------------
+     Variable    =  Esto no es un objeto
+     Objeto      =  Esto es un objeto.
+</pre>
+</font>
+<hr WIDTH=50%>
+
+<h3>Application.StaticObjects()</h3>
+Esta es una colecci&oacute;n de todos los items creados en el objeto Application utilizando un elemento HTML: <b>&lt;OBJECT&gt;</B> &nbsp;&nbsp; En este caso, la asignaci&oacute;n de valores a los items no se hace desde c&oacute;digo ASP, sino en HTML y desde el fichero <b>global.asa</b>
+<p>
+Al igual que en la colecci&oacute;n anterior, puede mostrarse su contenido mediante un bucle <b>For Each item in ... Next</b>.
+<p>
+
+
+<font color="blue" size=2 face="courier">
+'---fichero global.asa<br>
+&lt;OBJECT RUNAT=Server SCOPE=Application ID=MiConexion PROGID="ADODB.Connection"&gt;<br>
+&lt;/OBJECT&gt;<br>
+<p>
+'---fichero.asp<br>
+&lt;%<br>
+For Each Item In <FONT color=#ff0000>Application.StaticObjects</font><br>
+ Response.Write Item &amp; "&lt;BR&gt;"<br>
+Next<br>
+%&gt;
+<p>
+</font>
+Y este ser&iacute;a el resultado:<br>
+<font color="green" size=2 face="courier">
+
+MiTexto<br>
+MiConexion<br>
+</font>
+
+<hr noshade>
+<center><font size=4>METODOS</font></center><p>
+<h3>Application.Contents.Remove()</h3> 
+Versi&oacute;n 3 o superior.
+<P>
+Este m&eacute;todo se utiliza para eliminar un item espec&iacute;fico de la colecci&oacute;n <b>
+Application.Contents</b>. El item que se desea eliminar puede referenciarse de dos maneras: por su nombre o por su n&uacute;mero dentro de la colecci&oacute;n, teniendo presente que la numeraci&oacute;n comienza en el 1. Si se referencia por su nombre, &eacute;ste deber&aacute; escribirse entre comillas dobles(<b>"</b>). Por ejemplo:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br> Application("Variable") = "Esto no es un objeto"<br>
+   Set Application("Objeto") = Server.CreateObject("ADODB.Connection")<br>
+<p>
+<FONT color="red">Application.Contents.Remove</FONT>(1)<br>
+<FONT color="red">Application.Contents.Remove</FONT>("Variable")
+<p>
+For Each Item in <FONT color="red">Application.Contents</FONT><br>
+&nbsp;&nbsp;&nbsp;  If IsObject(<FONT color="red">Application.Contents</FONT>(Item)) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Response.Write Item &amp; " = Esto es un objeto.&lt;BR&gt;"<br>
+&nbsp;&nbsp;&nbsp;  Else        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Response.Write Item &amp; " = " &amp; <FONT color="red">Application.Contents</FONT>(Item) &amp; "&lt;BR&gt;"<br>
+&nbsp;&nbsp;&nbsp;  End If<br>
+Next<br>
+%&gt;</font>
+<p>
+Y este ser&iacute;a el resultado:<br>
+<font color="green" size=2 face="courier">
+<pre>
+<b>Nombre del item     Contenido</b>
+-----------------------------------------
+     Objeto      =  Esto es un objeto.
+</pre>
+</font>
+<hr WIDTH=50%>
+
+<h3>Application.Contents.RemoveAll()</h3> 
+Versi&oacute;n 3 o superior.
+<p>
+Como su nombre indica, este m&eacute;todo elimina TODOS los items de la colecci&oacute;n <b>Application.Contents()</b>.
+<p>
+En este caso no hay que referencia ningun nombre ni n&uacute;mero.
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br> 
+<FONT color="red">Application.Contents.RemoveAll(&nbsp;)</FONT><br>
+%&gt;
+</font>
+<hr WIDTH=50%>
+
+<h3>Application.Lock &nbsp;&nbsp; Application.Unlock</h3> 
+El m&eacute;todo <b>Application.Lock</b> previene que el objeto <b>Application</b> cambie de valor mientras est&aacute; siendo utilizado. En efecto, si el objeto ha recibido un valor, que por ejemplo es necesario para hacer un c&aacute;lculo matem&aacute;tico, y otro usuario de la aplicaci&oacute;n lo cambia antes de que se lleven a cabo todas las operaciones, el c&aacute;lculo fallar&iacute;a. Una vez concluidas las operaciones hay que volver a liberarlo con el  m&eacute;todo <b>Application.UnLock</b>
+<p>
+Salvo en muy especiales ocasiones, no es recomendable utilizar el objeto <b>Application</b> para que contenga valores variables para cada usuario. Es preferible dejar este objeto para valores fijos, y utilizar el objeto <b>Session</b> para los valores variables, ya que no se interfiere con los de otros usuarios.
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br> 
+<FONT color="red">
+Application.Lock<br>
+Application.UnLock</FONT><br>
+%&gt;
+</font>
+
+<hr noshade>
+<center><font size=4>EVENTOS</font></center><p>
+<h3>Application_OnStart  &nbsp; &nbsp; Application_OnEnd</h3> 
+
+Estos eventos se controlan en el fichero <b>global.asa</b>, y debe existir uno por cada aplicaci&oacute;n que se ejecute en el servidor, cada uno en el directorio virtual donde &eacute;sta resida. El evento <b>Application_OnStart</b> ocurre antes de comenzar cualquier sesi&oacute;n de usuario.
+<p>
+<font color="blue" size=2 face="courier">
+'---fichero global.asa<br>
+&lt;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+Sub Session_OnStart<br>
+End Sub<br>
+<p>
+Sub Session_OnEnd<br>
+End Sub<br>
+<p>
+Sub Application_OnStart<br>
+End Sub<br>
+<p>
+Sub Application_OnEnd<br>
+End Sub<br>
+<p>
+&lt;/SCRIPT&gt;
+</font>
+<p>
+Como puedes ver, contiene cuatro rutinas que sirven para detectar cuando est&aacute; activa la aplicaci&oacute;n y cuando un usuario abre o termina una sesi&oacute;n. El suceso (o evento, es lo mismo) <b>Application_OnStart</b>, s&oacute;lo se disparar&aacute; cuando el primer usuario solicite una p&aacute;gina contenida en el directorio virtual de la aplicaci&oacute;n, y a continuaci&oacute;n se dispara <b>Session_OnStart</b>. Cuando otros usuarios soliciten otras p&aacute;ginas, o la misma, ya no se disparar&aacute; el primer evento, sino s&oacute;lo el <b>Session_OnStart</b>, que se activar&aacute; tantas veces como usuarios haya conectados a la aplicaci&oacute;n. Cuando un usuario cierra la aplicaci&oacute;n voluntariamente, o bien transcurre un tiempo predefinido sin hacer ninguna transacci&oacute;n, se disparar&aacute; <b>Session_OnEnd</B>, y cuando se haya desconectado el &uacute;ltimo usuario, lo har&aacute; <b>Application_OnEnd</B>.
+<p>
+Dentro de las rutinas que controlan los eventos del objeto Application, <b>Application_OnStart</b> y <b>Application_OnEnd</b> puede programarse cualquier acci&oacute;n que convenga realizar en ese momento. Por ejemplo, asignar valores fijos para toda la aplicaci&oacute;n, declarar el texto de algunos mensajes en funci&oacute;n de la fecha o la hora, etc., etc... o simplemente no hacer nada.
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

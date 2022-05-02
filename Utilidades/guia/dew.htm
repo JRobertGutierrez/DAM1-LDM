@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>El reproductor DEW </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2>&iquest;Un plugin universal? </H2>
+
+Hay que tener en cuenta que para que un determinado fichero multimedia, por ejemplo un pequeño mp3, pueda oirse en tu p&aacute;gina (oirse, no descargarse) intervendr&aacute; una cadena de elementos compuesta por el sistema operativo de la m&aacute;quina (SO), el navegador y los plugins que haya cargados, si es que hay alguno. Y puede que te preguntes por qu&eacute; tantos eslabones para algo tan simple. Del primero, del SO, depender&aacute; que por defecto haya herramientas ya instaladas que permitan reproducir el fichero, lo que evitar&iacute;a la necesidad de un plugin. Del segundo, el navegador, depender&aacute; que por defecto sea capaz de reproducir el fichero o en su defecto, llamar al recurso de sistema necesario para ello. Y por fin, si todo lo anterior falla, el navegador deber&aacute; tener cargado el plugin necesario, que no olvidemos que para cada navegador ser&aacute; diferente, a&uacute;n cuando el fichero a reproducir sea el mismo.
+<p>
+&iquest;Y c&oacute;mo programar la p&aacute;gina para asegurarnos que el mayor n&uacute;mero posible de visitantes pueda oir nuestro fichero sin necesidad de hacer nada? Pues no es nada f&aacute;cil. Lo ideal ser&iacute;a disponer de algo que sepamos de antemano que tienen instalado la mayor&iacute;a de m&aacute;quinas en el mundo, es decir, un plugin casi universal. Y este es sin duda, y hasta que aparezca algo mejor, el plugin de Flash Player, que seg&uacute;n las &uacute;ltimas encuestas tienen m&aacute;s del 95% de las m&aacute;quinas del mundo, independientemente de su sistema operativo. Cierto es tambi&eacute;n que el n&uacute;mero de m&aacute;quinas con sistemas operativos Windows es casi igual, lo que significa que casi todos nuestros visitantes tendr&aacute;n instalado el Media Player, por lo que la reproducción de ficheros de audio o video en los formatos m&aacute;s habituales, como mpg, avi, o mp3 está asegurada sin necesidad de instalaciones adicionales.
+<p>
+La firma francesa <a href =" http://www.alsacreations.fr/dewplayer-en"><b>Alsacr&eacute;ations</b></a> ha publicado bajo <b>Creative Commons licence</b> (c&oacute;digo libre y gratuito) un magn&iacute;fico reproductor de mp3 con tecnolog&iacute;a flash. Se trata del <a href="dewplayer.zip"><b>Dewplayer</b></a>. Este paquete contiene todo lo necesario para, mediante varios tipos de consola, reproducir ficheros mp3. Es recomendable utilizar ficheros codificados a 44.1 Khz para evitar aceleraciones indeseadas en la lectura (no funciona bien con mp3 de baja calidad). Para insertarlo en la p&aacute;gina html se emplea el elemento OBJECT. Veamos c&oacute;mo se utiliza.
+<p>
+Con el siguiente c&oacute;digo se obtiene la m&aacute;s simple de las consolas de reproducci&oacute;n: la <b>mini</b>
+<p>
+<pre>
+&lt;object type="application/x-shockwave-flash" <b>data="dewplayer-mini.swf"</b> 
+width="200" height="20" id="dewplayer" name="dewplayer"&gt;
+&lt;param name="movie" value="dewplayer.swf" /&gt;
+&lt;param name="flashvars" value="mp3=test.mp3&autostart=0&autoreplay=1&
+showtime=1&randomplay=1&nopointer=1&bgcolor=FFFF00" /&gt;
+&lt;/object&gt;
+</pre>
+
+<object type="application/x-shockwave-flash" data="dewplayer-mini.swf" 
+width="160" height="20" id="dewplayer" name="dewplayer">
+<param name="wmode" value="transparent" />
+<param name="movie" value="dewplayer-mini.swf" />
+<param name="flashvars" value="mp3=test.mp3" />
+</object>
+
+
+
+
+<p>
+F&iacute;jate en que cada par&aacute;metro est&aacute; separado del anterior por el ampersand (&). 
+Para obtener cualquiera de las otras consolas disponibles, solamente hay que cambiar el valor de <b>data</b>:
+<p>
+con <b>data="dewplayer.swf"</b> tendremos la versi&oacute;n <b>classic</b>:
+<p>
+
+<object type="application/x-shockwave-flash" data="dewplayer.swf" width="200" height="30" id="dewplayer" name="dewplayer">
+<param name="movie" value="dewplayer.swf" />
+<param name="flashvars" value="mp3=test.mp3&autostart=0&autoreplay=1&
+showtime=1&randomplay=1&nopointer=1&bgcolor=FFFF00" />
+</object>
+<p>
+<p>
+<b>data="dewplayer-bubble.swf"</b> muestra la versi&oacute;n <b>bubble</b>:
+<p>
+
+<object type="application/x-shockwave-flash" data="dewplayer-bubble.swf" width="250" height="65" id="dewplayer" name="dewplayer">
+<param name="movie" value="dewplayer.swf" />
+<param name="flashvars" value="mp3=test.mp3&autostart=0&autoreplay=1&
+showtime=1&randomplay=1&nopointer=1&bgcolor=FFFF00" />
+</object>
+<p>
+Esta es m&aacute;s grande, por tanto las medidas cambian: width="250" height="65"
+<p>
+<b>data="dewplayer-multi.swf"</b> para la versi&oacute;n <b>multi</b>:
+<p>
+
+<object type="application/x-shockwave-flash" data="dewplayer-multi.swf" width="240" height="20" id="dewplayer" name="dewplayer">
+<param name="movie" value="dewplayer-multi.swf" />
+<param name="flashvars" value="mp3=test.mp3|test.mp3|test.mp3&autostart=0&autoreplay=1&showtime=1&randomplay=1&nopointer=1&bgcolor=FFFF00" />
+</object>
+<p>
+Esta versi&oacute;n permite especificar varios ficheros. Para ello solamente hay que escribirlos en los valores del par&aacute;metro "flashvars", por ejemplo:
+<pre>
+&lt;param name="flashvars" value="mp3=<b>test.mp3|test.mp3|test.mp3</b>&
+autostart=0&autoreplay=1&showtime=1&randomplay=1&nopointer=1&bgcolor=FFFF00" /&gt;
+</pre>
+F&iacute;jate en que el s&iacute;mbolo que hace de separador entre los distintos ficheros mp3 es la "pipe" <b>|</b> (c&oacute;digo &amp;#124;)
+<p>
+La versi&oacute;n <b>playlist</b> es parecida a la multi, pero mostrando la lista con el nombre de los t&iacute;tulos que correspondan a cada fichero (no necesariamente el nombre del fichero). El c&oacute;digo cambia un poco:
+<p>
+<pre>
+&lt;object type="application/x-shockwave-flash" data="dewplayer-playlist.swf" 
+   width="240" height="200" id="dewplayerpls" name="dewplayerpls"&gt;
+&lt;param name="movie" value="dewplayer-playlist.swf" /&gt;
+&lt;param name="flashvars" <b>value="xml=playlist.xml"</b> /&gt;
+&lt;/object&gt;
+</pre>
+<p>
+<object type="application/x-shockwave-flash" data="dewplayer-playlist.swf" width="240" height="200" id="dewplayerpls" name="dewplayerpls">
+<param name="movie" value="dewplayer-playlist.swf" />
+<param name="flashvars" value="xml=playlist.xml" />
+</object>
+<p>
+Como habr&aacute;s supuesto, el secreto est&aacute; en el fichero <b>playlist.xml</b> que es el que contiene la lista de ficheros que se reproducir&aacute;n, pero puede contener mucha m&aacute;s informaci&oacute;n aunque en la versi&oacute;n gratuita  no se muestre, (esto est&aacute; disponible solamente en las versiones "Pro").
+<p>
+Los ficheros xml son ficheros que se pueden escribir con cualquier editor, como los html. Es un formato est&aacute;ndar de intercambio de datos basado en etiquetas, es decir cada etiqueta indica un campo con ese nombre que contiene informaci&oacute;n. Por ejemplo, este ser&iacute;a un fichero <b>playlist.xml</b> t&iacute;pico:
+<p>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;playlist version="1" xmlns="http://xspf.org/ns/0/">
+    &lt;title>Playlist&lt;/title>
+    &lt;creator>jac&lt;/creator>
+    &lt;link>http://sestud.uv.es/manual.esp/&lt;/link>
+    &lt;info>Lista de pruebas&lt;/info>
+    &lt;image>tracklist.jpg&lt;/image>
+
+    &lt;trackList>
+        &lt;track>
+          &lt;location>test.mp3&lt;/location>
+          &lt;creator>Jean-Pierre Claris&lt;/creator>
+          &lt;album>Exitos de siempre&lt;/album>
+          &lt;title>Plaisir d'amour&lt;/title>
+          &lt;annotation>I love this song&lt;/annotation>
+          &lt;duration>30000&lt;/duration>
+          &lt;image>autor.jpg&lt;/image>
+          &lt;info>Info de pruebas&lt;/info>
+          &lt;link>http://fr.wikipedia.org/wiki/Plaisir_d%E2%80%99amour&lt;/link>
+        &lt;/track>
+    &lt;/trackList>
+&lt;/playlist>
+</pre>
+
+Como es evidente, habr&aacute; que incluir tantos registros  &lt;track> &nbsp; &lt;/track> como ficheros se vayan a incluir en la consola, y siempre dentro del agrupamiento &lt;trackList> &nbsp; &lt;/trackList>
+<p>
+Una particularidad de los ficheros xml, es que as&iacute; como en un fichero t&iacute;pico de datos un campo debe existir aunque est&eacute; vac&iacute;o, en xml si un campo no contiene valor, ni siquiera aparece en el fichero. En estas versiones libres del Dewplayer, puesto que nada es utilizado excepto el nombre (y localizaci&oacute;n) del fichero, el resto puede obviarse. Por tanto, el fichero playlist.xml puede quedar reducido a la m&iacute;nima expresi&oacute;n:
+<p>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;playlist version="1" xmlns="http://xspf.org/ns/0/">
+    &lt;title>Playlist&lt;/title>
+
+    &lt;trackList>
+        &lt;track>
+          &lt;location>test.mp3&lt;/location>
+          &lt;title>Plaisir d'amour&lt;/title>
+        &lt;/track>
+    &lt;/trackList>
+&lt;/playlist>
+</pre>
+<p>
+<b>ATENCION:</B> En estos ejemplos se ha indicado el fichero mp3 a reproducir suponiendo que est&aacute; en el mismo directorio en que se encuentra la p&aacute;gina, pero se pueden escribir las rutas relativas que sean necesarias, y lo mismo para los ficheros .swf indicados en <b>data</b>  o los playlist.xml
+<p>
+Veamos ahora los distintos par&aacute;metros que se utilizan y sus posibles valores, que siempre son dos (excepto para volume): 0=false y 1=true, es decir, 0=desactivado 1=activado.
+<p>
+<b>autoplay</b> Hace que la reproducci&oacute;n del fichero comience en cuanto la p&aacute;gina es cargada: 
+<pre>
+dewplayer.swf?mp3=test.mp3&<b>autoplay=1</b>
+</pre>
+
+<b>autoreplay</b> Hace que se repita la reproducci&oacute;n del fichero autom&aacute;tica e indefinidamente: 
+<pre>
+dewplayer.swf?mp3=test.mp3&<b>autoreplay=1</b>
+</pre>
+
+<b>randomplay</b> Si se ha seleccionado el modelo <b>multi</b>, el primer fichero que se reproduzca ser&aacute; cambiado aleatoriamente cada vez que se cargue la p&aacute;gina. No tiene efecto en el resto de consolas: 
+<pre>
+dewplayer.swf?mp3=test.mp3&<b>randomplay=1</b>
+</pre>
+
+<b>showtime</b> Hace que se muestre el tiempo que va a durar la reproducci&oacute;n del fichero: 
+<pre>
+dewplayer.swf?mp3=test.mp3&<b>showtime=1</b>
+</pre>
+
+<b>volume</b> indica el volumen por defecto de la consola al comenzar la  reproducci&oacute;n del fichero, deber&aacute; ser un n&uacute;mero entre 0 y 100: 
+<pre>
+dewplayer.swf?mp3=test.mp3&<b>volume=50</b>
+</pre>
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+

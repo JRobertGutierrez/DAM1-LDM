@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>¿ES UN NÚMERO ENTERO?</title>
+</head>
+<body>
+    <script>
+        var numero = 1;
+        var entero;
+            while(numero!=entero){
+                numero = prompt("Introduce un número");
+                entero = parseInt(numero);
+                if(isNaN(entero)){
+                    alert("No es un número")
+                }else{
+                    alert("Es un número")
+                }
+            }
+    </script>
+
+    <!--<script>
+        var entero;
+            do{
+                entero = parseInt(prompt("Introduce un número"));
+
+            }while (isNaN(entero))
+    </script>-->
+
+
+</body>
+</html>

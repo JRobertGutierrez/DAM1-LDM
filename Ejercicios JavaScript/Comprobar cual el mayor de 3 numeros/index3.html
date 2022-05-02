@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //script que sume todos los números introducidos por el usuario hasta que teclee el número 0.
+        var numero=0;
+		var suma=0;
+		
+		numero = parseInt(prompt("Introduce un número: - 0 para acabar" ));
+		
+		suma=numero;//almaceno el valor del primer número en la variable suma
+		
+		while(numero!=0) //Mientras sea distinto de cero hago el bucle
+		{
+			numero++;
+            numero = parseInt(prompt("Introduce otro número: - 0 para acabar"));
+		
+			suma=suma+numero; //Sumo al numero la suma inicial	
+		}
+		//Muestro el valor final de la variable suma
+		document.write("La suma de todos los números introducidos es: "+suma);
+    
+    
+    
+    
+    </script>
+
+
+
+
+
+</body>
+</html>

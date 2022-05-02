@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Primer JavaScript</title>
+	<script src="js/miJavaScript.js"></script>
+</head>
+
+<body>
+	<script>
+		document.write("<h1>Página de bienvenida</h1>");	
+	</script>
+
+	<script type="text/javascript">
+		//alert("Hola " + nombre + " " + apellidos + " " + edad + " "+ direccion);
+		alert("Hola " + nombre + " " + apellidos);
+	</script>
+
+	<div style="background-color: gray; color: white; text-align: center;">
+		Robert Gutiérrez
+		<script>
+			document.write(fecha.getFullYear());	
+		</script>
+
+	</div>
+
+	<script>
+		//document.write("Hola " + nombre + " " + apellidos + " " + edad + " "+ direccion);	
+		document.write("El alumno se llama " + nombre + " " + apellidos + ", tiene una edad de " + edad + " años");
+		if (hombre) {
+			document.write(" y es un hombre")
+		} else {
+			document.write(" y es una mujer")
+		}
+	</script>
+
+	<script>
+		var edad = prompt("Introduce tu edad", "18");
+
+		if (edad != "") {
+
+			if (edad >= 18) {
+
+				document.write("Eres mayor de edad");
+			} else {
+
+				document.write("Eres menor de edad");
+			}
+		} else {
+
+			document.write("No has introducido una edad")
+		}
+	</script>
+</body>
+</html>

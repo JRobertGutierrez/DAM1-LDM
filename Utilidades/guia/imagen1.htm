@@ -1,0 +1,278 @@
+<html>
+<head>
+<title>Insertar imagen</title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2> Insertar im&aacute;genes</h2>
+Insertar im&aacute;genes en un documento permite crear p&aacute;ginas mucho m&aacute;s atractivas. Según el tipo de gr&aacute;ficos utilizado se pueden conseguir efectos realmente sorprendentes.
+<p>
+Para insertar una imagen en un documento HTML se utiliza el elemento <b>&lt;IMG&gt;</b>. Este elemento puede ir acompañado de los atributos <b>SRC ALT ISMAP ALIGN WIDTH HEIGHT BORDER VSPACE HSPACE</b>. Con las nuevas implementaciones que Netscape hace del elemento, se consiguen efectos de <i>imagen flotante</i> y por tanto se ha hecho necesario dotar al elemento &lt;<b>BR</b>&gt; del atributo <b>CLEAR</b>.
+<p>
+Las im&aacute;genes utilizadas pueden estar en formato <b>BMP</b> (<b>B</b>it <b>M</b>apped <b>P</b>icture), <b>GIF</b> (<b>G</b>raphics <b>I</b>nterchange <b>F</b>ormat), <b>JPEG</b> (<b>J</b>oint <b>P</b>hotographic <b>E</b>xperts <b>G</b>roup) o <b>PNG</b> (<b>P</b>ortable <b>N</b>etwork <b>G</b>raphics). Estos formatos son interpretados directamente por el navegador. Las diferencias b&aacute;sicas entre ellos son varias:
+<p>
+<b>BMP</b> Estos gr&aacute;ficos soportan hasta 24 bits (16 millones de colores). Al aumentar su tama&ntilde;o escal&aacute;ndolos, pierden calidad, es decir, se "pixelean". No acepta transparencia. Es el de mayor peso de archivo, debido a que no usa ninguna compresi&oacute;n.
+<p>
+<b>GIF</b> Solamente soporta 256 colores, por lo que no es adecuado para representar fotograf&iacute;as, pero s&iacute; es recomendado para iconos, logotipos o im&aacute;genes que tengan colores s&oacute;lidos. Al aumentar su tama&ntilde;o escal&aacute;ndolos, pierden calidad, es decir, se "pixelean". El archivo resultante es de poco peso por su algoritmo de compresi&oacute;n sin p&eacute;rdidas. Acepta transparencia (canal alfa) &uacute;nicamente en uno de los 256 colores de la paleta. Soporta animaciones.
+<p>
+<b>PNG</b> Es un formato pensado como una versi&oacute;n mejorada del formato GIF. En este caso, una misma imagen, sin p&eacute;rdidas, ocupar&iacute;a menos espacio que en formato GIF (>10%). Soporta color verdadero (hasta 64 bits con canal alfa). Las im&aacute;genes en PNG permiten transparencia variable de hasta 256 niveles. El canal alfa de PNG permite utilizar una mayor profundidad de bits para lograr efectos de semi-transparencia, como los objetos transl&uacute;cidos. No soporta animaciones. 
+<p>
+<b>JPEG</b> (m&aacute;s conocido como JPG) soporta hasta 16 millones de colores (24 bits) y comprime el tamaño del archivo final utilizando un algoritmo de compresi&oacute;n con p&eacute;rdida. Es decir, que al convertir una imagen a este formato, una parte de la informaci&oacute;n es desechada (algo parecido a lo que ocurre con los ficheros mp3 de sonido). Los editores de gr&aacute;ficos permiten ajustar la cantidad de informaci&oacute;n original que se quiere perder. Es decir, que si se opta por la m&aacute;xima compresi&oacute;n para obtener el menor peso posible, la imagen final puede ser muy deficiente. No permite transparencias ni animaci&oacute;n.
+<p>
+Se puede usar cualquier otro formato como el MPG o el AVI (ambos de v&iacute;deo), pero entonces el visualizador llamar&aacute; a un programa auxiliar, que previamente le habr&aacute;s definido, para que sea &eacute;ste el que visualice el fichero. La desventaja de las im&aacute;genes en formatos no tratados por el propio visualizador es que no ver&aacute;s el texto junto con la imagen, y por tanto no podr&aacute;s imprimir la p&aacute;gina compuesta. para evitar esto, se utilizan los llamados "plug-in" que consisten en pequeños programas que permiten llamar a aplicaciones espec&iacute;ficas ejecut&aacute;ndose como ventanas del navegador. Un ejemplo muy com&uacute;n son los ficheros <a href="pdf.pdf"><b>.pdf</b></a>.
+<p>
+Algunos navegadores no son capaces de tratar im&aacute;genes, o aunque el navegador s&iacute; pueda, tal vez el cliente est&eacute; navegando en modo solo texto, es decir, sin ver las im&aacute;genes, lo que permite moverse m&aacute;s r&aacute;pido. Para estos casos podemos recurrir al atributo <b>ALT</b> (por alternativo) para definir un texto que aparecer&aacute; en lugar de la imagen. Esto es importante cuando una imagen, adem&aacute;s de ser un elemento decorativo o informativo, soporta un link. El uso de <b>ALT</b> es recomendado por el W3C.
+<p>
+ Veamos ejemplos del uso de &lt;IMG&gt;:
+<hr>
+
+
+<b>Imagen alineada a la izquierda (por defecto)</b>
+<pre>
+&lt;<b>IMG SRC</b>=&quot;sugeren.gif&quot;&gt;texto texto texto texto 
+texto texto texto texto 
+</pre>
+
+<img SRC="sugeren.gif" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
+<hr>
+
+<b>Imagen con un texto alternativo</b><br>
+Sirve para que, si no es posible cargar la imagen, aparezca un texto en su lugar. Tambi&eacute;n se utiliza para que al colocar el puntero del rat&oacute;n sobre la imagen, sin pulsar, aparezca el texto.  Para verlo tienes de deshabilitar la opci&oacute;n de cargar im&aacute;genes de tu visualizador (s&oacute;lo es posible con Netscape).
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot; <b>ALT</b>=&quot;AQUI VA UNA IMAGEN&quot;&gt;
+</pre>
+<img SRC="sugeren.gif" ALT="AQUI VA UNA IMAGEN" WIDTH="133" HEIGHT="41">
+<hr>
+
+<b>Imagen alineada a la izquierda.Texto alineado arriba</b>
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot; <b>ALIGN=TOP</b>&gt; texto texto texto texto texto 
+texto exto texto texto texto texto texto 
+</pre>
+
+<img SRC="sugeren.gif" align="top" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto
+
+<hr>
+
+<b>Imagen alineada a la izquierda.Texto alineado abajo</b>
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot;<b> ALIGN=BOTTOM</b>&gt; texto texto texto texto texto 
+texto exto texto texto texto texto texto 
+</pre>
+<img SRC="sugeren.gif" align="bottom" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto
+<hr>
+
+<b>Imagen alineada a la izquierda.Texto alineado al centro</b>
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot; <b>ALIGN=MIDDLE</b>&gt; texto texto texto texto texto 
+texto exto texto texto texto texto texto 
+</pre>
+<img SRC="sugeren.gif" align="MIDDLE" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto
+<hr>
+
+<b>Imagen alineada a la izquierda.Texto alineado a la derecha de la imagen</b>
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot; <b>ALIGN=LEFT</b>&gt; texto texto texto texto texto 
+texto texto texto texto texto texto texto 
+</pre>
+<img SRC="sugeren.gif" align="left" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
+<hr>
+
+
+<b>Imagen alineada a la izquierda.Texto envolviendo la imagen</b>
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot; <b>ALIGN=LEFT</b>&gt; texto texto texto texto texto<b> &lt;BR CLEAR&gt;</b>
+texto texto texto texto texto texto texto 
+</pre>
+<img SRC="sugeren.gif" align="left" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto texto texto texto texto<b><br clear></b> texto texto texto texto texto texto texto
+<hr>
+
+<b>Imagen alineada a la derecha.Texto alineado a la izquierda de la imagen</b>
+<p>
+
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot; <b>ALIGN=RIGHT</b>&gt; texto texto texto texto texto 
+texto texto texto texto texto texto texto 
+</pre>
+<img SRC="sugeren.gif" align="right" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
+<p>
+Si tu visualizador no soporta esto, hay un truco para conseguir algo parecido:
+<p>
+&lt;TABLE&gt;
+&lt;TR&gt;&lt;TD&gt;texto texto texto texto texto texto texto texto texto 
+texto texto texto&lt;/TD&gt;&lt;TD align=center&gt;&lt;IMG SRC=&quot;sugeren.gif&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+</pre>
+
+<table>
+<tr><td>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto </td><td align="center"><img SRC="sugeren.gif" WIDTH="133" HEIGHT="41"></td></tr>
+</table>
+
+
+
+
+<hr>
+<b>Imagen redimensionada a m&aacute;s.Texto alineado a la derecha de la imagen</b>
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot;<b> ALIGN=LEFT WIDTH=272 HEIGHT=92 </b>&gt; texto texto texto 
+texto texto texto texto texto texto texto texto texto 
+</pre>
+
+<img ALIGN="LEFT" WIDTH="272" HEIGHT="92" SRC="sugeren.gif">
+
+
+texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto.
+<p>
+Aqu&iacute; la imagen es la misma de los ejemplos anteriores, pero ha sido redimensionada por el visualizador. Su tamaño original es de 136x46 puntos. Este es su aspecto al doble: 272x92.
+<hr>
+
+<b>Imagen redimensionada a menos.Texto alineado a la derecha de la imagen</b>
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot;<b> ALIGN=LEFT WIDTH=75 HEIGHT=20 </b>&gt; texto texto texto 
+texto texto texto texto texto texto texto texto texto 
+</pre>
+
+<img ALIGN="LEFT" WIDTH="75" HEIGHT="23" SRC="sugeren.gif">
+
+
+texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto.
+<p>
+Aqu&iacute; la imagen es la misma de los ejemplos anteriores, pero ha sido redimensionada por el visualizador. Su tamaño original es de 136x46 puntos. Este es su aspecto a la mitad: 75x23
+<p>
+<h3>Consideraciones sobre WIDTH y HEIGHT</h3>
+Estos dos atributos, adem&aacute;s de para variar el tama&ntilde;o de un gr&aacute;fico, tambi&eacute;n pueden (casi deben) utilizarse con los valores naturales del mismo. Es decir, que no se pretende alterar las dimensiones del gr&aacute;fico. Y te preguntar&aacute;s que finalidad tiene esto. La raz&oacute;n estriba en c&oacute;mo funcionan los navegadores. Cuando el navegador solicita una p&aacute;gina y comienza a recibirla, lo primero que hace es leer la cabecera, a continuaci&oacute;n lee el c&oacute;digo del BODY y por &uacute;ltimo carga las im&aacute;genes que contenga la p&aacute;gina haciendo nuevas conexiones al servidor para cada una de ellas. 
+<p>
+Esta forma de trabajar tiene como consecuencia, que si en el c&oacute;digo del BODY no hay instrucciones sobre el espacio que hay que reservar en pantalla para cada imagen, cuando &eacute;stas lleguen en el &uacute;ltimo paso de la carga de la p&aacute;gina, el texto ya estar&aacute; compuesto, pero al no saber el tama&ntilde;o de las im&aacute;genes, no se habr&aacute; reservado el espacio adecuado para insertarlas, por lo que todo el texto ser&aacute; desplazado hacia abajo, con la consiguiente p&eacute;rdida del formato original de la p&aacute;gina, ya que el navegador no va a recomponer el texto que ya estaba escrito.
+<hr>
+
+<b>Imagen alineada a la izquierda con marco.Texto alineado a la derecha de la imagen</b>
+<pre>
+&lt;IMG SRC=&quot;sugeren.gif&quot; ALIGN=LEFT <b>BORDER=5</b>&gt; texto texto texto texto texto 
+texto texto texto texto texto texto texto 
+</pre>
+<img SRC="sugeren.gif" align="left" border="5" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto<br>
+<hr>
+
+
+<b>Imagen alineada a la izquierda.Texto alineado a la derecha de la imagen. Espacios verticales y horizontales vac&iacute;os  forzados.</b>
+<pre>
+texto texto texto texto texto texto texzto texto texto texto texto texto 
+&lt;IMG SRC=&quot;sugeren.gif&quot;&gt; ALIGN=LEFT<b> HSPACE=100 VSPACE=30</b>&gt; texto texto texto 
+texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto  
+</pre>
+
+texto texto texto texto texto texto texzto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
+<img SRC="sugeren.gif" align="left" HSPACE="100" VSPACE="30" WIDTH="133" HEIGHT="41">texto texto texto texto texto texto texto texto texto texzto texto texto texto texto texto 
+texto texto texto texto texto texto texzto texto texto texto texto texto 
+texto texto texto texto texto texto texzto texto texto texto texto texto 
+
+<br clear>texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p>
+<hr>
+
+<hr>
+<b>Usar una imagen como punto de montaje de un link</b>
+
+<pre>
+texto texto &lt;A HREF=&quot;indice.htm&quot;&gt;&lt;IMG SRC=&quot;sugeren.gif&quot; &gt;&lt;/A&gt;texto texto.
+</pre>
+   
+<a href="indice.htm"><img src="sugeren.gif" WIDTH="133" HEIGHT="41"></a>
+<p>
+Como puedes ver, la imagen aparece rodeada de un marco de color como es habitual en los puntos de link (en el texto es el subrayado). Si quieres eliminar el marco, escribe:
+<pre>
+       ....  IMG SRC=&quot;sugeren.gif&quot; BORDER=0 &gt;
+</pre>
+<hr>
+Ahora que ya sabes c&oacute;mo manejar las im&aacute;genes, veamos algunos efectos especiales algo m&aacute;s complicados.
+<p>
+<b>Mapeado de una imagen para usarla como direccionador</b>
+
+<pre>
+&lt;A HREF=&quot;/cgi-bin/imagemap/mimapa&quot;&gt;&lt;IMG SRC=&quot;sugeren.gif&quot; <b>ISMAP</b>&gt;&lt;/A&gt;
+</pre>
+<a HREF="/cgi-bin/imagemap/mimapa"><img SRC="sugeren.gif" ISMAP WIDTH="133" HEIGHT="41"></a>
+<p>
+Si mueves el rat&oacute;n por encima de la imagen, ver&aacute;s que en la ventanita de estado del navegador (en la parte inferior izquierda de la ventana) aparecen junto a un interrogante unos números que cambian según muevas el rat&oacute;n. Con cuidado intenta poner el puntero en la esquina superior izquierda y en la inferior derecha. Ver&aacute;s las cifras 1,1 y 136,46, respectivamente, que son las medidas en puntos que tiene el gr&aacute;fico. Como ya habr&aacute;s supuesto, esto es un sistema de coordenadas, y para que nuestra imagen funcione como un menú direccionador, lo que necesitamos es que algún elemento convierta esas coordenadas en una direcci&oacute;n del estilo ya conocido: &quot;http://miservidor.es/mifichero.htm&quot;. Esto siginifica que con un solo link podemos obtener un enorme número de direcciones, te&oacute;ricamente tantas como pares de coordenadas tiene la imagen. En la pr&aacute;ctica ser&aacute;n menos, ya que andar intentando atinar en el punto 11,32, por ejemplo,  es un poco engorroso.
+<p>
+Existen multitud de programas llamados mapeadores que parten la imagen en imaginarios trozos, y cada uno de ellos indica un link con alguna parte. Estos programas generan un fichero con todas las direcciones. Algo as&iacute;:
+<p>
+<pre>
+<b>rect</b> http://miservidor.es/mifichero1.htm 12,35
+rect http://miservidor.es/mifichero2.htm 90,42
+rect http://miservidor.es/mifichero3.htm 112,46
+</pre>
+Este podr&iacute;a ser el aspecto del fichero del ejemplo, el llamado <b>mimapa</b>. El par&aacute;metro <b>rect</b> significa rect&aacute;ngulo, y nos indica que la imagen ha sido troceada en rect&aacute;ngulos y las coordenadas indican la esquina superior izquierda y la inferior derecha. Tambi&eacute;n podr&iacute;a ser en c&iacute;rculos (<b>circ</b>) o pol&iacute;gonos (<b>poly</b>). 
+
+ Ahora veamos el resto de instrucciones del ejemplo:
+
+<pre>
+&lt;A HREF=&quot;/cgi-bin/imagemap/mimapa&quot;&gt;&lt;IMG SRC=&quot;sugeren.gif&quot; <b>ISMAP</b>&gt;&lt;/A&gt;
+</pre>
+
+La primera parte <b>A HREF</b> ya la conocemos, es un link. Despu&eacute;s viene un directorio: <b>cgi-bin</b>. Este es un directorio especial que tienen los servidores http, donde se ejecutan los programas auxiliares del servidor, y al que normalmente s&oacute;lo puede acceder el administrador del sistema. En ese directorio hay un fichero llamado <b>imagemap</b> (seg&uacute;n el sistema puede ser otro) que es un programa que se encarga de leer tu fichero <b>mimapa</b>, capturar las coordenas que señale el puntero del rat&oacute;n y servir la direcci&oacute;n que tiene asociada, con lo que acabamos obteniendo un link normal. Ya por último, aparece <b>ISMAP</b> que es el que convierte una simple imagen en una potente  herramienta.<p>
+S&oacute;lo queda por decir que el fichero <b>mimapa</b> tiene que estar en otro directorio especial que tiene el servidor a estos efectos, y al que por supuesto, solo puede acceder el administrador del sitema.
+ <p>
+Todo esto es suponiendo que el servidor est&aacute; en una m&aacute;quina UNIX. Si reside en tu propio PC con Windows o en un MAC (que los hay),
+tendr&aacute;s que ver las instrucciones concretas del programa servidor. La forma de montar el mapa puede variar de un programa servidor a otro, pero la base de funcionamiento es siempre la misma.
+<p>
+Otra forma alternativa de conseguir que una imagen responda con ciertas acciones, es operar con los elementos de <a href="form2.htm#punto2">formularios</a>. En el &iacute;ndice encontrar&aacute;s informaci&oacute;n sobre un tipo de formulario que devuelve un par de coordenadas, que una vez evaluadas permite ejecutar una acci&oacute;n.
+<hr noshade>
+
+Pero, una vez m&aacute;s, Netscape ha propuesto una soluci&oacute;n mucho m&aacute;s simple: que sea el propio visualizador quien haga las veces de programa conversor. En efecto, un recurso tan bueno como los mapas, no debe depender de tener tu m&aacute;quina en red y de que haya un servidor http que te atienda. Adem&aacute;s, eso resta portabilidad a los documentos locales y a los trabajos personales en disquete. Para ello ha implementado el elemento <b>MAP</b> que acompañar&aacute; a IMG.
+<p>
+Por ejemplo, en la siguiente imagen, la mitad izquierda nos env&iacute;a a indice.htm y la mitad derecha a intro.htm. Mueve el puntero del rat&oacute;n horizontalmente sobre la imagen y observa la ventanita de estado que hay en la parte inferior izquierda de la pantalla, ver&aacute;s como cambia el nombre del link. 
+<p>
+<map name="nombre1">
+<area shape="rect" coords="1,1,75,46" href="indice.htm">
+<area shape="rect" coords="76,1,136,46" href="intro.htm">
+
+</map>
+<img src="sugeren.gif" usemap="#nombre1" WIDTH="133" HEIGHT="41">
+<p>
+Se escribe as&iacute;:
+<p>
+<pre>
+
+&lt;<b>MAP NAME</b>=&quot;nombre1&quot;&gt;
+   &lt;<b>AREA SHAPE</b>=&quot;rect&quot; COORDS=&quot;1,1,75,46&quot; HREF=&quot;indice.htm&quot;&gt;
+   &lt;AREA SHAPE=&quot;rect&quot; COORDS=&quot;76,1,136,46&quot; HREF=&quot;intro.htm&quot;&gt;
+&lt;/MAP&gt;
+
+&lt;IMG SRC=&quot;sugeren.gif&quot; USEMAP=&quot;#nombre1&quot;&gt;
+</pre>
+
+Aunque se comprende a simple vista, analic&eacute;moslo:
+<p>
+En primer lugar tenemos el elemento <b>MAP</b>, que lo que est&aacute; haciendo es definir un mapa de coordenadas. Va acompañado del atributo <b>NAME</b> que da nombre al mapa. Es necesario nombrarlo porque podr&iacute;a haber m&aacute;s de uno en la misma p&aacute;gina, y evidentemente, sus nombres no deber&aacute;n repetirse.
+<p>
+A continuaci&oacute;n tenemos el atributo <b>AREA</b> que define las &aacute;reas de la imagen. El par&aacute;metro <b>SHAPE=&quot;rect&quot;</b> indica la figura geom&eacute;trica que estamos utilizando para ello. Al igual que con los otros mapas, puede ser <b>rect circ</b> y <b>poly</b>.
+<p>
+El par&aacute;metro <b>COORDS</b> f&aacute;cilmente se adivina que indica las coordenadas del &aacute;rea, en este caso v&eacute;rtice superior izquierdo e inferior derecho, respectivamente. 
+<p>
+<b>HREF</b> ya sabemos lo que hace: indica un link con una p&aacute;gina, pero esta vez no va acompañando al elemento &lt;A&gt;, digamos que es un atributo prestado. Hay un &aacute;rea por cada link definido. Si un &aacute;rea no queremos que tenga link se definir&aacute; con <b>NOHREF</b>. 
+<p>
+<b>IMG SRC</b> tambi&eacute;n son conocidos: hacen que se visualice la imagen. 
+<p>
+Y por fin, <b>USEMAP</b> nos dice qu&eacute; mapa de coordenadas hay que aplicar a la imagen. A una misma imagen se le pueden aplicar distintos mapas si se desea. F&iacute;jate en que <b>nombre1</b>, (el nombre del mapa) va <b>precedido</b> del s&iacute;mbolo <b>#</b>. Esto se debe a que, en este caso, el mapa al que se hace referencia est&aacute; en la misma p&aacute;gina que la instrucci&oacute;n IMG. Podr&iacute;a estar en otra, y en ese caso el s&iacute;mbolo tendr&iacute;a que estar <b>despu&eacute;s</b> del nombre de la p&aacute;gina. Por ejemplo: <b>otrapagina.htm#nombre1</b>
+<p>
+Como ya se ha dicho m&aacute;s arriba, hay tres figuras geom&eacute;tricas definibles para las &aacute;reas: <b>rect</b>, <b>circle</b> y <b>poly</b>.  El rect&aacute;ngulo ya lo conocemos; consiste en parejas de coordenadas que indican los v&eacute;rtices superior izquierdo e inferior derecho respectivamente del &aacute;rea. Para el c&iacute;culo (<b>circ</b>) son necesarios tres valores: <b>x,y  &nbsp; r</b> donde x,y es el par de coordenas que indican el punto donde est&aacute; el centro del c&iacute;culo, y <b>r</b> es el radio del c&iacute;rculo medido en puntos. Para los pol&iacute;gonos (<b>poly</b>) se necesitan tantas parejas de coordenadas como v&eacute;rtices tenga el pol&iacute;gono, procurando que la &uacute;ltima pareja quede unida a la primera, ya que la figura debe estar cerrada. No es obligatorio que sean figuras regulares. En el caso de que se quiera emplear todo el gr&aacute;fico como &aacute;rea de enlace, es decir, un solo link, se puede emplear <B>default</b>, y no es necesario indicar ninguna coordenada.
+
+<p>
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+

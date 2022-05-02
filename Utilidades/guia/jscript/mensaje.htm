@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+
+<SCRIPT language="JavaScript">
+<!--
+
+var text0="Esto es un texto de prueba para ver como un mensaje se  ";
+var text1="desplaza por la linea de estado, y es posible pararlo.";
+var text2=text0+text1+"                                                         ";
+var wait=100;
+var refresh=null;
+
+
+function ver_texto() {
+        window.status=text2;
+        text2=text2.substring(1,text2.length)+text2.charAt(0);        
+        refresh=setTimeout("ver_texto()",wait);
+        }
+
+function no_ver_texto() {
+        clearTimeout(refresh);
+        window.status="";
+        }
+
+// -->
+
+</SCRIPT>
+
+</head>
+<BODY bgcolor="#00FFFF">
+
+<H1>Ver mensaje desplazandose</H1>
+
+<center>
+<FORM name="prueba">
+<INPUT type="button" value="Ver mensaje" OnClick="ver_texto();">
+<INPUT type="button" value="Detener mensaje" OnClick="no_ver_texto()">
+</FORM>
+
+<form>
+<input type="button" value="Cerrar el navegador" OnClick="window.close()">
+</FORM>
+</center>
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+
+
+</body>
+</html>

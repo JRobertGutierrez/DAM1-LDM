@@ -1,0 +1,161 @@
+<html>
+<head>
+<title>VBScript 2 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<H2> Constantes y variables...</H2>
+<font size=4><b>...y algunas instrucciones</b></font>
+<p>
+Se puede definir una <b>constante</b> como un nombre significativo que contiene un valor, num&eacute;rico, texto o de cualquier tipo, y que una vez definida, no cambia. Las constantes puede ser <b>intr&iacute;nsecas</b>, es decir con nombres y valores preestablecidos en VBScript, como por ejemplo <b>vbCrLf</b> cuyo valor es equivalente a Chr(13) & Chr(10), o lo que es lo mismo, retorno de carro y avance de línea. Tambi&eacute;n tenemos las constantes <b>definidas por el usuario</b>, que son aquellas que reciben el nombre y valor que el usuario decida. Por supuesto, no puedes crear una constante con el mismo nombre de una intr&iacute;nseca, ni dos cualesquiera con el mismo nombre, aunque s&iacute; con el mismo valor. Por ejemplo:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+Const xxMiConstante = "Esto es un string constante"<br>
+Const xxDia = 28<br>
+Const xxFecha = #02-28-2000# <br>
+%&gt;</font>
+<p>
+Y para ver sus contenidos:
+<p><font color="blue" size=2 face="courier">
+&lt;%<br>
+Response.Write( xxMiConstante & "&lt;BR&gt;")<br>
+Response.Write( xxDia & "&lt;BR&gt;")<br>
+Response.Write( xxFecha & "&lt;BR&gt;") <br>
+%&gt;</font>
+<p>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green" size=2 face="courier">
+Esto es un string constante<br>
+28<br>
+02-28-2000 <br>
+</font>
+<p>
+
+F&iacute;jate que para crear estas constantes definidas por el usuario, primero hay que escribir la instrucci&oacute;n <font color="blue"><b>Const</b></font>. Si simplemente escribimos <b>xxDia = 28</b> acabamos de crear una <font color="blue"><b>variable</b></font>, que viene a ser lo mismo, pero cuyo contenido, como su nombre indica, puede variarse en cualquier momento. Tambi&eacute;n habr&aacute;s visto que a todas ellas se les ha antepuesto <b>xx</b> delante del nombre. En efecto, el nombre de las constantes definidas por el usuario es libre, pero es buena idea acostrumbrarse a utilizar una forma de nombre que permita distinguir despu&eacute;s, a simple vista,  qu&eacute; es una constante y qu&eacute; una variable. Todas las constantes intr&iacute;nsecas, por ejemplo, comienzan con <b>vb</b>. 
+<p>
+Los nombres de variables y constantes tienen que comenzar siempre por una letra, no pueden contener un punto, y deben tener menos de 255 caracteres. VBScript no distingue entre may&uacute;sculas y min&uacute;sculas como hace JavaScritpt. As&iacute;, se considerar&aacute; la misma variable <b>MiVariable</b> que <b>mivariable</b> o <b>MIVARIABLE</B>. Otra cosa importante es no dejar espacios en blanco en los nombres de variables o constantes. Por ejemplo, el nombre de variable <b>"Mi variable"</b> te dar&aacute; problemas. Si quieres utilizar varias palabras para construir el nombre, debes usar un signo de continuidad, por ejemplo el subrayado: <B>Mi_Variable</b>. No es recomendable usar el guion o la barra inclinada, que pueden ser confundidos en algunos casos con operadores matem&aacute;ticos.
+<p>
+<b>Recuerda</b> que tanto a la hora de definir constantes como variables, sus valores, si son  textos, deben ir entre comillas dobles (<b>"..."</b>), las fechas y horas entre (<b>#...#</b>) y los n&uacute;meros sin nada. No olvides tampoco que el formato de fecha en VBScript es <b>mm/dd/aaaa</b>, formato americano, en lugar del europeo dd/mm/aaaa.
+<p>
+Como ya has visto, al definir una <b>constante</b>, junto con el nombre se le asigna un valor, lo que implica que la constante tiene un tipo de datos invariable. No sucede lo mismo con las <font color="blue"><b>variables</b></font>, que por defecto tienen el tipo de datos <font color="red"><b>Variant</b></font> propio de Visual Basic, lo que les permite recibir cualquier tipo de dato durante el proceso sin necesidad de redefiniciones adicionales. Aunque puede omitirse, es conveniente utilizar la instrucci&oacute;n <font color="red"><b>Dim</b></font> para definir variables. Por ejemplo:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+<font color="red">Dim</font> MiVariable
+<p>
+MiVariable = "Esto es un string constante"<br>
+MiVariable = 28<br>
+MiVariable = #02-28-2000# <br>
+%&gt;</font>
+<p>
+Puede definirse m&aacute;s de una variable en una misma l&iacute;nea con <b>Dim</b>. As&iacute;:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+<font color="red">Dim</font> Variable1, Variable2, Variable3<br>
+%&gt;</font>
+<p>
+<A NAME="tipos"></A> 
+Estos son los tipos de datos existentes en VBScript:
+<ul>
+<li><b>Array (8192)</b> Una matriz de datos.
+<li><b>Boolean (11)</b> Contiene <font color="red">True</font> o <font color="red">False</font>
+<li><b>Byte (17)</b> Contiene un entero entre 0 y 255.
+<li><b>Currency (6)</b> Un n&uacute;mero entre -922.337.203.685.477,5808 y 922.337.203.685.477,5807
+<li><b>DataObject (13)</b> Un objeto de acceso a datos (Al asignar el valor hay que anteponer la instrucci&oacute;n <b>Set</b>).
+<li><b>Date o Time (7)</b> Contiene un n&uacute;mero que representa una fecha entre el 1 de enero de 100 y el 31 de diciembre de 9999.
+<li><b>Double (5)</b> Contiene un n&uacute;mero de precisi&oacute;n doble y punto flotante en el intervalo de -1,79769313486232E308 y -4,94065645841247E-324 para valores negativos, y entre 4,94065645841247E-324 y 1,79769313486232E308  para valores positivos.
+<li><b>Empty (0)</b> Sin inicializar. El valor es 0 para variables num&eacute;ricas o una cadena de longitud cero ("") para variables de cadena.
+<li><b>Error (10)</b> Un n&uacute;mero de error que puede ser de 0 a 65.535, inclusive, que se corresponde con la propiedad <b>Number</b> del objeto <b>Err</b>. Cuando se combina con la propiedad <b>Name</b> del objeto Err, este número representa un mensaje de error en particular. 
+
+<li><b>Integer (2)</b> Un entero -32.768 y 32.767.
+<li><b>Long (3)</b> Un entero -2.147.483.648 y 2.147.483.647.
+<li><b>Null (1)</b> Contiene intencionadamente datos no v&aacute;lidos. 
+<li><b>Object (9)</b> Contiene un objeto (Al asignar el valor hay que anteponer la instrucci&oacute;n <b>Set</b>)
+<li><b>String (8)</b> Contiene una cadena de longitud variable que puede contener hasta 2 mil millones de caracteres de longitud.
+</ul>
+
+Si a cualquiera de estos tipos de datos le anteponemos <b>vb</b>, por ejemplo <b>vbArray</b>, obtendremos los nombres de las constantes intr&iacute;nsecas devueltas por la funci&oacute;n <font color="red"><b>VarType(<font color="blue">MiVariable</font>)</b></font>, que se utiliza para saber qu&eacute; tipo de datos contiene una variable en un momento determinado, aunque lo que devuelve la funci&oacute;n es el valor num&eacute;rico de la constante (el n&uacute;mero que aparece entre par&eacute;ntesis junto a cada nombre de tipo). Tambi&eacute;n puede utilizarse la funci&oacute;n  <font color="red"><b>TypeName(<font color="blue">MiVariable</font>)</b></font> para obtener el nombre del tipo.
+<p>
+En el momento de crearlas, y antes de darles valor, es decir, cuando se inicializan, las variables num&eacute;ricas se inicializan con 0 y una de cadena (string) se inicializa con una cadena de longitud cero ("" tipo de dato 0) que no hay que confundir con el valor Null (tipo de dato 1) de las bases de datos, ni con un espacio en blanco (tipo de dato 8). Para controlar si una variable est&aacute; vac&iacute;a o no, existe la funci&oacute;n <font color="red"><b>IsEmpty(<font color="blue">MiVariable</font>)</b></font>, que devuelve <font color="green">True</font> o <font color="green">False</font> seg&uacute;n el contenido de la variable. 
+<p>
+Otra cosa importante de las constantes y variables es su radio de acci&oacute;n o <b>alcance</b>. El alcance de una constante o una variable se refiere a desde donde ser&aacute; posible invocarla una vez definida. Para definir el alcance, se utilizan dos instrucciones: <font color="red"><b>Private</b></font> (por defecto para las variables) y <font color="red"><b>Public</b></font> (por defecto para las constantes). La primera limita la variable o constante a la secuencia de comandos donde es definida, y la segunda permite utilizarlas desde cualquier secuencia de comandos. Como <b>nivel de secuencia de comandos</b>, se entiende cualquier  c&oacute;digo que est&eacute; fuera de un procedimiento <b>Function</b> o <b>Sub</b>. Las variables definidas dentro de un procedimiento tienen su alcance limitado a ese procedimiento. He aqu&iacute; un ejemplo de definici&oacute;n de variable:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+<font color="red">Public</font> Dim MiVariable
+<p>
+MiVariable = 28<br>
+%&gt;</font>
+<p>
+Hasta aqu&iacute; hemos visto variables que contienen un solo valor (variables escalares), pero pueden definirse de forma que almacenen 2 o m&aacute;s valores. Este tipo de variables se denominan variables matriciales o din&aacute;micas, y se definen igual que las escalares, pero escribiendo un par de par&eacute;ntesis delante del nombre. Si dentro de los par&eacute;ntesis escribimos un n&uacute;mero, &eacute;ste indicar&aacute; cuantos valores puede almacenar la variable. Si no se escribie ningun n&uacute;mero, la variable queda definida sin dimensionar, y se puede establecer sus dimensiones m&aacute;s tarde con la instrucci&oacute;n <font color="red"><b>ReDim</b></font>. Por ejemplo:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+Dim MiVariable()<br>
+...<br>
+...<br>
+<font color="red">ReDim</font> MiVariable(5)<br>
+%&gt;</font>
+<p>
+Una variable din&aacute;mica se puede redimensionar cuantas veces sea necesario, pero solamente se puede cambiar el n&uacute;mero de elementos, no su estructura. En el ejemplo anterior se ha definido una matriz de una dimensi&oacute;n y 5 elementos, lo que significa que puede almacenar 5 valores. Para ello solo hay que asignar un valor a cada entrada del &iacute;ndice comenzando por el cero:
+
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+Dim MiVariable()<br>
+...<br>
+...<br>
+ReDim MiVariable(4)<br>
+<p>
+Mivariable(0) = 10<br>
+Mivariable(1) = 20<br>
+Mivariable(2) = 30<br>
+Mivariable(3) = 40<br>
+Mivariable(4) = 50<br>
+%&gt;</font>
+<p>
+La asignaci&oacute;n de valores o la lectura de los mismos, tambi&eacute;n se puede hacer mediante un bucle t&iacute;pico <b>For To Next</b>. Como se ha dicho, una vez dimensionada, se puede cambiar el n&uacute;mero de elementos, pero no sus dimensiones, es decir, que no se puede convertir a, por ejemplo,  MiVariable(4, 4) que es una variable de 5 dimensiones y cinco elementos. 
+<p>
+Las matrices <b>de dos dimensiones</b> se pueden comparar con tablas de datos, donde el primer n&uacute;mero, en este caso el 4, indica el n&uacute;mero de filas y el segundo indicar&iacute;a el n&uacute;mero de columnas. Si no hay segundo n&uacute;mero, por defecto se entiende que es cero, lo que indica una sola columna. Otra cosa que no se puede cambiar es el tipo de datos, que es &uacute;nico para todos los valores de la matriz, es decir, que si el primer valor asignado es num&eacute;rico, todos los dem&aacute;s deber&aacute;n ser del mismo tipo.
+<p>
+Hay que tener en cuenta, que si hay valores cargados en una matriz y la redimensionamos, los valores se pierden. Para evitar esto, VBScript dispone de la palabra clave <font color="blue"><b>Preserve</b></font> para conservar el contenido de la matriz cuando se produce el cambio de tama&ntilde;o. No obstante, utilizando <b>Preserve</b> s&oacute;lo se puede cambiar el tama&ntilde;o de la &uacute;ltima dimensi&oacute;n de la matriz y  tampoco se puede cambiar el n&uacute;mero de dimensiones. Por ejemplo, si la matriz s&oacute;lo tiene una dimensi&oacute;n, se puede cambiar el tama&ntilde;o de esa dimensi&oacute;nn ya que es la &uacute;ltima y &uacute;nica dimensi&oacute;n. 
+<p>
+Si la matriz tiene dos o m&aacute;s dimensiones, s&oacute;lo se puede cambiar la dimensi&oacute;n de la &uacute;ltima y todav&iacute;a conservar  el contenido de la matriz. Por ejemplo:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+ReDim MiVariable(4, 4, 4)<br>
+....<br>
+....<br>
+ReDim MiVariable(4, 4, 5)
+
+%&gt;</font>
+<p>
+Para liberar la memoria asignada a matrices din&aacute;micas, se utiliza la instrucci&oacute;n <font color="red"><b>Erase</b></font>. Despu&eacute;s de utilizar <b>Erase</b>, si se quiere hacer referencia de nuevo a la matriz, es necesario volver a declarar las dimensiones de las variables de la matriz con la instrucción <font color="red">ReDim</font>. Hay que tener presente que Erase no recupera la memoria asignada a las matrices de tama&ntilde;o fijo, solamente de las din&aacute;micas. Si es fija, lo que hace es borrar los valores que contenga, cambi&aacute;ndolos por <b>0</b> si es num&eacute;rica, por <b>""</b> si es de texto y por <b>Nothing</b> si es una matriz de objetos.
+<p>
+Una variable multidimensional puede tener hasta 60 dimensiones, cosa bastante complicada de utilizar. Hay que usar la redimensi&oacute;n de matrices con cuidado, ya que todo esto se hace en memoria. Si se escribe una aplicaci&oacute;n con muchas matrices din&aacute;micas, cuyos valores m&aacute;ximos no esten debidamente controlados, y hay muchos usuarios utilizando la aplicaci&oacute;n, el servidor puede quedarse sin recursos. No hay que olvidar tampoco que las matrices de datos no son el sustituto de una DB.
+<p>
+Para asignar un <b>objeto</b> a una variable, hay que anteponer la instrucci&oacute;n <font color="red"><b>Set</b></font>. Al asignar una referencia de objeto a una variable, no se crea una copia del objeto, se crea una referencia al objeto. Se puede definir m&aacute;s de una variable con referencia al mismo objeto. Debido a que estas variables son referencias al objeto (y no copias de &eacute;l), cualquier cambio ocurrido en el objeto se refleja en todas las variables que se refieren al mismo.
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

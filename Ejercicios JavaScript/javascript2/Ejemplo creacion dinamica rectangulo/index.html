@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Creación dinámica de un rectángulo</title>
+</head>
+<body>
+        <h1>Area y perímetro de un rectangulo</h1>
+    <script>
+        base = prompt("Introduce base");
+        altura = prompt("Introduce altura");
+        color = prompt("Introduce color en inglés");
+
+        area = base*altura;
+        perimetro = 2*(parseInt(base)+parseInt(altura));
+
+
+        document.write("<div id='rectangulo' style='border: 1px solid black;float:left;padding:50px;height:"+altura+"px ;width:"+base+"px;background-color: red'>")
+            document.write("<h3>base:"+ base +" </h3>");
+            document.write("<h3>altura:"+ altura +" </h3>");
+            document.write("</div>");
+        
+        alert("El area del rectángulo es: "+area);
+        alert("El perímetro del rectángulo es: "+ perimetro);
+
+
+        document.write("<div style=\"background-color: " + color +";height: " + altura +"px;width: " + base + "px;\"></div>");
+
+
+    </script>  
+    
+
+</body>
+</html>

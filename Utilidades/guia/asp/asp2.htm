@@ -1,0 +1,156 @@
+<HTML>
+<HEAD><TITLE>ASP 2</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>&#191;C&oacute;mo se escribe el ASP?</H2>
+<P>
+
+<H3>Una p&aacute;gina ASP sencilla</H3>
+Una p&aacute;gina ASP se escribe igual que una HTML normal, y es muy parecida a las escritas para el IDC, ya que las secuencias de comandos se escriben entre los s&iacute;mbolos <b>&lt;%</b>&nbsp;&nbsp; y &nbsp;&nbsp;<b>%&gt;</b> pero dando a los ficheros la extensi&oacute;n <b>.asp</b>
+<p>
+
+
+<b>&lt;%@ LANGUAGE="VBScript" %&gt;<br></b>
+&LT;HTML&GT;<br>
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de ASP&lt;/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+Bienvenidos al ASP. Son las <b>&lt;% Response.Write( Time() ) %&gt;<br></b>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+<p>
+El c&oacute;digo de arriba es una sencilla muestra de ASP. Como puedes ver, salvo la primera y la quinta l&iacute;neas no tiene nada que no conozcamos ya. Analicemos esas dos l&iacute;neas: 
+<p>
+La primera es la definici&oacute;n del lenguaje de comandos que vamos a utilizar, en este caso VBScript; la arroba que hay al principio (@) indica que la p&aacute;gina se debe ejecutar en el servidor y no en el navegador, que s&oacute;lo debe recibir el resultado. 
+<p>
+En la quinta l&iacute;nea ya tenemos un <b>objeto</b> (Response -respuesta-) con uno de sus <b>m&eacute;todos</b> (Write -escribir-). El objeto <b>Response</b> es el que gestiona la salida para el navegador, y su m&eacute;todo <b>Write</b> el encargado de escribir esa salida, dicho de otro modo, el conjunto <b>Response.Write()</b>  escribir&aacute; en la pantalla del cliente el resultado generado por los comandos ASP, en este caso la hora proporcionada por la funci&oacute;n <b>Time()</b>
+<p>
+F&iacute;jate en que el valor real de la quinta l&iacute;nea es compuesto: por una parte est&aacute; la frase "Bienvenidos al ASP. Son las " y por otro una secuencia de comandos que da la hora del servidor. El motor ASP se encargar&aacute; de ejecutar los comandos y componer el texto final con las dos cosas antes de enviarlas al navegador del cliente.
+<p>
+Response.Write() es muy utilizado en ASP, ya que cualquier variable, valor o cadena de texto tiene que ser visualizada mediante este objeto, para abreviar se puede usar el signo igual (=) con el mismo resultado. En nuestro ejemplo de la quinta l&iacute;nea podr&iacute;a ser: 
+<p>
+Bienvenidos al ASP. Son las <b>&lt;% = Time()  %&gt;</b>
+<p>
+Response.Write() no s&oacute;lo muestra el resultado de funciones como <b>Time()</b> (hora),  <b>Date()</b> (fecha), o cualquier otra; podemos escribir cualquier valor para que sea visualizado, como cadenas de texto puras, cadenas concatenadas con constantes, funciones anidadas, variables de sesi&oacute;n, variables de aplicaci&oacute;n, respuestas de otros objetos, c&oacute;digo HTML, etc., etc., y por supuesto, podemos invocar el objeto Response tantas veces como sea necesario. 
+<p>
+En el caso de que se quieran presentar dos datos concatenados (enlazados, unidos) en HTML, simplemente escribir&iacute;amos uno al lado del otro, pero en ASP hay que echar mano de un car&aacute;cter especial: el ampersand (<font color="red"><b>&</b></font>). As&iacute;. en el ejemplo, si en lugar de presentar s&oacute;lo la hora, quisi&eacute;ramos ver la hora y el dia, habr&iacute;a que escribir:
+<p>
+Bienvenidos al ASP. Son las <b>&lt;% = Time() <font color="red">&</font> " del dia " <font color="red">&</font> Date() %&gt;</b>
+<p>
+Si lo que se trata de concatenar es un string (cadena de texto) que contiene comillas dobles, se puede hacer de dos formas: utilizando la funci&oacute;n <b>Chr()</b> o escribiendo <b>dos pares</b> de comillas en lugar de uno. <br>
+Por ejemplo si queremos concatenar la cadena: 
+<font color="blue">Esto es un</font> con la cadena <font color="blue">"string"</font> que va entrecomillada, se escribir&aacute;:
+<P>
+<b>&lt;% = <font color="blue">"Esto es un "</font><font color="red">& "</font><font color="blue">" string "<font color="red">"</font></font>  %&gt;</b> 
+<p>
+O tambi&eacute;n:
+<p>
+<b>&lt;% = <font color="blue">"Esto es un "</font> 
+           <font color="red">& Chr(34) & </font>
+           <font color="blue">" string "</font>  
+           <font color="red">& Chr(34) </font>
+%&gt;</b> 
+<p>
+Y en ambos casos este ser&iacute;a el resultado:
+<p>
+<b><font color="green"> Esto es un "string"</font></b>
+<p>
+El argumento <b>34</b> que se le ha dado a la funci&oacute;n <font color="red">Chr()</font> es el que le corresponde al car&aacute;cter que queremos obtener, seg&uacute;n la <a href="../coditab.htm">tabla de caracteres</a>, que puedes consultar en este mismo manual. Este truco puede utilizarse para obtener cualquier car&aacute;cter, pero sobre todo est&aacute; indicado cuando hay que enviar caracteres especiales al cliente, pero no queremos que sean interpretados por &eacute;l, tales como <b>"</b>&nbsp; <b>%</b>&nbsp; <b>&</b>&nbsp; y otros.
+<p>
+Otro truco que se utiliza al escribir ASP, es el truncamiento de l&iacute;neas. Por ejemplo, si tienes que escribir una l&iacute;nea de comandos o strings que es muy larga, para evitar que el editor tenga que hacer scroll (desplazarse) por la derecha, cosa que dificulta despu&eacute;s la lectura y revisi&oacute;n del c&oacute;digo escrito, se puede utilizar el car&aacute;cter de subrayado para indicar a ASP que la l&iacute;nea que viene justo debajo debe ser considerada como  una misma l&iacute;nea. As&iacute;
+<p>
+<font color="blue">
+&lt;%<br>
+Response.Write("Este es un string de muestra que hay que concatener con otro, pero es demasiado largo y " <font color="red"><b>& _</b></font><br>
+"recurriremos al car&aacute;cter &nbsp;<font color="red"><b>_</b></font>&nbsp; para que resulte m&aacute;s legible")<br>
+%&gt;</font>
+<p>
+Recuerda que entre la primera y la segunda l&iacute;nea no puede haber ninguna en blanco, ni tampoco un comentario; tienen que estar juntas. Se puede utilizar el truncamiento cuantas veces sea necesario. Como ya habr&aacute;s visto, siempre que se utilizan strings (cadenas de texto), hay que escribirlas entre comillas dobles (<b>"</b>). Si se trata de n&uacute;meros <b>no</b> hay que escribirlos entrecomillados, y si se trata de fechas, se escriben entre s&iacute;mbolos <b>#</b>. En el siguiente ejemplo se representan un string, un n&uacute;mero y una fecha, por ese orden:
+<p>
+<font color="blue">
+&lt;%<br>
+Response.Write( "Esto es un texto" ) <br>
+Response.Write( 50 )  <br>
+Response.Write( #02/28/2000# )<br>
+%&gt;</font>
+<p>
+Y a prop&oacute;sito de las fechas, en ASP y VBScript, el &uacute;nico formato reconocido es INGLES-ESTADOS UNIDOS, sin tener en cuenta la configuraci&oacute;n regional del usuario. Es decir, el formato que se reconoce es <b>mm/dd/aaaa</b>. As&iacute; en el ejemplo de arriba, tenemos el d&iacute;a 28 de Febrero de 2000. Lo que obliga a realizar las conversiones necesarias para el formato europeo de dd/mm/aaaa.
+
+
+
+<H3>Un poco de programaci&oacute;n</H3>
+Ahora que ya sabes c&oacute;mo es b&aacute;sicamente una p&aacute;gina ASP, veamos cual es la mejor manera de no perderse al escribir aplicaciones complejas. 
+<p>
+Al igual que cuando se dise&ntilde;a una p&aacute;gina html cualquiera, hay que tener claro lo que se quiere hacer.... pues con ASP mucho m&aacute;s. Un cambio de idea en HTML no suele dar demasiados problemas, pero un cambio de idea en programaci&oacute;n en general y en ASP en particular, puede acabar obligando a reescribir la aplicaci&oacute;n... lo malo es que esto puede suceder muy a menudo...
+<p>
+Como ya se ha dicho, la programaci&oacute;n de gesti&oacute;n es algo que tiende al caos con pasmosa rapidez, y el cambio de criterios salta cuando  menos lo esperas. Para evitar en lo posible el tener que reescribir constantemente los programas, lo mejor es escribirlos de forma estructurada, es decir, evitar en lo posible escribir c&oacute;digo en la forma "todo revuelto", y si hay que hacer algun cambio, que sea posible limitarlo a invocar una rutina en lugar de otra. Ser&iacute;a como construir el programa con piezas prefabricadas, donde cada una de las cuales hace una cosa diferente. En realidad en esa misma idea estan basados los objetos a los que se ha hecho referencia antes.
+<p>
+<A name="1"></A>
+Adem&aacute;s de construir rutinas o m&oacute;dulos de programa, podemos escribir partes del texto HTML de uso repetitivo (por ejemplo mensajes de error, formularios, textos de ayuda, cabeceras de publicidad, membretes, etc.) en ficheros aparte, e incluirlos cuando sea necesario. Esto tiene varias ventajas: Se simplifica el mantenimiento del programa, s&oacute;lo hay que escribir el texto en cuesti&oacute;n una vez, si luego hay que cambiarlo, no es necesario ponerse a "bucear" entre cientos de l&iacute;neas... y dejarnos siempre alguna sin cambiar: con editar un solo fichero realizamos el cambio en todas partes. Para esto se utilizan las <b>includes</B> de ASP.
+<p>
+Imagina que al ejemplo ASP del principio, fuera necesario ponerle algun p&aacute;rrafo adicional, como el logo de la empresa o cualquier otra cosa: S&oacute;lo tenemos que escribir un fichero con el texto o c&oacute;digo necesario, y guardarlo con la extensi&oacute;n <b>.inc</b>, aunque tambi&eacute;n pueden guardarse con la extensi&oacute;n <b>.asp</b> igual que el fichero principal.
+Los ficheros de inclusi&oacute;n pueden ser de dos clases: <b>file</b> y <b>virtual</b>. Se escriben igual, pero los primeros se referencian mediante su ruta <b>real</b> en el disco del servidor, por ejemplo: "C:\asp\aplicaciones\logo.inc" &nbsp; &nbsp; &nbsp; y los segundos mediante su ruta <b>virtual</b> en el &aacute;rbol del web, como "/miapliacacion/includes/logo.inc" &nbsp; &nbsp; La llamada a una include se escribe como un comentario de HTML. Esta es la sintaxis de una include virtual en el ejemplo anterior:
+<p>
+
+&lt;%@ LANGUAGE="VBScript" %&gt;<br>
+&LT;HTML&GT;<br>
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de ASP&lt;/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+<b>&lt;!--#include virtual="/miapliacacion/includes/logo.inc"--&gt;</b><br>
+Bienvenidos al ASP. Son las &lt;% Response.Write( Time() ) %&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+<p>
+Cuando el motor ASP detecta una include, busca el fichero en la ruta que se haya especificado, inserta su contenido en lugar de la instrucci&oacute;n, y continua con el resto de comandos secuencialmente. Si se produce un error en el c&oacute;digo de una include, el debugger nos dar&aacute; el n&uacute;mero de l&iacute;nea como si su contenido hubiese estado escrito en el fichero principal. Los ficheros de inclusi&oacute;n no tienen los elementos t&iacute;picos del HTML como &lt;BODY&gt;, &lt;HEAD&gt;, etc., eso debe ir en el fichero principal. Las includes son simples trozos del c&oacute;digo que se guardan en otros ficheros, y aunque no veamos su contenido al editar el fichero principal, ASP los lee y depura como si solamente hubiese un &uacute;nico fichero.
+<p>
+<b>ATENCION:</b> Los ficheros de includes tienen un grave problema de seguridad si se guardan con la extensi&oacute;n <b>.inc</b>. Como ya sabemos, el IIS no muestra el c&oacute;digo interno de un fichero .asp, sino que lo ejecuta como un programa, y es el HTML resultante de esa ejecuci&oacute;n, realizada dentro del servidor, lo que se envia al cliente. Esto no ocurre con los ficheros .inc, de forma que si un cliente conoce la ruta donde reside un fichero .inc, y lo solicita, el servidor se lo enviar&aacute; <b>sin ejecutarlo previamente</b>, por lo que se podr&aacute; ver el c&oacute;digo fuente. Si el fichero de include contiene claves de acceso a bases de datos, o alguna otra informaci&oacute;n confidencial, &eacute;sta quedar&aacute; al descubierto. As&iacute; pues, los ficheros con extensi&oacute;n .inc solamente deben utilizarse para contenidos "tontos", como cabeceras, gr&aacute;ficos, botonerias, logos, etc., y si contienen c&oacute;digo sensible, se deben guardar con la extensi&oacute;n .asp
+<p>
+Otra forma de estructurar las aplicaciones puede ser escribir m&oacute;dulos en VBScript o JavaScript de forma independiente, de manera que el control del programa se escribe en HTML y mediante comandos Call() se invocan las distintas rutinas o m&oacute;dulos en el momento oportuno. Por ejemplo:
+<p>
+
+&LT;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+Public Sub <b>Rutina_hora<br></b>
+ &nbsp;&nbsp;'------Aqui se obtiene la hora<br>
+ &nbsp;&nbsp;Response.Write( Time() )<br>
+End Sub<br>
+&LT;/SCRIPT&gt;<br>
+<p>
+&LT;HTML&GT;<br>
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de ASP&lt;/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+Bienvenidos al ASP. Son las &lt;% Call(<b>Rutina_hora</b>) %&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+<p>
+En este caso el m&oacute;dulo <b>Rutina_hora</b> es muy sencillo, pero si la aplicaci&oacute;n tiene 15 &oacute; 20 m&oacute;dulos de un mont&oacute;n de l&iacute;neas cada uno, esta forma de escribir te permite ver m&aacute;s claramente  las cosas.  Con este estilo analizaremos m&aacute;s adelante una aplicaci&oacute;n completa.
+<p>
+F&iacute;jate en que hay algunas diferencias entre este ejemplo y el anterior, aunque hacen lo mismo. Concretamente en la primera l&iacute;nea ha desaparecido la arroba que indicaba la ejecuci&oacute;n del c&oacute;digo en el servidor. Ahora se indica tambi&eacute;n, pero con la instrucci&oacute;n <b>RUNAT=Server</b>. Otra cosa interesante est&aacute; en la tercera l&iacute;nea: <b>'------Aqui se obtiene la hora</b> &nbsp; Esto es un comentario. En efecto, en el entorno de VBScript, los comentarios no se escriben como en HTML, sino escribiendo un ap&oacute;strofe (<b>'</b> OJO esto no es un acento) y a continuaci&oacute;n el texto que se desea comentar. La indicaci&oacute;n de comentario ser&aacute; efectiva hasta que se escriba un retorno. Se pueden (y se deben) escribir cuantos comentarios se estimen necesarios. El servidor ignorar&aacute; el texto marcado como tal en el momento de la ejecuci&oacute;n del programa.
+<p>
+El cliente no recibir&aacute; nada de esto, ya que todo ocurre en el servidor. El cliente solamente recibe esto:
+<p>
+<p>
+&LT;HTML&GT;<br>
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de ASP&lt;/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+Bienvenidos al ASP. Son las 18:00:00<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

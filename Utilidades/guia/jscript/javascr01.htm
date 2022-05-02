@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>JavaScript </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2>JavaScript y Java</H2>
+
+<h3>Un poco de historia.</h3>
+
+El JavaScript es un lenguaje de programaci&oacute;n que surgi&oacute; por la necesidad de ampliar las posibilidades del HTML. En efecto, al poco tiempo de que las p&aacute;ginas web apareciesen, se hizo patente que se necesitaba algo m&aacute;s que las limitadas prestaciones del lenguaje b&aacute;sico, ya que el HTML solamente provee de  elementos que actuan exclusivamente sobre el texto y su estilo, pero no permite, como ejemplo sencillo, ni siquiera abrir una nueva ventana o emitir un mensaje de aviso. La temprana aparici&oacute;n de este lenguaje, es posiblemente la causa de que se haya convertido en un est&aacute;ndar soportado por todos los navegadores actuales, a diferencia de otros, que solo funcionan en los navegadores de sus firmas creadoras. 
+<p>
+Como tantas  otras aportaciones al mundo www, fue Netscape quien inici&oacute; la implementaci&oacute;n de JavaScript (aunque al principio no se llamaba as&iacute;), y posteriormente, una alianza entre Netscape y Sun, creadora del lenguaje Java, permiti&oacute; que JavaScript tomase la debida consistencia, defini&eacute;ndose como una variante de Java, pero mucho m&aacute;s simple de usar. Esto no significa que JavaScript sea Java simplificado o reducido. Salvo el nombre y la sintaxis, JavaScript no tiene mucho en com&uacute;n con Java, pero cumple su prop&oacute;sito de lenguaje auxiliar del HTML en los navegadores, y s&oacute;lo en ellos ya que no es posible utilizarlo fuera del entorno de las p&aacute;ginas. No hay que confundirlo con el JScript de Microsoft, que aunque bastante parecido, no tiene la compatibilidad del original JavaScript, ya que, como todo lo que hacen, está pensado exclusivamente para su propio navegador.
+
+<h3>Diferencias</h3>
+<b>Java</b> es un lenguaje <b>compilado</b>, es decir, que una vez escrito el programa, y a partir de su c&oacute;digo fuente, mediante la compilaci&oacute;n se genera un fichero ejecutable para una determinada plataforma (Unix, Windows, etc.) que ser&aacute; completamente aut&oacute;nomo. Es un lenguaje de prop&oacute;sito general, infinitamente m&aacute;s potente que JavaScript, con el que se han escrito infinidad de aplicaciones muy conocidas, entre ellas los sistemas de telefon&iacute;a m&oacute;vil.
+<p>
+<b>JavaScript</b> es un lenguaje <b>interpretado</b> l&iacute;nea a l&iacute;nea  por el navegador, mientras se carga la p&aacute;gina, que solamente es capaz de realizar las acciones programadas en el entorno de esa p&aacute;gina HTML donde reside. S&oacute;lo es posible utilizarlo con otro programa que sea capaz de interpretarlo, como los navegadores web. 
+<p>
+Este es un lenguaje orientado a objetos, es decir que la mayor&iacute;a de las instrucciones que se emplean en los programas, en realidad son llamadas a propiedades y m&eacute;todos de objetos del navegador, y en algunos casos del propio lenguaje. En Java, en cambio, no hay nada que no est&eacute; en un objeto.
+
+<h3>&iquest;C&oacute;mo se utilizan?</h3>
+<font color="blue"><b>Java</b></font><br>
+El lenguaje Java es, posiblemente, el que tienen mayor portabilidad, lo que permite escribir programas capaces de ejecutarse en cualquier plataforma, sin realizar apenas ningun cambio. Esta portabilidad  propici&oacute; que el HTML implementase la posibilidad de incrustar programas escritos en Java, que pueden funcionar de forma independiente del resto de la p&aacute;gina. Estos programas aut&oacute;nomos reciben el nombre de APPLETS, y se integran en el c&oacute;digo HTML mediante el elemento &lt;APPLET&GT;. Se utiliza as&iacute;:
+
+<pre>
+&lt;BODY&gt;
+
+&lt;<b>APPLET </b>CODE=&quot;AnimText.class&quot; WIDTH=600 HEIGHT=40&gt;
+  &lt;<b>PARAM</b> NAME=text VALUE=&quot;Esto es una prueba de Applet Java&quot;&gt;
+  &lt;PARAM NAME=font VALUE=&quot;TimesRoman&quot;&gt;
+  &lt;PARAM NAME=type VALUE=1&gt;
+  &lt;PARAM NAME=fgcolor VALUE=&quot;yellow&quot;&gt;
+  &lt;PARAM NAME=min VALUE=12&gt;
+  &lt;PARAM NAME=max VALUE=36&gt;
+  &lt;PARAM NAME=naptime VALUE=100&gt;
+  &lt;PARAM NAME=align VALUE=left&gt;
+&lt;/APPLET&gt;
+..
+..
+..
+&lt;/BODY&gt;
+</pre>
+
+<a name="punto2"></a>
+Este es un applet que forma &quot;olas&quot; con un texto, y puedes probarlo desde <a href="applet.htm">aqu&iacute;</a>. 
+<P>
+ Analic&eacute;moslo brevemente:
+
+<P>
+El valor del atributo <b>CODE</b> es el nombre del programa: <b>&quot;AnimText.class&quot;</b>. Los applets Java cuando se compilan, no son ejecutables directamente desde el sistema operativo de tu m&aacute;quina, son compilados a nivel objeto (un nivel intermedio entre el c&oacute;digo fuente y el c&oacute;digo ejecutable) con la extensi&oacute;n <b>.class</b>, y ejecutados a trav&eacute;s del visualizador. 
+<P>
+Los siguientes elementos son <b>PARAM NAME</B>, y puede deducirse f&aacute;cilmente para  que sirve cada uno: definici&oacute;n del texto que va a aparecer, fuente de la letra, color del texto, etc..
+<P>
+Si pulsas <a href="applet.txt">aqu&iacute;</a> podr&aacute;s ver el c&oacute;digo fuente de este applet. 
+<P>&nbsp;
+<P>&nbsp;
+<font color="blue"><b>JavaScript</b></font><br>
+Para embeber un JavaScript en una p&aacute;gina HTML, se utiliza el elemento <B>&lt;SCRIPT&gt;</B>. Este elemento, habitualmente, va dentro del HEAD de la p&aacute;gina, y <b>no</b> en el BODY.
+<P>
+Por ejemplo si escribes:
+
+<pre>
+
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt; Prueba&lt;/TITLE&gt;
+
+<b>&lt;SCRIPT </b>LANGUAGE=&quot;JavaScript&quot;&gt;
+&lt;!-- 
+     document.write(&quot;&lt;CENTER&gt;&lt;H3&gt;Mi primer JavaScript&lt;/H3&gt;&lt;/CENTER&gt;&quot;)
+// --&gt;
+<b>&lt;/SCRIPT&gt;</b>
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+
+<a name="punto1"></a>
+Tendr&iacute;amos una p&aacute;gina con el m&aacute;s elemental de los scripts. F&iacute;jate en que despu&eacute;s del elemento SCRIPT se abre un comentario (<b>&lt;!--   --&gt;</b>)que contiene las instrucciones. Esto es para ocultar el script a los visualizadores que no sean capaces de interpretarlo. F&iacute;jate tambi&eacute;n en que antes del cierre del comentario (<b>--&gt;</b>) hay dos barras (<b>//</b>): Esto es para que el int&eacute;rprete JavaScript no tome el cierre como un instrucci&oacute;n y d&eacute; un error, es decir, se trata de un comentario propio de JavaScript, no de HTML.
+<p>
+Puedes probar el script pulsando <a href="script1.htm">aqu&iacute;</a>.
+
+<P>
+En el &iacute;ndice encontrar&aacute;s algunos <a href="javascr.htm">ejemplos</a> de p&aacute;ginas con programas JavaScript. Para ver c&oacute;mo estan hechos puedes abrirlos con el bloc de notas o cualquier otro editor.
+
+<h3>&iquest;JavaScript s&iacute; o no?</h3>
+Una de los problemas m&aacute;s graves que tiene el JavaScript es que cada navegador tiene un nivel de lenguaje diferente (incluso alguno hace caso omiso a los est&aacute;ndares), hay distintas versiones de lenguaje oficial, y hay versiones de lenguaje que s&oacute;lo funcionan en un navegador concreto. Esto propicia que cuando en una sesi&oacute;n el navegador ha cargado un cierto n&uacute;mero de p&aacute;ginas con c&oacute;digo JavaScript, es raro que todas ellas contengan c&oacute;digo  cien por cien compatible con nuestro navegador, y &eacute;ste puede acabar colg&aacute;ndose,  no cargando correctamente las p&aacute;ginas, o no ejecutando los programas JavaScript que &eacute;stas contienen. Como siempre se ha dicho en esta guia, se debe probar el c&oacute;digo en cuantos navegadores sea posible, y tratar de escribir los programas de la forma m&aacute;s estandarizada posible.
+<p>
+Otro aspecto que no debes olvidar cuando incluyas JavaScript en tus p&aacute;ginas, es que el cliente, tal vez, tenga desactivado el JavaScript de su navegador; en muchos casos incluso desconoce c&oacute;mo activarlo. Entonces, si has basado en este c&oacute;digo el buen funcionamiento de la p&aacute;gina, tendr&aacute;s problemas. En general, a nadie le gusta que un sitio web le obligue a cambiar los niveles de seguridad de su m&aacute;quina, y puede decidir abandonar nuestro sitio antes que hacerlo. Por tanto, no es recomendable basar en JavaScript aspectos esenciales del funcionamiento de una p&aacute;gina. Evidentemente, todo va a depender del tipo de p&aacute;gina de que se trate: no es lo mismo un formulario de captura de datos que hay que controlar, que un men&uacute; desplegable o una simple decoraci&oacute;n aleatoria. Siempre que sea posible, es conveniente plantearse si algunas funciones de control es mejor hacerlas en el servidor utilizando ASP, JSP, PHP, etc., Recuerda que lo programado en el servidor siempre es compatible con todos, y dependes mucho menos del navegador utilizado por el cliente.
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

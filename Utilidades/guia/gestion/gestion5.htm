@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>El ODBC de SQL Server</title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2> ¿Cómo se instala el ODBC de SQL Server?</h2>
+
+Cuando se instala SQL Server 6.5 en una máquina Windows NT,  el controlador ODBC es instalado automáticamente. Si el servidor web es una máquina distinta a la que tiene SQL Server instalado, tendrás que conseguir el controlador ODBC del disco de instalación de SQL Server, o bien, instalar Access 97, aunque es preferible el original de SQL.
+<p>
+<a name="odatos"></a>
+<h3>Creando un origen de datos</h3>
+<table border="0">
+<tr><td>
+<img src="odbc01.gif" align="left" WIDTH="416" HEIGHT="225">Abrir el panel de control y localizar el icono llamado <b>32 bit ODBC</b>. Abrirlo. 
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc03.gif" align="left" WIDTH="463" HEIGHT="379"><font size="4" color="blue">Paso 1.-</font>
+En el cuadro que aparece, seleccionar la etiqueta <b>System DSN</b>, ya que el <b>IDC</b> sólo trabaja con este tipo de controladores. Pulsar el botón <b>Add</b>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc04.gif" align="left" WIDTH="510" HEIGHT="322"><font size="4" color="blue">Paso 2.-</font>Seleccionar el controlador de SQL Server en la lista. Pulsar el botón <b>Finalizar</b>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc05.gif" align="left" WIDTH="512" HEIGHT="324"><font size="4" color="blue">Paso 3.-</font>Aquí es donde vamos a crear realmente el origen de datos de la aplicación.
+<p>
+Analicemos cada campo: el primero, <b>Name</b>, nos pide el nombre del origen de datos que vamos a crear, y que será el utilizado por la aplicación. Se puede poner cualquier nombre, sin espacios en blanco ni símbolos, sólo letras y números, como en el ejemplo: <b>pruebas</b>. 
+<p>
+Este nombre no tiene por qué ser el mismo que el de la base de datos que hay vinculada a él. Al facilitar este nombre al <b>IDC</b>,  el <b>ODBC</b> se encargará de que la aplicación &quot;entienda&quot; lo que dice la base de datos.
+<p>
+El siguiente campo, <b>Description</b> es un breve comentario del origen de datos, si te es necesario, sino, puedes dejarlo vacio.
+<p>
+El último campo de esta pantalla es <b>Server</b>, y se refiere al nombre del <b>servidor de bases de datos</b>. Si no eres el administrador del servidor de bases de datos, puede que no sepas qué poner. Un servidor Windows NT con SQL Server se comporta en algunos casos como si se tratase de dos máquinas distintas, aunque en realidad es una misma. Dependiendo de a qué servicio queremos llegar se usa un nombre u otro, aunque podría ser el mismo en ambos casos, pero no se escriben de la misma forma. 
+<p>
+Las máquinas con sistema Windows NT o 95/98 se suelen agrupar en lo que se denominan <b>grupos de trabajo</b>, que son los que te aparecen en el icono <b>Entorno de red</b> del escritorio. La forma de referenciar una máquina de tu mismo grupo es mediante su <b>nombre en el grupo</b>. Supongamos que el nombre de nuestro servidor en internet es el siguiente:  <b>Mi_server.mi_empresa.mi_pais</b> y que tiene asignada la dirección IP 255.255.255.255 
+<p>
+Normalmente, esta máquina aparecerá en el grupo como <b>MI_server</b> y si te quieres conectar a su servicio de impresora, por ejemplo, usarías la dirección: <b>\\Mi_server\impresora</b>.
+<p>
+Habitualmente, los administradores de servidores asignan a los servidores de bases de datos el mismo nombre que tiene la máquina en la que residen, aunque puede ocurrir, por razones especiales, que no sea así. SQL Server, por defecto, adopta el nombre de la máquina en el grupo cuando se instala, es decir,  <b>MI_server</b>, pero se podría haber utilizado otro. De ahí podría surgir la impresión de que se trata de dos máquinas diferentes. Fíjate que en cualquier caso, NO se utilizan las dos barras inclinadas delante del nombre.
+<p>
+Y una cosa más: en los sistemas NT, no olvidar que el usuario definido para acceder desde internet, exista, ademas de como usuario de NT, como usuario de la DB, y tenga los permisos necesarios para llegar y operar en ella. Si SQL Server se ha instalado con la <b>Trusted security</b>, el usuario y palabra de paso para el servidor NT y para SQL Server tienen que ser iguales. Es como abrir dos puertas  con la misma llave.
+<p>
+Una vez cumplimentados los tres campos, pulsa el botón <b>Siguiente</b>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc06.gif" align="left" WIDTH="509" HEIGHT="323"><font size="4" color="blue">Paso 4.-</font>En este paso definiremos cómo se hará la verificación del login y el password al conectar con SQL Server.
+<p>
+Evidentemente, la primera de las dos opciones, autenticación NT usando el login entrado en la conexión de red, no es lógica para una aplicación de internet, en que el cliente utlizará unos parámetros de conexión a su propia red o a ninguna. Esta podría servir en caso de que la aplicación se utilice en una intranet, y que no todos los usuarios tuviesen los mismos permisos. Por lo tanto marcaremos la segunda opción: <b>Autenticación SQL Server usando un login y password dados por el usuario</b>; y cuando dice &quot;...dados por el usuario&quot; no se refiere a que el cliente tenga que hacer esto cuando se conecte,  sino a que el usuario y password los tenemos que proporcionar ahora, en los dos últimos campos del formulario, en este caso el usuario es <b>web</b> y como palabra de paso en este caso no pondremos ninguna (que también es una forma de password).
+<p>
+Tanto en aplicaciones programadas con el IDC como con ASP, los usuarios y passwords utilizados, no &quot;viajan&quot; con la información. Recuerda que son programas que se ejecutan en el propio servidor, y se activan a petición del IIS, que a su vez , atiende una llamada http que le hace el cliente al servidor web con un usuario anónimo, y después de procesarla convenientemente, y de resolver internamente las conexiones con la DB que sean necesarias, al cliente le devolverán html estándar y transparente. Con esto se evita el tener que facilitar a los clientes claves que podrían ser capturadas en la red indebidamente. 
+<p>
+Este usuario anónimo utilizado por defecto en el IIS, normalmente sólo tiene permisos de lectura en áreas muy concretas del servidor NT. A las aplicaciones internet, habitualmente, no se les da nunca permisos para borrar nada, lo máximo que suelen poder hacer, es insertar registros en las tablas, y ocasionalmente, alguna pequeña modificación de datos, como puedan ser domicilios, o teléfonos. Si el cliente desea ser borrado de la base de datos, normalmente lo solicitará al administrador de la DB, que procederá desde su aplicación en la intranet.
+<p>
+No se debe confundir este tipo de autenticaciones con las que se hacen desde una página web, que puede pedirnos un nombre de usuario (login) y una clave (password). En estos casos se trata de directorios protegidos en el propio servidor web, y concretamente con el IIS, es tan sencillo como asignar el directorio en cuestión a un usuario NT existente. Y es buena idea, puesto que en este caso la clave si viaja, que estos usuarios sólo tengan permisos de lectura, y si la información que se va a acceder es confidencial, se deberán instalar sistemas de encriptación de los que soportan la mayoría de navegadores modernos, o utilizar sistemas más sofisticados a base de  certificados electrónicos.
+<p>
+Cuando se instala alguna página en uno de estos directorios protegidos, un problema muy habitual que suelen tener los clientes que utilizan el Internet Explorer como navegador, consiste en que sistemáticamente reciben un mensaje de error del servidor, denegando el acceso. Esto es debido a que por defecto, el IE siempre intenta conectarse a los servidores en modo intranet, y por tanto envia automáticamente al servidor web el usuario y clave de conexión a red local, que evidentemente, no son los que espera el servidor internet, provocando el error de acceso.
+<p>
+La solución consiste en configurar, en el cliente,  correctamente el IE para que se conecte en modo internet, cosa que no todo el mundo sabe hacer, o bien cerrar la sesión de red local y abrir una nueva sin conexión, con lo que el IE no podrá enviar nada, y podremos introducir las claves correctas cuando el servidor internet las demande. Esto no ocurre con Netscape, que siempre inicia la conexión en modo internet (de hecho no tiene otra).
+<p>
+Y continuando con nuestro ODBC, el siguiente paso será pulsar el botón <b>Client configuration</b>. 
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc07.gif" align="left" WIDTH="368" HEIGHT="378">Como se ha dicho más arriba, el servidor SQL va a tener un nombre escrito en formato de red Windows (<b>Mi_Server</b>), y como ya debes de saber, todas las comunicaciones entre máquinas en internet funcionan con el protocolo TCP/IP, que utiliza otra forma de referenciar las direcciones, que pueden ser con el nombre proporcionado por tu DSN, o sistema de resolución de nombres, en la forma <b>Mi_server.mi_empresa.mi_pais</b> o mediante su dirección IP, en nuestro ejemplo <b>255.255.255.255</b>
+<p>
+Para resolver este problema, SQL Server viene provisto de un cliente especial que se encargará de hacer las conversiones de nombre necesarias entre un sistema y otro.
+<p>
+En la primera de las tres vistas que tiene este paso, <b>DB Library</b>, se configura si se aplicará alguna conversión de caracteres o no. La conversión <b>de ANSI a OEM</b>, sirve para cambiar el juego por defecto de SQL Server. Como ya debes de saber, SQL Server utiliza el juego de caracteres ANSI para almacenar los datos. Este juego de caracteres es distinto al  OEM utilizado por los sistemas Windows, de modo que si escribimos con nuestra aplicación internet, por ejemplo una &quot;Ñ&quot; o una letra acentuada  en la tabla, sin aplicar esta conversión, será guardada en equivalente ANSI. Si se pide ese registro a SQL Server desde  su consola de control, o desde algun cliente, como IWSql, que son ANSI, no la veremos tal cual, sino un caracter extraño. El mismo registro, solicitado mediante la misma aplicación que lo escribió se verá correctamente, y lo mismo ocurre con las aplicaciones locales desarrolladas para sistemas Windows, como Access 97. Como no es habitual explotar las tablas desde la consola o desde clientes SQL, es preferible dejar al servidor utilizar su juego por defecto. Si hay que cambiarlo, hay pensarlo ahora, ya que cuando existan registros en las tablas, si se cambia,  será trabajoso aplicar la conversión a todos ellos.
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc08.gif" align="left" WIDTH="368" HEIGHT="381">La siguiente vista, <b> Net Library</b> contiene un campo muy importante: la <b>Default Network</b>, es decir el tipo de red por defecto. Como ya se ha dicho, hay que trabajar en <b>TCP/IP</b>.
+<p>
+Los tres siguientes campos se limitan a mostrarnos información de la libreria de red elegida: dónde está, cómo va a mostrar las fechas (que concide con lo definido en la configuración regional de la máquina) y el tamaño de la misma.
+</td></tr>
+
+
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc10.gif" align="left" WIDTH="368" HEIGHT="381">La siguiente y última, <b> Advanced</b> contiene tres campos en los que hay que entrar los parámetros necesarios para convertir la dirección tipo Windows en su equivalente IP, como son <b>Server</b>, <b>Network Protocol</b> y <b>Connection String</b>, que hay que cumplimentar como puedes ver en la imagen, con los valores que ya conocemos.
+<p>
+A continuación pulsar el botón <b>Add/Modify</b> para que aparezca la correspondiente línea en la ventana <b>Current Entries</b>
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc11.gif" align="left" WIDTH="368" HEIGHT="380">Aquí puedes ver la línea de conexión ya compuesta. Si tuvieses más de un servidor SQL, puedes repetir el proceso tantas veces como sea necesario, para referenciar a todos ellos de la misma manera. 
+<p>
+De la misma forma, si alguno de ellos cambia de nombre o de IP, sólo hay que seleccionar la línea correspondiente y pulsar de nuevo al botón <b>Add/Modify</b> para modificar lo que proceda.
+<p>
+Pulsar el botón <b>Done</b> para concluir la configuración del cliente SQL Server y pasar a la siguiente pantalla del ODBC.
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc13.gif" align="left" WIDTH="514" HEIGHT="325"><font size="4" color="blue">Paso 5.-</font>En el paso 4 se definió al usuario <b>web</b> para utilizar la base de datos de la aplicación. Pero, ¿que ocurrirá si el usuario <b>web</b> tiene permiso para utilizar más de una base de datos? También se supone que ya sabes que en SQL Server, cuando se da de alta un usuario, es obligatorio asignarle una base de datos por defecto, y los administradores suelen asignar la que normalmente tiene más uso. 
+<p>
+Si habitualmente utilizamos el usuario web para las transacciones internet, lo normal será que tenga permisos en varias bases de datos, y por tanto habrá que definir en cada ODBC cual es la DB por defecto. Esto se hace marcando la casilla <b>Change the dafault data base to</b> y escogiendo a continuación de la lista que hay debajo la que proceda.
+<p>
+Lo que aparece en esa lista <b>sí son nombres de bases de datos</b> y no de orígenes de datos definidos para ODBC, aunque en este caso coincidan. En la imagen puedes ver cómo marcar el resto. Fíjate que, en general, se suele dejar a SQL Server utilizar los valores ANSI para casi todo. Procura crear los ODBC siempre igual, te evitarás problemas inesperados, y dudas del tipo <em>&quot;..¿dónde estará fallando..?&quot;</em>. Recuerda que SQL Server trabaja internamente con el lenguaje SQL ANSI que incluye un gran número de <b>funciones</b> de todo tipo y de <b>system procedures</b>, o procedimientos de sistema, auténticos programas escritos en SQL, y con los que se administra el servirdor, que trabajan mal con datos que no sean compatibles ANSI. Siempre que haya que hacer una traslación que sea <b>fuera</b> de las tablas.
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc14.gif" align="left" WIDTH="513" HEIGHT="324"><font size="4" color="blue">Paso 6.-</font>El primer campo de este paso sirve para definir el idioma que SQL Server utilizará para emitir los mensajes de error  cuando algo no funcione bien. Dado que no hay versión en español de este producto, hay que dejarlo como está: <b>(Default)</b>, es decir: inglés.
+<p>
+Los siguientes son algo parecido a los que hay en la primera pantalla del paso 4: el primero permite al ODBC elegir el método de traslación; el segundo indica que no se debe utilizar ningún método de traslación; el tercero fuerza la conversión del juego de caracteres, pero en lugar de ANSI a OEM que se hacía en el paso 4, aquí es de OEM a ANSI; el cuarto es para utilizar un conversor propio del ODBC, que hay de definir, y no el de SQL Server.
+<p>
+Hay una gran diferencia entre estos sistemas de traslación y los del paso 4: Aquí la traslación se realiza <b>después de extraer</b> el dato de la tabla y antes de presentarlo en pantalla, es decir, que son traslaciones sólo a efectos de visualización y no afectan a los datos. En el paso 4 la traslación se hace <b>antes de guardar</b> el dato en la tabla, y sí afectan a los datos. 
+<p>
+Y por fin el último control sirve para definir cómo se presentarán las fechas, números y monedas <b>en pantalla</b>: si en formato ANSI o según lo especificado en la configuración regional de la máquina
+<p>
+Pulsar el botón <b>Siguiente</b> después de haber marcado lo que proceda.
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc15.gif" align="left" WIDTH="511" HEIGHT="323"><font size="4" color="blue">Paso 7.-</font>Aquí se definen los ficheros de logins, que son unos ficheros de texto donde SQL Server y el ODBC van escribiendo todo lo que hacen, tanto si acaba bien como si no, y que son muy útiles cuando hay problemas, ya que permiten rastrear todo los procesos. Conviene mantener sus nombres, ya que son utilizados por algunas herramientas de estadisticas y rastreadores de errores. Puede que sea necesario cambiar la unidad de disco si no te queda mucho espacio en la unidad C (por defecto), ya que crecen continuamente, y periódicamente se deben vaciar; la frecuencia dependerá lógicamente de la actividad del servidor.
+<p>
+Pulsar el botón <b>Finalizar</b> para pasar al último paso.
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc16.gif" align="left" WIDTH="368" HEIGHT="377"><font size="4" color="blue">Paso 8.-</font>En este último paso, como puedes ver, no hay que escribir nada. Nos muestra un resumen de todos los pasos anteriores, y nos ofrece el botón <b>Test Data Source</b> para probar si el origen de datos puede funcionar con los datos que le hemos proporcionado. En caso afirmativo só hay que pulsar el botón <b>OK</b> para termitar el proceso. Si falla la prueba, habrá que volver atrás y revisar los datos hasta que funcione.
+<p>
+Si el origen de datos no funciona desde aquí no funcionará desde ninguna parte. Si la aplicación da problemas, y este test funciona correctamente, el fallo hay que buscarlo en la aplicación. Si un origen de datos que funcionaba deja de hacerlo, el problema puede estar en la red, o en el SQL Server. Revisar si el usuario todavia es válido para esa DB, y si lo es,  si se mantienen los permisos que tenía. Si todo es correcto, pero sigue sin funcionar, lo mejor es borrarlo y crear uno nuevo. Lo único que se prueba desde aquí es si el ODBC puede llegar a la DB con el usuario definido en modo lectura, no si hay datos en la DB, o si se puede escribir en ella.
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc09a.gif" align="left" WIDTH="462" HEIGHT="377">Ya tenemos listo el ODBC. Pulsar el botón <b>Aceptar</b> para cerrar el administrador de orígenes de datos. En el caso de que haya que cambiar alguna cosa, se selecciona el origen de datos que proceda y se pulsa el botón <b>Configure</b>.
+</td></tr>
+</table>
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+

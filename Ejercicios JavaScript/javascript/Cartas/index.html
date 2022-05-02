@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Juego de Cartas</title>
+    
+    <style>
+            .rojo {
+             background-color:rgb(230, 44, 20);
+             width:120px;
+             height:20px;
+             padding:40px;
+            }
+    </style> 
+</head>
+<body>
+    <script>
+
+var arrCartas=["https://img.myloview.es/cuadros/naipe-reverso-60x90-mm-400-32184698.jpg",
+"https://img.myloview.es/cuadros/naipe-reverso-60x90-mm-400-32184698.jpg",
+"https://img.myloview.es/cuadros/naipe-reverso-60x90-mm-400-32184698.jpg",
+"https://img.myloview.es/cuadros/naipe-reverso-60x90-mm-400-32184698.jpg"];
+
+var Otro=["https://definicion.mx/wp-content/uploads/2014/05/flor-350x350.jpg",
+"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Leucanthemopsis_alpina07.jpg/220px-Leucanthemopsis_alpina07.jpg",
+"https://s1.significados.com/foto/photo-credit-dora-alis-on-visualhunt_bg.png",
+"http://3.bp.blogspot.com/-v00OseExWT4/TmzHWyUSOiI/AAAAAAAAKvc/Bw5q3sAY8R4/s1600/red-flower-icon.png"];
+
+function imprimir(){
+
+        for (var i=0;i<arrCartas.length;i++){
+            document.write("<img onmouseover=\"mOver(this,"+i+")\" onmouseout=\"mOut(this,"+i+")\" src="+ arrCartas[0]+">");
+        }
+
+    }
+
+        function mOver(obj,num) {
+        obj.src=Otro[num];
+        }
+        function mOut(obj,num) {
+          
+        obj.src=arrCartas[num];
+        } 
+
+        function mDown(obj) {
+        obj.style.backgroundColor = "#1ec5e5";
+        obj.innerHTML = "Sueltame";
+        }
+        function mUp(obj) {
+        obj.style.backgroundColor="#D94A38";
+        obj.innerHTML="Click otra vez";
+        } 
+
+function otraover(obj){
+        obj.style.backgroundColor = "#1ec5e5";
+        obj.innerHTML = "Sueltame";
+}
+function otraout(obj){
+        obj.style.backgroundColor="#D94A38";
+        obj.innerHTML="Click otra vez";
+}
+    </script>
+
+<div class="rojo" onmousedown="mDown(this)" onmouseup="mUp(this)">
+        Mouse Over Me
+        </div> 
+
+        <script>
+        
+        imprimir();
+        </script>
+<div class="rojo" onmouseover="otraover(this)" onmouseout="otraout(this)">
+        Ejemplo dos
+        </div> 
+
+</body>
+</html>

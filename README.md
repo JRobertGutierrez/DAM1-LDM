@@ -2,6 +2,8 @@
 Ejercicios LDM (Lenguaje de marcas) DAM1
 
 * En la carpeta (DAM1-LDM\Sitio Web - Talavera Antigua) encontrarás el proyecto completo de fin de curso y podrás ver Talavera Antigua.
+* Ejercicios HTML y CSS
+* Ejercicios JavaScript
 * IDE Visual Studio Code
 
 * Proyectos 2019-2020

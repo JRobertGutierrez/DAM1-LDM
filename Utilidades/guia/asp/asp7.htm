@@ -1,0 +1,46 @@
+<HTML>
+<HEAD><TITLE>ASP 7</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El objeto ASPError </H2>
+Versi&oacute;on 3 o superior.
+<p>
+El objeto <b>ASPError </b> sirve para obtener informaci&oacute;n detallada de una condici&oacute;n de error producida durante la ejecuci&oacute;n de la aplicaci&oacute;n. Esta informaci&oacute;n se obtiene de 9 propiedades de s&oacute;lo lectura, a las que solamente es posible acceder a trav&eacute;s del objeto <b>Server</b> y su m&eacute;todo <b>GetLastError</b>
+<p>
+El objeto <b>ASPError</b> tiene 9 <b>propiedades</b> que pueden verse as&iacute;: 
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br>
+Dim objErrorInfo<br>
+Set objErrorInfo = <FONT COLOR=#FF0000>Server.GetLastError</FONT>
+<br><br>
+Response.Write("ASPCode = " & objErrorInfo.ASPCode)<br>
+Response.Write("ASPDescription = " & objErrorInfo.ASPDescription)<br>
+Response.Write("Category = " & objErrorInfo.Category)<br>
+Response.Write("Column = " & objErrorInfo.Column)<br>
+Response.Write("Description = " & objErrorInfo.Description)<br>
+Response.Write("File = " & objErrorInfo.File)<br>
+Response.Write("Line = " & objErrorInfo.Line)<br>
+Response.Write("Number = " & objErrorInfo.Number)<br>
+Response.Write("Source = " & objErrorInfo.Source)<br>
+
+%&gt;</font> 
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

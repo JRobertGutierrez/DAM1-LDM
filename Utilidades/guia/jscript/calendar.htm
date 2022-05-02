@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+<TITLE>Calendario</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+function compute(form, day) {
+  form.content.value = form[day].value;
+  form.editday.value = day;
+}
+</SCRIPT>
+</HEAD>
+<BODY  bgcolor="00FFFF">
+<H1>Calendario-agenda. Ejemplo de JavaScript</H1>
+
+Este es un sencillo ejemplo de programaci&oacute;n en JavaScript. La base es el formulario. Los textos correspondientes a cada dia son valores ocultos de campo. Lo &uacute;nico que hace el script de Java es mostrarlos.
+<p>
+<a name="1"></a>
+<HR>
+<FORM METHOD="post" ACTION="calendar.htm#1">
+<INPUT TYPE="hidden" NAME="0" VALUE="zero based arrays!">
+<INPUT TYPE="hidden" NAME="1" VALUE="Feliz a&ntilde;o Nuevo !!">
+<INPUT TYPE="hidden" NAME="2" VALUE="Este es">
+<INPUT TYPE="hidden" NAME="3" VALUE="un sencillo">
+<INPUT TYPE="hidden" NAME="4" VALUE="ejemplo de">
+<INPUT TYPE="hidden" NAME="5" VALUE="programaci&oacute;n">
+<INPUT TYPE="hidden" NAME="6" VALUE="en JavaScript.">
+<INPUT TYPE="hidden" NAME="7" VALUE="La base es el formulario.">
+<INPUT TYPE="hidden" NAME="8" VALUE="Los textos">
+<INPUT TYPE="hidden" NAME="9" VALUE="correspondientes a">
+<INPUT TYPE="hidden" NAME="10" VALUE="cada d&iacute;a">
+<INPUT TYPE="hidden" NAME="11" VALUE="son valores">
+<INPUT TYPE="hidden" NAME="12" VALUE="ocultos de campo.">
+<INPUT TYPE="hidden" NAME="13" VALUE="Lo &uacute;nico">
+<INPUT TYPE="hidden" NAME="14" VALUE="que hace el ">
+<INPUT TYPE="hidden" NAME="15" VALUE="script de Java">
+<INPUT TYPE="hidden" NAME="16" VALUE="es mostrarlos.">
+<INPUT TYPE="hidden" NAME="17" VALUE="Esta es la primera l&iacute;nea
+del script:
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot&gt;">
+<INPUT TYPE="hidden" NAME="18" VALUE="Esta es la segunda l&iacute;nea
+del script:
+function compute(form, day) &#123;">
+<INPUT TYPE="hidden" NAME="19" VALUE="Esta es la tercera l&iacute;nea
+del script:
+form.content.value = form[day].value;">
+<INPUT TYPE="hidden" NAME="20" VALUE="Esta es la cuarta l&iacute;nea
+del script:
+form.editday.value = day;
+&#125;
+&lt;/SCRIPT&gt;">
+<INPUT TYPE="hidden" NAME="21" VALUE="Como puedes ver">
+<INPUT TYPE="hidden" NAME="22" VALUE="s&oacute;lo con">
+<INPUT TYPE="hidden" NAME="23" VALUE="cuatro instrucciones">
+<INPUT TYPE="hidden" NAME="24" VALUE="se puede conseguir">
+<INPUT TYPE="hidden" NAME="25" VALUE="un efecto bastante">
+<INPUT TYPE="hidden" NAME="26" VALUE="original, y por qu&eacute; no,">
+<INPUT TYPE="hidden" NAME="27" VALUE="puede que hasta bastante &uacute;til.">
+<INPUT TYPE="hidden" NAME="28" VALUE="Puede tener muchas aplicaciones.">
+<INPUT TYPE="hidden" NAME="29" VALUE="Las posibilidades del lenguaje Java">
+<INPUT TYPE="hidden" NAME="30" VALUE="(en este caso Java interpretado)">
+<INPUT TYPE="hidden" NAME="31" VALUE="son infinitas.
+Desde luego, esto s&oacute;lo funciona con
+ Netscape.">
+<TABLE BORDER>
+<TR>
+<TD>
+<TABLE>
+<CAPTION>ENERO, 1996</CAPTION>
+<TR>
+<TD>Dom</TD>
+<TD>Lun</TD>
+<TD>Mar</TD>
+<TD>Mie</TD>
+<TD>Jue</TD>
+<TD>Vie</TD>
+<TD>Sab</TD>
+</TR>
+<TR>
+<TD></TD>
+<TD>
+<INPUT TYPE="button" VALUE="01" onClick="compute(this.form,1)">
+</TD>
+<TD><INPUT TYPE="button" VALUE="02" onClick="compute(this.form,2)"></TD>
+<TD><INPUT TYPE="button" VALUE="03" onClick="compute(this.form,3)"></TD>
+<TD><INPUT TYPE="button" VALUE="04" onClick="compute(this.form,4)"></TD>
+<TD><INPUT TYPE="button" VALUE="05" onClick="compute(this.form,5)"></TD>
+<TD><INPUT TYPE="button" VALUE="06" onClick="compute(this.form,6)"></TD>
+</TR>
+<TR>
+<TD><INPUT TYPE="button" VALUE="07" onClick="compute(this.form,7)"></TD>
+<TD><INPUT TYPE="button" VALUE="08" onClick="compute(this.form,8)"></TD>
+<TD><INPUT TYPE="button" VALUE="09" onClick="compute(this.form,9)"></TD>
+<TD><INPUT TYPE="button" VALUE="10" onClick="compute(this.form,10)"></TD>
+<TD><INPUT TYPE="button" VALUE="11" onClick="compute(this.form,11)"></TD>
+<TD><INPUT TYPE="button" VALUE="12" onClick="compute(this.form,12)"></TD>
+<TD><INPUT TYPE="button" VALUE="13" onClick="compute(this.form,13)"></TD>
+</TR>
+<TR>
+<TD><INPUT TYPE="button" VALUE="14" onClick="compute(this.form,14)"></TD>
+<TD><INPUT TYPE="button" VALUE="15" onClick="compute(this.form,15)"></TD>
+<TD><INPUT TYPE="button" VALUE="16" onClick="compute(this.form,16)"></TD>
+<TD><INPUT TYPE="button" VALUE="17" onClick="compute(this.form,17)"></TD>
+<TD><INPUT TYPE="button" VALUE="18" onClick="compute(this.form,18)"></TD>
+<TD><INPUT TYPE="button" VALUE="19" onClick="compute(this.form,19)"></TD>
+<TD><INPUT TYPE="button" VALUE="20" onClick="compute(this.form,20)"></TD>
+</TR>
+<TR>
+<TD><INPUT TYPE="button" VALUE="21" onClick="compute(this.form,21)"></TD>
+<TD><INPUT TYPE="button" VALUE="22" onClick="compute(this.form,22)"></TD>
+<TD><INPUT TYPE="button" VALUE="23" onClick="compute(this.form,23)"></TD>
+<TD><INPUT TYPE="button" VALUE="24" onClick="compute(this.form,24)"></TD>
+<TD><INPUT TYPE="button" VALUE="25" onClick="compute(this.form,25)"></TD>
+<TD><INPUT TYPE="button" VALUE="26" onClick="compute(this.form,26)"></TD>
+<TD><INPUT TYPE="button" VALUE="27" onClick="compute(this.form,27)"></TD>
+</TR>
+<TR>
+<TD><INPUT TYPE="button" VALUE="28" onClick="compute(this.form,28)"></TD>
+<TD><INPUT TYPE="button" VALUE="29" onClick="compute(this.form,29)"></TD>
+<TD><INPUT TYPE="button" VALUE="30" onClick="compute(this.form,30)"></TD>
+<TD><INPUT TYPE="button" VALUE="31" onClick="compute(this.form,31)"></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+</TABLE>
+</TD>
+<TD align=center>
+<TEXTAREA NAME="content" ROWS=7 COLS=40></TEXTAREA><br>
+<INPUT TYPE="hidden" NAME="editday">
+<INPUT TYPE="reset" NAME="reset" VALUE="Inicializar">
+</TD>
+</TR>
+</TABLE>
+</FORM>
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+
+
+</BODY>
+</HTML>

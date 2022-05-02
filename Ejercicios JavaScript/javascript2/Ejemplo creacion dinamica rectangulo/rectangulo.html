@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+        <script>
+            var base, altura, area, perimetro;
+
+            altura = parseInt(prompt("Introduce la altura del rectágulo"));
+            base = parseInt(prompt("Introduce la base del rectángulo"));
+                    
+            document.write("<div id='rectangulo' style='border: 1px solid black;float:left;padding:50px;height:"+altura+"px ;width:"+base+"px;background-color: red'>")
+            document.write("<h3>base:"+ base +" </h3>");
+            document.write("<h3>altura:"+ altura +" </h3>");
+            document.write("</div>");
+        </script>
+    
+    <div id="texto">
+       <script>
+          
+            document.write("<h3>La base del rectángulo es "+base+" y la altura es de "+altura+ "</h3>");
+            area=base*altura;
+
+            document.write("<h3>El área es base * altura = "+area+"</h3>");
+            perimetro= 2 *(base+altura);
+
+            document.write("<h3>El perímetro es 2 * (base+altura) = "+perimetro+"</h3>");
+       
+       </script>
+
+
+    </div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<HTML>
+<HEAD><TITLE>Aplicando Estilos</TITLE>
+
+</HEAD>
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2>Aplicaci&oacute;n pr&aacute;ctica de las hojas de estilo</h2>
+
+<h3>Creando la CSS de un blog</h3>
+
+Veamos ahora c&oacute;mo aplicar lo visto sobre las hojas de estilo en cascada. Adem&aacute;s de la p&aacute;gina de estilos realizaremos una p&aacute;gina escrita en XHTML en lugar del HTML que ya conocemos. Esto no significa que las CSS no funcionen con HTML. La maquetaci&oacute;n se har&aacute; por "capas" definidas en la CSS y se utilizar&aacute; c&oacute;digo estricto.
+<p>
+ Puede que te est&eacute;s preguntando qu&eacute; es eso de maquetar por "capas". Lo de capas es un s&iacute;imil utilizado para intentar explicar la t&eacute;cnica utilizada. Imagina que tienes una pizarra completamente limpia y vac&iacute;a. Eso ser&iacute;a el <b>body</b> de la p&aacute;gina antes de escribir nada. Ahora tomamos una hoja transparente y en ella dibujamos un bloque que va a contener informaci&oacute;n y la ponemos sobre la pizarra. A continuaci&oacute;n tomamos otra hoja transparente, le dibujamos otro bloque en otra posici&oacute;n (o no), y la depositamos encima de la anterior, y as&iacute; sucesivamente hasta terminar la p&aacute;gina. Eso es maquetar por capas. Cada una de las capas es completamente independiente de las otras, y pueden tener sus propios contenidos y estilo, aunque tambi&eacute;n pueden heredarlos (los estilos) seg&uacute;n un modelo jer&aacute;rquico, en el que el padre de todas las capas es <b>body</b>. En la figura siguiente tienes un ejemplo de maquetaci&oacute;n.
+<p>
+ Una de las maquetaciones m&aacute;s conocidas &uacute;ltimamente es la correspondiente a lo que se ha dado en llamar "blogs", "bit&aacute;coras", "diarios" o como quieras llamarles. Utilizaremos ese formato como ejemplo porque es muy simple: consta de una cabecera, dos columnas de contenidos y un pie:
+<p>
+
+<center><img src="blog.gif"></center>
+
+<p>
+Como puedes ver, hay una sombra debajo de la p&aacute;gina. Esta sombra est&aacute; producida por el siguiente gr&aacute;fico.
+<p>
+<center><img src="blog/sombra.gif"></center>
+<p>
+Para conseguir que cubra todo el blog se le da una declaraci&oacute;ne de mosaico solamente en vertical: <b>url(sombra.gif) repeat-y</b>,<br>
+ y se indica la posici&oacute;n en pantalla del eje central del gr&aacute;fico: <b>50%</b>. El bloque donde se hace todo esto es <b>body</b>. As&iacute;:
+
+<pre><font face="courier" size="2" color="blue">
+body {
+	background: #eee url(sombra.gif) repeat-y 50%;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	margin: 0;
+	padding: 0;
+}
+</font></pre>
+
+Ya tenemos el fondo de nuestro blog. Ahora se define el primer bloque propio, es decir, no se trata de un elemento HTML. A este identificador le llamaremos "idioma" y nos servir&aacute; para montar una barra de navegaci&oacute;n t&iacute;pica que en este caso utilizaremos para cambiar de lengua en el blog:
+
+
+<pre><font face="courier" size="2" color="blue">
+#idioma {
+	width: 622px;
+	margin: 0 auto;
+	background-color: #000;
+	border-bottom: 1px solid #FFF;
+}
+</font></pre>
+F&iacute;jate en que a este bloque se le ha definido la anchura: <b>622px</b> a fin de que coincida con el hueco en blanco que nos deja el gr&aacute;fico de la sombra. Y puede que te est&eacute;s preguntando por qu&eacute; las declaraciones de color solamente tienen tres n&uacute;meros. Es una forma de abreviatura admitida por CSS versi&oacute;n 2, es decir, que #000 es equivalente a #000000  &nbsp; Esto solamente se puede aplicar cuando los dos n&uacute;meros son iguales en cada pareja. 
+<p>
+A continuaci&oacute;n definiremos la segunda parte de la cabecera con el bloque "cabecera". Simult&aacute;neamente se declara el estilo del texto que llevar&aacute; dentro: "Titulo del blog" asignado a la etiqueta <b>h1</b> que s&iacute; es un elemento HTML:
+
+<pre><font face="courier" size="2" color="blue">
+h1#cabecera  {
+	width: 622px;
+	height: 90px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 200%;
+	background: url(cabecera.gif);
+	border-bottom: 5px solid #222222;
+	line-height: 90px;
+	font-weight: normal;
+	letter-spacing: 3px;
+	margin: 0px auto;
+	margin-bottom: 15px;
+	text-align: center;
+}
+</font></pre>
+
+Como puedes ver, se le ha dado la misma anchura que al bloque "idioma", pero tiene tambi&eacute;n definida la altura: <v>90px</b> &nbsp; Recuerda que "idioma" no ten&iacute;a definida la altura, que se limitar&aacute; a lo que precise su contenido, e inmediatamente despu&eacute;s se colocar&aacute "cabecera" que tiene tambi&eacute;n un declaraci&oacute;n de mosaico gr&aacute;fico en vertical y horizontal (por defecto): <b>url(cabecera.gif);</B> &nbsp; para dar color al fondo. En este caso esa declaraci&oacute;n podr&iacute;a ser sustituida por una de color directamente.
+<p>
+Este es el gr&aacute;fico del fondo: <img src="blog/cabecera.gif" align="middle">
+<p>
+A este bloque se le ha definido la altura simplemente para mantener la est&eacute;tica del dise&ntilde;o y porque se supone que nunca va a recibir otros contenidos, cosa que s&iacute; puede ocurrirle a la barra de idiomas.
+<p>
+El siguiente es un bloque curioso, ya que no va tener en su interior contenidos "normales", sino que su funci&oacute;n es, como su nombre indica, servir de "contenedor" a otros bloques que s&iacute; portar&aacute;n informaci&oacute;n. Por razones de est&eacute;tica es ligeramente m&aacute;s estrecho que los dos anteriores, y tampoco tiene definida la altura, ya que no sabemos cuanto ocupar&aacute;n los contenidos:
+
+<pre><font face="courier" size="2" color="blue">
+#contenedor {
+	margin: 0 auto;
+	width: 600px;
+}
+</font></pre>
+
+Una vez definido el contenedor, procedemos a crear los dos bloques principales: el bloque izquierdo <b>bloq_izq</b> y el derecho <b>bloq_der</b>. 
+
+<pre><font face="courier" size="2" color="blue">
+#bloq_izq {
+	float: left;
+	width: 400px;
+	text-align: justify;
+}
+
+
+#bloq_der {
+	float: right;
+	color: #999;
+	width: 170px;
+}
+</font></pre>
+
+Como puedes ver, solamente se define su anchura, a fin de mantener el dise&ntilde;o estable. Al no definir la longitud, &eacute;sta ser&aacute; establecida por los contenidos, es decir,  que se "estirar&aacute;n" lo que sea necesario. Tenemos tambi&eacute;n una instrucci&oacute;n nueva: <b>float</b> que es la que indica la posici&oacute;n de cada bloque dentro del contenedor. Esta instrucci&oacute;n es vital para este tipo de dise&ntilde;os, ya que sin ella el bloque derecho aparecer&iacute;a debajo del izquierdo, y no al lado como queremos, y adem&aacute;s los dos bloques ir&iacute;an a parar debajo del "contenedor", en lugar de ir dentro de &eacute;l.
+<p>
+
+Ahora solamente nos queda definir el bloque del <b>pie</b>:
+
+<pre><font face="courier" size="2" color="blue">
+#pie {
+	margin: 0 auto;
+	padding: 10px 0 10px 0;
+	color: #fff;
+	background: #333 url(pie.gif);
+	width: 622px;
+	clear: both;
+	text-align: center;
+}
+</font></pre>
+
+Tambi&eacute;n tiene una instrucci&oacute;n nueva: <b>clear</b>, que sirve para cerrar el <b>float</b> de los dos bloques del contenedor. Sin ella el pie se superpondr&iacute;a a los dos bloques anteriores, en lugar de ir debajo del contenedor. <b>clear</b> tiene un par&aacute;metro: <b>both</b> (ambos) ya que tenemos dos <b>float</b> definidos, uno a cada lado. En el caso de que solamente hubiese uno, se indicar&iacute;a s&oacute;lo el  que exista; <b>left</b> o <b>right</b>.
+<p>
+Para terminar la hoja de estilos ya solamente falta definir los estilos del contenido de cada bloque. 
+<p>
+Aqu&iacute; puedes ver la <a href="blog/blog.css">hoja CSS terminada</a>, aqu&iacute; el <a href="blog/codblog.htm">c&oacute;digo XHTML</a> del blog y aqu&iacute; el <a href="blog/blog.htm">blog</a> listo para funcionar.
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

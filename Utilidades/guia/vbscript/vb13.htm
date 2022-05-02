@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>VBScript 12 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h3>El objeto Location</h3>
+
+Este objeto sirve para controlar la l&iacute;nea de URL del navegador. Como ya sabr&aacute;s, la l&iacute;nea de URL es la ventanita situada en la parte superior del navegador donde se escribe la direcci&oacute;n de la p&aacute;gina a la que quieres conectarte. En una direcci&oacute;n t&iacute;pica existen 8 partes diferenciadas, que son precisamente, las 8 propiedades del objeto <b>Location</b>. Sea por ejemplo la direcci&oacute;n:
+
+<pre>
+<font face="courier" color="blue">http://sestud.uv.es/manual.esp/vbscript/vb13.htm?tema="VBSscript"</font>
+</pre>
+
+Si invocamos las ocho propiedades de <b>Location</b>:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+  Sub Prueba
+     Document.Write "1 - " & <font color="red">Location.Protocol</font> & "&lt;br&gt;"
+     Document.Write "2 - " & <font color="red">Location.Href</font> & "&lt;br&gt;"
+     Document.Write "3 - " & <font color="red">Location.Host</font> & "&lt;br&gt;"
+     Document.Write "4 - " & <font color="red">Location.HostName</font> & "&lt;br&gt;"
+     Document.Write "5 - " & <font color="red">Location.Port</font> & "&lt;br&gt;"
+     Document.Write "6 - " & <font color="red">Location.PathName</font> & "&lt;br&gt;"
+     Document.Write "7 - " & <font color="red">Location.Search</font> & "&lt;br&gt;"
+     Document.Write "8 - " & <font color="red">Location.Hash</font> & "&lt;br&gt;"
+  End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY OnLoad="Prueba"&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Este ser&iacute;a el resultado:
+<p>
+<font color="green">
+1 - http:<br>
+2 - http://sestud.uv.es/manual.esp/vbscript/vb13.htm?tema="VBSscript"<br>
+3 - sestud.uv.es<br>
+4 - sestud.uv.es<br>
+5 - <br>
+6 - /manual.esp/vbscript/vb13.htm<br>
+7 - ?tema="VBSscript"<br>
+8 - <br>
+</font>
+<p>
+En este ejemplo, se han leido los valores que contienen cada una de las propiedades, pero tambi&eacute;n puede utilizarse para dar valor a las mismas propiedades. El siguiente ejemplo cambiar&aacute; el valor que haya en la l&iacute;nea de URL del navegador al pulsar el bot&oacute;n <b>Prueba</b>, e inmediatamente cargar&aacute; la nueva p&aacute;gina:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Objetos del IE&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+  Sub <b>Prueba_Location</b>
+    <font color="red">Location.Href</font>="http://sestud.uv.es/manual.esp/indice.htm"
+  End Sub
+  --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="<b>Prueba_Location</b>"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

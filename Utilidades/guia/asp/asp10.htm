@@ -1,0 +1,399 @@
+<HTML>
+<HEAD><TITLE>ASP 10</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H3>El objeto Response</H3>
+<b>Response</b> (respuesta) es posiblemente el objeto m&aacute;s utilizado de todos, ya que sirve para presentar en la pantalla del navegador del cliente el resultado de cualquier c&oacute;digo que hayamos escrito.
+<p>
+El objeto <b>Response</b> tiene 8 <b>propiedades</b>, 1 <b>colecci&oacute;n</b> y 8 <b>m&eacute;todos</b>: 
+
+<hr noshade>
+<center><font size=4>PROPIEDADES</font></center><p>
+
+<h3>Response.Buffer = <font color="red">False &#124; True</font> </h3>
+Cuando ASP procesa una p&aacute;gina cualquiera, va ejecutando comandos, adjunta c&oacute;digo HTML, lee ficheros de inclusi&oacute;n, etc., y todo eso, hasta que la respuesta est&aacute; completa lo va guardando en un buffer (un buffer es un &aacute;rea temporal de trabajo). A este proceso se le denomina <b>buffering</b>.  Cuando la composici&oacute;n del fichero de respuesta est&aacute; completa, o entre los comandos ejecutados encuentra una llamada a los m&eacute;todos  <b>Flush</b> o <b>End</b>, ASP concluye el proceso de buffering, env&iacute;a el fichero de respuesta al cliente y vac&iacute;a el buffer, quedando a la espera del siguiente proceso.
+<p>
+La propiedad <b>Response.Buffer</b> sirve para intervenir en el proceso de buffering. Si el valor de <b>Buffer</b> es <font color="red">True</font>, el servidor enviar&aacute; el contenido del buffer a la salida, pero si es <font color="red">False</font>, el proceso de buffering no se realiza. Esto significa que no es posible cambiar la propiedad despu&eacute;s de que el servidor haya enviado la respuesta. Si se quiere evitar el buffering, habr&aacute; que hacerlo antes de que &eacute;ste comience, por lo que la instrucci&oacute;n deber&aacute; ser la primera de todas.
+<p>
+El valor por defecto de <b>Buffer</b> en ASP 2.0 es <font color="red">False</font>. En la versi&oacute;n 3.0 es <font color="red">True</font>, siempre que se realice una instalaci&oacute;n nueva, si es una actualizaci&oacute;n, quedar&aacute; con el valor antiguo, es decir, <font color="red">False</font>.
+
+
+<hr WIDTH=50%>
+<h3>Response.CacheControl = <font color="red">"Public" &#124; "Private" </font></h3>
+
+Esta propiedad permite a los servidores proxy guardar o no en su cache una copia de la respuesta ASP. Vale...  no sabes que es un "proxy" ni una "cache". Veamos: un servidor <b>proxy</b>, es una m&aacute;quina que se instala en algunas redes locales (tambi&eacute;n llamadas <b>intranets</b>) y cuya funci&oacute;n, entre otras, consiste en guardar en sus discos una copia de todas las p&aacute;ginas web que han visitado los navegadores de esa red local. A esto se le llama guardar en <b>cache</b>. Esto mismo ya lo hace tambi&eacute;n el navegador en la propia m&aacute;quina donde est&eacute; instalado. El navegador tiene dos caches: en memoria y en disco, y es configurable por el usuario el tama&ntilde;o de ambas, as&iacute; como el tiempo que las p&aacute;ginas visitadas permanecer&aacute;n en ellas. La finalidad de todo esto, que a algunos les podr&aacute; parecer un atentado a su intimidad, es conseguir que las p&aacute;ginas de uso m&aacute;s habitual se carguen m&aacute;s r&aacute;pidamente, ya que al residir en las caches, del navegador o del proxy, no es necesario salir a internet para cargarlas de nuevo desde el servidor original. En fin, si las redes fueran lo r&aacute;pidas que debieran y las conexiones costasen menos dinero, seguramente todo esto no ser&iacute;a necesario.
+<p>
+Esto de los proxy est&aacute; muy bien si hablamos de HTML est&aacute;tico, pero si hablamos de ASP din&aacute;mico, es decir, p&aacute;ginas que cada vez que son llamadas pueden tener un contenido diferente, pero con el problema de que siempre tienen el mismo nombre, que es precisamente, en funci&oacute;n de lo que el proxy decide si servir de la cache o conectarnos con el servidor original, pueden ser un grave problema. 
+<p>
+Imagina que tu aplicaci&oacute;n tiene una p&aacute;gina que muestra los datos de un cliente previamente identificado, por ejemplo su ficha personal con domicilio, tel&eacute;fono, cuenta bancaria de cargo, etc. La p&aacute;gina tiene como nombre, por ejemplo, <font color="blue"><b>cliente.asp</b></font>. Un cliente hace un request solicitando la p&aacute;gina despu&eacute;s de identificarse. El servidor envia la p&aacute;gina solicitada, y el proxy, cumpliendo con su funci&oacute;n, guarda en cache una copia. Lo mismo hace el navegador de la m&aacute;quina desde donde se hace el request, y supongamos tambi&eacute;n que esa m&aacute;quina est&aacute; en una sala p&uacute;blica de terminales muy concurrida. Si...  se adivina un desastre. En efecto, el cliente ha terminado sus transacciones y se marcha. Otro cliente, que estaba esperando su turno, se sienta ante la misma m&aacute;quina... y c&oacute;mo no, se conecta a la misma aplicaci&oacute;n. La primera pantalla no es peligrosa, ya que son instrucciones. La segunda, tampoco, es un formulario donde hay que escribir la identificaci&oacute;n... pero la tercera es <font color="blue"><b>cliente.asp</b></font> que muestra la ficha con los datos personales. 
+<p>
+&iquest;Qu&eacute; va a ocurrir? Apenas han transcurrido unos segundos desde que el anterior cliente hizo el mismo request. Aunque hubiesen pasados minutos, la situaci&oacute;n ser&iacute;a la misma. Las caches del navegador est&aacute;n configuradas para ser eliminadas cada dia (eso con suerte), la del proxi, lo mismo, y &eacute;ste solamente har&aacute; una verificaci&oacute;n de fechas para ver si el original ha cambiado o no, y no lo ha hecho. Por tanto la cosa est&aacute; clara: al segundo cliente le aparecer&aacute; la ficha personal del primero, y s&oacute;lo cuando pulse el bot&oacute;n "recargar" del navegador, forzar&aacute; al navegador y al proxy a conectarle con el servidor, obteniendo sus datos correctos. Pero mientras, hemos dejado que nuestra aplicaci&oacute;n muestre unos datos indebidamente, lo cual es muy grave.
+<p>
+Para evitar que el proxy copie en su cache las respuestas de nuestros ASP, se puede utilizar la propiedad <b>Response.CacheControl </B>. Hay otras dos propiedades: <b>Response.Expires</b> y <b>Response.ExpiresAbsolute</b> que controlan las caches, pero &eacute;stas lo hacen sobre las del navegador. 
+<P>
+Si se escribe:
+<p><font color="blue" face="courier" size=2>
+&lt;% <FONT color=#ff0000>Response.CacheControl</FONT> = "Public" %&gt;</font> SI guarda en cache del proxy (por defecto)<br>
+<font color="blue" face="courier" size=2>
+&lt;% <FONT color=#ff0000>Response.CacheControl</FONT> = "Private" %&gt;</font> NO guarda en cache del proxy
+
+<hr WIDTH=50%>
+<h3>Response.Charset("String") </h3>
+Esta propiedad a&ntilde;ade el nombre de la tabla de caracteres al contenido del objeto <b>Response</b>, concretamente como par&aacute;metro de <b>content-type</b>. El valor por defecto es <b>ISO-LATIN-1</B> (excepto en entornos Macintosh).
+<p>
+Por ejemplo, una cabecera HTTP normal contiene el siguiente string:
+<p>
+<font color="blue" size=2 face="courier">&nbsp;&nbsp;content-type: text/html</font>
+<p> 
+Y despu&eacute;s de escribir
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <FONT color=#ff0000>Response.Charset</font>("MS_Windows") %&gt;</font> 
+<p>
+Contendr&iacute;a:
+<p>
+<font color="green" size=2 face="courier">&nbsp;&nbsp;content-type: text/html; charset = MS_Windows </font>
+<p>
+Hay que tener en cuenta que como argumento se puede escribir cualquier cosa, y aunque no sea v&aacute;lido, ASP no emite ning&uacute;n mensaje de error, simplemente no surtir&aacute; el efecto deseado.
+
+<hr WIDTH=50%>
+<h3>Response.ContentType("String") </h3>
+Esta propiedad especifica el tipo de contenido del request HTTP, que puede incluir un tipo/subtipo en la cabecera de la respuesta. El tipo siempre es de contenido general y el subtipo es espec&iacute;fico. El valor por defecto es <b>text/HTML</B>. Tiene que ir <b>antes</b> de que se defina la cabecera de la p&aacute;gina.
+<p>
+Por ejemplo, el siguiente c&oacute;digo poduce una hoja de c&aacute;lculo Excel en el navegador, simpre que Excel est&eacute; instalado en la m&aacute;quina del cliente, claro. 
+<p>
+
+<font color="blue" face="courier" size=2>
+&lt;% <FONT color="red">Response.ContentType</font> = "application/vnd.ms-excel" %&gt;<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;TABLE&gt;<br>
+&lt;TR&gt;&lt;TD&gt;Valor de la celda <b>A1</b>&lt;/TD&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;TD&gt;Valor de la celda <b>B1</b>&lt;/TD&gt;<br>
+&lt;/TR&gt;<br>
+&lt;TR&gt;&lt;TD&gt;Valor de la celda <b>A2</b>&lt;/TD&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;TD&gt;Valor de la celda <b>B2</b>&lt;/TD&gt;<br>&lt;/TR&gt;<br>
+&lt;/TABLE&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;</font>
+
+
+<hr WIDTH=50%>
+<h3>Response.Expires </h3>
+La propiedad <b>Expires</b> indica el n&uacute;mero de minutos que deben transcurrir antes de que la copia de la respuesta en las caches del <b>navegador</b> expire (sea eliminada). F&iacute;jate en que se refiere a la cache del navegador, no a la del servidor proxy (si lo hubiese). Si no se invoca esta propiedad, el tiempo de expiraci&oacute;n ser&aacute; el que tenga configurado el navegador por defecto.
+<p>
+Si se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <FONT color=#ff0000>Response.Expires</FONT> = 0 %&gt;
+</font>
+<p>
+Esto significa que la p&aacute;gina expira inmediatamente despu&eacute;s de su recepci&oacute;n y  visualizaci&oacute;n en el navegador. Si en lugar de cero se escribe, por ejemplo, 2, significar&aacute; que dos minutos despu&eacute;s de haberse recibido, el navegador eliminar&aacute; la p&aacute;gina de su cache.
+<p>
+El tiempo de expiraci&oacute;n en la cache del navegador, hay que usarlo con precauci&oacute;n, ya que si la p&aacute;gina est&aacute; destinada a ser impresa (por ejemplo es el resguardo de una operaci&oacute;n realizada por el cliente) y ha expirado, el navegador no podr&aacute; enviarla a la impresora, y emitir&aacute; un mensaje de error diciendo que no hay datos que imprimir, incluso aunque en ese momento la p&aacute;gina sea visible en la pantalla, pero no es de esa imagen de donde el navegador envia datos a la impresora, sino de su cache en disco. Esto significa que hay que pensar cuidadosamente que p&aacute;ginas terminar&aacute;n siendo impresas y cuales no en el momento de utilizar esta propiedad.
+
+ 
+
+<hr WIDTH=50%>
+<h3>Response.ExpiresAbsolute </h3>
+Funciona igual que la anterior, pero en lugar de indicar el n&uacute;mero de minutos que deben transcurrir antes de que las caches del navegador expiren, indica la <b>fecha y hora exacta</b> en que eso ocurrir&aacute;. No es muy fiable, ya que no sabemos si la fecha y hora del cliente  son correctas,  y tambi&eacute;n habr&aacute; que tener en cuenta la hora del pa&iacute;s desde donde el cliente nos hace el request, para que sea m&iacute;nimamente efectiva.
+<p>
+Se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <FONT color=#ff0000>Response.Expires</FONT> = #Feb 20, 2000 20:00:00# %&gt;
+</font>
+
+
+<hr WIDTH=50%>
+<h3>Response.IsClientConnected = <font color="red">True &#124; False </font>  </h3>
+Con esta propiedad se puede saber si el cliente continua conectado al servidor desde la &uacute;ltima vez que se utiliz&oacute; la propiedad <b>Response.Write</b>, es decir desde la &uacute;ltima vez que nuestra aplicaci&oacute;n ha escrito algo en la pantalla del cliente. Puede ser muy &uacute;til si el proceso solicitado va a ser muy trabajoso para el servidor, por ejemplo una consulta a una DB que devolver&aacute; gran cantidad de datos. Si se verifica que el servidor a perdido la conexi&oacute;n con el cliente, es in&uacute;til hacer todo el trabajo solicitado por &eacute;ste, ya que no se podr&aacute; enviar el resultado, y adem&aacute;s el servidor entrar&aacute; en una fase de reintentos sucesivos, hasta que el tiempo de cierre de sesi&oacute;n especificado en su configuraci&oacute;n se cumpla. Si eso ocurre con muchos procesos a la vez, el servidor puede bloquearse.
+
+<p>
+Por ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+'--Se abren conexiones a la DB y/o se preparan procesos.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>...</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>...</b><br>
+'--Mediante un bucle se verifica si el cliente sigue conectado, o si los procesos han terminado
+<p>
+Do until (<FONT color="green">PROCESOS ACTIVOS... OR </FONT><FONT color="red">Response.IsClientConnected</FONT>=false)<p>
+'--- si el cliente sigue conectado, se hacen los procesos necesarios<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>...</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>...</b><br>
+Loop <p>
+'---Procesos terminados o conexi&oacute;n perdida. Se cierran las conexiones y se liberan recursos<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>...</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>...</b><br>
+%&gt;<br>
+</font>
+
+<hr WIDTH=50%>
+<h3>Response.Status = "Status" </h3>
+
+Esta propiedad especifica el valor de la l&iacute;nea de estado HTTP devuelta por el servidor. Normalmente consiste en la direcci&oacute;n IP del cliente que ha provocado el estado, seguida de una breve descripci&oacute;n de error. Esto hay que escribirlo <b>antes</b> que cualquier otra l&iacute;nea de la p&aacute;gina.
+<p>
+Si se desea impedir el acceso a la aplicaci&oacute;n a una m&aacute;quina cuyo IP sea, por ejemplo, 125.125.125.125 escribiremos:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+        Dir_IP = Request.ServerVariables("REMOTE_ADDR")<br>
+        If Dir_IP = "125.125.125.125" Then<br>
+&nbsp;&nbsp;&nbsp;<FONT color="red">Response.Status</font> = "403 Acceso prohibido"<br>
+&nbsp;&nbsp;&nbsp;Response.Write <FONT color="red">Response.Status</font><br>
+&nbsp;&nbsp;&nbsp;Response.End<br>
+        End If<br>
+%&gt;<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+..<br>
+..<br>
+
+</font>
+<p>
+Esto mismo se puede configurar en el servidor de forma fija, en el apartado de seguridad de la aplicaci&oacute;n.
+
+
+<hr noshade>
+<center><font size=4>COLECCIONES</font></center><p>
+
+<h3>Response.Cookies(<font color="red">Nombre</font>)<font color="green">[(Clave</font>)&#124;.<font color="Blue">Atributo</font><font color="green">]</font>=<font color="red">Valor</font> </h3> 
+
+Esta colecci&oacute;n funciona b&aacute;sicamente igual, y sirve para lo mismo, que la ya explicada en el objeto <b>Request</b>, pero aqu&iacute; podemos asignar los valores que se estimen necesarios para la aplicaci&oacute;n. Tiene dos argumentos <font color="red"><b>obligatorios</b></font>: <font color="red"><b>Nombre</b></font> que es el nombre que se le asigna al cookie, y <font color="red"><b>Valor</b></font> que especifica el contenido asignado a la clave o atributo.
+<p>
+Tambi&eacute;n tiene dos argumentos <b><font color="green">opcionales</b></font>: <b><font color="blue">Atributo</b></font>, que puede  consistir en cinco par&aacute;metros preestablecidos diferentes, y <b><font color="green">clave</b></font>, que como su nombre indica, es la clave que se le asigna al atributo <b><font color="red">Valor</b></font>
+<p>
+Los par&aacute;metros preestablecidos de <b><font color="blue">Atributo</b></font> pueden ser los siguientes:
+<ul>
+<li><b><font color="blue">Domain</b></font>. Por seguridad, es de solo escritura. Asigna p&aacute;ginas en un dominio formado por m&aacute;s de un servidor, a fin de compartir la informaci&oacute;n contenida en el cookie entre varias aplicaciones, o la misma, distribuida entre varios servidores, evitando que se pueda leer el contenido del cookie desde otros dominios ajenos a su creador.<br> Se escribe: <font color="blue" face="courier">.Domain = ".misitio.com"</font>
+
+<li><b><font color="blue">Path</b></font>. Es un complemento del anterior. En efecto, adem&aacute;s de controlar el dominio de los servidores que acceden al cookie, puede que interese limitar desde qu&eacute; p&aacute;ginas pueden hacerlo. <br> Por ejemplo: <font color="blue" face="courier">.Path = "/asp"</font> permite acceder al cookie solamente a las p&aacute;ginas que residan en el directorio asp del &aacute;rbol de directorios del servidor web. Si se omite, se entiende que su valor es <font color="blue" face="courier">.Path = "/"</font>, es decir, la raiz del servidor, lo que da acceso al cookie a todas las p&aacute;ginas del mismo.
+
+<li><b><font color="blue">Expires</b></font>. Indica la fecha en la que el cookie expira. Si no se especifica nada, el cookie expira cuando termina la sesi&oacute;n del cliente, pero s&oacute;lo se crear&aacute; en memoria. Si se especifica alguna fecha, el cookie se almacenar&aacute; en el disco del cliente hasta la mencionada fecha, incluso despu&eacute;s de que termine la sesi&oacute;n. La fecha hay que indicarla con una cadena, por ejemplo, "30/03/2004". 
+
+<li><b><font color="blue">HasKeys</b></font>. Valor <b>Booleano</b> (true o false) para indicar si el cookie contiene claves o no.
+
+<li><b><font color="blue">Secure</b></font>. Indica si el cookie es seguro (encriptado o normal). Admite los valores 0 o 1. En el caso de ser 1 solamente se puede acceder al cookie mediante SSL.
+</ul>
+
+He aqu&iacute; un ejemplo:
+<pre><font color="blue" face="courier" size=2>
+&lt;%@ LANGUAGE="VBScript" %&gt;
+&lt;% 
+   <FONT color="red">Response.Cookies</font>("test").Expires = "31/05/05"
+   <FONT color="red">Response.Cookies</font>("test")("item1") = "prueba" 
+   <FONT color="red">Response.Cookies</font>("test")("Contador") = <FONT color="red">Request.Cookies</font>("test")("Contador") + 1
+%&gt;
+
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;pruebas cookies&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+Contador: &lt;% = Request.Cookies("test")("Contador") %&gt;&lt;BR&gt;
+Cookie: &lt;% = Request.Cookies("test") %&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;</font>
+</pre>
+
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+Contador: 1<br>
+Cookie: CONTADOR=1&ITEM1=prueba 
+</font>
+<p>
+En este ejemplo, <b>Contador</b> se incrementa en 1 cada vez que la p&aacute;gina es cargada por el navegador. La primera vez valdr&aacute; 1, la segunda 2, etc. Cuando el cookie no existe o haya expirado, el contador vuelve a 1 en la siguiente visita. 
+<p>
+Recuerda que todas las instrucciones para crear o modificar los cookies hay que escribirlas siempre <b>antes</b> de cualquier otra cosa de la p&aacute;gina. Otra cosa importante que no hay que olvidar es que <b>nunca</b> deben ponerse datos confidenciales en los cookies, ya que los ficheros se quedar&aacute;n en la m&aacute;quina del cliente, incluso despu&eacute;s de haber expirado,  y otro usuario podr&iacute;a llegar a ellos. 
+<p>
+En los cookies se pueden guardar datos muy variados, como contadores, preferencias del cliente, colores, resoluciones, etc., y no se deben utilizar de forma maliciosa (spiware), pero recuerda que son datos que afectan solamente a una m&aacute;quina f&iacute;sica, y que los datos de un usuario no estar&aacute;n disponibles si se conecta desde otra m&aacute;quina.
+<p>
+Cada navegador genera y guarda los cookies de una manera diferente. Los del Internet Explores de Microsoft suelen estar en C:\WINDOWS\Cookies (Win95, 98 y ME). Si se trata de Win NT, 2000, 2003 o XP estar&aacute;n en C:\Documents and Settings\nombre_usuario\Cookies. 
+<p>
+<hr noshade>
+<center><font size=4>METODOS</font></center><p>
+<h3>Response.AddHeader <font color="blue">"Nombre", "Valor" </font> </h3> 
+Este m&eacute;todo permite a&ntilde;adir una nueva cabecera a la respuesta HTTP. Una vez que la cabecera ha sido creada, no es posible borrarla. El <font color="blue">nombre</font> dado a la nueva cabecera no puede contener ningun car&aacute;cter de subrayado (<b> _ </b>)
+
+<P>
+Se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+<FONT color="red">Response.AddHeader</font> "MiCabecera", "PRUEBA"<br>
+ %&gt;</font>
+
+
+<hr WIDTH=50%>
+<h3>Response.AppendToLog(<font color="blue">"String"</font>)</h3>
+Mediante este m&eacute;todo se puede a&ntilde;adir un string al registro que se genera con cada request en el fichero de logs del IIS.
+<p>
+Por ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+<FONT color="red">Response.AppendToLog</font>("Mi comentario")<br>
+%&gt;</font>
+<p>
+Y este ser&iacute;a el string a&ntilde;adido en un registro t&iacute;pico del fichero de logs del IIS:
+<p>
+<font color="green" face="courier" size=2>
+125.125.125.125, - , 05/27/99, 9:50:00, W3SVC, PRUEBAS, 125.125.125.125, <font color="blue" face="courier" size=2>Mi comentario</font>
+</font>
+
+
+<hr WIDTH=50%>
+<h3>Response.BinaryWrite(<font color="blue">Data</font>)</h3>
+Escribe la salida HTTP en binario (no en modo string como lo hace <b>Response.Write</b>), y sin aplicar ninguna conversi&oacute;n de p&aacute;gina de caracteres.
+<p>
+<p>
+Supongamos que tenemos el siguiente formulario HTML con tres campos:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero formulario.htm<br>
+&lt;HTML&gt;&lt;HEAD&gt; &lt;TITLE&gt;Prueba1 ASP&lt;/TITLE&gt;  &lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;FORM ACTION="prueba2.asp" METHOD="POST"&gt;<br>
+Nombre:&lt;INPUT TYPE="text" NAME="Nombre" VALUE="Juan" &gt;&lt;br&gt;<br>
+Ciudad:&lt;INPUT TYPE="text" NAME="Ciudad" VALUE="Guadalajara" &gt;&lt;br&gt;<br>
+Postal:&lt;INPUT TYPE="text" NAME="Postal" VALUE="12345"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&lt;br&gt;<br>
+&lt;INPUT TYPE="Submit" NAME="Boton" VALUE="Enviar"&gt;<br>
+&lt;/FORM&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+</FONT>
+<p>
+Para poder ver el nombre de los campos y sus contenidos se escribe lo siguiente:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero prueba2.asp<br>
+&lt;% <br>
+bytecount = Request.TotalBytes<br>
+binread = Request.BinaryRead(bytecount)<br>
+<FONT color="red">Response.BinaryWrite</font> binread<br>
+ %&gt;</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+Nombre=Juan&amp;Ciudad=Guadalajara&amp;Postal=12345&amp;Boton=Enviar 
+</font>
+
+
+<hr WIDTH=50%>
+<h3>Response.Clear</h3>
+Este m&eacute;todo se utiliza para vaciar (borrar) cualquier contenido del buffer de salida. No elimina las cabeceras HTTP, solamente el contenido que va entre los elementos &lt;BODY&gt; y &lt;/BODY&gt; Si el buffer ya est&aacute; vac&iacute;o debido a que previamente se ha invocado <b>Response.Buffer=False</b>, se produce un error de ejecuci&oacute;n. Recuerda que en la versi&oacute;n 2.0 de ASP el valor por defecto de Response.Buffer es <b>False</b> y en la versi&oacute;n 3.0 es <b>True</b>.
+<p>
+Se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+ <FONT color="red">Response.Clear</font> <br> 
+%&gt;</font> 
+
+
+<hr WIDTH=50%>
+<h3>Response.End</h3>
+Cuando se invoca este m&eacute;todo el servidor detiene el proceso de la p&aacute;gina ASP actual y envia al cliente el contenido del buffer de salida, siempre que <b>Response.Buffer=True</b>. El resto de instrucciones no se procesar&aacute;. Recordar que en la versi&oacute;n 2.0 de ASP el valor por defecto de Response.Buffer es <b>False</b> y en la versi&oacute;n 3.0 es <b>True</b>.
+<p>
+Por ejemplo, si se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+Response.Write "Primer string"<br>
+ <FONT color="red">Response.End</font> <br> 
+Response.Write "Segundo string"<br>
+%&gt;</font> 
+<p>
+S&oacute;lo se obtiene en la respuesta:<br>
+<font color="green" face="courier" size=2>
+Primer string
+</font>
+
+
+<hr WIDTH=50%>
+<h3>Response.Flush</h3>
+Este m&eacute;todo provoca el envio inmediato al cliente del contenido del buffer de salida, en lugar de hacerlo al concluir el proceso completo de la p&aacute;gina, y continuando despu&eacute;s con el resto de instrucciones normalmente.  Si el buffer est&aacute; vac&iacute;o debido a que previamente se ha invocado <b>Response.Buffer=False</b>, se produce un error de ejecuci&oacute;n. Recuerda que en la versi&oacute;n 2.0 de ASP el valor por defecto de Response.Buffer es <b>False</b> y en la versi&oacute;n 3.0 es <b>True</b>.
+<p>
+Se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+ <FONT color="red">Response.Flush</font> <br> 
+%&gt;</font> 
+
+
+<hr WIDTH=50%>
+<h3>Response.Redirect(<font color="blue">URL</font>)</h3>
+Este m&eacute;todo detiene el  proceso de las instrucciones de la p&aacute;gina actual e intenta conectar el cliente a una nueva direcci&oacute;n (<font color="blue">URL</font>). Esto se consigue a&ntilde;adiendo una cabecera de redirecci&oacute;n a la salida HTTP que se envia al cliente. Puede haber un problema en el caso de que alguna parte de la p&aacute;gina ya haya sido enviado al cliente mediante alguno de los dos anteriores m&eacute;todos (Flush o End) si entre el servidor web y el cliente hay un servidor proxy, por lo que debe usarse con precauci&oacute;n.
+<p>
+He aqu&iacute; un ejemplo de uso:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero1.asp<br>
+&lt;% Response.Buffer = true %&gt;<BR>
+&lt;HTML&gt;<BR>
+&lt;BODY&gt;<BR>
+&lt;%<BR>
+Response.Write "Este es Fichero1.asp y se conmuta con Fichero2.asp"<br>
+Response.Clear<BR>
+<font color="red">Response.Redirect</font> "Fichero2.asp" <BR>
+Response.Write "Esto ya no se procesa"<br>
+%&gt;<BR>
+&lt;/BODY&gt;<BR>
+&lt;/HTML&gt;<BR>
+<p>
+'---Fichero2.asp<br>
+&lt;HTML&gt;<BR>
+&lt;BODY&gt;<BR>
+&lt;%<br>
+Response.Write "Este es Fichero2.asp" <br>
+%&gt;<BR>
+&lt;/BODY&gt;<BR>
+&lt;/HTML&gt;</font>
+<p>
+Este ser&iacute;a el resultado: se muestra parte de Fichero1 y el navegador es obligado a cargar  Fichero2:
+<p>
+<font color="green" face="courier" size=2>
+'---Fichero1.asp<br>
+Este es Fichero1.asp y se conmuta con Fichero2.asp<br>
+&nbsp;<br>
+'---Fichero2.asp<br>
+Este es Fichero2.asp</font> 
+
+<hr WIDTH=50%>
+<h3>Response.Write(Valores)</h3>
+Llegamos al &uacute;ltimo  m&eacute;todo del objeto <b>Response</b>. Como ya sabes, puesto que se ha venido utilizando en la explicaci&oacute;n de otros objetos, sirve para escribir el resultado del c&oacute;digo ASP en el navegador del cliente. Se habl&oacute; m&aacute;s a fondo de &eacute;l en la p&aacute;gina <a href="asp2.htm">&#191;C&oacute;mo se escribe el ASP?</a>
+<p>
+Se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;% <br>
+ <FONT color="red">Response.Write</font>(Valores) <br> 
+%&gt;</font> 
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>El ODBC de Access</title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2> ¿Cómo se instala el ODBC de Access 97?</h2>
+<p>
+Si ya tienes instalado Office 97 en tu máquina con la opción <b>Seleccionar todo</b>, pasa directamente al punto <a href="#odatos"><b>Creando un origen de datos</b>.</a>
+<p>
+Cuando se instala Office 97 en una máquina Windows NT o 95/98, partiremos de un menú de instalación que nos presenta, entre otras, la forma automática y la <b>personalizada</b>, es esta última la que se debe escoger. 
+<p>
+<img src="access1.gif" align="left" WIDTH="521" HEIGHT="186"> Los controladores estan un poco escondidos: En el primer nivel del cuadro de instalación hay una lista donde se deben marcar los distintos paquetes que se desea instalar. No olvidar el correspondiente a Access y después el llamado <b>Acceso a datos</b>. Teniendo éste seleccionado, pulsar el botón <b>Modificar opción</b> que hay a su derecha, tal como puedes ver. De la lista que aparecerá seleccionar la denominada <b>Controladores de bases de datos</b>, pulsar de nuevo el botón  <b>Modificar opción</b>, y ya tenemos la lista de controladores. Fíjate que además del controlador de Access hay otros, y como nunca se sabe que extraños inventos acabaremos teniendo que hacer, ya puestos, lo mejor es marcarlos todos.
+<p>
+<img src="access2.gif" align="left" WIDTH="514" HEIGHT="156"> Este proceso de instalación es válido tanto para el servidor como para la máquina donde vayamos a realizar el desarrollo de las aplicaciones, y por supuesto, también deberá hacerse en todas las máquinas que vayan a trabajar con las aplicaciones de administración de la base de datos. Y ahora procederemos a configurar el controlador para que pueda ser utilizado por el <b>IDC</b>.
+<p>
+<a name="odatos"></a>
+<h3>Creando un origen de datos</h3>
+<table border="0">
+<tr><td>
+<img src="odbc01.gif" align="left" WIDTH="416" HEIGHT="225">Abrir el panel de control y localizar el icono llamado <b>32 bit ODBC</b>. Abrirlo. 
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc03.gif" align="left" WIDTH="463" HEIGHT="379">
+En el cuadro que aparece seleccionar la etiqueta <b>System DSN</b>, ya que el <b>IDC</b> sólo trabaja con este tipo. Pulsar el botón <b>Add</b>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc04a.gif" align="left" WIDTH="508" HEIGHT="323">Seleccionar el controlador de Access en la lista. Pulsar el botón <b>Finalizar</b>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc08a.gif" align="left" WIDTH="473" HEIGHT="411">Aquí es donde vamos a crear realmente el origen de datos de la aplicación. Pulsar el botón <b>Options&gt;&gt;</b> para ver el cuadro entero. 
+<p>
+Analicemos cada campo: el primero, <b>Data Source Name</b>, nos pide el nombre del origen de datos que vamos a crear, y que será el utilizado por la aplicación. Se puede poner cualquier nombre, sin espacios en blanco ni símbolos, sólo letras y números, como en el ejemplo: <b>prueba2</b>. 
+<p>
+Este nombre no tiene por qué ser el mismo que el de la base de datos que hay vinculada a él. Al facilitar este nombre al <b>IDC</b>,  el <b>ODBC</b> se encargará de que la aplicación &quot;entienda&quot; lo que dice la base de datos.
+<p>
+El siguiente campo, <b>Description</b> es un breve comentario del origen de datos, si te es necesario, sino, puedes dejarlo vacio.
+<p>
+A continuación hay cuatro botones que sirven para <b>seleccionar, crear, reparar o compactar</b> una base de datos de Access. Como ya debes de saber, coinciden con otras tantas herramientas que tiene el paquete de diseño de Access. Utiliza el de selección y localiza y selecciona una DB que ya tengas preparada para esta prueba.
+<p>
+El siguiente recuadro, <b>System Database</b>, contine dos interruptores: <b>None</b> y <b>Database</b>, y un botón: <b>System Database</b> y sirven para definir si la base de datos tiene permisos especiales de usuario o no. Como también se supone que sabes, Access gestiona los permisos de usuario en una base de datos especial llamada <b>system.mdw</b> que habría que definir aquí, pulsando el botón <b>System Database</b> y seleccionando una system.mdw, y a continuación el botón <b>Advanced</b> para definir el usuario y palabra de paso que hay que utilizar para el acceso a la DB. En el caso de que no haya permisos especiales, basta con marcar el interruptor <b>None</b>.
+<p>
+<b>NOTA:</b> En los sistemas XP, NT Server o 2003 Server no olvidar que el usuario definido para acceder desde internet, exista y tenga los permisos necesarios para llegar a la base de datos y operar en ella. Una forma simple de asegurarse de que no existan problemas de permisos puede ser poner  el fichero de la base de datos en el directorio "Documentos compartidos", que es un &aacute;rea de uso común a todos los usuarios de la m&aacute;quina. Si los datos son confidenciales esto no debe hacerse, y habrá que definir correctamente el usuario que corresponda y sus permisos.
+<p>
+El último recuadro, <b>Driver</b>, contiene campos que permiten controlar el tiempo de espera (Timeout), el tamaño del buffer de datos (una especie de almacén en memoria por donde pasan los registros). Los valores por defecto suelen ser suficientes en general. A la vista del rendimiento en cada caso, se pueden cambiar.
+<p>
+Los dos controles finales sirven para definir el modo de acceso. Si es marcado como <b>Exclusive</b>, siginifica que el primer usuario que se conecte a la DB obtiene el control absoluto, y no podrá ser accedida por otro usuario hasta que el primero no la abandone. El siguiente control, <b>Read Only</b> deja la DB en modo de sólo lectura, y nadie podrá escribir ni modificar nada. No suelen utilizarse, ya que es la propia aplicación la que debe decidir qué se puede hacer en cada momento.
+<p>
+Ya tenemos listo el ODBC, pulsar el botón <b>OK</b> para guardar lo hecho.
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<img src="odbc09a.gif" align="left" WIDTH="462" HEIGHT="377">Pulsar el botón <b>Aceptar</b> para cerrar el administrador de orígenes de datos. En el caso de que haya que cambiar alguna cosa, se selecciona el origen de datos que proceda y se pulsa el botón <b>Configure</b>.
+<p>
+Como ya debes de saber, Access es un paquete que permite diseñar aplicaciones y que integra un motor de base de datos. Debe quedar claro que al crear un origen de datos para ODBC, estamos creando un acceso <b>sólo a datos</b>, es decir si tenemos una aplicación completa en un fichero de Access, el ODBC solamente conectará las tablas de datos con la aplicación internet, no pudiendo utilizar la parte aplicación para el IDC ni ningún otro recurso del IIS o del PWS. Con la aplicación escrita en Access seguirá siendo posible acceder a las tablas sólo en modo local.
+<p>
+Por último, tener presente que el motor de Access es un motor pensado para uso personal, que soporta aceptablemente un número reducido de usuarios. En internet no es fácil saber cuantos usuarios simultáneos se pueden conectar en un momento dado, y el rendimiento puede caer peligrosamente. Es buena idea diseñar las aplicaciones en modo distribuido: es decir, en un fichero se escribe la parte aplicación (formularios, rutinas de control, etc.) y las tablas se utilizan vinculadas a otro fichero que sólo contine los datos. Esto, además de mejorar algo el rendimiento, nos permite trabajar incluso en el diseño de la aplicación local, aunque esten siendo accedidas las tablas desde internet. Si se espera que el número de usuarios pueda ser importante, se debe utilizar un servidor de bases de datos como SQL Server, que puede soportar cientos de usuarios simultáneos.
+</td></tr>
+</table>
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>
+
+

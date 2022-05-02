@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+            function anadirNombre() {
+            var nombre = document.getElementById("nombre").value.toUpperCase();
+            var listado = document.getElementById("listado");
+            listado.innerHTML = listado.innerHTML + "<br>" + nombre;
+            }
+    </script><title>Añadir nombres una lista</title>
+
+</head>
+<body>
+        Añade nombre a la cena: <input type="text" id="nombre">
+        <button onclick="anadirNombre()">Añadir</button>
+        <p id="listado"></p>
+</body>
+</html>

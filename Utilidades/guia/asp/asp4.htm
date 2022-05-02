@@ -1,0 +1,77 @@
+<HTML>
+<HEAD><TITLE>ASP 4</TITLE>
+</HEAD>
+<BODY>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>Nociones de ASP</H2>
+<H3>Algunos conceptos previos</H3>
+
+Se consideran como partes de la aplicaci&oacute;n todos aquellos ficheros que residan en el directorio virtual declarado en la consola del IIS, incluidos los ficheros de inclusi&oacute;n (.inc), donde no deben ponerse otros ficheros, ni por supuesto, dos aplicaciones distintas en el mismo directorio. Esto no quiere decir que toda la aplicaci&oacute;n tiene que estar escrita en un mismo fichero; pueden utilizarse los que sean precisos.
+<p>
+Existe un fichero especial, que tiene que estar en el directorio donde resida la aplicaci&oacute;n, llamado <b>global.asa</b> y tiene que llamarse as&iacute; para que funcione. Sobre este fichero se pueden detectar algunos eventos de los objetos <b>Application</b> y <b>Session</b>. He aqu&iacute; un ejemplo de fichero <b>global.asa</b>:
+<p>
+<font color="blue">
+&lt;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+Sub Session_OnStart<br>
+End Sub<br>
+<p>
+Sub Session_OnEnd<br>
+End Sub<br>
+<p>
+Sub Application_OnStart<br>
+End Sub<br>
+<p>
+Sub Application_OnEnd<br>
+End Sub<br>
+<p>
+&lt;/SCRIPT&gt;</font>
+<p>
+Como puedes ver, no tiene m&aacute;s que cuatro rutinas que sirven para detectar cuando est&aacute; activa la aplicaci&oacute;n y cuando un usuario abre o termina una sesi&oacute;n, que aunque no lo parezca, son cuatro sucesos clave para la buena marcha del servidor. En efecto: el suceso (o evento, es lo mismo) <b>Application_OnStart</b>, s&oacute;lo se disparar&aacute; cuando el primer usuario solicite una p&aacute;gina contenida en el directorio virtual de la aplicaci&oacute;n (uno cualquiera, no importa cual), y a continuaci&oacute;n se dispara <b>Session_OnStart</b>. Cuando otros usuarios soliciten otras p&aacute;ginas, o la misma, ya no se disparar&aacute; el primer evento, sino s&oacute;lo el <b>Session_OnStart</b>, que se activar&aacute; tantas veces como usuarios haya conectados a la aplicaci&oacute;n. Cuando un usuario cierra la aplicaci&oacute;n voluntariamente, o bien transcurre un tiempo predefinido sin hacer ninguna transacci&oacute;n, se disparar&aacute; <b>Session_OnEnd</B>, y cuando se haya desconectado el &uacute;ltimo usuario, lo har&aacute; <b>Application_OnEnd</B>.
+<p>
+Las p&aacute;ginas ASP exigen mucho m&aacute;s trabajo al servidor, y es fundamental conocer cuantas sesiones hay abiertas, ya que hay que asignarles recursos de sistema, y estos recursos son finitos. Adem&aacute;s de los recursos, como memoria, tiempo de proceso, etc., que se asigna a cada sesi&oacute;n, el servidor necesita tener cierta informaci&oacute;n de cada cliente, para, de forma inequ&iacute;voca, poder asegurar que los datos que envia son <b>los de ese cliente</B> y no los de otro cualquiera. Recuerda que aqu&iacute;, normalmente, no estamos enviando p&aacute;ginas de contenido est&aacute;tico, en cuyo caso no importar&iacute;a si se dialoga con un cliente u otro, ya que todos reciben lo mismo, sino que se trata de un di&aacute;logo personalizado, y cada transacci&oacute;n termir&aacute; en una base de datos.
+<p>
+Adem&aacute;s de controlar las conexiones, el fichero global.asa puede utilizarse para generar variables de sesi&oacute;n o de aplicaci&oacute;n que ser&aacute;n invocadas en diversos momentos del proceso. Por ejemplo, si queremos mostrar un mensaje de advertencia a los usuarios del navegador IE 5.0, sobre su prestaci&oacute;n de memorizar el contenido de los formularios, podr&iacute;amos generar una variable de sesi&oacute;n, para invocarla en el inicio de la aplicaci&oacute;n :
+<pre><font color="blue">
+<b>Sub Session_OnStart</b>
+navegador = InStr( 1, Request.ServerVariables("HTTP_USER_AGENT"), "MSIE" )
+If navegador > 0 Then
+   If InStr( navegador, Request.ServerVariables("HTTP_USER_AGENT"), " 5." ) > 0 Then
+      <b>Session("IE5")</b> = "si"
+   End If
+End If
+<b>End Sub</b></font>
+</pre>
+Ahora s&oacute;lo tenemos que escribir un fichero de inclusi&oacute;n parecido a este:
+<p>
+<CENTER><B><FONT SIZE=4 COLOR=RED>ATENCI&Oacute;N:</FONT></B><br> 
+<FONT SIZE=3 COLOR=RED>El navegador que est&aacute; utilizando puede 
+dejar sus datos a la vista de otros usuarios de este ordenador debido a 
+la propiedad AutoCompletar. </FONT></CENTER> 
+<p>
+Y para que aparezca (o no), escribir en la p&aacute;gina inicial de la aplicaci&oacute;n algo as&iacute;:
+<p><font color="blue">
+&lt;% If <b>Session("IE5")</b> = "si" Then %&gt;<br>
+    &nbsp;&nbsp;&nbsp;&lt;!--#include virtual="/miaplicacion/includes/ie.inc"--&gt;<br>
+&lt;% End If %&gt;<br></font>
+
+<p>
+Al igual que hemos creado la variable <b>Session("IE5")</b> podemos crear todas las que sean necesarias, y que requieran estar ya disponibles en el momento de dialogar con el cliente, distinguiendo bien entre las que afectan a cada sesi&oacute;n  y las generales para toda la aplicaci&oacute;n. Las variables, tanto de sesi&oacute;n como de aplicaci&oacute;n, no es necesario definirlas previamente como suele hacerse en programaci&oacute;n. En el momento de asignarles un valor ya estan creadas y disponibles. Otra particularidad, es que no tienen tipo de datos (como num&eacute;rico, texto, etc.) y siempre son del tipo llamado en Visual Basic <b>Variant</b>, lo que significa que la variable tiene el tipo del dato que se le asigna sin necesidad de ninguna definici&oacute;n adicional. 
+<p>
+Lo que hasta aqu&iacute; se ha llamado "variables", en realidad son dos de los siete <b>objetos</b> de que dispone ASP. Veamos cuales son.
+<p>
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<title> XHTML </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H3>&iquest;Qu&eacute; es el XHTML? </H3>
+
+En el a&ntilde;o 2000 la W3C lanz&oacute; la primera especificaci&oacute;n del XHTML, que no es otra cosa que una reformulaci&oacute;n del HTML 4.0, utilizado todav&iacute;a en millones y millones de p&aacute;ginas. Nace el nuevo est&aacute;ndar para suplir las carencias que con el tiempo ha ido mostrando el HTML, que inicialmente no fue dise&ntilde;ado para lo que ahora se le demanda, raz&oacute;n por la que durante toda su historia no ha parado de incluir nuevas prestaciones, y  han sido &eacute;stas precisamente las que han provocado algunos problemas de compatibilidad entre las distintas nuevas plataformas. En efecto, las p&aacute;ginas web ya no se ven solamente desde confortables pantallas de ordenador de 15 &oacute; 17 pulgadas, han surgido multitud de nuevos receptores de min&uacute;sculo tama&ntilde;o, con diferentes sistemas operativos y nuevas necesidades de navegaci&oacute;n, lo que ha obligado a establecer un est&aacute;ndar m&aacute;s r&iacute;gido a la hora de programar, y a que los estilos sean f&aacute;cilmente modificables. Otra raz&oacute;n para adoptar unas normas de escritura m&aacute;s estrictas, se debe a que los nuevos dispositivos han abierto el acceso a internet a personas con discapacidades muy variadas, y los programas especiales que se utilizan para convertir las p&aacute;ginas normales a sus espec&iacute;ficas necesidades, tienen serios problemas sin una sintaxis m&aacute;s respetuosa con los est&aacute;ndares. En suma, que la gran facilidad que exist&iacute;a para escribir p&aacute;ginas web, tiende a desaparecer.
+<p>
+As&iacute; pues, el <font color="red">XHTML</font> es pr&aacute;cticamente igual que el HTML, y  tal como su nombre indica, es simplemente una versi&oacute;n e<b><font color="red">X</font></b>tendida del mismo, pero observando algunas modificaciones de sintaxis y eliminando algunos elementos de estilo que pasan a definirse por otros medios en la CSS, que se convierte en una compa&ntilde;era inseparable del nuevo est&aacute;ndar. 
+
+<p>
+Estas son las reglas de sintaxis m&aacute;s notables: 
+<p>
+<ul>
+  <li>Todo se escribe en min&uacute;sculas.
+  <li>Todos los elementos tienen que llevar cierre, incluso los elementos vacios que habitualmente no lo tienen, como <font color="blue">&lt;BR&gt; o  &lt;HR&gt;</font> que pasan a escribirse <font color="red">&lt;br /&gt; &nbsp; &lt;hr /&gt;</font>
+  <li>Todos los par&aacute;metros deben ir entre comillas. Por ejemplo: <font color="red">&lt;table border="1"&gt;</font> Las comillas pueden ser  dobles o simples (pero siempre formando parejas con las mismas).
+  <li>Los elementos que tienen cierre, pero que si no se utilizan no dan problemas en HTML, como por ejemplo <font color="blue">&lt;p></font>, en XHTML deben utilizarse siempre los cierres. Es v&aacute;lido <font color="red">&lt;p> &lt;/p></font> pero <b>no</b> es v&aacute;lido &lt;p />
+   <li>Los elementos anidados deben cerrarse ordenadamente. Es v&aacute;lido en HTML:
+       <font color="blue">Texto en &lt;b>negrita &lt;i>y cursiva&lt;/b>&lt;/i> &nbsp;</font>  En XHTML debe ser: <font color="red">Texto en &lt;b>negrita &lt;i>y cursiva&lt;/i>&lt;/b></font>
+   <li>No se pueden minimizar los atributos de los elementos. Por ejemplo, en HTML es v&aacute;lido <font color="blue">&lt;OPTION VALUE="Mi valor" SELECTED> &nbsp,</font> en XHTML debe escribirse: <font color="red">&lt;option value="Mi valor" selected="selected" /></font>
+</ul> 
+Los navegadores m&aacute;s conocidos actualmente no estan todav&iacute;a espec&iacute;ficamente dise&ntilde;ados para trabajar con XHTML, y es por esto por lo que las nuevas normas de sintaxis que hemos visto, en realidad no son como debieran ser. El poner la barra de cierre despu&eacute;s de un espacio, es simplemente para conseguir la compatibilidad con estos navegadores, que no sabr&iacute;an, de momento, qu&eacute; hacer con &lt;br/> sin escribir el espacio antes de la barra. Dado el enorme n&uacute;mero de p&aacute;ginas escritas en HTML que existe, los navegadores tendr&aacute;n que soportar durante bastante tiempo esta sintaxis ambivalente, ya que no ser&iacute;a pr&aacute;ctido tener que utilizar un navegador diferente para cada tipo de p&aacute;ginas.
+<p>
+Buena prueba de esto es el enredo que hay que escribir para poder incrustar un bloque JavaScript en una p&aacute;gina XHTML que deba validar c&oacute;digo estricto. Por supuesto, se utiliza tambi&eacute;n una nueva sintaxis para el elemento &lt;SCRIPT>, pero adem&aacute;s habr&aacute; que "adornarla" un poco para que no genere errores de JavaScript ni de validaci&oacute;n XHTML. Sea, por ejemplo, este JavaScript en una p&aacute;gina HTML:
+
+<pre><font color="blue">
+&lt;SCRIPT LANGUAGE="JavaScript">
+function mensaje() {
+  alert('Prueba de JavaScript con XHTML')
+}
+&lt;/SCRIPT>
+</font></pre>
+
+En <font color="red">XHTML</font> tendremos que escribirlo asi:
+<pre><font color="red">
+&lt;script type="text/javascript">&lt;!--//-->&lt;![CDATA[//>&lt;!--
+function mensaje() {
+  alert('Prueba de JavaScript con XHTML')
+}
+//-->&lt;!]]>&lt;/script>
+</font></pre>
+
+Como puedes ver, es un poco engorroso. Una posible soluci&oacute;n para ahorrarse esto es pasar todo el c&oacute;digo <A HREF="jscript/javascr02.htm#punto1">JavaScript a un fichero externo</a> a la p&aacute;gina (si es posible, claro), en cuyo caso no hay que escribir la etiqueta &lt;script>, tal como se explica en la secci&oacute;n de JavaScript de esta guia.
+<p>
+Exactamente igual habr&aacute; que resolver el problema si se trata del elemento &lt;STYLE>, que como ya sabr&aacute;s, puede estar tanto embebido en la propia p&aacute;gina HTML como en un fichero separado (las famosas CSS).
+<p>
+Al igual que en HTML, el est&aacute;ndar recomienda incluir al principio de cada p&aacute;gina una identificaci&oacute;n de tipo de documento. Es una recomendaci&oacute;n, y no tiene ning&uacute;n efecto pr&aacute;ctico en la visualizaci&oacute;n de la p&aacute;gina. Pueden ser varios, aunque solamente hay que poner una:
+<p>
+<pre><font color="red">
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-<b>strict</b>.dtd">
+   
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-<b>transitional</b>.dtd">
+   
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-<b>frameset</b>.dtd">
+</font></pre>
+
+La primera, <b>strict</b>,  indica que se ha utilizado la forma m&aacute;s estricta de escribir, y debiera validar sin ning&uacute;n error. Obliga a separar los contenidos de la presentaci&oacute;n y no admite ning&uacute;n elemento de estilo, que deben definirse en la inseparable CSS.
+<p>
+La <b>transitional</b> o c&oacute;digo de transici&oacute;n hacia la estricta, permite incluir algunos elementos ya en desuso en XHTML, pero v&aacute;lidos en HTML 4.0. No obliga a utilizar CSS.
+<p>
+Por &uacute;ltimo la <b>frameset</b>, que est&aacute; reservada a las p&aacute;ginas que incluyan frames, muy desaconsejados &uacute;ltimamente, ya que generan problemas de <i>usabilidad</i>, vocablo de nuevo cu&ntilde;o que viene a significar que no todo el mundo puede usar (ver u oir) tu p&aacute;gina tal cual, sino  por medio de programas y/o aparatos adaptadores.
+<p>
+La etiqueta &lt;HTML> t&iacute;pica del principio de todas las p&aacute;ginas, tampoco ha escapado a la reconversi&oacute;n, y debe escribirse as&iacute;:
+
+<pre><font color="red">
+&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="<b>es</b>" xml:lang="<b>es</b>">
+</font></pre>
+
+Donde el par&aacute;metro <b>lang</b> indica la lengua o idioma en que est&aacute; escrita la p&aacute;gina: <b>es</b> = espa&ntilde;ol, en = ingl&eacute;s, fr = franc&eacute;s, etc. 
+<p>
+La etiqueta &lt;head> permanece sin cambios (escrita en min&uacute;sculas, por supuesto), pero las instrucciones <b>meta</b> que van en su interior s&iacute; han resultado afectadas por la nueva sintaxis.  Adem&aacute;s de ir en min&uacute;sculas, como todas, hay que a&ntilde;adirles la barra de cierre, y existe la recomendaci&oacute;n de incluir al menos una con el c&oacute;digo de caracteres utilizado.
+
+<pre><font color="red">
+&lt;meta http-equiv="Content-Type" content="text/html; <b>charset=utf-8</b>" />
+</font></pre>
+
+Hay varios charset, es decir la <a href="coditab.htm">tabla de codificaci&oacute;n de caracteres</a> En los web de habla hispana suelen utilizarse mayoritariamente el ISO 8859-1 y el UTF-8. Este &uacute;ltimo, es el llamado formato unicode, y es v&aacute;lido para todos los caracteres de las lenguas occidentales. Se recomienda su uso para escribir p&aacute;ginas XHTML.
+<p>
+
+
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

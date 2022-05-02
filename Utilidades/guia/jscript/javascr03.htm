@@ -1,0 +1,261 @@
+<html>
+<head>
+<title>Java Script 3</title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+
+<h3>Procedimientos y funciones</h3>
+En JavaScript no pueden definirse procedimientos Sub como en VBScript, pero s&iacute; funciones (<b>function</b>). A cambio, aqu&iacute; las funciones pueden realizar tanto acciones como devolver valores, mientras que en VBScript solamente los procedimientos Sub pueden realizar acciones. Dentro de una funci&oacute;n no se puede definir otra funci&oacute;n, pero s&iacute; pueden realizarse llamadas a cuantas sea necesario. Para declarar una funci&oacute;n simplemente se escribe la instrucci&oacute;n <b>function</b> y a continuaci&oacute;n el nombre que tendr&aacute; seguido de un par de par&eacute;ntesis que contendr&aacute;n los argumentos, si los los hay. Por ejemplo:
+<p>
+<font size=3 color="blue" face="courier">function mensaje()</font> &nbsp; y si tiene argumentos:  <font size=3 color="blue" face="courier">function sumar(a, b)</font>  
+<p>
+Los argumentos pueden ser variables, o directamente cadenas, n&uacute;meros e incluso objetos.
+<p>
+Despu&eacute;s de haber definido el nombre de la funci&oacute;n, se escribe un par de llaves, dentro de las cuales ir&aacute;n todas las l&iacute;neas que compongan el c&oacute;digo de nuestra funci&oacute;n. Por ejemplo:
+<font size=3 color="blue" face="courier">
+<pre>
+    <b>function</b> mensaje() <font color="red"><b>{</b></font>
+        alert("Esto es un mensaje de JavaScript")
+       <font color="red"><b>}</b></font>
+</pre></font>
+
+Las funciones de javaScript reciben los argumentos <b>por valor</b>, es decir, que si la funci&oacute;n cambia el valor de los par&aacute;metros recibidos, este cambio no se reflejar&aacute; globalmente, sino que s&oacute;lo ser&aacute; efectivo en el &aacute;mbito de la propia funci&oacute;n, ni siquiera si la misma funci&oacute;n es llamada desde otro punto del programa.
+<p>
+No hay que confundir la declaraci&oacute;n de funciones con el objeto <b>Function()</b> de javaScript. F&iacute;jate en que el nombre de este objeto comienza por "F" may&uacute;scula. Se ver&aacute; en el apartado <a href="javascr05.htm">Objetos</a>.
+<p>
+Normalmente las funciones se invocar&aacute;n capturando un <b>evento</b>, es decir, un suceso que se produce y es detectado en la ventana del navegador. Uno de los eventos m&aacute;s comunes es el que detecta la pulsaci&oacute;n (<b>onClick</b>) del puntero del rat&oacute;n sobre un objeto, por ejemplo, un bot&oacute;n de un formuulario. En el siguiente ejemplo veremos c&oacute;mo escribir una p&aacute;gina que captura un evento en el bot&oacute;n de un formulario que llama a una funci&oacute;n. Esta funci&oacute;n invoca el m&eacute;todo <b>alert</b> del objeto <b>window</b>: 
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Capturar evento de boton&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+  &lt;!--
+     function mensaje() {
+        alert("Esto es un mensaje de JavaScript")
+       }
+   // --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" onClick="mensaje()"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Y al pulsar el bot&oacute;n, se obtiene:
+<p>
+<img src="mensaje.jpg">
+<p>
+ 
+<p>
+Al ser capaz <b>function</b> de realizar acciones tanto como de devolver valores, es necesaria una instrucci&oacute;n que le indique lo que debe hacer: <font color="red"><b>return</b></font>. Solamente si aparece esta instrucci&oacute;n al final de la funci&oacute;n, &eacute;sta devolver&aacute; el valor que tenga programado, si no, realizar&aacute; las tareas que tenga encomendadas, pero no se podr&aacute; obtener de ella una respuesta. Por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de JavaScript&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+        function <b>sumar(a, b)</b> {
+        sumar = a + b
+}
+     // --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write(<b>sumar(2, 2)</b>)
+     // --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</font>
+</pre>
+
+Se obtiene:
+<p>
+<font size=3 color="green">
+undefined </font>
+<p>
+Como puedes ver, se ha definido una funci&oacute;n con dos argumentos: <b>a</b> y <b>b</b> que ser&aacute;n sumados. No obstante, cuando es invocada para escribir el resultado de la suma, se obtiene una desconcertante respuesta: <font size=3 color="green">undefined </font>. Esto es debido a que no se le ha dicho que entregue el resultado, sino solamente que lo calcule. Pero si se escribe:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de JavaScript&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+        function <b>sumar(a, b)</b> {
+        sumar = a + b
+        <font color="red">return</font> sumar
+}
+     // --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write(<b>sumar(2, 2)</b>)
+     // --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</font>
+</pre>
+
+Esta vez s&iacute; se obtiene lo esperado:
+<p>
+<font size=3 color="green"><b>4</b> </font>
+<p>
+En el ejemplo, la funci&oacute;n devuelve el resultado de la suma en una variable que se llama igual que la propia funci&oacute;n: <b>sumar</b>, pero tambi&eacute;n se puede hacer sobre una variable con distinto nombre. Por ejemplo, funcionar&iacute;a igual as&iacute;:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de JavaScript&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+        function sumar(a, b) {
+        resultado = a + b
+        <font color="red">return</font> <b>resultado</b>
+}
+     // --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write(sumar(2, 2))
+     // --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</font>
+</pre>
+
+Tambi&eacute;n es posible devolver directamente el resultado de la suma sin depositar el valor previamente en ninguna variable ni en el nombre de la funci&oacute;n:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de JavaScript&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+        function sumar(a, b) {
+        <font color="red">return</font> <b>a + b</b>
+}
+     // --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write(sumar(2, 2))
+     // --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</font>
+</pre>
+
+En JavaScript las funciones que tienen argumentos, como la del ejemplo, autom&aacute;ticamente son provistas de un vector conteniendo los valores de los argumentos. Y te preguntar&aacute;s qu&eacute; es eso de un "vector". Un <b>vector</b> es algo parecido a una matriz o array, y en este caso nos permite acceder a los valores de los argumentos <b>a</b> y <b>b</b> por otra via que no es utilizarlos directamente. Estos vectores, cuando hay que automatizar procedimientos, pueden resultar muy &uacute;tiles. En el caso del vector de nuestra funci&oacute;n, y como todos los vectores y arrays, la numeraci&oacute;n del &iacute;ndice comienza por el cero, y por supuesto, el orden de los valores en el vector es el mismo que el de los argumentos en la funci&oacute;n, es decir, el &iacute;ndice <b>0</b> corresponde al argumento <b>a</b> y el &iacute;ndice <b>1</b> corresponde al <b>b</b>. Este ejemplo es equivalente al anterior:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de JavaScript&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+        function sumar(a, b) {
+        <font color="red">return</font> <b>arguments[0] + arguments[1]</b>
+}
+     // --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write(sumar(2, 2))
+     // --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</font>
+</pre>
+
+La palabra <b>arguments</b>, como ya habr&aacute;s supuesto, es reservada y no puede emplearse como nombre de variable ni de funci&oacute;n, y  tiene una propiedad: <b>length</b> que nos indica la longitud del &iacute;ndice del vector. Por ejemplo, si modificamos un poco la funci&oacute;n anterior:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de JavaScript&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+        function sumar(a, b) {
+        <font color="red">return</font> <b>arguments.length</b>
+}
+     // --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+     &lt;!--
+       document.write(sumar(2, 2))
+     // --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</font>
+</pre>
+
+Se obtiene <font color="green"><b>2</b></font> que es el n&uacute;mero de argumentos que tiene la funci&oacute;n. F&iacute;jate en que este contador no empieza en el cero, puesto que devuelve 2.
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

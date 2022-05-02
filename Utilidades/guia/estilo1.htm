@@ -1,0 +1,399 @@
+<HTML>
+<HEAD><TITLE>Estilos</TITLE>
+
+</HEAD>
+<BODY>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<h2>Estilos</h2>
+<h3>&iquest;Un nuevo est&aacute;ndar?</h3>
+
+Con lo que hasta aqu&iacute; llevamos visto de HTML, ya te habr&aacute;s dado cuenta de que, cuando vas a crear un documento, se te presentan dos cuestiones b&aacute;sicas: la <b>l&oacute;gica</b>, es decir, la estructura del documento (&iquest;se pone un &iacute;ndice? &iquest;una barra de navegaci&oacute;n?, &iquest;men&uacute;s desplegables?, &iquest;con frames o sin frames?)  y la <b>f&iacute;sica</b>, que es la presentaci&oacute;n o est&eacute;tica general del documento y sus contenidos, como las cabeceras, p&aacute;rrafos, pies, tipos de letra y colores, etc., las dos cosas juntas, a menudo, pueden ser complicadas de resolver con cierta armon&iacute;a. Si tomas esta gu&iacute;a como ejemplo, ver&aacute;s que no se le ha dedicado mucho trabajo a la vista final. En efecto, me interesa m&aacute;s que entiendas lo que digo, que hacerlo muy bonito y no decir nada, y para m&iacute; es mucho m&aacute;s c&oacute;modo de escribir. Eso no significa que un documento no deba estar bien presentado, lo ideal es que tenga las dos cosas, pero es una cuesti&oacute;n de prioridades, de tiempo... o de necesidad, si se trata de un producto comercial que hay que vender.
+<p>
+Esta idea, la de separar los contenidos de la presentaci&oacute;n, es la que se desarrolla con el que ser&aacute; en su d&iacute;a el sucesor del HTML: el <b>XHTML</b>. No es que el HTML ya est&eacute; extinguido; de hecho la mayor&iacute;a de p&aacute;ginas web del mundo est&aacute;n todav&iacute;a escritas en HTML, lo que equivale a hablar de muchos millones de p&aacute;ginas. Ser&aacute;, por tanto, un proceso largo que obligar&aacute; a que los navegadores  soporten ambos lenguajes durante bastante tiempo, y tambi&eacute;n a que los programadores los conozcan, aunque s&oacute;lo sea para poder migrarlas o mantenerlas. El HTML, tal como lo conocemos hoy, no tiene ning&uacute;n problema siempre que se lean las p&aacute;ginas en un ordenador convencional, pero presenta algunas dificultades para los nuevos medios audiovisuales, como los tel&eacute;fonos m&oacute;viles, PDAs, etc. Esta es, seguramente, la raz&oacute;n principal para impulsar el cambio, y es muy posible que muchas empresas opten por mantener dos versiones diferentes de sus sitios, porque, evidentemente, no pueden tener los mismos contenidos ni aspecto las destinadas a receptores de peque&ntilde;o formato.
+<p>
+Si ya dominas el HTML, no temas adentrarte en el mundo XHTML; son pr&aacute;cticamente iguales. Solamente cambia un poco la sintaxis de algunas etiquetas (no todas), otras desaparecen (&lt;FONT&gt;), se abandona el maquetado con tablas y se hace con bloques o "capas" (&lt;div&gt;), se distingue entre may&uacute;sculas y min&uacute;sculas y <b>todos</b> los elementos tienen que llevar cierre. Por ejemplo, el t&iacute;pico truncado de l&iacute;nea &lt;BR&gt; pasa a escribirse &lt;br &nbsp;/&gt;. Pero todo eso no sirve de mucho sin las hojas de estilo que veremos a continuaci&oacute;n, y que tambi&eacute;n fiuncionan con el HTML de toda la vida, ya que inicialmente fueron dise&ntilde;adas para &eacute;l. Una ventaja indiscutible de estas t&eacute;cnicas, aparte de cumplir con los nuevos est&aacute;ndares, es que se consigue un maquetado m&aacute;s fino de la p&aacute;gina, al poder trabajar con medidas mucho m&aacute;s peque&ntilde;as que el p&aacute;rrafo como hasta ahora.
+
+<h3>Qu&eacute; son las hojas de estilo</h3>
+
+No es que el HTML no tuviese hasta aqu&iacute; recursos de estilo, que ya hemos visto en p&aacute;ginas anteriores, como los tipos, tama&ntilde;os y colores de letra (&lt;FONT&gt;), atributos de estilo de formularios y links, (&lt;STYLE&gt;) y otros, pero todos ellos est&aacute;n escritos embebidos en el propio c&oacute;digo html. Estas definiciones t&iacute;picas hacen muy trabajoso el cambiar de estilo, ya que eso implica que hay que editar todas las p&aacute;ginas del documento en muchos puntos de las mismas. Para intentar resolver este problema, se han implementado las hojas de estilo o <b>CSS</b> (<b>C</b>ascade <b>S</b>tyle <b>S</b>heets). 
+<p>
+El problema que tienen, por ahora, es que no todos los navegadores soportan el mismo tipo de lenguaje CSS, ni lo interpretan de la misma forma (a pesar de que existe un est&aacute;ndar como en el HTML), ni por supuesto, la misma versi&oacute;n de lenguaje. 
+
+El est&aacute;ndar dice que un navegador que soporte la versi&oacute;n 2 de CSS tambi&eacute;n soportar&aacute; la 1, eso dice, pero tal vez el navegador no lo sepa, o no soporte la 2, o ninguna y se cuelge irremisiblemente... Una de las peores cosas que tienen las hojas de estilo, es que si el navegador no entiende lo que hay en ellas, en lugar de ignorarla, puede colgarse, o en el mejor de los casos, ofrecer una imagen desoladora de nuestra p&aacute;gina. As&iacute; pues, es buena idea probar las hojas de estilo con cuantos navegadores y distintas versiones de ellos se pueda, y saber con cuales no funciona, sin olvidar que en un determinado navegador, puede que todo funciona bien con una versión, pero con la siguiente tal vez algo deje de hacerlo correctamente. Y si es posible, procurar que el documento, sin aplicarle ning&uacute;n estilo, solamente utilizando los valores por defecto, tenga una apariencia m&aacute;s o menos aceptable. Recuerda que no todo el mundo tiene la &uacute;ltima versi&oacute;n de todo, ni usa el mismo navegador que t&uacute;. Por cierto: el navegador m&aacute;s popular del mundo no es precisamente el que mejor funciona, adem&aacute;s de pasar ol&iacute;mpicamente de los est&aacute;ndares...<p>
+A todos estos problemas acaba de sumarse otro: la aparici&oacute;n de nuevos terminales de reducidas dimensiones, como tel&eacute;fonos y tabletas que llevan distintos sistemas operativos, y por tanto nuevas y variadas versiones de navegadores que, por supuesto, tambi&eacute;n interpretan las cosas a su manera y no como t&uacute; esperas...
+<p>
+Para el XHTML se lleg&oacute; hasta la versi&oacute;n 2.1 de CSS, y ya se est&aacute; trabajando en la 3 que acompa&ntilde;ar&aacute; al html5. Al no haberse declarado oficialmente todav&iacute;a estas versiones de languaje, no todos los navegadores las aceptan, y los que s&iacute;, de momento, de forma parcial.
+<p>
+La tecnolog&iacute;a aplicada a las CSS es utilizable de <b> cuatro</b> formas distintas:
+<p>
+1.- <b>En l&iacute;nea</b>, que es la forma ya conocida, aunque aqu&iacute; se utiliza una sintaxis algo diferente. Sea por ejemplo:
+<p><font face="courier" color="blue">
+&lt;P <font color="red">STYLE="font-size:20px; font-family:Courier; color:green";</font>&gt;Ejemplo de estilo&lt;/P&gt;
+</font>
+<p>
+Este es el resultado:
+<p style="font-size:20px; font-family:Courier; color:green">Ejemplo de estilo</p>
+
+2.- Por <b>clase de estilo</b>. Esta t&eacute;cnica consiste en definir una <b>clase</b>, que es un conjunto de propiedades de estilo agrupadas bajo un nombre. La clase creada se invoca desde un elemento <b>&lt;span&gt;</B>. Por ejemplo, para definir la <b>clase</b> <font color="blue"><b>prueba_cl</b></font>:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;html&gt;
+&lt;head&gt;&lt;TITLE&gt;Estilos&lt;/TITLE&gt;
+
+&lt;style type="text/css"&gt;
+ <font color="red"><B>.prueba_cl</B>{ font-size:20px; font-family:Courier; color:green;}</font>
+&lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;span class="<B>prueba_cl</B>"&gt;Ejemplo de estilo&lt;/span&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</font>
+</PRE>
+
+
+3.- Por <b>identificador de bloque</b>, que al igual que la clase, consiste en definir  un conjunto de propiedades de estilo agrupadas bajo un nombre, que se asignar&aacute;n a un bloque. El identificador creado se invoca desde un elemento <b>&lt;div&gt;</B>. Por ejemplo,  para definir el <b>identificador</b> <font color="blue"><b>prueba_id</b></font>:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Estilos&lt;/title&gt;
+
+&lt;style type="text/css"&gt;
+ <font color="red"><B>#prueba_id</B>{ font-size:20px; font-family:Courier; color:green;}</font>
+&lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id="<B>prueba_id</B>"&gt;Ejemplo de estilo&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</font>
+</PRE>
+
+Y en ambos casos, este es el resultado:
+<p style="font-size:20px; font-family:Courier; color:green">Ejemplo de estilo</p>
+
+Como puedes ver, los dos ejemplos anteriores son casi iguales. A simple vista solamente cambia el caracter que hay delante del nombre <font color="blue"><b>prueba_</b></font>, que es un <b>punto</b> para la <b>clase</b> y una <b>almohadilla</b> para el <b>identificador</b>, pero internamente, la diferencia estriba en que la <b>clase</b> puede ser utilizada por todos los bloques de texto que se quiera (generalmente solo contiene instrucciones de estilo), mientras que el <b>identificador</b> solamente se puede utilizar una vez, ya que es capaz de crear un bloque y no puede haber dos bloques con el mismo nombre. 
+<p>
+Estas dos &uacute;ltimas t&eacute;cnicas, permiten cambiar algo m&aacute;s f&aacute;cilmente el estilo de la p&aacute;gina, ya que solamente habr&iacute;a que tocar la cabecera de cada una, pero si el documento tiene varios cientos de ellas, sigue siendo un trabajo importante. La soluci&oacute;n para poder cambiar el estilo de todo el documento, editando solamente desde un sitio, es la cuarta forma:
+<p>
+4.- Por <b>fichero de estilos externo</b> Esto consiste en escribir las definiciones de estilo en un fichero aparte de las p&aacute;ginas, y referenciarlo en la cabecera de cada una. El fichero es un simple fichero de texto guardado con la extensi&oacute;n <b>.css</b>
+<p>
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Estilos&lt;/TITLE&gt;
+
+<font color="red">&lt;LINK REL="stylesheet" TYPE="text/css" HREF="<b>estilo.css</b>"&gt; </font>
+
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+Ejemplo de estilo
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</PRE>
+
+Este es el contenido del fichero <font face="courier" color="blue"><b>estilo.css</b>
+<p>
+/* Estilo para el cuerpo del documento */ <br>
+BODY {font-size:20px; font-family:Courier; color:green;}
+</font>
+<P>
+
+Y este ser&iacute;a el resultado:
+<p style="font-size:20px; font-family:Courier; color:green">Ejemplo de estilo</p>
+
+Como puedes ver, es lo mismo que se escribi&oacute; en los ejemplos anteriores, pero ahora, en lugar de un nombre inventado por el usuario,  se indica el nombre de un elemento HTML al que se quiere dar estilo propio, en este caso toda la p&aacute;gina: <b>BODY</B>. Por supuesto, en el fichero se pueden incluir todos los elementos HTML que se quiera. Tambi&eacute;n se pueden incluir en el fichero nombres que no coinciden con elementos HTML, tal como se ha hecho en los  ejemplos 2 y 3, con la clase <b>prueba_cl</b> o el identificador <b>prueba_id</b>, invoc&aacute;ndolos con el elemento correspondiente.
+<p>
+
+
+<h3>C&oacute;mo se escriben los ficheros CSS</h3>
+
+El lenguaje utilizado para escribir las hojas de estilo son muy similares al lenguaje Java o JavaScript, aunque no es tan estricto en la sintaxis. Analicemos el ejemplo anterior:
+<p>
+<font face="courier" color="blue"><b>estilo.css</b>
+<p>
+/* Estilo para el cuerpo del documento */ <br>
+BODY {font-size:20px; font-family:Courier; color:green;}
+</font>
+<p>
+
+Como ya habr&aacute;s adivinado, la primera l&iacute;nea es un comentario. Los caracteres <b>/*</b> y <b>*/</b> son los mismos que se utilizan en JavaScript. 
+<p>
+A continuaci&oacute;n tenemos una l&iacute;nea que comienza con el nombre de un elemento html: <b>BODY</b> lo que significa que todas las instrucciones que vienen a continuaci&oacute;n,  encerradas dentro de un par de llaves <b>{ &nbsp;&nbsp;}</b> (ojo, no son corchetes), igual que en javaScript, definir&aacute;n los par&aacute;metros de estilo que hay que aplicarle a BODY. Al conjunto de declaraciones escritas dentro de las llaves, se le llama <b>bloque de declaraciones</b>, y cada bloque de declaraciones puede considerarse como una <b>regla de estilo</b>. Aunque en los ejemplos se han escrito las declaraciones en l&iacute;nea, no hay nada que impida hacerlo de otra forma:
+
+<p>
+<font face="courier" color="blue">
+<pre>
+/* Estilo para el cuerpo del documento */ 
+BODY {
+      font-size:20px; 
+      font-family:Courier; 
+      color:green;
+     }
+</font>
+</pre>
+
+La W3C denomina a estos elementos HTML , como &lt;BODY&gt; o &lt;P&gt;, "selectores" y a los par&aacute;metros que indican propiedades, como color o font, "declaraciones". 
+
+Si alguna de las declaraciones del bloque tiene un error de sintaxis, de l&oacute;gica, o no es compatible con los recursos del navegador, simplemente se ignora y se ejecutan las dem&aacute;s (en teor&iacute;a, claro).  Los bloques de declaraciones pueden anidarse y formar bloques complejos, es decir, que una regla de estilo puede estar formada por varios bloques de declaraciones.
+
+<h3>C&oacute;mo funcionan las CSS</h3>
+
+Cuando una p&aacute;gina es llamada por el navegador, primero se cargan los textos y los gr&aacute;ficos, despu&eacute;s se aplica el estilo que contenga el c&oacute;digo HTML, y por &uacute;ltimo, se aplica el estilo que indique la CSS. Este orden de carga hace que las instrucciones de estilo definidas en las CSS sean las que finalmente prevalecer&aacute;n, anulando las que hubiese definidas en HTML (no todas, s&oacute;lo las coincidentes).
+<p>
+ No hay que seguir ning&uacute;n orden especial para escribir las delaraciones ni sus nombres, pero ten presente que las declaraciones hechas para un elemento ser&aacute;n heredadas por sus descendientes, salvo que se indique lo contrario, redefiniendo valores para esos otros elementos. Por ejemplo, lo definido para el elemento &lt;BODY&gt; ser&aacute; heredado por todos los elementos de la p&aacute;gina ya que &lt;BODY&gt; es el "padre" de todos los dem&aacute;s elementos. De la misma forma, lo declarado para un elemento &lt;P&gt; ser&iacute;a heredado por los posibles elementos que contenga, como &lt;B&gt; o &lt;I&gt;, y as&iacute; sucesivamente. Este efecto de herencia de propiedades entre elementos relacionados es el origen del nombre de hojas de estilo en "<b>cascada</b>".
+<p>
+Resumiendo: cada elemento hereda las propiedades del elemento que lo contiene, y al contenedor se le llama  elemento <b>padre</b>. No todas las propiedades son heredables y para cada propiedad se puede definir si &eacute;sta se hereda o no. Para forzar a que un elemento herede alguna propiedad que de otro modo no heredar&iacute;a se utiliza la instrucci&oacute;n <font color="blue"><b>inherit</b></font> que se puede aplicar a cualquier propiedad de cualquier elemento, pero teniendo claro que la herencia ser&aacute; siempre desde el padre inmediato.
+<p>
+Esta es la forma de conocer el "&aacute;rbol geneal&oacute;gico" de un elemento:
+<p>
+<b>Descendiente</b>: &nbsp;  un elemento A es descendiente de otro B cuando B es padre de A o cuando B es padre de otro elemento que a su vez es padre de A.<br>
+<b>Antepasado</b>: &nbsp;  un elemento A es antepasado de otro B cuando B es su descendiente.<br>
+<b>Hermano</b>: &nbsp; un elemento es hermano de otro cuando ambos comparten el mismo padre.
+
+<p>
+ Adem&aacute;s, seg&uacute;n como se escriban las etiquetas se pueden conseguir cosas diferentes. Por ejemplo, con esta p&aacute;gina:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Estilos&lt;/TITLE&gt;
+<font color="red">&lt;LINK REL="stylesheet" TYPE="text/css" HREF="<b>estilo.css</b>"&gt; </font>
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;B&gt;Negrita verde&lt;/B&gt; Ejemplo de estilo verde
+
+&lt;P&gt;Parrafo 1 &lt;B&gt;Negrita rojo&lt;/B&gt;&lt;/P&gt;
+
+&lt;P&gt;Parrafo 2&lt;/P&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</PRE>
+
+Si escribimos esta hoja de estilo:
+<p>
+<font face="courier" color="blue">
+<pre>
+BODY {color:green}
+P B {color:red}
+</font>
+</pre>
+
+Se obtiene:
+<p>
+<font face="courier" color="green"><b>Negrita verde</b> &nbsp;Ejemplo de estilo verde
+<p>
+Parrafo 1&nbsp; <font face="courier" color="red"><b>Negrita rojo</b></font>
+<p>
+Parrafo 2</font>
+<p>
+Pero simplemente poniendo una coma entre P y B:
+<p>
+<font face="courier" color="blue">
+<pre>
+BODY {color:green}
+P, B {color:red}
+</font>
+</pre>
+
+Se obtiene:
+<p>
+<font face="courier" color="red"><b>Negrita verde</b> &nbsp;<font face="courier" color="green">Ejemplo de estilo verde</font>
+<p>
+Parrafo 1&nbsp; <b>Negrita rojo</b>
+<p>Parrafo 2
+</font>
+<p>
+En el primer caso, queda claro que los dos elementos &lt;P&gt; del fichero html heredan el color verde de &lt;BODY&gt;, y al no haber ninguna coma entre P y B en la hoja de estilo, se est&aacute; indicando que el color rojo es s&oacute;lo para el texto en negrita <b>cuando forme parte de P</b>, pero en el segundo caso, con una coma separando P de B, se le indica que el color rojo es para el texto de ambos elementos, P y B,  <b>siempre</b>, est&eacute; en el p&aacute;rrafo que est&eacute;, e incluso aunque no est&eacute; en un p&aacute;rrafo, como es el caso del texto "Negrita verde"
+
+
+
+<h3>Unidades CSS</h3>
+
+Los estilos, b&aacute;sicamente, consisten en alterar las dimensiones y posici&oacute;n por defecto de los distintos elementos de la p&aacute;gina, y para eso necesitamos unidades de medida. Veamos las unidades empleadas en CSS.
+<p>
+<b>Unidades relativas</b> 
+<br>Son las que dependen de la resoluci&oacute;n de la pantalla del cliente o del tipo de letra base que se utilice en la p&aacute;gina. Hay dos de este tipo: <b><font color="red">em</b></font> que  toma como referencia la anchura o altura de la letra <b>M</b> may&uacute;scula de la fuente m&aacute;s relevante de la l&iacute;nea. Por ejemplo, si se escribe <font color="blue">line-height:</font><font color="red">2em</font> significa que la altura de la l&iacute;nea ser&aacute; 2 veces la altura m&aacute;xima de las fuentes de esa l&iacute;nea.
+<p>
+La otra unidad, <b><font color="red">ex</b></font> que hace referencia a la altura de la letra <b>x</b> min&uacute;scula, que es aproximadamente la mitad de la anterior M. Por ejemplo, al escribir <font color="blue">line-height:</font><font color="red">2ex</font> se indica que la altura de la l&iacute;nea ser&aacute; 2 veces la mitad de la altura m&aacute;xima de la fuente usada.
+<p>
+Cuando se usa este tipo de unidades hay que tener cuidado al elegir los elementos HTML sobre los que se aplicar&aacute;n y su estructura, ya que si se anidan, al heredar  propiedades pueden resultar medidas muy reducidas o muy grandes.
+
+<p>
+<b>Unidades absolutas</b> 
+<br>Que son las que no dependen de los factores externos que afectan a las unidades relativas antes descritas. Entre estas tenemos <b><font color="red">cm</b></font> (cent&iacute;metro), <b><font color="red">mm</b></font> (mil&iacute;metro), <b><font color="red">in</b></font> (pulgadas), <b><font color="red">pt</b></font> (puntos tipogr&aacute;ficos, igual que los puntos de las fuentes de Windows), <b><font color="red">px</b></font> (p&iacute;xels de pantalla) y <b><font color="red">pc</b></font> (picas). 
+<p>
+Hasta que tengas cierta soltura en estos menesteres, puede no ser f&aacute;cil acertar con la unidad adecuada en cada caso. Como orientaci&oacute;n inicial, tal vez pueda ayudarte el saber que (aproximadamente) 1 <b>px</b> equivale a 0.28 <b>mm</b> o 0.011 <b>in</b>. 1 <b>in</b> son 2.54 <b>cm</b>. 1 <b>pc</b> son 12 <b>pt</b>. 1 <b>pt</b>  equivale a 0.0139 <b>in</b>.  12 <b>pt</b>  equivalen a 0.2 <b>in</b>.
+<p>
+Queda una pseudo unidad que no puede incluirse en ninguna de las dos clases anteriores: el porcentaje <b>%</b> &nbsp; En efecto, este indicador de unidades, que no es en s&iacute; mismo una unidad, lo que hace es tomar la unidad de medida (la que sea) del elemento indicado y aplicarle el c&aacute;lculo correspondiente al valor que indique el porcentaje.
+<p>
+Todas las propiedades tienen siempre un valor asignado, que puede ser el <b>especificado</b> en la CSS o el valor heredado. Si no se ha definido ninguno de los dos, el navegador usa el valor inicial, es decir, el valor predeterminado para cada propiedad. 
+<p>
+    Si en la CSS se especifica un valor relativo, el navegador proceder&aacute; a  calcular su valor absoluto, que es el &uacute;nico tipo con el que puede trabajar la pantalla. Por ejemplo, para hallar <font color="blue">P {font-size: 125% }</font> hay que tomar el valor del elemento padre de &lt;P> y aplicarle un porcentaje de 125% para obtener el tama&ntilde;o <b>real</b> del texto. Si &lt;BODY> es el padre de &lt;P> y tiene un tama&ntilde;o de fuente de 10px, entonces &lt;P> tendr&aacute; un tama&ntilde;o de fuente de 12,5px (10x125%=12,5). Los elementos que sean hijos de &lt;P> no van a heredar el valor <b>especificado</b> (125%) sino el valor <b>computado</b> (12,5px).
+<p>
+Pero puede suceder que el valor computado no pueda ser utilizado por el navegador debido a limitaciones t&eacute;cnicas. Tomando el resultado del ejemplo anterior, en ninguna pantalla es posible escribir una fuente de 12,5px, por lo que el navegador la ajustar&aacute; a 12px &oacute; a 13px, es decir al <b>valor real</b>. 
+
+<h3>Reglas especiales</h3>
+Existen una reglas especiales llamadas <b>reglas arroba</b> que deben escribirse al principio de la hoja (si las hay), antes de cualquier otra regla. Adem&aacute;s de indicar un estilo determinado, como las otras reglas, algunas sirven para realizar acciones, o ambas cosas. Por ejemplo:
+<pre><font color="blue">
+@import "estilo2.css";
+
+@media print {
+  BODY { font-size: 10pt }
+}
+
+@page { margin: 2cm; }
+
+@page :first {
+    margin-top: 5cm;
+}
+
+</font></pre>
+
+En el ejemplo anterior, la primera de ellas, &nbsp; <b>@import</b> &nbsp; sirve para importar otra hoja de estilo para ser usada conjuntamente con la actual, (algo parecido a las includes de asp). Al utilizar esta regla hay que tener cuidado de que no haya instrucciones contradictorias entre la hoja llamada y la llamadora.
+<p>
+En la segunda regla del ejemplo,  &nbsp; <b>@media print</b> &nbsp; indica que el estilo asignado a BODY  ser&aacute; efectivo  cuando la p&aacute;gina sea impresa, pero no cuando sea visualizada normalmente en el navegador, para ese evento habr&aacute; que definir otra regla de las ya conocidas.
+<p>
+En la tercera y cuarta con <b>@page</b> se fija el margen de todas las p&aacute;ginas a 2 cent&iacute;metros, y se establece el margen superior de la primera p&aacute;gina en 5 cent&iacute;metros.
+<p>
+Las reglas <b>@page</b> tienen la particularidad del contexto de p&aacute;gina. En efecto, cuando se pagina un documento con estas reglas, se est&aacute; asumiendo que el resultado ser&aacute; llevado a papel y encuadernado como un libro. Por ejemplo:
+<pre><font color="blue">
+@page { 
+   margin-left: 3cm; 
+}
+
+@page :left {
+    margin-left: 4cm;
+}
+</font></pre>
+Con esta hoja de estilo, y una vez impreso el documento, el margen izquierdo en las p&aacute;ginas de la izquierda ser&aacute; de 4 cm. y en las de la derecha, tambi&eacute;n su margen izquierdo, ser&aacute; de 3 cm.
+<p>
+Al imprimir un documento a doble cara puede ocurrir que los m&aacute;rgenes en p&aacute;ginas izquierdas y derechas sean diferentes. Para controlar esto pueden utilizarse las <b>pseudo-clases</b> &nbsp; <font color="blue"><b>:left</b></font> o <font color="blue"><b>:right</b></font> &nbsp; Por ejemplo:
+<pre><font color="blue">
+@page :left { 
+   margin-left: 4cm;
+   margin-right: 3cm;
+}
+@page :right { 
+   margin-left: 3cm;
+   margin-right: 4cm;
+}
+</font></pre>
+
+
+
+<p>
+Otras reglas que pueden considerarse especiales son las que hacen referencia a los <b>pseudo-elementos</b>. En realidad se trata de elementos existentes, pero con especiales funcionalidades distintas de las que normalmente tiene el elemento base. Se escriben poniendo el elemento de que se trate seguido de dos puntos y el par&aacute;metro que se quiera utilizar:
+<p>
+
+<font color="red"><b>:first-line</b></font> &nbsp; Permite actuar sobre la primera l&iacute;nea de un p&aacute;rrafo.<br>
+<font color="red"><b>:first-letter</b></font> &nbsp; Lo mismo que el anterior pero actuando solamente sobre la primera letra.<br>
+
+<font color="red"><b>:before &nbsp; &nbsp; :after</b></font> &nbsp; con estos dos pseudo-elementos se puede insertar un contenido fijo por defecto antes o despu&eacute;s de  un elemento cualquiera. 
+<p>
+
+Veamos algunos ejemplos:
+<p>
+<tt><font color="blue">P</font><font color="red">:first-line</font> <font color="blue">{ text-transform: uppercase }</font></tt>
+<p>
+convierte la primera l&iacute;nea del p&aacute;rrafo en may&uacute;sculas.
+<p>
+<tt><font color="blue">P</font><font color="red">:first-letter</font> <font color="blue">{ font-size: 200%; font-weight: bold }</font></tt>
+<p>
+Incrementa el tama&ntilde;o y el espesor de la primera letra del p&aacute;rrafo.
+<p>
+
+De forma similar, se puede conseguir que, por ejemplo, siempre que se utilice el elemento &lt;H3&gt;, CSS inserte un gr&aacute;fico o escriba una frase delante, y lo mismo al final:
+<p>
+<tt><font color="blue">H3</font><font color="red">:before</font><font color="blue"> {content: "Tema: "}</font><br>
+<font color="blue">P</font><font color="red">:after</font><font color="blue"> {content: url("migrafico.gif")}</font><br>
+<font color="blue">BODY</font><font color="red">:after</font><font color="blue"> {content: "Fin de la obra"; }</font></tt>
+<p>
+Otros pseudo-elementos o pseudo-clases son las que se aplican a los links.
+Hay dos posibles modificaciones de estilo para este elemento; el color del enlace en sus distintos estados y si aparece subrayado o no. Te&oacute;ricamente no debiera influir el orden en que se escriban los distintos estados en la CSS, pero es mejor escribir las declaraciones en el siguiente orden (por supuesto, los colores son libres):
+
+<font color="red">
+<pre>
+<font color="blue">a {text-decoration: none;}</font>
+<font color="blue">a</font>:link <font color="blue">{color: #FF0000;}</font>
+<font color="blue">a</font>:visited <font color="blue">{color: #00FF00;}</font>
+<font color="blue">a</font>:hover <font color="blue">{color: #FF00FF;}</font>
+<font color="blue">a</font>:active <font color="blue">{color: #0000FF;}</font>
+</pre></font>
+
+Donde <b>link</b> indica que el enlace no ha sido visitado, <b>visited</b> 	que el enlace ha sido visitado, <b>active</b> que el enlace est&aacute; siendo pulsado, y <b>hover</b> que el rat&oacute;n est&aacute; pasando sobre &eacute;l (sin pulsar).
+
+
+<p>
+Existen otras reglas que no influyen directamente sobre la composici&oacute;n de la p&aacute;gina, como son los <b>cursores</b>. Se puede cambiar el aspecto del puntero del rat&oacute;n con la propiedad &nbsp; <font color="red"><b>cursor: <font color="blue">valor;</font></b></font> &nbsp; donde <font color="blue"><b>valor;</b></font> puede ser:
+
+<p><center>
+<table border="1">
+  <tr> <th> Declaraci&oacute;n</th> <td>cursor </td> </tr>
+  <tr> <th>Valor por defecto</th>  <td>auto </td>  </tr>
+  <tr> <th >Valores posibles</th>
+      <td>
+       auto <br> default <br> inherit <br>help <br> wait <br> text <br> move<br> pointer<br>
+       e-resize<br>ne-resize<br>nw-resize<br>n-resize<br>se-resize<br>sw-resize<br>s-resize<br>
+       w-resize
+
+
+       </td>  </tr>
+  <tr> <th>Valor porcentual</th> <td>No aplicable</td> </tr>
+  <tr><th>Se aplica a</th>    <td>Todos</td>  </tr>
+  <tr> <th>Se hereda?:</th> <td>Si</td>  </tr>
+</table></center>
+<p>
+
+En lugar de uno de los nombres de puntero predeterminados, tambi&eacute;n se puede indicar uno creado por el usuario:
+<p>
+<tt><font color="blue">P {<font color="red"> cursor: url("micursor.cur"), text;</font> }</font></tt>
+<p>
+Para que el puntero indicado pueda funcionar, es necesario que exista en la m&aacute;quina del cliente. Por ello, al igual que cuando se definen fuentes, conviene poner m&aacute;s de uno,  por si el propuesto falla.
+
+<p>
+<hr>
+<h3>El selector universal</h3>
+Se puede hacer referencia a <b>todos</b> los elementos de una p&aacute;gina utilizando un selector especial que se representa por un asterisco. Por ejemplo:
+
+<font color="red" size=4>
+<pre>
+<b>*</b><font color="blue" size=3> {color: red;}</font>
+</pre></font>
+
+
+
+<p>
+<hr>
+
+<center>
+<h3>
+[<a href="indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

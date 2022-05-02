@@ -1,0 +1,91 @@
+
+<HTML>
+<HEAD>
+<TITLE>Ejemplo 2 de marcas</TITLE>
+</HEAD>
+<BODY>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- 
+function soloUno(campo) {
+for (j = 0; j < 10; j++) {
+if (eval("document.menu.opcion[" + j + "].checked") == true) {
+document.menu.opcion[j].checked = false;
+if (j == campo) {
+document.menu.opcion[j].checked = true;
+         }
+      }
+   }
+}
+//  End -->
+</script>
+
+
+
+<BODY bgcolor="#00FFFF" >
+<CENTER>
+<h2>Marcar s&oacute;lo una opci&oacute;n del formulario</h2>
+Al contrario que en el anterior, puede que no interese que se marque nada m&aacute;s que una opci&oacute;n del formulario. Este c&oacute;digo  lo impide. Tambi&eacute;n se puede aplicar a cualquier otro tipo de objeto de los formularios, como botones radio o cuadros de texto.
+
+<center>
+<TABLE BORDER="0">
+<FORM NAME="menu" ACTION="" METHOD="GET">
+
+<TR><TD>Op. 1
+<INPUT TYPE="CHECKBOX" NAME="opcion" onClick="javascript:soloUno(0)">
+</TD></TR>
+
+<TR><TD>Op. 2
+<INPUT TYPE="CHECKBOX" NAME="opcion" onClick="javascript:soloUno(1)">
+</TD></TR>
+
+<TR><TD>Op. 3
+<INPUT TYPE="CHECKBOX" NAME="opcion" onClick="javascript:soloUno(2)">
+</TD></TR>
+
+<TR><TD>Op. 4
+<INPUT TYPE="CHECKBOX" NAME="opcion" onClick="javascript:soloUno(3)">
+</TD></TR>
+
+<TR><TD>Op. 5
+<INPUT TYPE="CHECKBOX" NAME="opcion"onClick="javascript:soloUno(4)">
+</TD></TR>
+
+<TR><TD>Op. 6
+<INPUT TYPE="CHECKBOX" NAME="opcion" onClick="javascript:soloUno(5)">
+</TD></TR>
+
+<TR><TD>Op. 7
+<INPUT TYPE="CHECKBOX" NAME="opcion" onClick="javascript:soloUno(6)">
+</TD></TR>
+
+<TR><TD>Op. 8
+<INPUT TYPE="CHECKBOX" NAME="opcion" onClick="javascript:soloUno(7)">
+</TD></TR>
+
+<TR><TD>Op. 9
+<INPUT TYPE="CHECKBOX" NAME="opcion" onClick="javascript:soloUno(8)">
+</TD></TR>
+
+</TABLE>
+
+
+<INPUT TYPE=SUBMIT NAME="enviar" VALUE="Enviar">
+</FONT></TD>
+</TR>
+</FORM>
+
+</TABLE>
+
+</center>
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="javascr.htm">Volver</a>]
+</h3>
+</center>
+</BODY>
+</HTML>

@@ -1,0 +1,275 @@
+<HTML>
+<HEAD><TITLE>ASP 8</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El objeto Session</H2>
+
+Cuando un usuario invoca por primera vez cualquiera de los ficheros de una aplicaci&oacute;n, un objeto <b>Session</b> le es asignado autom&aacute;ticamente. Este objeto ser&aacute utilizado por la aplicaci&oacute;n para almacenar, compartir y recibir informaci&oacute;n del usuario. A diferencia del objeto <b>Application</b>, la informaci&oacute;n almacenada en <b>Session</b> solamente estar&aacute; disponible para el usuario que lo tenga asignado. Por defecto, el objeto ser&aacute; destruido despu&eacute;s de 20 minutos de inactividad, pero puede configurarse un tiempo diferente, y es buena idea reducirlo si el servidor tiene mucha carga, a fin de que libere los recursos asignados al usuario cuanto antes, pero calculando cuidadosamente el tiempo que el usuario puede necesitar para llevar a cabo sus transacciones. Si se acorta en exceso, el servidor puede cerrar la sesi&oacute;n antes que el usuario termine lo que est&eacute; haciendo. 
+<p>
+Puede ocurrir que no sea necesario establecer sesion con los usuarios, por ejemplo, si el contenido de la p&aacute;gina es est&aacute;tico o no precisa enviar cookies. Para evitar que ASP abra una sesion basta con escribir en la primera l&iacute;nea de la p&aacute;gina lo siguiente: <font color="blue" size=2 face="courier">&lt;%@ EnableSessionState=False%&gt;
+</font> 
+
+<p>
+El objeto <b>Session</b> tiene 4 <b>propiedades</b>, 2 <b>colecciones</b>, 3 <b>m&eacute;todos</b> y 2 <b>eventos</b>: 
+
+<hr noshade>
+<center><font size=4>PROPIEDADES</font></center><p>
+
+<h3>Session.CodePage </h3>
+Versi&oacute;n 3 o superior.
+<p>
+Esta propiedad especifica al servidor que p&aacute;gina de c&oacute;digo de caracteres debe utilizar para mostrar las p&aacute;ginas ASP invocadas desde el cliente. Por defecto, y si no se define otro valor para esta propiedad, el servidor utilizar&aacute; la p&aacute;gina predeterminada en el sistema. El cambio de p&aacute;gina solamente estar&aacute; activo el tiempo que dure la sesi&oacute;n. Esta propiedad puede ser muy &uacute;til para convertir textos escritos en una lengua diferente a la que utilizan los clientes. Por ejemplo, un texto escrito en espa&ntilde;ol, con acentos (code 850), no utiliza la misma p&aacute;gina de caracteres que un cliente de habla inglesa, que no tiene acentos (code 437). 
+<p>
+Veamos c&oacute;mo utilizarla:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%  
+
+'---Se guarda el c&oacute;digo de p&aacute;gina original<br>
+Session("CodOriginal") = Session.CodePage<br>&nbsp;<br>
+'---El NuevoCod es recibido desde un formulario y Texto es el texto que se ha capturado en el mismo formulario<br>
+Nuevocod = Request.Form("NuevoCod")<br>
+Texto = Request.Form("Lo_que_hay_que_convertir")
+<p>
+'--- Se establece el nuevo c&oacute;digo y la funci&oacute;n <b>FindTranslation()</b> se encarga de buscar la conversi&oacute;n adecuada<br>
+<FONT COLOR="red">Session.CodePage</FONT> = NuevoCod<br>
+Conversion = FindTranslation(Texto, Nuevocod)
+<p>
+If Conversion <> "" Then<br>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="red">Session.CodePage</FONT> = Session("CodOriginal")<br>
+&nbsp;&nbsp;&nbsp;Response.Write "La conversi&oacute;n de " &amp; Texto &amp; " es " <br>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="red">Session.CodePage</FONT> = NuevoCod<br>
+&nbsp;&nbsp;&nbsp;Response.Write Conversion<br>
+End If<br>
+%&gt;
+</font> 
+
+<hr WIDTH=50%>
+<h3>Session.LCID </h3>
+La propiedad <b>LCID</b> utiliza el n&uacute;mero identificador de localizaci&oacute;n para dar  en varios formatos, la fecha, hora y localizador espec&iacute;ficos de un lugar o regi&oacute;n.  El n&uacute;mero identificador de localizaci&oacute;n &uacute;nicamente define una situaci&oacute;n geogr&aacute;fica. Por ejemplo el identificador de Espa&ntilde;a es el 2048, el de Francia es el 1036, etc.
+<p>
+<font color="blue" size=2 face="courier">
+&lt;% <br>
+Response.Write "Este es el LCID para esta p&aacute;gina " &amp; <FONT color="red">Session.LCID</FONT> &amp; "&lt;BR&gt;"<br>
+        Response.Write "Este es el formato fecha y hora para el LCID: " &amp; NOW() &amp; "&lt;BR&gt;"<br>
+        <FONT color=#ff0000>Session.LCID</FONT> = 1033<br>
+        Response.Write "Este es el LCID para esta p&aacute;gina " &amp; <FONT color=#ff0000>Session.LCID</FONT> &amp; "&lt;BR&gt;"<br>
+        Response.Write "Este es el formato fecha y hora para el LCID: " &amp; NOW() &amp; "&lt;BR&gt;"<br>
+        <FONT color="red">Session.LCID</FONT> = 3079<br>
+ %&gt;</font>
+<p>
+Y este ser&iacute;a el resultado:
+<p><font color="green" size=2 face="courier">
+Este es el LCID para esta página 2048<br>
+Este es el formato fecha y hora para el LCID: 3/9/2001 14:56:07<br>
+Este es el LCID para esta página 1033<br>
+Este es el formato fecha y hora para el LCID: 9/3/01 2:56:07 PM
+</font> 
+<p>
+
+
+<hr WIDTH=50%>
+<h3>Session.SessionID  </h3>
+
+Proporciona un identificador de sesi&oacute;n para el usuario actual. Este identificador es generado por el servidor, y consiste en un n&uacute;mero del tipo largo (long)
+<p>
+Se obtiene as&iacute;:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;% Response.Write "Tu n&uacute;mero de sesi&oacute;n es: " &amp; <FONT color="red">Session.SessionID</FONT>  %&gt;</font>
+<p>
+Y este podr&iacute;a ser el resultado:
+<p>
+<font color="green" size=2 face="courier">
+Tu n&uacute;mero de sesi&oacute;n es: 465107831</font> 
+
+<hr WIDTH=50%>
+<h3>Session.Timeout</h3>
+
+Especifica el n&uacute;mero de minutos que tienen que pasar, mientras la sesi&oacute;n est&aacute; inactiva, para darla por terminada, siendo el valor por defecto de 20 minutos. Esto significa que si el usuario no refreesca la p&aacute;gina, solicita otra o hace cualquier transacci&oacute;n la sesi&oacute;n es autom&aacute;ticamente cerrada y los recursos que tuviese asignados, recuperados. Este tiempo tambi&eacute;n es posible establecerlo de forma fija en las configuraciones de la aplicaci&oacute;n en el propio IIS.
+<p>
+Por ejemplo, para establecer el <b>Timeout</b> en 35 minutos, se escribe:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;% <FONT color="red">Session.Timeout</FONT> = 35 %&gt;
+</font>
+
+
+<hr noshade>
+<center><font size=4>COLECCIONES</font></center><p>
+
+<h3>Session.Contents()</h3> 
+Contiene (de ah&iacute; su nombre) una colecci&oacute;n de todos los items que han sido creados y a&ntilde;adidos  al objeto <b>Session</b>. Los items se pueden a&ntilde;adir a la lista mediante asignaci&oacute;n directa de variables, o bien con el objeto <b>Server</b> y su m&eacute;todo <b>CreateObject</b>.
+<p>
+Puede obtenerse una lista completa mediente un bucle del tipo  <b>For Each item in ... Next</b>. Veamos como funciona:
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br> Session("Variable") = "Esto no es un objeto"<br>
+   Set Session("Objeto") = Server.CreateObject("ADODB.Connection")<br>
+&nbsp;<br>
+For Each Item in <FONT color="red">Session.Contents</FONT><br>
+&nbsp;&nbsp;&nbsp;  If IsObject(<FONT color="red">Session.Contents</FONT>(Item)) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Response.Write Item &amp; " Esto es un objeto.&lt;BR&gt;"<br>
+&nbsp;&nbsp;&nbsp;  Else        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Response.Write Item &amp; " = " &amp; <FONT color="red">Session.Contents</FONT>(Item) &amp; "&lt;BR&gt;"<br>
+&nbsp;&nbsp;&nbsp;  End If<br>
+Next<br>
+%&gt;</font>
+<p>
+Y este ser&iacute;a el resultado:<br>
+<font color="green" size=2 face="courier">
+<pre>
+<b>Nombre del item     Contenido</b>
+-----------------------------------------
+     Variable    =  Esto no es un objeto
+     Objeto      =  Esto es un objeto.
+</pre>
+</font>
+
+
+
+<hr WIDTH=50%>
+<h3>Session.StaticObjects()</h3>
+Esta es una colecci&oacute;n de todos los items creados en el objeto Session utilizando un elemento HTML: <b>&lt;OBJECT&gt;</B> &nbsp;&nbsp; En este caso, la asignaci&oacute;n de valores a los items no se hace desde c&oacute;digo ASP, sino en HTML y desde el fichero <b>global.asa</b>
+<p>
+Al igual que en la colecci&oacute;n anterior, puede mostrarse su contenido mediante un bucle <b>For Each item in ... Next</b>.
+<p>
+
+
+<font color="blue" size=2 face="courier">
+---fichero global.asa<br>
+&lt;OBJECT RUNAT=Server SCOPE=Session ID=MiConexion PROGID="ADODB.Connection"&gt;<br>
+&lt;/OBJECT&gt;<br>
+<p>
+---fichero.asp<br>
+&lt;%<br>
+For Each Item In <FONT color="red">Session.StaticObjects</font><br>
+ Response.Write Item &amp; "&lt;BR&gt;"<br>
+Next<br>
+%&gt;
+<p>
+</font>
+Y este ser&iacute;a el resultado:<br>
+<font color="green" size=2 face="courier">
+
+MiTexto<br>
+MiConexion<br>
+</font>
+
+
+<hr noshade>
+<center><font size=4>METODOS</font></center><p>
+<h3>Session.Abandon </h3> 
+
+Este m&eacute;todo termina una sesi&oacute;n de usuario, destruye todos los objetos de la sesi&oacute;n y recupera los recursos asignados. Hay que tener en cuenta, que el fin de la sesi&oacute;n no ocurre efectivamente, hasta que no se han ejecutado todos los comandos que hay en la p&aacute;gina actual. Cuando la sesi&oacute;n por fin termina, se dispara el evento del fichero global.asa <b>OnEnd</b>
+<p>
+Se escribe:
+<p>
+<font color="blue" size=2 face="courier">
+<%<br>
+<FONT color="red">Session.Abandon</font><br>
+ %></font><br>
+
+
+<hr WIDTH=50%>
+<h3>Session.Contents.Remove()</h3> 
+Versi&oacute;n 3 o superior.
+<p>
+Este m&eacute;todo se utiliza para eliminar un item espec&iacute;fico de la colecci&oacute;n <b>
+Session.Contents</b>. El item que se desea eliminar puede referenciarse de dos maneras: por su nombre o por su n&uacute;mero dentro de la colecci&oacute;n, teniendo presente que la numeraci&oacute;n comienza en el 1. Si se referencia por su nombre, &eacute;ste deber&aacute; escribirse entre comillas dobles(<b>"</b>). Por ejemplo:
+<p>
+
+<p>
+<font color="blue" size=2 face="courier">
+
+&lt;%<br> 
+'---Se crean dos items<br>
+Session("Variable") = "Esto no es un objeto"<br>
+   Set Session("Objeto") = Server.CreateObject("ADODB.Connection")<br>
+<p>
+<FONT color="red">Session.Contents.Remove</FONT>(1)<br>
+<FONT color="red">Session.Contents.Remove</FONT>("Variable")
+<p>
+For Each Item in <FONT color="red">Session.Contents</FONT><br>
+&nbsp;&nbsp;&nbsp;  If IsObject(<FONT color="red">Session.Contents</FONT>(Item)) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Response.Write Item &amp; " Esto es un objeto.&lt;BR&gt;"<br>
+&nbsp;&nbsp;&nbsp;  Else        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Response.Write Item &amp; " = " &amp; <FONT color="red">Session.Contents</FONT>(Item) &amp; "&lt;BR&gt;"<br>
+&nbsp;&nbsp;&nbsp;  End If<br>
+Next<br>
+%&gt;</font>
+<p>
+Y este ser&iacute;a el resultado, en el que el item <b>Session("Variable")</b> ha sido eliminado:<br>
+<font color="green" size=2 face="courier">
+<pre>
+<b>Nombre del item     Contenido</b>
+-----------------------------------------
+     Objeto      =  Esto es un objeto.
+</pre>
+</font>
+
+
+<hr WIDTH=50%>
+
+<h3>Session.Contents.RemoveAll()</h3> 
+Versi&oacute;n 3 o superior.
+<p>
+Como su nombre indica, este m&eacute;todo elimina TODOS los items de la colecci&oacute;n <b>Session.Contents()</b>.
+<p>
+En este caso no hay que referencia ningun nombre ni n&uacute;mero.
+<p>
+<font color="blue" size=2 face="courier">
+&lt;%<br> 
+<FONT color="red">Session.Contents.RemoveAll(&nbsp;)</FONT><br>
+%&gt;
+</font>
+
+<hr noshade>
+<center><font size=4>EVENTOS</font></center><p>
+<h3>Session_OnStart  &nbsp; &nbsp; Session_OnEnd</h3> 
+
+Estos eventos se controlan en el fichero <b>global.asa</b>, y debe existir uno por cada aplicaci&oacute;n que se ejecute en el servidor, cada uno en el directorio virtual donde &eacute;sta resida. El evento <b>Session_OnStart</b> ocurre justo antes de que el servidor haya creado el objeto <b>Session</b>. 
+<p>
+<font color="blue" size=2 face="courier">
+'---Fichero global.asa<br>
+&lt;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+Sub Session_OnStart<br>
+End Sub<br>
+<p>
+Sub Session_OnEnd<br>
+End Sub<br>
+<p>
+Sub Application_OnStart<br>
+End Sub<br>
+<p>
+Sub Application_OnEnd<br>
+End Sub<br>
+<p>
+&lt;/SCRIPT&gt;
+</font>
+<p>
+Como puedes ver, contiene cuatro rutinas que sirven para detectar cuando est&aacute; activa la aplicaci&oacute;n y cuando un usuario abre o termina una sesi&oacute;n. El suceso (o evento, es lo mismo) <b>Application_OnStart</b>, s&oacute;lo se disparar&aacute; cuando el primer usuario solicite una p&aacute;gina contenida en el directorio virtual de la aplicaci&oacute;n, y a continuaci&oacute;n se dispara <b>Session_OnStart</b>. Cuando otros usuarios soliciten otras p&aacute;ginas, o la misma, ya no se disparar&aacute; el primer evento, sino s&oacute;lo el <b>Session_OnStart</b>, que se activar&aacute; tantas veces como usuarios haya conectados a la aplicaci&oacute;n. Cuando un usuario cierra la aplicaci&oacute;n voluntariamente, o bien transcurre un tiempo predefinido sin hacer ninguna transacci&oacute;n, se disparar&aacute; <b>Session_OnEnd</B>, y cuando se haya desconectado el &uacute;ltimo usuario, lo har&aacute; <b>Application_OnEnd</B>.
+<p>
+Dentro de las rutinas que controlan los eventos del objeto Application, <b>Application_OnStart</b> y <b>Application_OnEnd</b> puede programarse cualquier acci&oacute;n que convenga realizar en ese momento. Por ejemplo, asignar valores fijos para toda la aplicaci&oacute;n, declarar el texto de algunos mensajes en funci&oacute;n de la fecha o la hora, etc., etc... o simplemente no hacer nada.
+
+
+
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>

@@ -1,0 +1,508 @@
+<html>
+<head>
+<title>VBScript 10 </title>
+</head>
+
+<body>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+<H2> &iquest;C&oacute;mo se escriben los scripts para el IE?</H2>
+<h3>El elemento &lt;SCRIPT&GT;</h3>
+
+Los scripts de Visual Basic para el IE se escriben con las mismas convenciones que ya conocemos de ASP. Todas las definiciones de procedimientos, funciones, instrucciones, operadores, etc., se pueden escribir de la misma forma. Todo el c&oacute;digo deber&aacute; ir entre <b>&lt;SCRIPT&gt;</b> y <b>&lt;/SCRIPT&gt;</b>. Puesto que este elemento HTML es el mismo que se emplea con otros lenguajes, como JavaScript, es preciso indicar al navegador el lenguaje que se va a utilizar al definir el script. Sea por ejemplo:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+     &lt;!--
+       Document.Write("Esto ha sido escrito por VBScript")
+     --&gt;
+&lt;/SCRIPT&gt;
+</font>
+</pre>
+
+F&iacute;jate en que dentro de la etiqueta HTML <b>&lt;SCRIPT&gt;</b> y antes del c&oacute;digo VBScript propiamente dicho, aparece el s&iacute;mbolo del comentario HTML <b>&lt;!--</b>. Esto se hace para evitar que los navegadores que no son capaces de interpretar el script muestren el c&oacute;digo.
+<p>
+Los scripts pueden escribirse tanto en la <b>&lt;HEAD&gt;</b> como en el <b>&lt;BODY&gt;</b>  de la p&aacute;gina. Por claridad a la hora de revisar el c&oacute;digo, es preferible escribir todas las secuencias de comandos al principio de la p&aacute;gina en la <b>&lt;HEAD&gt;</b>, aunque esto depender&aacute; de las necesidades del programa, claro. Por ejemplo, si escribimos
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Prueba de VBScript&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+     &lt;!--
+       Document.Write("Esto ha sido escrito por VBScript desde HEAD &lt;BR&gt;")
+     --&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+     &lt;!--
+       Document.Write("Esto ha sido escrito por VBScript desde BODY")
+     --&gt;
+&lt;/SCRIPT&gt;
+&lt;P&gt;
+Esto ha sido escrito por HTML.
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</font>
+</pre>
+
+Se obtiene:
+<p>
+<font size=3 color="green">
+Esto ha sido escrito por VBScript desde HEAD<br>
+Esto ha sido escrito por VBScript desde BODY
+<p>
+Esto ha sido escrito por HTML.</font>
+<p>
+Como puedes ver, aqu&iacute; utilizamos  <b>Document.Write()</b> (un objeto del IE, junto con uno de sus m&eacute;todos), que es equivalente al objeto de ASP <b>Response.Write()</b>, y que sirve para escribir en la ventana del navegador cualquier resultado generado por el c&oacute;digo.
+
+
+<h3>Procedimientos y funciones</h3>
+Al igual que en ASP, pueden definirse procedimientos (<b>Sub</b>) y funciones (<b>Function</b>) en VBScript. Normalmente estos procesos se invocar&aacute;n capturando un <b>evento</b>, es decir, un suceso que se produce y es detectado en la ventana del navegador. Uno de los eventos m&aacute;s comunes es el que detecta la pulsaci&oacute;n (<b>onClick</b>) del puntero del rat&oacute;n sobre un objeto, por ejemplo, un bot&oacute;n de un formuulario. En el siguiente ejemplo veremos c&oacute;mo escribir una p&aacute;gina que captura un evento en el bot&oacute;n de un formulario mediante un procedimiento <b>Sub</b>, que a su vez, llama a una funci&oacute;n: 
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Capturar evento de boton&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Function Mensaje()     
+        Document.Write("Esto ha sido escrito por una función de VBScript&lt;BR&gt;")
+     End function
+  --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+      Sub boton1_onClick     
+        Call Mensaje()
+        Document.Write("Esto ha sido escrito por un procedimiento de VBScript")
+      End sub
+  --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Y al pulsar el bot&oacute;n, se obtiene:
+<p>
+<font color="green">
+Esto ha sido escrito por una función de VBScript<br>
+Esto ha sido escrito por un procedimiento de VBScript
+</font>
+<P>
+F&iacute;jate en c&oacute;mo est&aacute; construido el procedimiento.  Lo primero es la definici&oacute;n de procedimiento: <font color="blue">Sub</font>, a continuaci&oacute;n se escribe el nombre del objeto sobre el que se desea capturar el evento: <font color="blue">boton1</font> y despu&eacute;s escribimos el evento que deseamos capturar sobre dicho objeto: <font color="blue">_onClick</font>. Ya en el interior del procedimiento, tenemos una llamada a la funci&oacute;n: <font color="blue">Call Mensaje()</font> y para terminar, se escribe un nueva l&iacute;nea en la ventana: <font color="blue">Document.Write("Esto ha sido escrito por un procedimiento de VBScript")</font>. Si escribes el ejemplo y lo pruebas en tu servidor (o en local), ver&aacute;s que al pulsar el bot&oacute;n, en efecto, aparecen los textos generados por el procedimiento y la funci&oacute;n, pero no quedar&aacute; ni rastro del bot&oacute;n. Esto es debido al orden y lugar en que estan escritas las instrucciones de escritura.
+<p>
+ Hay que prestar atenci&oacute;n tambi&eacute;n al orden en que se escriben los procesos. En este ejemplo, l&oacute;gicamente, la funci&oacute;n debe escribirse primero, ya que debe existir cuando el procedimiento sea cargado. El navegador, dependiendo de c&oacute;mo est&eacute; configurado, puede no emitir mensajes de error en pantalla si hay algun problema en el c&oacute;digo. De todas formas, si algo falla, muestra un mensaje en la l&iacute;nea de estado, en la parte inferior izquierda de la ventana donde se est&eacute; ejecutando el navegador. Para ver el detalle del problema solamente hay que hacer clic dos veces seguidas sobre el aviso, y el IE abrir&aacute; un cuadro de di&aacute;logo con la informaci&oacute;n del error.
+<p>
+Como ya se ha dicho, los scripts pueden escribirse en cualquier posici&oacute;n dentro de la p&aacute;gina, siempre que la l&oacute;gica del programa lo permita. El ejemplo anterior, podr&iacute;a escribirse sacando el procedimiento del HEAD, y llev&aacute;ndolo al BODY, embebido en el c&oacute;digo HTML del formulario. As&iacute;:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Capturar evento de boton&lt;/TITLE&gt;
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+  &lt;!--
+     Function Mensaje()     
+        Document.Write("Esto ha sido escrito por una función de VBScript&lt;BR&gt;")
+     End function
+  --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+
+&lt;SCRIPT <b>FOR="Boton1" EVENT="onClick"</b> LANGUAGE="VBScript"&gt;
+  &lt;!--
+        Call Mensaje()
+        Document.Write("Esto ha sido escrito por un procedimiento de VBScript")
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Como puedes ver, la &uacute;nica diferencia consiste en que hay que definir en el propio elemento &lt;SCRIPT&gt; para qu&eacute; objeto es el script con <font color="blue"><b>FOR="boton1"</b></font> y qu&eacute; evento se pretende capturar con <font color="blue"><b>EVENT="onClick"</b></font>.
+<p>
+Si la instrucci&oacute;n que ha de ejecutarse al capturar el evento es sencilla, puede escribirse directamente en la definici&oacute;n del objeto que dispara el evento, en este caso el bot&oacute;n del formulario, prescindiendo incluso del elemento &lt;SCRIPT&gt;. As&iacute;:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Capturar evento de boton&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba" <b>onClick="Document.Write('Hola')"</b>&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Y al pulsar el bot&oacute;n, se obtiene:
+<p>
+<font color="green"><b>Hola</b></font>
+<P>
+ATENCI&Oacute;N: en este caso el texto que ha de escribir el objeto <b>Document.Write()</b> no va entre comillas dobles, sino <B>comillas simples</B>.
+
+
+
+
+
+
+<h3>Dos funciones nuevas</h3>
+
+En el entorno de ejecuci&oacute;n del IE existen dos funciones que no estan disponibles en ASP. Estas son <font color="red">MsgBox()</font> e <font color="red">InputBox()</font>. Veamos la primera.
+<p>
+<font color="red" size=4>MsgBox(</font><font color="blue" size=4>mensaje[, botones][, t&iacute;tulo][, ayuda, contexto]</font><font color="red" size=4>)</font>
+<p>
+Esta funci&oacute;n muestra un mensaje en un cuadro de di&aacute;logo que puede incluir varios botones de decisi&oacute;n, y devuelve un n&uacute;mero seg&uacute;n el bot&oacute;n pulsado por el usuario.
+<p>
+Estos son sus par&aacute;metros:
+<ul>
+<li><font color="blue"><b>mensaje</b></font>: Obligatorio. Es un string que forma el mensaje en el cuadro de di&aacute;logo. Su longitud m&aacute;xima no debe superar los 1024 caracteres, dependiendo del ancho de los caracteres utilizados. Si el mensaje es largo, se pueden separar las l&iacute;neas concatenando cadenas m&aacute;s cortas con la constante intr&iacute;nseca de VBScript <b>vbCrLf</b> o con la funci&oacute;n <font color="red">Chr(13) & Chr(10)</font>
+
+<li><font color="blue"><b>botones</b></font>: Opcional. Es un n&uacute;mero o expresi&oacute;n num&eacute;rica que corresponde a la suma de los valores que especifican cuantos botones se van a mostrar, de que tipo, el estilo de icono que los acompa&ntilde;a, la identidad del bot&oacute;n predeterminado y la modalidad del cuadro de mensajes. Si se omite, el valor por defecto es 0, correspondiente al bot&oacute;n "Aceptar". En lugar del n&uacute;mero tambi&eacute;n puede utilizarse la constante intr&iacute;nseca correspondiente.
+
+<li><font color="blue"><b>t&iacute;tulo</b></font>: Opcional. Es un string que se muestra en la barra de t&iacute;tulo del cuadro de di&aacute;logo. Si se omite, en su lugar aparece el nombre de la aplicaci&oacute;n.
+
+<li><font color="blue"><b>ayuda</b></font>: Opcional. Es un string que identifica el archivo de ayuda que se utiliza para proporcionar ayuda contextual  para el cuadro de di&aacute;logo. Si se especifica, tambi&eacute;n se debe especificar <font color="blue">contexto</font>.
+
+
+<li><font color="blue"><b>contexto</b></font>: Opcional. Es un n&uacute;mero o expresi&oacute;n num&eacute;rica que identifica el número de contexto de ayuda asignado al tema de ayuda correspondiente. Si se especifica, tambi&eacute;n se debe especificar <font color="blue">ayuda</font>.
+</ul>
+
+
+Estos son los valores que pueden utilizarse para calcular la suma de <font color="blue"><b>botones</b></font>. F&iacute;jate en que hay cuatro grupos de valores. Solamente debes elegir uno (o ninguno) de cada grupo, de lo contrario se produce un error.
+<p><center>
+<TABLE WIDTH=87% BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR VALIGN=TOP BGCOLOR="#DDDDDD">
+        <TD><FONT SIZE=2><b>Constante</b></FONT></TD>
+                
+<TD><FONT SIZE=2><b>Valor</b></FONT></TD>                       
+<TD><FONT SIZE=2><b>Descripción</b></FONT></TD></TR>
+<TR BGCOLOR="#eff581" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbOKOnly</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;&nbsp;0</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra solamente el botón <b>Aceptar</b> (por defecto).</FONT></TD></TR>
+<TR BGCOLOR="#eff581" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbOKCancel</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;&nbsp;1</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra los botones <b>Aceptar</b> y <b>Cancelar</b>.</FONT></TD></TR>
+<TR BGCOLOR="#eff581" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbAbortRetryIgnore</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;&nbsp;2</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra los botones <b>Anular</b>, <b>Reintentar</b> e <b>Ignorar</b>.</FONT></TD></TR>
+<TR BGCOLOR="#eff581" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbYesNoCancel</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;&nbsp;3</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra los botones <b>Sí</b>, <b>No</b> y <b>Cancelar</b>.</FONT></TD></TR>
+<TR BGCOLOR="#eff581" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbYesNo</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;&nbsp;4</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra los botones <B>Sí</B> y <B>No</B>.</FONT></TD></TR>
+<TR BGCOLOR="#eff581" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbRetryCancel</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;&nbsp;5</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra los botones <B>Reintentar</B> y <B>Cancelar</B>.</FONT></TD></TR>
+<TR BGCOLOR="#b1f3ef" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbCritical</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;16</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra el icono de <B>Mensaje crítico</B>.</FONT></TD></TR>
+<TR BGCOLOR="#b1f3ef" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbQuestion</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;32</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra el icono de <B>Pregunta de advertencia</B>.</FONT></TD></TR>
+<TR BGCOLOR="#b1f3ef" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbExclamation</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;48</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra el icono <B>Mensaje de advertencia</B>.</FONT></TD></TR>
+<TR BGCOLOR="#b1f3ef" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbInformation</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;64</FONT></TD>
+                        
+<TD><FONT SIZE=2>Muestra el icono de <B>Mensaje de información</B>.</FONT></TD></TR>
+<TR BGCOLOR="#b1f3b6" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbDefaultButton1</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;&nbsp;0</FONT></TD>
+                        
+<TD><FONT SIZE=2>El primer botón es el predeterminado (por defecto).</FONT></TD></TR>
+<TR BGCOLOR="#b1f3b6" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbDefaultButton2</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;256</FONT></TD>
+                        
+<TD><FONT SIZE=2>El segundo botón es el predeterminado.</FONT></TD></TR>
+<TR BGCOLOR="#b1f3b6" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbDefaultButton3</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;512</FONT></TD>
+                        
+<TD><FONT SIZE=2>El tercer botón es el predeterminado.</FONT></TD></TR>
+<TR BGCOLOR="#b1f3b6" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbDefaultButton4</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;768</FONT></TD>
+                        
+<TD><FONT SIZE=2>El cuarto botón es el predeterminado.</FONT></TD></TR>
+<TR BGCOLOR="#f3e8a5" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbApplicationModal</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>&nbsp;&nbsp;&nbsp;0</FONT></TD>
+                        
+<TD><FONT SIZE=2>Modal para la aplicación; el usuario debe responder al cuadro de mensajes antes de poder seguir trabajando en la aplicación actual (por defecto).</FONT></TD></TR>
+<TR BGCOLOR="#f3e8a5" VALIGN=TOP>
+        <TD><FONT SIZE=2><b>vbSystemModal</b></FONT></TD>
+                
+<TD ALIGN=CENTER><FONT SIZE=2>4096</FONT></TD>
+                        
+<TD><FONT SIZE=2>Modal para el sistema; se suspenden todas las aplicaciones hasta que el usuario responda al cuadro de mensajes.</FONT></TD></TR>
+</TABLE></center>
+<p>
+
+Y estos son los valores que devuelve <font color="red">MsgBox()</font> seg&uacute;n el bot&oacute;n pulsado por el usuario:
+<p><center>
+<TABLE  BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR VALIGN=TOP BGCOLOR="#DDDDDD">
+        <TD WIDTH=15%><FONT SIZE=2><b>Constante</b></FONT></TD>
+                
+<TD   ALIGN=CENTER><FONT SIZE=2><b>Valor</b></FONT></TD>
+                        
+<TD><FONT SIZE=2><b>Botón</b></FONT></TD></TR>
+<TR VALIGN=TOP>
+        <TD WIDTH=15%><FONT SIZE=2><b>vbOK</b></FONT></TD>
+                
+<TD  ALIGN=CENTER><FONT SIZE=2>1</FONT></TD>
+                        
+<TD><FONT SIZE=2><B>Aceptar</B></FONT></TD></TR>
+<TR VALIGN=TOP>
+        <TD WIDTH=15%><FONT SIZE=2><b>vbCancel</b></FONT></TD>
+                
+<TD  ALIGN=CENTER><FONT SIZE=2>2</FONT></TD>
+                        
+<TD><FONT SIZE=2><B>Cancelar</B></FONT></TD></TR>
+<TR VALIGN=TOP>
+        <TD WIDTH=15%><FONT SIZE=2><b>vbAbort</b></FONT></TD>
+                
+<TD   ALIGN=CENTER><FONT SIZE=2>3</FONT></TD>
+                        
+<TD><FONT SIZE=2><B>Anular</B></FONT></TD></TR>
+<TR VALIGN=TOP>
+        <TD WIDTH=15%><FONT SIZE=2><b>vbRetry</b></FONT></TD>
+                
+<TD  ALIGN=CENTER><FONT SIZE=2>4</FONT></TD>
+                        
+<TD><FONT SIZE=2><B>Reintentar</B></FONT></TD></TR>
+<TR VALIGN=TOP>
+        <TD WIDTH=15%><FONT SIZE=2><b>vbIgnore</b></FONT></TD>
+                
+<TD  ALIGN=CENTER><FONT SIZE=2>5</FONT></TD>
+                        
+<TD><FONT SIZE=2><B>Ignorar</B></FONT></TD></TR>
+<TR VALIGN=TOP>
+        <TD WIDTH=15%><FONT SIZE=2><b>vbYes</b></FONT></TD>
+                
+<TD  ALIGN=CENTER><FONT SIZE=2>6</FONT></TD>
+                        
+<TD><FONT SIZE=2><B>Sí</B></FONT></TD></TR>
+<TR VALIGN=TOP>
+        <TD WIDTH=15%><FONT SIZE=2><b>vbNo</b></FONT></TD>
+                
+<TD  ALIGN=CENTER><FONT SIZE=2>7</FONT></TD>
+                        
+<TD><FONT SIZE=2><B>No</B></FONT></TD></TR>
+</TABLE></center>
+<p>
+Este ser&iacute;a un ejemplo simple de uso de <font color="red">MsgBox()</font>:
+<p>
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de mensaje&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+    &lt;INPUT TYPE="text" NAME="campo1" VALUE="Prueba"&gt;
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+        MsgBox("Prueba de mensaje")
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+Y despu&eacute;s de pulsar el bot&oacute;n "prueba" del formulario tendremos esto:
+<p>
+<img src="msgbox1.jpg">
+<p>
+Este era un ejemplo muy simple, donde la funci&oacute;n se emplea s&oacute;lo para mostrar un mensaje. Veamos otro donde, adem&aacute;s,  se captura el valor que devuelve  despu&eacute;s de que el usuario pulse alguno de los botones del cuadro de di&aacute;logo:
+<p>
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de mensaje&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+    &lt;INPUT TYPE="text" NAME="campo1" &gt;
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+    Formulario1.campo1.value = MsgBox("Esto es una prueba de mensaje con botones" & _
+	                           vbCrLf & "¿Quieres continuar?", 4+32, "Pregunta")
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Esta ser&iacute;a la apariencia despu&eacute;s de pulsar el bot&oacute;n "Prueba" del formulario:
+<p>
+<img src="msgbox2.jpg">
+<p>
+Y esta despu&eacute;s de contestar "Si" al cuadro de di&aacute;logo:
+<p>
+<img src="msgbox3.jpg">
+<p>
+<font color="red">MsgBox()</font> tambi&eacute;n se emplea para informar de errores durante la ejecuci&oacute;n del programa. En este caso, solamente ofrecer&aacute; el bot&oacute;n "Aceptar", cuyo &uacute;nico significado es darse por enterado del problema. Estos son los 4 posibles:
+<p>
+<img src="VBEXCLAMATION.gif"> &nbsp; <img src="VBCRITICAL.gif"> &nbsp; <img src="VBINFORMATION.gif"> &nbsp; <img src="VBQUESTION.gif"> 
+<p>
+Y este es el c&oacute;digo para obtenerlos: 
+<p>
+MsgBox ("Mensaje", <b>vbExclamation</b>, "Titulo")<br>
+MsgBox ("Mensaje", <b>vbCritical</b>, "Titulo")<br>
+MsgBox ("Mensaje", <b>vbIinformation</b>, "Titulo")<br>
+MsgBox ("Mensaje", <b>vbQuestion</b>, "Titulo")<br>
+<p>
+<br>
+<br>
+A continuaci&oacute;n veamos la segunda funci&oacute;n:
+<p>
+<font color="red" size=4>InputBox(</font><font color="blue" size=4>mensaje[, t&iacute;tulo][, predeterminado][, posici&oacute;n<b>X</b>][, posici&oacute;n<b>Y</b>][, ayuda, contexto]</font><font color="red" size=4>)</font>
+<p>
+Esta funci&oacute;n es algo parecida a la anterior. Muestra un mensaje en un cuadro de di&aacute;logo junto con un cuadro de texto para que el usuario pueda escribir los valores que necesite la aplicaci&oacute;n. A diferencia de MsgBox(), no se pueden definir conjuntos de botones ni iconos. Solamente est&aacute;n disponibles los de "<b>Aceptar</b>" y "<b>Cancelar</b>". Si el usuario escribe alg&uacute;n valor en el cuadro de texto correspondiente y pulsa "Aceptar", el valor es transferido a donde se indique en el programa. Si se escribe y se pulsa "Cancelar", la captura no se produce.
+<p>
+Estos son sus par&aacute;metros:
+<ul>
+<li><font color="blue"><b>mensaje</b></font>: Obligatorio. Es un string que forma el mensaje en el cuadro de di&aacute;logo. Su longitud m&aacute;xima no debe superar los 1024 caracteres, dependiendo del ancho de los caracteres utilizados. Si el mensaje es largo, se pueden separar las l&iacute;neas concatenando cadenas m&aacute;s cortas con la constante intr&iacute;nseca de VBScript <b>vbCrLf</b> o con la funci&oacute;n <font color="red">Chr(13) & Chr(10)</font>
+
+<li><font color="blue"><b>t&iacute;tulo</b></font>: Opcional. Es un string que se muestra en la barra de t&iacute;tulo del cuadro de di&aacute;logo. Si se omite, en su lugar aparece el nombre de la aplicaci&oacute;n.
+
+<li><font color="blue"><b>predeterminado</b></font>: Opcional. Es un valor, string o num&eacute;rico, que aparecer&aacute; en el interior del cuadro de di&aacute;logo como respuesta predeterminada, aunque el usuario podr&aacute; cambiarla o borrarla si lo desea. Si se omite, el cuadro de texto aparecer&aacute; vac&iacute;o (por defecto).
+
+<li><font color="blue"><b>posici&oacute;nX</b></font>: Opcional. Es un n&uacute;mero o expresi&oacute;n num&eacute;rica que especifica, en twips, la distancia en sentido horizontal entre el borde izquierdo del cuadro de di&aacute;logo y el borde izquierdo de la pantalla. Si se omite, el cuadro de di&aacute;logo se centra horizontalmente.
+
+<li><font color="blue"><b>posici&oacute;nY</b></font>: Opcional. Es un n&uacute;mero o expresi&oacute;n num&eacute;rica que especifica, en twips, la distancia en sentido vertical entre el borde superior del  cuadro de diálogo y el borde superior de la pantalla. Si se omite, cuadro de di&aacute;logo se coloca a aproximadamente un tercio de la altura de la pantalla, desde el borde superior de la misma.
+
+<li><font color="blue"><b>ayuda</b></font>: Opcional. Es un string que identifica el archivo de ayuda que se utiliza para proporcionar ayuda contextual  para el cuadro de di&aacute;logo. Si se especifica, tambi&eacute;n se debe especificar <font color="blue">contexto</font>.
+
+<li><font color="blue"><b>contexto</b></font>: Opcional. Es un n&uacute;mero o expresi&oacute;n num&eacute;rica que identifica el número de contexto de ayuda asignado al tema de ayuda correspondiente. Si se especifica, tambi&eacute;n se debe especificar <font color="blue">ayuda</font>.
+</ul>
+
+Y puede que te preguntes que eso de "twips". Un twuip es la veinteava parte de un punto de impresi&oacute;n (<b>TW</b>ent<b>I</b>eth of a <b>P</b>oint). Se trata de un sistema utilizado por Visual Basic para tratar de mantener el tama&ntilde;o de los formularios y cuadros de mensaje independientemente de la resoluci&oacute;n de pantalla empleada por el cliente. Veamos un ejemplo de uso:
+
+<pre>
+<font size=3 color="blue" face="courier">
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Prueba de mensaje&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;FORM NAME="Formulario1"&gt;
+    &lt;INPUT TYPE="Button" NAME="Boton1" VALUE="Prueba"&gt;
+    &lt;INPUT TYPE="text" NAME="campo1" &gt;
+&lt;SCRIPT FOR="Boton1" EVENT="onClick" LANGUAGE="VBScript"&gt;
+  &lt;!--
+    Formulario1.campo1.value = InputBox("Escribe un n&uacute;mero entre 0 y 10", "Entrar valor")
+  --&gt;
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</font>
+</pre>
+
+Esta ser&iacute;a la apariencia despu&eacute;s de pulsar el bot&oacute;n "Prueba" del formulario:
+<p>
+<img src="inputbox1.jpg">
+<p>
+Y esta despu&eacute;s de haber escrito "10" en el cuadro de texto y pulsado "Aceptar"
+<p>
+<img src="inputbox2.jpg">
+<p>
+Para evitar errores, deber&aacute;s programar instrucciones que controlen lo que el usuario ha contestado, por si en lugar de los datos solicitados ha escrito otra cosa, o no ha escrito nada, ya que ambas cosas suelen suceder con mucha frecuencia. Recuerda: s&oacute;lo a ti te interesa que esto funcione bien.
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+
+</body>
+</html>

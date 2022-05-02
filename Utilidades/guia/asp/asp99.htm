@@ -1,0 +1,362 @@
+<HTML>
+<HEAD><TITLE>ASP 9</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+<H2>El objeto Request</H2>
+En ingl&eacute;s, request significa  pedir, solicitar. En efecto, la acci&oacute;n de escribir  una direcci&oacute;n cualquiera en la l&iacute;nea de URL de tu navegador, se traduce en solicitar un determinado fichero a un servidor, o dicho en la jerga t&eacute;cnica, se le hace un <b>request</b> al servidor. El protocolo que utiliza el navegador (por defecto salvo que se indique otro, como el FTP) para dialogar con un servidor web es el llamado HTTP, que como habr&aacute;s visto figura al principio de todas las direcciones web. No es necesario escribir el protocolo en los navegadores modernos, simplemente escribimos la direcci&oacute;n de la p&aacute;gina solicitada, y el navegador a&ntilde;ade delante de la misma su protocolo por defecto. Por ejemplo, si escribes:
+<p>
+&nbsp;&nbsp;&nbsp;<b>sestud.uv.es/manual.esp/</b> el navegador compone <font color ="red">http://</font><b>sestud.uv.es/manual.esp/</b>
+<p>
+El objeto <b>Request</b> permite el acceso a toda la informaci&oacute;n que pasa desde el navegador del cliente al servidor. Al recibir esta informaci&oacute;n,  es repartida y almacenada entre cinco colecciones. Cada colecci&oacute;n es similar en estructura a una tabla de datos (tambi&eacute;n llamada matriz de datos o array). Los datos, una vez cargados,  pueden ser accedidos individualmente en cada colecci&oacute;n a trav&eacute;s de una &uacute;nica clave asignada a cada item.
+<p>
+Todas las variables pueden ser accedidas directamente mediante una llamada del tipo <b><font color="blue">Request(<font color="red">variable</font>)</b></font> sin mencionar el nombre de la colecci&oacute;n. En este caso, el servidor web busca entre todas las colecciones la clave pedida (<font color="red">variable</font>), buscando por este orden: 
+<p>
+&nbsp;&nbsp;&nbsp&nbsp;<b>QueryString, Form, Cookies, ClientCertificate y ServerVariables</b> que son las cinco colecciones que tiene el objeto.
+<p>
+
+El objeto <b>Request</b> tiene 1 <b>propiedad</b>, 5 <b>colecciones</b> y 1 <b>m&eacute;todo</b>: 
+
+<hr noshade>
+<center><font size=4>PROPIEDADES</font></center><p>
+
+<h3>Request.TotalBytes</h3>
+Esta propiedad, de solo lectura, indica el n&uacute;mero total de bytes enviados por el cliente al servidor en el cuerpo de la llamada HTTP. Se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+'---fichero.htm<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;&lt;TITLE&GT;PRUEBA&LT/TITLE&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;FORM ACTION="prueba.asp" METHOD="POST"&gt;<br>
+        Texto:&lt;INPUT TYPE="Text" NAME="texto" VALUE="esto es una prueba"&gt;&lt;BR&gt;<br>
+        &lt;INPUT TYPE="Submit"  VALUE="Probar"&gt;&lt;BR&gt;<br>
+        &lt;/FORM&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;
+<p>
+
+'--fichero prueba.asp<br>
+
+&lt;% <br>
+Dim Cuantos<br>
+Cuantos = <FONT color="red">Request.TotalBytes</font><br>
+Response.Write("Se han recibido = " & Cuantos & " bytes")<br>
+%&gt;
+</font>
+
+
+
+<hr noshade>
+<center><font size=4>COLECCIONES</font></center><p>
+
+<h3>Request.ClientCertificate(<font color="blue">clave</font>) </h3> 
+
+Esta colecci&oacute;n tiene utilidad si estamos escribiendo una aplicaci&oacute;n que utiliza el protocolo <b>S</b>ecure <b>S</b>ocket <b>L</b>ayers (SSL). Este protocolo, que da una mayor seguridad en las transacciones electr&oacute;nicas, se invoca con el prefijo <b>https://</b> en lugar del t&iacute;pico <b>http://</b>, y est&aacute; basado en el env&iacute;o de certificados electr&oacute;nicos del servidor al cliente para asegurar la identidad del mismo. Como en otras  colecciones, es posible listar todos sus items con un bucle <b>For Each item in ... Next</b> ya vistos en otros objetos.
+<p>
+El argumento <b><font color="blue">clave</font></b> es un string (cadena de texto) que especifica el nombre del item que se desea recibir, y hay que escribirlo entre comillas dobles (<b>"</b>). Un certificado es como un registro que contiene los siguientes campos:
+<ul>
+<li><b><font color="blue">Certificate</font></b> Conteniene el certificado completo. Se recibe en binario.
+<li><b><font color="blue">SerialNumber</font></b> Contiene el n&uacute;mero de serie del certificado. 
+<li><b><font color="blue">Subject</font></b> Informaci&oacute;n sobre el sujeto certificado. 
+<li><b><font color="blue">Issuer</font></b> Informaci&oacute;n sobre el emisor del certificado. 
+<li><b><font color="blue">ValidFrom</font></b> Fecha desde la que es v&aacute;lido el certificado.
+<li><b><font color="blue">ValidUntil</font></b> Fecha de expiraci&oacute;n del certificado.
+<li><b><font color="blue">Flags</font></b> Hay dos flags (literalmente "banderas"):
+    <ul>
+       <li><b>ceCertPresent</b> Indica que el certificado se recibe de un cliente conocido.
+       <li><b>ceUnrecognizedIssuer</b> Indica que el certificado se recibe de un cliente desconocido.
+    </ul>
+</ul>
+<p>
+Por ejemplo, para obtener las fechas de validez de un certificado, se escribe:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;HTML&gt; <BR>
+&lt;HEAD&gt;  &lt;TITLE&gt;Prueba de certificado&lt;/TITLE&gt; &lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+          El certificado es v&aacute;lido desde &lt;%= <FONT color="red">Request.ClientCertificate</FONT>("ValidFrom") 
+          %&gt; hasta <br>
+&lt;%= <FONT color=#ff0000>Request.ClientCertificate</FONT>("ValidUntil") %&gt;. <br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br></font>
+<p>
+Y este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+El certificado es v&aacute;lido desde 9/30/98 11:59:59 PM hasta 9/30/99 11:59:59 PM.</font> 
+<p>
+
+
+<hr WIDTH=50%>
+<h3>Request.Cookies(clave)</h3>
+La colecci&oacute;n <b>Cookies</b> (literalmente "galleta")  asigna datos a un cookie existente, y si &eacute;ste no existe, crea uno nuevo donde almacena estos datos. Y te estar&aacute;s preguntando que es eso de las "galletas" y d&oacute;nde est&aacute;n... No, no es que tu navegador se haya convertido en un monstruo devorador de galletas. Aclaremos esto un poco:
+<p>
+Anteriormente se ha dicho que el HTML normal no precisa informaci&oacute;n espec&iacute;fica sobre las caracter&iacute;sticas de los clientes, ya que son contenidos est&aacute;ticos iguales para todos ellos, es como leer un tabl&oacute;n de anuncios; no hay interactividad entre el tabl&oacute;n y el lector.  Todo se reduce a lanzar una petici&oacute;n del cliente al servidor, y &eacute;ste la contesta siempre igual, sin personalizaci&oacute;n alguna.
+<p>
+&#191;Pero qu&eacute; ocurre si se trata de una aplicaci&oacute;n que maneja  datos personales, que s&oacute;lo han de mostrarse al cliente correcto, y que utiliza varios formularios complejos cuyos datos han de integrarse en un &uacute;nico registro? Pues en ese caso, ya no da igual qu&eacute; cliente hace las preguntas, y hay que estar seguro de a quien se envian los datos.  Mantener, en cierto modo, una conversaci&oacute;n, conseguir que el servidor recuerde cont&iacute;nuamente ciertos datos del cliente que le permitan comportarse de forma un tanto "inteligente", en suma, personalizando la sesi&oacute;n.
+<p>
+Para eso, ASP establece una sesi&oacute;n individual y personalizada con cada cliente, almacenando tantas variables de sesi&oacute;n como sea preciso en el propio servidor, y creando un identificador &uacute;nico para cada sesi&oacute;n de un cliente. Este identificador no ha de ser guardado en el servidor, sino en el cliente, y permitir&aacute; al servidor reconocer de forma eficaz a su interlocutor. Los identificadores, junto con otras informaciones, como el modelo de navegador, versi&oacute;n del mismo, caracter&iacute;sticas de configuraci&oacute;n que tiene activas, direcci&oacute;n IP del cliente, etc., se guardan en unos peque&ntilde;os ficheros de texto llamados <b>Cookies</b>. Un problema que a menudo surge, es que el cliente ha deshabilitado la opci&oacute;n de aceptar cookies en su navegador, lo que imposibilita el buen funcionamiento de ASP, ya que no puede guardar los datos del identificador de sesi&oacute;n, cuesti&oacute;n clave para que todo marche correctamente.
+<p>
+Y ahora que ya sabes algo m&aacute;s sobre las galletas, veamos como se utiliza esta colecci&oacute;n, usando como siempre un bucle:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+For Each Item In <FONT color=#ff0000>Request.Cookies</font><br>
+&nbsp;&nbsp;&nbsp;Response.Write Item & " = " & <FONT color="red">Request.Cookies</font>(Item) & "&lt;br&gt;"<br>
+Next<br>
+ %&gt;</font>
+<p>
+Y este podr&iacute;a ser un resultado, ya que el contenido de la colecci&oacute;n no es fijo, depende del navegador del cliente, de la aplicaci&oacute;n, etc.,:
+<P>
+<font color="green" face="courier">
+PRD2 = VBScript<br>
+PRD1 = ASP<br></font>
+<p>
+Por defecto, siempre que se invoca una p&aacute;gina ASP se crea un objeto Session, pero puede ocurrir que no sea necesario establecer sesion con los usuarios, por ejemplo, si el contenido de la p&aacute;gina es est&aacute;tico o no precisa enviar cookies. Para evitar que ASP abra una sesi&oacute;n basta con escribir en la primera l&iacute;nea de la p&aacute;gina lo siguiente: 
+<p>
+<font color="blue" size=2 face="courier">&lt;%@ EnableSessionState=False%&gt;</font>
+<p>
+pero recuerda que de esta forma no se pueden generar cookies.
+
+
+
+<hr WIDTH=50%>
+<h3>Request.Form(<font color="blue">"Elemento o indice")[.Count]</font></h3>
+
+El contenido de esta colecci&oacute;n est&aacute; formado por todos los elementos  de un formulario t&iacute;pico escrito en HTML, donde  <font color="blue"><b>Elemento</b></font> es el nombre del elemento del formulario que se quiere recibir desde el navegador (un campo) y <font color="blue"><b>Count</b></font> contiene el n&uacute;mero de elementos. En lugar del nombre del elemento, se puede escribir su n&uacute;mero de &iacute;ndice, comenzando por el 1.
+<p>
+
+Supongamos que tenemos el siguiente formulario HTML con tres campos:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero formulario.htm<br>
+&lt;HTML&gt;&lt;HEAD&gt; &lt;TITLE&gt;Prueba1 ASP&lt;/TITLE&gt;  &lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;FORM ACTION="prueba2.asp" METHOD="POST"&gt;<br>
+Nombre:&lt;INPUT TYPE="text" NAME="Nombre" VALUE="Juan Garcia" &gt;&lt;br&gt;<br>
+Ciudad:&lt;INPUT TYPE="text" NAME="Ciudad" VALUE="Guadalajara" &gt;&lt;br&gt;<br>
+Postal:&lt;INPUT TYPE="text" NAME="Postal" VALUE="12345"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&lt;br&gt;<br>
+&lt;INPUT TYPE="Submit" VALUE="Enviar"&gt;<br>
+&lt;/FORM&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+</FONT>
+<p>
+Para poder ver el nombre de los campos y sus contenidos se escribe lo siguiente:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero prueba2.asp<br>
+&lt;HTML&gt;&lt;HEAD&gt; &lt;TITLE&gt;Prueba2 ASP&lt;/TITLE&gt;  &lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;% <br>
+Response.Write "N&uacute;mero de elementos: " &  <FONT color="red">Request.Form.Count </font> & "&lt;BR&gt;"<br>
+Response.Write "Nombre: " & <FONT color="red">Request.Form</FONT>("Nombre") & "&lt;BR&gt;"<br>
+Response.Write "Ciudad: " & <FONT color="red">Request.Form</FONT>("Ciudad") & "&lt;BR&gt;"<br>
+Response.Write "Postal: " & <FONT color="red">Request.Form</FONT>("Postal") & "&lt;BR&gt;"<br>
+Response.Write "&lt;P&gt;"<br>
+Response.Write "Nombre: " & <FONT color="red">Request.Form</FONT>(1) & "&lt;BR&gt;"<br>
+Response.Write "Ciudad: " & <FONT color="red">Request.Form</FONT>(2) & "&lt;BR&gt;"<br>
+Response.Write "Postal: " & <FONT color="red">Request.Form</FONT>(3) & "&lt;BR&gt;"<br>
+%&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br></font>
+<p>
+Este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+N&uacute;mero de elementos: 3<br>
+Nombre: Juan Garcia<br>
+Ciudad: Guadalajara<br>
+Postal: 12345<br>
+<p>
+Nombre: Juan Garcia<br>
+Ciudad: Guadalajara<br>
+Postal: 12345<br>
+</font>
+
+
+<hr WIDTH=50%>
+<h3>Request.QueryString(<font color="blue">"Elemento o indice")[.Count]</font></h3>
+
+
+El <b>Query String</b> no es otra cosa que el string (cadena de texto) que se escribe en la ventana de URL del navegador. Es decir, esa en la que se escribe la direcci&oacute;n del servidor donde est&aacute; la p&aacute;gina que deseamos recibir. Por ejemplo:
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>http://sestud.uv.es/manual.esp/indice.htm</b>&nbsp;&nbsp;<-- esto es un Query String
+<p>
+Posiblemente te preguntes c&oacute;mo hacer una colecci&oacute;n s&oacute;lo con eso. Pues en efecto, s&oacute;lo con eso no hay colecci&oacute;n, pero ASP, y otros sistemas de script,  utilizan esa l&iacute;nea para transportar informaci&oacute;n adicional, y es con esos datos adicionales con los que se crear&aacute; la colecci&oacute;n. He aqu&iacute; un ejemplo t&iacute;pico de Querystring. Analic&eacute;moslo:
+<p>
+<b>http://sestud.uv.es/manual.esp/indice.htm</b><font color="red">?<font color="blue">Nombre=Juan+Garcia</font>&<font color="blue">Ciudad=Guadalajara</font>&<font color="blue">Postal=12345</font></font>
+<p>
+Esto ya es otra cosa.... y casi se explica por s&iacute; mismo. La primera parte, est&aacute claro que es la direcci&oacute;n y no forma parte de la colecci&oacute;n. Todo comienza a partir del interrogante (<font color="red"><b>?</b></font>) que hay despu&eacute;s de la p&aacute;gina (indice.htm), que por cierto, debe ser una p&aacute;gina <b>.asp</b>, si es <b>.htm</b> todo esto no funciona, ya que es la extensi&oacute;n la que indica al servidor que hay c&oacute;digo que debe ser interpretado y ejecutado. Al igual que en la colecci&oacute;n anterior, tenemos un nombre de campo: <font color="blue">Nombre</font> y a continuaci&oacute;n del signo igual (<font color="blue"><b>=</b></font>) est&aacute; su valor: <font color="blue">Juan Garcia</font>. Despu&eacute;s aparece el signo (<font color="red"><b>&</b></font>), que indica el fin del campo y el comienzo de otro. El siguiente campo es <font color="blue">Ciudad</font> con su valor: <font color="blue">Guadalajara</font>, un nuevo signo de separaci&oacute;n, y el &uacute;ltimo campo: <font color="blue">Postal</font> con su corrspondiente valor: <font color="blue">12345</font>.
+<p>
+Este sistema se utiliza para acceder a &iacute;ndices, pasar par&aacute;metos de consultas a bases de datos, localizar n&uacute;meros de p&aacute;gina, etc. Es decir, contenidos relativamente cortos, ya que en total su longitud s&oacute;lo puede tener 255 caracteres. Para mover contenidos largos, se debe utilizar formularios y la colecci&oacute;n <b>Request.Form</b> vista anteriormente.
+<p>
+Para utilizar esta colecci&oacute;n no necesitamos un formulario, simplemente un link definido con el elemento <b>&lt;A&gt; .. &lt;/A&gt; </b> Supongamos que tenemos la siguiente p&aacute;gina HTML:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero link.htm<br>
+HTML&gt;&lt;HEAD&gt; &lt;TITLE&gt;Prueba1 ASP&lt;/TITLE&gt;  &lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+Prueba de &lt;A HREF="http://sestud.uv.es/manual.esp/prueba.asp<br>
+?Nombre=Juan+Garcia&Ciudad=Guadalajara&Postal=12345"&gt;Request.QueryString&lt;/A&gt;<br>
+
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+</FONT>
+<p>
+Para poder ver el nombre de los campos y sus contenidos se escribe lo siguiente:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero prueba.asp<br>
+&lt;HTML&gt;&lt;HEAD&gt; &lt;TITLE&gt;Prueba2 ASP&lt;/TITLE&gt;  &lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;% <br>
+Response.Write "N&uacute;mero de elementos: " &  <FONT color="red">Request.QueryString.Count </font> & "&lt;BR&gt;"<br>
+Response.Write "Nombre: " & <FONT color="red">Request.QueryString</FONT>("Nombre") & "&lt;BR&gt;"<br>
+Response.Write "Ciudad: " & <FONT color="red">Request.QueryString</FONT>("Ciudad") & "&lt;BR&gt;"<br>
+Response.Write "Postal: " & <FONT color="red">Request.QueryString</FONT>("Postal") & "&lt;BR&gt;"<br>
+Response.Write "&lt;P&gt;"<br>
+Response.Write "Nombre: " & <FONT color="red">Request.QueryString</FONT>(1) & "&lt;BR&gt;"<br>
+Response.Write "Ciudad: " & <FONT color="red">Request.QueryString</FONT>(2) & "&lt;BR&gt;"<br>
+Response.Write "Postal: " & <FONT color="red">Request.QueryString</FONT>(3) & "&lt;BR&gt;"<br>
+%&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br></font>
+<p>
+Este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+N&uacute;mero de elementos: 3<br>
+Nombre: Juan Garcia<br>
+Ciudad: Guadalajara<br>
+Postal: 12345<br>
+<p>
+Nombre: Juan Garcia<br>
+Ciudad: Guadalajara<br>
+Postal: 12345<br>
+</font>
+<p>
+En este ejemplo, el contador de elementos no est&aacute; contando los elementos que hay, sino el número de elementos <b>con el mismo nombre</b> que hay. As&iacute; pues, si, por ejemplo, repetimos el campo "Nombre" dos veces en el query string, el contador sguir&iacute;a mostrando 3.
+<p>
+F&iacute;jate ahora en la l&iacute;nea de string con los campos, concretamente el campo <b>Nombre</b> y su contenido: 
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+?Nombre=Juan+Garcia&Ciudad=Guadalajara&Postal=12345<br>
+%&gt;<br></font>
+<p>
+El contenido del campo Nombre parece que est&eacute; "sumado". En realidad el signo <font color="red"><b>+</b></font> que aparece separando <font color="blue">Juan</font> y <font color="blue">Garcia</font> funciona  aqu&iacute; como concatenador, igual que ocurre en los ficheros <b>.idc</b> vistos anteriormente, ya que en el query string no puede haber espacios en blanco y el signo <font color="red"><b>&</b></font> que se utiliza en ASP y VBScript para concatenar, aqu&iacute; es el separador de campos.
+<p>
+Se puede obtener toda la colecci&oacute;n de valores de los campos sin indicar sus nombres, pero no est&aacute; previsto obtener la colecci&oacute;n de los nombres. Si algun nombre de campo existe m&aacute;s de una vez, sus valores aparecen juntos separados por comas. Por ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero link.htm<br>
+HTML&gt;&lt;HEAD&gt; &lt;TITLE&gt;Prueba1 ASP&lt;/TITLE&gt;  &lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+Prueba de &lt;A HREF="http://sestud.uv.es/manual.esp/prueba.asp<br>
+?Nombre=Juan&Nombre=Maria&Nombre=PCiudad=Guadalajara&Postal=12345"&gt;Request.QueryString&lt;/A&gt;<br>
+
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+</FONT>
+<p>
+Para poder ver el nombre de los campos y sus contenidos se escribe lo siguiente:
+<p>
+<font color="blue" face="courier" size=2>
+'---Fichero prueba.asp<br>
+&lt;HTML&gt;&lt;HEAD&gt; &lt;TITLE&gt;Prueba2 ASP&lt;/TITLE&gt;  &lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;% <br>
+Response.Write "N&uacute;mero de elementos: " &  <FONT color="red">Request.QueryString.Count </font> & "&lt;BR&gt;"<br>
+Response.Write "Nombre: " & <FONT color="red">Request.QueryString</FONT>("Nombre") & "&lt;BR&gt;"<br>
+Response.Write "Ciudad: " & <FONT color="red">Request.QueryString</FONT>("Ciudad") & "&lt;BR&gt;"<br>
+Response.Write "Postal: " & <FONT color="red">Request.QueryString</FONT>("Postal") & "&lt;BR&gt;"<br>
+Response.Write "&lt;P&gt;"<br>
+Response.Write "Nombre: " & <FONT color="red">Request.QueryString</FONT>(1) & "&lt;BR&gt;"<br>
+Response.Write "Ciudad: " & <FONT color="red">Request.QueryString</FONT>(2) & "&lt;BR&gt;"<br>
+Response.Write "Postal: " & <FONT color="red">Request.QueryString</FONT>(3) & "&lt;BR&gt;"<br>
+%&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br></font>
+<p>
+Este ser&iacute;a el resultado:
+<p>
+<font color="green" face="courier" size=2>
+N&uacute;mero de elementos: 3<br>
+Nombre: Juan Garcia<br>
+Ciudad: Guadalajara<br>
+Postal: 12345<br>
+<p>
+Nombre: Juan Garcia<br>
+Ciudad: Guadalajara<br>
+Postal: 12345<br>
+</font>
+
+
+
+
+
+
+<hr WIDTH=50%>
+<h3>Request. ServerVariables(<font color="blue">"Variable"</font>)</h3>
+Esta colecci&oacute;n contiene el valor de las variables de entorno del servidor. Hay muchas, y posiblemente no las utilices nunca, por lo que s&oacute;lo se mencionar&aacute;n algunas. Como todas las dem&aacute;s pueden listarse con el bucle <b> For Each item in ... Next </b>. Los valores del argumento <font color="blue">"Variable"</font> pueden ser, entre otros, los siguientes:
+<p>
+<ul>
+<li><b><font color="blue">ALL_HTTP </b></font>Muestra todas las cabeceras HTTP enviadas por el cliente.
+<li><b><font color="blue">ALL_RAW  </b></font>Recupera todas las cabeceras en formato raw (transparente, sin codificar).
+<li><b><font color="blue">AUTH_PASSWORD </b></font>Es la palabra de paso (password) dado por el cliente durante el di&aacute;logo de autenticaci&oacute;n.
+<li><b><font color="blue">AUTH_TYPE </b></font>Muestra el m&eacute;todo de autenticaci&oacute;n que utiliza el servidor.
+<li><b><font color="blue">AUTH_USER </b></font>Nombre del usuario dado durante el di&aacute;logo de autenticaci&oacute;n en modo raw.
+<li><b><font color="blue">CONTENT_TYPE </b></font>Tipo de datos del contenido
+<li><b><font color="blue">HTTP_&lt;HeaderName&gt; </b></font>El valor almacenado en la cabecera HeaderName.
+<li><b><font color="blue">QUERY_STRING  </b></font>Es la informaci&oacute;n contenida en el string a continuaci&oacute;n del interrogante (?).
+<li><b><font color="blue">REMOTE_ADDR </b></font>Direcci&oacute;n IP del host (m&aacute;quina del cliente) que hace el request (petici&oacute;m de una p&aacute;gina)
+<li><b><font color="blue">REMOTE_HOST  </b></font>Nombre del host que hace el request.
+<li><b><font color="blue">REMOTE_USER  </b></font>Nombre del usuario
+<li><b><font color="blue">REQUEST_METHOD </b></font>M&eacute;todo empleado para hacer un request (POST o GET) desde un formulario.
+<li><b><font color="blue">SERVER_PORT  </b></font>N&uacute;mero del puerto por el que el request ha sido enviado.
+<li><b><font color="blue">SERVER_NAME  </b></font>Nombre del host servidor, Domain Name Server (DNS), alias o direcci&oacute;n IP (Internet Protocol).
+</ul>
+Por ejemplo:
+<p>
+<font color="blue" face="courier" size=2>
+&lt;%<br>
+Response.Write Request.ServerVariables("REMOTE_ADDR")<br>
+%&gt;<br></font>
+<p>
+Este podr&iacute;a ser un resultado:
+<p>
+<font color="green" face="courier" size=2>
+125.125.125.125
+</font>
+
+
+
+
+
+<hr noshade>
+<center><font size=4>METODOS</font></center><p>
+<h3>Request.BinaryRead(Count) </h3> 
+
+Este m&eacute;todo recupera  los datos que han sido enviados al servidor desde el cliente formando parte de un request HTTP POST (por ejemplo, con un formulario).
+<p>
+El argumento <b>Count </b> es obligatorio. Antes de que el m&eacute;todo sea ejecutado, <b>Count</b> contiene el n&uacute;mero de bytes que tienen que ser leidos. Despu&eacute;s de la ejecuci&oacute;n contiene el actual n&uacute;mero de bytes leidos. Se utiliza poco, y su principal uso es cuando se env&iacute;a (upload) un fichero, para comprobar que lleg&oacute; completo.
+
+<hr>
+<center>
+<h3>
+[<a href="../indice.htm">Indice</a>]
+</h3>
+</center>
+<hr>
+
+</BODY>
+</HTML>
